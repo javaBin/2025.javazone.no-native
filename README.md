@@ -5,7 +5,8 @@
 > which makes it easier to toggle between languages and avoid hard-coded text by having all text content stored as json.
 
 ### To do
-- Caching of chosen language across routes
+- [ ] Caching of chosen language across routes
+- [ ] Define template for styles and other assets
 
 **Credits:**
 The i18next language feature was implemented by following a [tutorial](https://ilearnedathing.com/internationalizing-a-react-native-app-with-i18next-and-expo-part-1) by Richard Westmoreland
