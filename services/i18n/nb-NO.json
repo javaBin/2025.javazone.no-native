@@ -1,0 +1,29 @@
+{
+  "translation": {
+    "javaZone_2025": "JavaZone 2025",
+    "in_progress": "under utvikling...",
+    "conference_title": "Konferanse: ",
+    "conference_date": "3-4 September, 2025",
+    "workshop_title": "Workshop: ",
+    "workshop_date": "2 September, 2025",
+    "location_title": "Sted: ",
+    "location": "Oslo, Norge",
+    "hold_the_date": "Hold av datoen!",
+
+    "partner_information": "Partner informasjon",
+    "speaker_information": "Speaker informasjon",
+    "program_information": "Program informasjon",
+    "workshop_information": "Workshop informasjon",
+    "ticket_information": "Billetter informasjon",
+    "volunteer_information": "Frivillig informasjon",
+    "journeyZone_information": "JourneyZone informasjon",
+    "aweZone_information": "AweZone informasjon",
+    "javaZone_kids_information": "JavaZone Kids informasjon",
+    "javaBin_information": "javaBin informasjon",
+
+    "language_name": {
+      "en-US": "Engelsk",
+      "nb-NO": "Norsk"
+    }
+  }
+}

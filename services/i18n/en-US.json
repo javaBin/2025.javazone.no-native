@@ -1,0 +1,29 @@
+{
+  "translation": {
+    "javaZone_2025": "JavaZone 2025",
+    "in_progress": "in progress...",
+    "conference_title": "Conference: ",
+    "conference_date": "September 3-4ᵗʰ, 2025",
+    "workshop_title": "Workshop: ",
+    "workshop_date": "September 2ⁿᵈ, 2025",
+    "location_title": "Location: ",
+    "location": "Oslo, Norway",
+    "hold_the_date": "Hold the date!",
+
+    "partner_information": "Partner information",
+    "speaker_information": "Speaker information",
+    "program_information": "Program information",
+    "workshop_information": "Workshop information",
+    "ticket_information": "Ticket information",
+    "volunteer_information": "Volunteer information",
+    "journeyZone_information": "JourneyZone information",
+    "aweZone_information": "AweZone information",
+    "javaZone_kids_information": "JavaZone Kids information",
+    "javaBin_information": "javaBin information",
+
+    "language_name": {
+      "en-US": "English",
+      "nb-NO": "Norwegian"
+    }
+  }
+}
