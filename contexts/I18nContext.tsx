@@ -1,5 +1,5 @@
 import * as Localization from 'expo-localization';
-import {createContext, useContext, useEffect, useState} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18next from "i18next";
 

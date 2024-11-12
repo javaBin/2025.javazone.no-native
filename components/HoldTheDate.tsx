@@ -24,11 +24,6 @@ const HoldTheDate = ({subPageHeader}: HoldTheDateProps) => {
             </View>
 
             <View style={styles.titleContainer}>
-                <Text style={[styles.title, styles.titleLeft]}>{t('workshop_title')}</Text>
-                <Text style={[styles.title, styles.titleRight]}>{t('workshop_date')}</Text>
-            </View>
-
-            <View style={styles.titleContainer}>
                 <Text style={[styles.title, styles.titleLeft]}>{t('location_title')}</Text>
                 <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
             </View>
@@ -73,7 +68,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,
-        width: 350
+        width: 330
     },
     title: {
         fontSize: Platform.OS == 'web' ? 20 : 18,
@@ -82,13 +77,13 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         color: Assets.colors.brand.beige,
         fontWeight: '500',
-        width: '40%',
+        width: '50%',
     },
     titleRight: {
         alignSelf: "flex-end",
         color: Assets.colors.brand.dutchWhite,
         marginLeft: Platform.OS == 'web' ? 5 : 1,
-        width: '70%',
+        width: '60%',
     },
     callout: {
         color: Assets.colors.logo.brightYellow,

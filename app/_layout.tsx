@@ -35,7 +35,8 @@ const RootLayout = () => {
     useEffect(() => {
         const getSystemLanguageAndSet = async () => {
             // get the device's current system locale from expo-localization
-            const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
+            const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US'; // todo: denne henter første språk lagret aka skurken
+            console.log("phone locale: ", Localization.getLocales());
             setLanguage(phoneLocale);
         }
 
