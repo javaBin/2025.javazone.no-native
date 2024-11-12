@@ -1,5 +1,5 @@
 {
-  "buildCommand": "expo export:web",
+  "buildCommand": "expo export",
   "outputDirectory": "web-build",
   "devCommand": "expo start --web",
   "cleanUrls": true,
