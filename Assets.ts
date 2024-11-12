@@ -1,4 +1,4 @@
-import Logo from '@/constants/images/logo-sharp.svg';
+import Logo from '@/assets/images/logo-sharp.svg';
 import {StyleSheet} from "react-native";
 
 export const Assets = {
