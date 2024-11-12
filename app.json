@@ -37,6 +37,7 @@
     "plugins": [
       "expo-localization",
       "expo-router"
-    ]
+    ],
+    "newArchEnabled": true
   }
 }
