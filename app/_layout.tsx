@@ -8,10 +8,6 @@ import i18n from 'i18next';
 import { AppState, Platform } from "react-native";
 import { I18nContextProvider } from "@/contexts/I18nContext";
 import { SafeAreaProvider } from "react-native-safe-area-context"
-import {
-    PaperProvider,
-    MD3DarkTheme as DefaultTheme,
-} from 'react-native-paper';
 
 const RootLayout = () => {
     const resources = {en, nb};
@@ -21,6 +17,7 @@ const RootLayout = () => {
     useEffect(() => {
         // we either don't have a language, or we've already initialized
         if (!language || languageLoaded) return;
+        console.log("language: ", language);
 
         i18n.use(initReactI18next).init({
             compatibilityJSON: 'v3',
@@ -36,7 +33,6 @@ const RootLayout = () => {
         const getSystemLanguageAndSet = async () => {
             // get the device's current system locale from expo-localization
             const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US'; // todo: denne henter første språk lagret aka skurken
-            console.log("phone locale: ", Localization.getLocales());
             setLanguage(phoneLocale);
         }
 
@@ -70,13 +66,11 @@ const RootLayout = () => {
     return (
         <SafeAreaProvider>
             <I18nContextProvider>
-                <PaperProvider theme={DefaultTheme}>
-                    <Stack screenOptions={{headerShown: false}}>
-                        <Stack.Screen name="/" />
-                        <Stack.Screen name="/partner" />
-                        <Stack.Screen name="/speaker" />
-                    </Stack>
-                </PaperProvider>
+                <Stack screenOptions={{headerShown: false}}>
+                    <Stack.Screen name="/" />
+                    <Stack.Screen name="/partner" />
+                    <Stack.Screen name="/speaker" />
+                </Stack>
             </I18nContextProvider>
         </SafeAreaProvider>
     );
