@@ -1,11 +1,12 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Assets } from "@/Assets";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import {Platform, SafeAreaView, StyleSheet, View} from "react-native";
 import React from "react";
 import { Flag } from "@/components/index";
 import { CountryCode, FlagSize, FlagStyle } from "@/models";
 import { useI18nContext } from "@/contexts/I18nContext";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 type ScreenTemplateProps = {
     children: React.ReactNode;
@@ -17,6 +18,9 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
     const headerHeight = useHeaderHeight();
     // @ts-ignore
     const { setLocale } = useI18nContext();
+    const { top } = useSafeAreaInsets(); // can use this to define screen top based on platform
+
+    const newTop = Platform.OS === "android" ? top : 0;
 
     return (
         <LinearGradient
@@ -28,7 +32,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
             locations={[0, 1]}
         >
             <SafeAreaView style={Assets.styles.safeArea}>
-                <View style={Assets.styles.container}>
+                <View style={[Assets.styles.container, {marginTop: newTop}]}>
                     <View style={styles.languagePickers}>
                         <Flag
                             flagLocale={'nb-NO'}
