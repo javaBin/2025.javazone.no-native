@@ -7,7 +7,7 @@ import nb from '@/services/i18n/nb-NO.json';
 import i18n from 'i18next';
 import { AppState, Platform } from "react-native";
 import { I18nContextProvider } from "@/contexts/I18nContext";
-import { SafeAreaProvider } from "react-native-safe-area-context"
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const RootLayout = () => {
     const resources = {en, nb};
