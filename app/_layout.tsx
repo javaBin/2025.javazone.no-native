@@ -66,10 +66,10 @@ const RootLayout = () => {
     return (
         <SafeAreaProvider>
             <I18nContextProvider>
-                <Stack screenOptions={{headerShown: false}}>
-                    <Stack.Screen name="/" />
-                    <Stack.Screen name="/partner" />
-                    <Stack.Screen name="/speaker" />
+                <Stack initialRouteName="index" screenOptions={{headerShown: false}}>
+                    <Stack.Screen name="index" />
+                    <Stack.Screen name="partner" />
+                    <Stack.Screen name="speaker" />
                 </Stack>
             </I18nContextProvider>
         </SafeAreaProvider>

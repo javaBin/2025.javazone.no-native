@@ -34,3 +34,28 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 .vercel
+
+# VSCode / Visual Studio
+/.vscode
+.vs
+
+# Xcode
+*.pbxuser
+!default.pbxuser
+*.xccheckout
+*.xcscmblueprint
+xcuserdata
+
+# IDEA / Android Studio
+*.iml
+.gradle
+.idea
+
+# Android
+*.apk
+*.hprof
+
+# iOS
+**/ios/.xcode.env.local
+*/ios/Pods
+*/ios/build
