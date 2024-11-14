@@ -9,7 +9,6 @@ import { AppState, Platform } from "react-native";
 import { I18nContextProvider } from "@/contexts/I18nContext";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Assets } from "@/Assets";
-import { StatusBar } from "expo-status-bar";
 import * as SystemUI from 'expo-system-ui';
 
 const RootLayout = () => {
@@ -73,8 +72,7 @@ const RootLayout = () => {
     return (
         <SafeAreaProvider>
             <I18nContextProvider>
-                <StatusBar style="dark" backgroundColor={Assets.colors.gradient.medium} />
-                <Stack initialRouteName="index" screenOptions={{headerShown: false, headerStyle: { backgroundColor: Assets.colors.gradient.medium }}}>
+                <Stack initialRouteName="index" screenOptions={{headerShown: false}}>
                     <Stack.Screen name="index" />
                     <Stack.Screen name="partner" />
                     <Stack.Screen name="speaker" />
