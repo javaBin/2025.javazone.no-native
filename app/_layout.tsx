@@ -8,6 +8,8 @@ import i18n from 'i18next';
 import { AppState, Platform } from "react-native";
 import { I18nContextProvider } from "@/contexts/I18nContext";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import {Assets} from "@/Assets";
+import {StatusBar} from "expo-status-bar";
 
 const RootLayout = () => {
     const resources = {en, nb};
