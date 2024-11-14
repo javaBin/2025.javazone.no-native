@@ -68,7 +68,8 @@ const RootLayout = () => {
     return (
         <SafeAreaProvider>
             <I18nContextProvider>
-                <Stack initialRouteName="index" screenOptions={{headerShown: false}}>
+                <StatusBar style="dark" backgroundColor={Assets.colors.gradient.medium} />
+                <Stack initialRouteName="index" screenOptions={{headerShown: false, headerStyle: { backgroundColor: Assets.colors.gradient.medium }}}>
                     <Stack.Screen name="index" />
                     <Stack.Screen name="partner" />
                     <Stack.Screen name="speaker" />
