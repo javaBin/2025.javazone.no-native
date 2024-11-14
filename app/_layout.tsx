@@ -40,8 +40,6 @@ const RootLayout = () => {
             // get the device's current system locale from expo-localization
             const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US'; // todo: denne henter første språk lagret aka skurken
             setLanguage(phoneLocale);
-
-            if (languageLoaded) router.setParams({ lang: phoneLocale });
         }
 
         getSystemLanguageAndSet();
