@@ -8,13 +8,18 @@ import i18n from 'i18next';
 import { AppState, Platform } from "react-native";
 import { I18nContextProvider } from "@/contexts/I18nContext";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import {Assets} from "@/Assets";
-import {StatusBar} from "expo-status-bar";
+import { Assets } from "@/Assets";
+import { StatusBar } from "expo-status-bar";
+import * as SystemUI from 'expo-system-ui';
 
 const RootLayout = () => {
     const resources = {en, nb};
     const [ languageLoaded, setLanguageLoaded ] = useState(false); // track if i18n is initialized
     const [ language, setLanguage ] = useState<string | null>(); // language (locale) to use
+
+    useEffect(() => {
+        SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
+    }, []);
 
     useEffect(() => {
         // we either don't have a language, or we've already initialized
@@ -68,7 +73,8 @@ const RootLayout = () => {
     return (
         <SafeAreaProvider>
             <I18nContextProvider>
-                <Stack initialRouteName="index" screenOptions={{headerShown: false}}>
+                <StatusBar style="dark" backgroundColor={Assets.colors.gradient.medium} />
+                <Stack initialRouteName="index" screenOptions={{headerShown: false, headerStyle: { backgroundColor: Assets.colors.gradient.medium }}}>
                     <Stack.Screen name="index" />
                     <Stack.Screen name="partner" />
                     <Stack.Screen name="speaker" />

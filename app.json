@@ -17,7 +17,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "JavaBin"
+      "bundleIdentifier": "JavaBin",
+      "backgroundColor": "#232526"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,7 +29,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "backgroundColor": "#232526"
     },
     "extra": {
       "eas": {
