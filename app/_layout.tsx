@@ -17,13 +17,13 @@ const RootLayout = () => {
     const [ language, setLanguage ] = useState<string | null>(); // language (locale) to use
 
     useEffect(() => {
+        // the root view background color falls outside the React tree, override with system ui
         SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
     }, []);
 
     useEffect(() => {
         // we either don't have a language, or we've already initialized
         if (!language || languageLoaded) return;
-        console.log("language: ", language);
 
         i18n.use(initReactI18next).init({
             compatibilityJSON: 'v3',
@@ -40,6 +40,8 @@ const RootLayout = () => {
             // get the device's current system locale from expo-localization
             const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US'; // todo: denne henter første språk lagret aka skurken
             setLanguage(phoneLocale);
+
+            if (languageLoaded) router.setParams({ lang: phoneLocale });
         }
 
         getSystemLanguageAndSet();
@@ -72,14 +74,14 @@ const RootLayout = () => {
     return (
         <SafeAreaProvider>
             <I18nContextProvider>
-                <Stack initialRouteName="index" screenOptions={{headerShown: false}}>
-                    <Stack.Screen name="index" />
-                    <Stack.Screen name="partner" />
-                    <Stack.Screen name="speaker" />
+                <Stack initialRouteName={`index`} screenOptions={{headerShown: false}}>
+                    <Stack.Screen name={`index`} />
+                    <Stack.Screen name={`partner`} />
+                    <Stack.Screen name={`speaker`} />
+                    <Stack.Screen name={`program`} />
                 </Stack>
             </I18nContextProvider>
         </SafeAreaProvider>
     );
 }
-
 export default RootLayout;

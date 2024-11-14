@@ -1,12 +1,12 @@
+import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Assets } from "@/Assets";
-import {Platform, SafeAreaView, StyleSheet, View} from "react-native";
-import React from "react";
+import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
 import { Flag } from "@/components/index";
 import { CountryCode, FlagSize, FlagStyle } from "@/models";
 import { useI18nContext } from "@/contexts/I18nContext";
-import {useSafeAreaInsets} from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type ScreenTemplateProps = {
     children: React.ReactNode;
@@ -19,7 +19,6 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
     // @ts-ignore
     const { setLocale } = useI18nContext();
     const { top } = useSafeAreaInsets(); // can use this to define screen top based on platform
-
     const newTop = Platform.OS === "android" ? top : 0;
 
     return (
@@ -39,7 +38,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
                             countryCode={CountryCode.Norwegian}
                             flagStyle={FlagStyle.Flat}
                             flagSize={FlagSize.Small}
-                            onPress={async () => await setLocale('nb-NO')}
+                            onPress={async () => await setLocale('en-US')}
                         />
                         <Flag
                             flagLocale={'en-US'}

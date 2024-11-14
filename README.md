@@ -11,6 +11,8 @@
 - [ ] Change expo account to javaBin account
 - [ ] Use javaBin iOS bundle identifier
 - [ ] Configure git rules
+- [ ] favicon
+- [ ] splash screen
 
 **Credits:**
 The i18next language feature was implemented by following a [tutorial](https://ilearnedathing.com/internationalizing-a-react-native-app-with-i18next-and-expo-part-1) by Richard Westmoreland
