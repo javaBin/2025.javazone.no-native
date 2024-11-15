@@ -2,6 +2,7 @@ import * as Localization from 'expo-localization';
 import React, { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18next from "i18next";
+import { useRouter } from "expo-router";
 
 const I18nContext = createContext({});
 
@@ -15,6 +16,7 @@ export const useI18nContext = () => {
 
 export const I18nContextProvider = ({ children }: { children: React.ReactNode}) => {
     const [locale, setLocale] = useState<string | null>();
+    const router = useRouter();
 
     const updateLocale = async (locale: string) => {
         await AsyncStorage.setItem('javazone_locale', locale);
@@ -38,7 +40,9 @@ export const I18nContextProvider = ({ children }: { children: React.ReactNode}) 
     }, [locale]);
 
     const setLocaleParam = async (locale: string) => {
+        const routeLang = locale === 'nb-no' ? 'no' : 'en';
         await updateLocale(locale)
+        router.setParams({lang: routeLang});
     }
 
     return (

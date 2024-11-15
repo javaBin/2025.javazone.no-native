@@ -6,19 +6,23 @@ import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
 import i18n from 'i18next';
 import { AppState, Platform } from "react-native";
-import {I18nContextProvider } from "@/contexts/I18nContext";
+import { I18nContextProvider } from "@/contexts/I18nContext";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Assets } from "@/Assets";
 import * as SystemUI from 'expo-system-ui';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useGlobalSearchParams, useRouter } from "expo-router";
 
 const RootLayout = () => {
     const resources = {en, nb};
+    const [isRedirected, setIsRedirected] = useState(false);
     const [ languageLoaded, setLanguageLoaded ] = useState(false); // track if i18n is initialized
     const [ language, setLanguage ] = useState<string | null>(); // language (locale) to use
+    const { lang } = useGlobalSearchParams();
+    const router  = useRouter();
 
     useEffect(() => {
-        // the root view background color falls outside the React tree, override with system ui
+        // Set background color
         SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
     }, []);
 
@@ -37,10 +41,30 @@ const RootLayout = () => {
     }, [language, languageLoaded]);
 
     useEffect(() => {
+        if (Platform.OS !== 'web') return;
+
+        // handle redirection to default language if no lang route provided
+        if (!lang && !isRedirected) {
+            router.replace('/en');
+            setLanguage('en-US');
+            setIsRedirected(true);
+        }
+
+        //handle language change when route param updates
+        if (lang === 'no' && language !== 'nb-no') {
+            setLanguage('nb-no');
+        } else if (lang === 'en' && language !== 'en-US') {
+            setLanguage('en-US');
+        }
+    }, [lang, isRedirected]);
+
+    useEffect(() => {
         const getStoredLanguageAndSet = async () => {
+            if (Platform.OS === 'web') return;
+
             // get the device's current system locale from expo-localization
             const storedLocale = await AsyncStorage.getItem('javazone_locale');
-            const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US'; // todo: denne henter første språk lagret aka skurken
+            const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
             setLanguage(storedLocale ? storedLocale : phoneLocale);
         }
 
@@ -69,16 +93,16 @@ const RootLayout = () => {
     }, []);
 
     // don't load the app until everything is initialized (fonts, assets etc.)
-    if (!languageLoaded) return null;
+    //if (!languageLoaded) return null;
 
     return (
         <SafeAreaProvider>
             <I18nContextProvider>
-                <Stack initialRouteName={`index`} screenOptions={{headerShown: false}}>
-                    <Stack.Screen name={`index`} />
-                    <Stack.Screen name={`partner`} />
-                    <Stack.Screen name={`speaker`} />
-                    <Stack.Screen name={`program`} />
+                <Stack initialRouteName={`[lang]/index`} screenOptions={{headerShown: false}}>
+                    <Stack.Screen name={`[lang]/index`} />
+                    <Stack.Screen name={`[lang]/partner`} />
+                    <Stack.Screen name={`[lang]/speaker`} />
+                    <Stack.Screen name={`[lang]/program`} />
                 </Stack>
             </I18nContextProvider>
         </SafeAreaProvider>
