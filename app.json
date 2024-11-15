@@ -7,6 +7,7 @@
     "icon": "./assets/images/logo-sharp.png",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#232526",
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/images/logo-sharp.png",
       "resizeMode": "contain",
