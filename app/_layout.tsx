@@ -1,17 +1,19 @@
 import * as Localization from 'expo-localization';
-import { Stack } from 'expo-router/stack';
-import { initReactI18next } from "react-i18next";
-import { useEffect, useState } from 'react';
+import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import i18n from 'i18next';
-import { AppState, Platform } from "react-native";
+import { useEffect, useState } from 'react';
 import { I18nContextProvider } from "@/contexts/I18nContext";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Assets } from "@/Assets";
-import * as SystemUI from 'expo-system-ui';
+import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
+import { Tabs, useGlobalSearchParams, useRouter} from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useGlobalSearchParams, useRouter } from "expo-router";
+import { AppState, Platform, StyleSheet } from "react-native";
+import { Stack } from 'expo-router/stack';
+import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import { Assets } from "@/Assets";
+import { BlurView } from "expo-blur";
+import { Iconify } from "react-native-iconify";
 
 const RootLayout = () => {
     const resources = {en, nb};
@@ -20,6 +22,7 @@ const RootLayout = () => {
     const [ language, setLanguage ] = useState<string | null>(); // language (locale) to use
     const { lang } = useGlobalSearchParams();
     const router  = useRouter();
+    const insets = useSafeAreaInsets();
 
     useEffect(() => {
         // Set background color
@@ -93,17 +96,56 @@ const RootLayout = () => {
     // don't load the app until everything is initialized (fonts, assets etc.)
     //if (!languageLoaded) return null;
 
-    return (
-        <SafeAreaProvider>
-            <I18nContextProvider>
-                <Stack initialRouteName={`[lang]/index`} screenOptions={{headerShown: false}}>
-                    <Stack.Screen name={`[lang]/index`} />
-                    <Stack.Screen name={`[lang]/partner`} />
-                    <Stack.Screen name={`[lang]/speaker`} />
-                    <Stack.Screen name={`[lang]/program`} />
-                </Stack>
-            </I18nContextProvider>
-        </SafeAreaProvider>
-    );
+    if (Platform.OS === 'web') {
+        return (
+            <SafeAreaProvider>
+                <I18nContextProvider>
+                    <Stack initialRouteName="[lang]/index" screenOptions={{headerShown: false}}>
+                        <Stack.Screen name="[lang]/index"/>
+                        <Stack.Screen name="[lang]/program"/>
+                        <Stack.Screen name="[lang]/partner"/>
+                        <Stack.Screen name="[lang]/speaker"/>
+                    </Stack>
+                </I18nContextProvider>
+            </SafeAreaProvider>
+        );
+    } else {
+        return (
+            <SafeAreaProvider>
+                <I18nContextProvider>
+                    <Tabs initialRouteName="[lang]/index" screenOptions={{
+                        headerShown: false,
+                        tabBarStyle: styles.tabBar,
+                        tabBarBackground: () => (
+                            <BlurView tint="dark" intensity={80} style={styles.blurContainer} />
+                        )}}>
+                        <Tabs.Screen name="[lang]/index" options={{title: "Home", tabBarIcon: () => (
+                            <Iconify icon="mdi:home" size={24} color={Assets.colors.brand.cream} />
+                            )}}/>
+                        <Tabs.Screen name="[lang]/program" options={{title: "Program"}}/>
+                        <Tabs.Screen name="[lang]/partner" options={{title: "Partner"}}/>
+                        <Tabs.Screen name="[lang]/speaker" options={{title: "Speaker"}}/>
+                        <Tabs.Screen name="+not-found" options={{href: null}}/>
+                    </Tabs>
+                </I18nContextProvider>
+            </SafeAreaProvider>
+        );
+    }
 }
+
+const styles = StyleSheet.create({
+    tabBar: {
+        position: 'absolute',
+    },
+    blurContainer: {
+        flex: 1,
+        padding: 20,
+        margin: 16,
+        textAlign: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        borderRadius: 20,
+        position: "absolute"
+    },
+});
 export default RootLayout;
