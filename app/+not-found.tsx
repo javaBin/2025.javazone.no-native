@@ -39,18 +39,21 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: "center",
         alignItems: "center",
+        width: '100%',
     },
     errorCode: {
         color: Assets.colors.brand.cream,
-        fontSize: Platform.OS == 'web' ? 58 : 46,
+        fontSize: Platform.OS == 'web' ? 58 : 44,
         fontWeight: '800',
         textTransform: 'uppercase',
     },
     errorTitle: {
         color: Assets.colors.logo.brightOrange,
-        fontSize: Platform.OS == 'web' ? 36 : 34,
+        width: Platform.OS == 'web' ? '70%' : '95%',
+        fontSize: Platform.OS == 'web' ? 36 : 32,
         fontWeight: 'semibold',
-        marginBottom: 20
+        marginBottom: 20,
+        textAlign: 'center',
     },
     errorMessageLight: {
         color: Assets.colors.brand.dutchWhite
@@ -60,7 +63,7 @@ const styles = StyleSheet.create({
     },
     text: {
         margin: 10,
-        width: '70%',
+        width: Platform.OS == 'web' ? '60%' : '85%',
         fontSize: Platform.OS == 'web' ? 20 : 18,
     },
     highlight: {
