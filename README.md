@@ -10,7 +10,7 @@
 
 > 🔤 Any changes to the `services/i18n/` files will not be updated in RunTime, rerun application `npx expo start`
 
-### To do
+### To do for setup
 - [ ] Caching of chosen language across routes
 - [ ] Define template for styles and other assets
 - [ ] Prettier config
@@ -18,8 +18,8 @@
 - [ ] Use javaBin iOS bundle identifier
 - [ ] Configure git rules
 - [x] favicon
-- [x] splash screen iOS
-- [ ] splash screen android
+- [x] splash screen
+- [x] 404 route
 
 **Credits:**
 The i18next language feature was implemented by following a [tutorial](https://ilearnedathing.com/internationalizing-a-react-native-app-with-i18next-and-expo-part-1) by Richard Westmoreland

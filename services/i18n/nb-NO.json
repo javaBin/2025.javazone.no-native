@@ -21,6 +21,16 @@
     "javaZone_kids_information": "JavaZone Kids informasjon",
     "javaBin_information": "javaBin informasjon",
 
+    "404": {
+      "error_code": "Void 0",
+      "error_title": "Oisann, dette er flaut...",
+      "lost_page_start": "Det ser ut som vi på en eller annen måte har mistet siden du leter etter. Hvis du er en teknisk person, er dette det du vanligvis refererer til som en klassisk ",
+      "404": "404",
+      "lost_page_end": " responskode.",
+      "tech_fails": "Vi bruker selvfølgelig avansert teknologi for å hindre at ting som dette skjer, men nå og da svikter teknologien (eller vi...).",
+      "tell_us_start": "Hvis du har noe tid til overs (eller bare er veldig snill), vil vi sette stor pris på om du ",
+      "tell_us_end": "forteller oss om det"
+    },
     "language_name": {
       "en-US": "Engelsk",
       "nb-NO": "Norsk"

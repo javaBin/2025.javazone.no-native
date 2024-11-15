@@ -21,6 +21,16 @@
     "javaZone_kids_information": "JavaZone Kids information",
     "javaBin_information": "javaBin information",
 
+    "404": {
+      "error_code": "Void 0",
+      "error_title": "Well, this is embarrassing...",
+      "lost_page_start": "We seem to somehow have lost the page you are looking for. If you are a technical person, this is what you might usually refer to as a classical ",
+      "404": "404",
+      "lost_page_end": " response code.",
+      "tech_fails": "We are of course using advanced technology to keep things like these from happening, but every now and then technology (or we...) fails.",
+      "tell_us_start": "If you have a lot of time on your hands (or are just really kind), we would really appreciate it if you ",
+      "tell_us_end": "tell us about it"
+    },
     "language_name": {
       "en-US": "English",
       "nb-NO": "Norwegian"
