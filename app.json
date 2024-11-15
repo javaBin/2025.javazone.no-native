@@ -23,8 +23,11 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/logo-sharp.png",
         "backgroundColor": "#232526"
+      },
+      "splash": {
+        "resizeMode": "native"
       },
       "package": "com.JavaBin"
     },
