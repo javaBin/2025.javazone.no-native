@@ -41,8 +41,6 @@ const RootLayout = () => {
     }, [language, languageLoaded]);
 
     useEffect(() => {
-        if (Platform.OS !== 'web') return;
-
         // handle redirection to default language if no lang route provided
         if (!lang && !isRedirected) {
             router.replace('/en');
