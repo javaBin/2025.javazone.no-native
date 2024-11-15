@@ -1,5 +1,5 @@
 import * as Localization from 'expo-localization';
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18next from "i18next";
 
@@ -18,7 +18,7 @@ export const I18nContextProvider = ({ children }: { children: React.ReactNode}) 
 
     const updateLocale = async (locale: string) => {
         await AsyncStorage.setItem('javazone_locale', locale);
-        i18next.changeLanguage(locale);
+        await i18next.changeLanguage(locale);
         setLocale(locale);
     }
 
@@ -37,9 +37,13 @@ export const I18nContextProvider = ({ children }: { children: React.ReactNode}) 
         loadLocales();
     }, [locale]);
 
+    const setLocaleParam = async (locale: string) => {
+        await updateLocale(locale)
+    }
+
     return (
         <I18nContext.Provider value={{
-            setLocale: async (locale: string) => await updateLocale(locale),
+            setLocale: setLocaleParam,
             locale
         }}>
             {children}

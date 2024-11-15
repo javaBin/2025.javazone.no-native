@@ -6,10 +6,11 @@ import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
 import i18n from 'i18next';
 import { AppState, Platform } from "react-native";
-import { I18nContextProvider } from "@/contexts/I18nContext";
+import {I18nContextProvider } from "@/contexts/I18nContext";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Assets } from "@/Assets";
 import * as SystemUI from 'expo-system-ui';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const RootLayout = () => {
     const resources = {en, nb};
@@ -36,13 +37,14 @@ const RootLayout = () => {
     }, [language, languageLoaded]);
 
     useEffect(() => {
-        const getSystemLanguageAndSet = async () => {
+        const getStoredLanguageAndSet = async () => {
             // get the device's current system locale from expo-localization
+            const storedLocale = await AsyncStorage.getItem('javazone_locale');
             const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US'; // todo: denne henter første språk lagret aka skurken
-            setLanguage(phoneLocale);
+            setLanguage(storedLocale ? storedLocale : phoneLocale);
         }
 
-        getSystemLanguageAndSet();
+        getStoredLanguageAndSet();
     }, []);
 
     /** app reloads when the system locale is changed for iOS,
@@ -54,9 +56,9 @@ const RootLayout = () => {
 
         // any time app state changes, get and set new locale
         const handleAppStateChange = async () => {
-            await i18n.changeLanguage(
-                Localization.getLocales()?.[0]?.languageTag ?? 'en-US'
-            );
+            const storedLocale = await AsyncStorage.getItem('javazone_locale');
+            const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
+            await i18n.changeLanguage(storedLocale ? storedLocale : phoneLocale);
         }
 
         const subscription = AppState.addEventListener('change', handleAppStateChange);

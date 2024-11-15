@@ -38,7 +38,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
                             countryCode={CountryCode.Norwegian}
                             flagStyle={FlagStyle.Flat}
                             flagSize={FlagSize.Small}
-                            onPress={async () => await setLocale('en-US')}
+                            onPress={async () => await setLocale('nb-no')}
                         />
                         <Flag
                             flagLocale={'en-US'}

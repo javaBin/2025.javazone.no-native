@@ -7,6 +7,7 @@
     "icon": "./assets/images/logo-sharp.png",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#232526",
+    "scheme": "javazone2025",
     "splash": {
       "image": "./assets/images/logo-sharp.png",
       "resizeMode": "contain",
@@ -22,7 +23,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo-sharp.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#232526"
       },
       "package": "com.JavaBin"
