@@ -1,10 +1,10 @@
-import { Animated, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {Animated, Image, Platform, Pressable, StyleSheet, Text, View} from "react-native";
 import { Assets } from "@/Assets";
 import { CircleImage, ScreenTemplate, SvgImage } from "@/components";
 import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import ScrollView = Animated.ScrollView;
-import { Link } from "expo-router";
+import {Link, useRouter} from "expo-router";
 
 const Info = () => {
     // @ts-ignore
@@ -12,6 +12,13 @@ const Info = () => {
     const [toggleJavaBin, setToggleJavaBin] = useState<boolean>(false);
     const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
     const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        // temporary until we fix info page for web
+        // this version is only for native and todo: needs refactoring
+        if (Platform.OS === 'web') router.navigate('/en');
+    }, []);
 
     const ToggleButton = (title: string, toggle: boolean) => {
         const handleToggle = () => {
