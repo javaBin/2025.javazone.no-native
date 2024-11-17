@@ -1,6 +1,6 @@
 import { SvgProps } from "react-native-svg";
 import React from "react";
-import {StyleProp, View, ViewStyle} from "react-native";
+import { StyleProp, View, ViewStyle } from "react-native";
 
 type SvgImageProps = {
     SVG: React.FC<SvgProps>

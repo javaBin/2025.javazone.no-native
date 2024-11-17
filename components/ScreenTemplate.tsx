@@ -1,5 +1,5 @@
 import React from "react";
-import {Dimensions, Platform, SafeAreaView, StyleSheet, View} from "react-native";
+import { Dimensions, Platform, SafeAreaView, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { LinearGradient } from "expo-linear-gradient";

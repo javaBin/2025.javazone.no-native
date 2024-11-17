@@ -1,10 +1,10 @@
-import {Animated, Image, Platform, Pressable, StyleSheet, Text, View} from "react-native";
+import { Animated, Image, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { Assets } from "@/Assets";
 import { CircleImage, ScreenTemplate, SvgImage } from "@/components";
 import { useTranslation } from "react-i18next";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ScrollView = Animated.ScrollView;
-import {Link, useRouter} from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 const Info = () => {
     // @ts-ignore

@@ -4,7 +4,7 @@ import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
 import { useEffect, useState } from 'react';
 import { I18nContextProvider } from "@/contexts/I18nContext";
-import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Tabs, useGlobalSearchParams, useRouter} from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AppState, Platform, StyleSheet } from "react-native";
@@ -13,7 +13,6 @@ import { initReactI18next } from "react-i18next";
 import i18n from 'i18next';
 import { Assets } from "@/Assets";
 import { BlurView } from "expo-blur";
-import { Iconify } from "react-native-iconify";
 
 const RootLayout = () => {
     const resources = {en, nb};
@@ -22,7 +21,6 @@ const RootLayout = () => {
     const [ language, setLanguage ] = useState<string | null>(); // language (locale) to use
     const { lang } = useGlobalSearchParams();
     const router  = useRouter();
-    const insets = useSafeAreaInsets();
 
     useEffect(() => {
         // Set background color
@@ -92,9 +90,6 @@ const RootLayout = () => {
             subscription.remove();
         }
     }, []);
-
-    // don't load the app until everything is initialized (fonts, assets etc.)
-    //if (!languageLoaded) return null;
 
     if (Platform.OS === 'web') {
         return (
