@@ -6,7 +6,7 @@
 > This implementation uses React Native and TypeScript. The template implements a language feature using i18n, 
 > which makes it easier to toggle between languages and avoid hard-coded text by having all text content stored as json.
 
-> ⚙️ Any changes in `app.json` will not affect iOS or Android while running. You must run `npx expo prebuild` (`--clean` if you want)
+> ⚙️ Any changes in `app.json` will not affect iOS or Android while running. The same applies for assets. You must run `npx expo prebuild` (`--clean` if you want)
 
 > 🔤 Any changes to the `services/i18n/` files will not be updated in RunTime, rerun application `npx expo start`
 

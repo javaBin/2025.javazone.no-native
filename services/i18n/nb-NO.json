@@ -21,6 +21,42 @@
     "javaZone_kids_information": "JavaZone Kids informasjon",
     "javaBin_information": "javaBin informasjon",
 
+    "javaBin": {
+      "intro": "Bli en del av noe stort",
+      "about": "Om javaBin",
+      "read_more": "Les mer om oss",
+      "about_javaBin": "javaBin er en av Norges største community-grupper, drevet av frivillige ildsjeler fra hele landet. Vi har avdelinger over hele landet – Stavanger, Bergen, Trondheim, Vestfold, Sogn, Tromsø, Sørlandet og Oslo. Hver eneste måned skjer det kule ting i javaBin-regi – både meetups, studentarrangementer, arrangementer for barn, og mye annet spennende!",
+      "about_JavaZone": "Hvert år i september er det duket for javaBins store happening – JavaZone. Det stemmer! En av verdens største Java-konferanser er drevet av en frivillig organisasjon! Ca. 3.100 deltakere, 200 foredragsholdere, 50 partnerbedrifter og generelt sett god stemning!",
+      "about_meetups": "Bli med på et javaBin-arrangement da vel! Og er du ekstra interessert, kan du snakke med oss og bli en av arrangørene. Vi er over 50 mennesker som bidrar med å skape kule arrangementer for våre nesten 3.000 medlemmer!",
+      "contribute": "Vil du være med?",
+      "become_active": "Bli aktiv i javaBin?",
+      "about_becoming_active": "Vil du være med aktivt i javaBin, og arrangere meetups og JavaZone? I Oslo møtes vi hver tirsdag kl. 18:00 på Teknologihuset på Rebel i Oslo Sentrum, og det er bare å dukke opp på en av kveldene våre. I regionene møtes vi litt sjeldnere – møt opp på et meetup-arrangement og snakk med oss."
+    },
+    "javaZone": {
+      "about": "Om JavaZone",
+      "read_more": "Les mer om JavaZone",
+      "about_JavaZone": "JavaZone er den største fellesskapsdrevne Java-konferansen som har blitt arrangert i Oslo, Norge siden 2001. Den er organisert på frivillig basis av en gruppe mennesker fra javaBin, den norske Java brukergruppen, som jobber året rundt og legger ned mange timer for å skape en fantastisk konferanseopplevelse for deg.",
+      "goal": "Målet vårt er å organisere en fellesskapsdrevet konferanse for utviklere der de kan lære nye ting, dele kunnskap og sosialisere seg.",
+      "last_year": "Vi er glade for å se arrangementet vokse seg større og bedre for hvert år. I 2019 var vi vertskap for over 3200 deltakere og 160 foredragsholdere på 7 parallelle spor i løpet av to dager. I tillegg tilbød vi også et utvalg av 11 workshops holdt dagen før konferansen startet.",
+      "who_is_behind": "Hvem står bak?",
+      "about_organizers": "Å organisere en konferanse av denne størrelsen på frivillig basis er mye hardt arbeid (og veldig gøy!). Konferanseorganisasjonen er representert av JavaZone kjerne-teamet – en gruppe hovedarrangører av konferansen, hvor hver representant er ansvarlig for ett eller flere områder eller leder en gruppe andre JUG-medlemmer. Et eksempel på slike grupper kan være Programkomité, IT-systemer mv.",
+      "core_team_title": "JavaZone kjerne-teamet for 2025:",
+      "leader": "Leder",
+      "leader_name": "Jan Erik Robertsen",
+      "program": "Program",
+      "program_name": "Erlend Klakegg Bergheim",
+      "partners": "Partnere",
+      "partners_name": "Anders Karlsen",
+      "volunteers": "Frivillige",
+      "volunteers_name": "Bendik Dyrli, Ellaoui Abdellaoui og Ole Berg",
+      "javaZone_mail": "javazone@java.no",
+      "program_mail": "program@java.no",
+      "partners_mail": "partner@java.no",
+      "volunteers_mail": "student@java.no",
+      "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen!",
+      "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via "
+    },
+
     "404": {
       "error_code": "Void 0",
       "error_title": "Oisann, dette er flaut...",

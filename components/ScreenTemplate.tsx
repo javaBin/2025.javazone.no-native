@@ -1,12 +1,12 @@
 import React from "react";
-import { LinearGradient } from "expo-linear-gradient";
-import { useHeaderHeight } from "@react-navigation/elements";
-import { Assets } from "@/Assets";
 import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
-import { Flag } from "@/components/index";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useHeaderHeight } from "@react-navigation/elements";
+import { LinearGradient } from "expo-linear-gradient";
 import { CountryCode, FlagSize, FlagStyle } from "@/models";
 import { useI18nContext } from "@/contexts/I18nContext";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Flag } from "@/components/index";
+import { Assets } from "@/Assets";
 
 type ScreenTemplateProps = {
     children: React.ReactNode;
@@ -38,7 +38,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
                             countryCode={CountryCode.Norwegian}
                             flagStyle={FlagStyle.Flat}
                             flagSize={FlagSize.Small}
-                            onPress={async () => await setLocale('nb-no')}
+                            onPress={async () => await setLocale('nb-NO')}
                         />
                         <Flag
                             flagLocale={'en-US'}

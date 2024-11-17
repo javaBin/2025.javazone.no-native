@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         color: Assets.colors.logo.brightOrange,
     },
     subPageHeading: {
-        fontSize: Platform.OS == 'web' ? 28 : 68,
+        fontSize: Platform.OS == 'web' ? 28 : 26,
         fontWeight: '500',
         color: Assets.colors.brand.beige,
     },

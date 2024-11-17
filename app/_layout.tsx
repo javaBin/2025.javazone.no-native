@@ -119,12 +119,12 @@ const RootLayout = () => {
                         tabBarBackground: () => (
                             <BlurView tint="dark" intensity={80} style={styles.blurContainer} />
                         )}}>
-                        <Tabs.Screen name="[lang]/index" options={{title: "Home", tabBarIcon: () => (
-                            <Iconify icon="mdi:home" size={24} color={Assets.colors.brand.cream} />
-                            )}}/>
+                        <Tabs.Screen name="[lang]/index" options={{title: "Home"}}/>
                         <Tabs.Screen name="[lang]/program" options={{title: "Program"}}/>
                         <Tabs.Screen name="[lang]/partner" options={{title: "Partner"}}/>
                         <Tabs.Screen name="[lang]/speaker" options={{title: "Speaker"}}/>
+                        <Tabs.Screen name="[lang]/info" options={{title: "Info"}}/>
+
                         <Tabs.Screen name="+not-found" options={{href: null}}/>
                     </Tabs>
                 </I18nContextProvider>
@@ -139,13 +139,12 @@ const styles = StyleSheet.create({
     },
     blurContainer: {
         flex: 1,
-        padding: 20,
-        margin: 16,
+        padding: 30,
         textAlign: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        borderRadius: 20,
-        position: "absolute"
+        position: "absolute",
+        width: '100%',
     },
 });
 export default RootLayout;

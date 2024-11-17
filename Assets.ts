@@ -1,12 +1,25 @@
-import Logo from '@/assets/images/logo-sharp.svg';
-import {StyleSheet} from "react-native";
+// @ts-ignore
+import JavaBinLogo from '@/assets/images/javaBin-logo.png';
+import Logo from '@/assets/images/javaZone-logo.svg';
+import TriangleRight from '@/assets/icons/triangle-right.svg';
+import TriangleDown from '@/assets/icons/triangle-down.svg';
+import { StyleSheet } from "react-native";
 
 export const Assets = {
     links: {
-        javaBinMail: 'mailto:javazone@java.no'
+        javaBinMail: 'mailto:javazone@java.no',
+        javaZoneMail: 'mailto:javazone@java.no',
+        programMail: 'mailto:program@java.no',
+        partnerMail: 'mailto:partner@java.no',
+        volunteerMail: 'mailto:student@java.no',
     },
     images: {
-        Logo
+        Logo,
+        JavaBinLogo
+    },
+    icons: {
+        TriangleRight,
+        TriangleDown,
     },
     colors: {
         transparent: 'transparent',
