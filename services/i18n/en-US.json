@@ -26,7 +26,7 @@
       "about": "About javaBin",
       "read_more": "Read more about us",
       "about_javaBin": "javaBin is one of the largest communities in Norway. It is driven by volunteer enthusiasts from across the country. We have branches throughout the country – in Stavanger, Bergen, Trondheim, Vestfold, Sogn, Tromsø, Southern Norway and Oslo. We organize events almost every month in all branches of javaBin, including meetups, events for students, events for kids, and other exciting stuff!",
-      "about_JavaZone": "Our biggest event of the year – JavaZone – takes place every September. That's right! One of the world's biggest Java conferences is run by a non-profit organization! Approximately 3,100 participants, 200 speakers, 50+ partners, and generally lots of knowledge sharing and fun",
+      "about_JavaZone": "Our biggest event of the year – JavaZone – takes place every September. That's right! One of the world's biggest Java conferences is run by a non-profit organization! Approximately 3,500 participants, 200 speakers, 50+ partners, and generally lots of knowledge sharing and fun",
       "about_meetups": "So what are you waiting for? Come and join one of our events! And if you want to give something back then just ask about becoming an organizer, or how you can contribute in other ways. We currently have over 50 people who contribute, creating events for our nearly 3,000 members! We are always looking for new friends.",
       "contribute": "Join us",
       "become_active": "Want to become an active member of JavaBin?",
@@ -37,7 +37,7 @@
       "read_more": "Read more about JavaZone",
       "about_JavaZone": "JavaZone is the biggest community-driven Java conference that has been organized in Oslo, Norway since 2001. It is organized on a voluntary basis by a group of people from javaBin, the Norwegian Java User Group, working around the year and putting many hours to create an amazing conference experience for you.",
       "goal": "Our goal is to organize a community-driven conference for developers where they can learn new things, share knowledge, and socialize.",
-      "last_year": "We are happy to see the event grow bigger and better every year. In 2019 we hosted over 3200 participants and 160 speakers across 7 parallel tracks over the course of two days. In addition, we also offered a selection of 11 workshops held on the day before the conference started.",
+      "last_year": "We are happy to see the event grow bigger and better every year. In 2024 we hosted over 3600 participants and 188 speakers across 8 parallel tracks over the course of two days. In addition, we also offered a selection of 16 workshops held on the week before the conference started.",
       "who_is_behind": "Who is behind it?",
       "about_organizers": "Organizing a conference of this size on a voluntary basis is a lot of hard work (and it is great fun too!). The conference organization is represented by the JavaZone Core Team – a group of main organizers of the conference, where each representative is responsible for one or several areas or is leading a group of other JUG members. An example of such groups can be Program Committee, IT systems, etc.",
       "core_team_title": "The JavaZone Core Team for 2025:",
@@ -69,6 +69,11 @@
       "java_board_mail": "styret@java.no",
       "during_conference": "During the conference",
       "contact_stand": "Ask at the info stand, and we‘ll be in touch. Contact information will also be available at the info stand."
+    },
+    "food": {
+      "food": "Food \uD83C\uDF54",
+      "about": "JavaZone promises to tantalize your taste buds and satisfy your cravings throughout the conference. For attendees with allergies or dietary restrictions, rest assured that each restaurant is committed to providing a safe and enjoyable dining experience. ",
+      "our_chefs": "Our chefs are well-versed in accommodating gluten, nut, dairy, and other common allergies. Simply inform the restaurant staff of your dietary needs, and they will guide you through the menu or offer personalized suggestions."
     },
 
     "404": {

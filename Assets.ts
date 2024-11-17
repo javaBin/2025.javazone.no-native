@@ -1,8 +1,10 @@
 // @ts-ignore
 import JavaBinLogo from '@/assets/images/javaBin-logo.png';
-import Logo from '@/assets/images/javaZone-logo.svg';
+// @ts-ignore
+import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
+import Logo from '@/assets/images/javaZone-logo.svg';
 import { StyleSheet } from "react-native";
 
 export const Assets = {
@@ -16,7 +18,8 @@ export const Assets = {
     },
     images: {
         Logo,
-        JavaBinLogo
+        JavaBinLogo,
+        Doughnut,
     },
     icons: {
         TriangleRight,
@@ -53,7 +56,6 @@ export const Assets = {
             flex: 1,
             position: 'relative',
             marginHorizontal: 0,
-            /*backgroundColor: '#2D2D2D' // charcoal*/
         },
         container: {
             flex: 1,
@@ -61,7 +63,6 @@ export const Assets = {
             justifyContent: 'center',
             flexDirection: 'column',
             color: '#ECDFCC', // cream
-            /*backgroundColor: '#2D2D2D' // charcoal*/
         },
     }),
 }

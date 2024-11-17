@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
+import {Dimensions, Platform, SafeAreaView, StyleSheet, View} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { LinearGradient } from "expo-linear-gradient";
@@ -20,6 +20,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
     const { setLocale } = useI18nContext();
     const { top } = useSafeAreaInsets(); // can use this to define screen top based on platform
     const newTop = Platform.OS === "android" ? top : 0;
+    const screenWidth = Dimensions.get("window").width;
 
     return (
         <LinearGradient
@@ -27,7 +28,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
                 Assets.colors.gradient.medium,
                 Assets.colors.gradient.dark
             ]}
-            style={{ flex: 1, paddingTop: headerPadding ? headerHeight : 0 }}
+            style={{ flex: 1, width: screenWidth, paddingTop: headerPadding ? headerHeight : 0 }}
             locations={[0, 1]}
         >
             <SafeAreaView style={Assets.styles.safeArea}>

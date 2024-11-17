@@ -1,8 +1,8 @@
-import {Animated, Image, Pressable, StyleSheet, Text, View} from "react-native";
+import { Animated, Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Assets } from "@/Assets";
-import { ScreenTemplate, SvgImage } from "@/components";
+import { CircleImage, ScreenTemplate, SvgImage } from "@/components";
 import { useTranslation } from "react-i18next";
-import React, {FC, useState} from "react";
+import React, { useState } from "react";
 import ScrollView = Animated.ScrollView;
 import { Link } from "expo-router";
 
@@ -47,7 +47,7 @@ const Info = () => {
 
     return (
         <ScreenTemplate>
-            <ScrollView contentContainerStyle={styles.container}>
+            <ScrollView style={{width: '100%'}} contentContainerStyle={styles.container} alwaysBounceVertical={false}>
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>{t('javaBin.about')}</Text>
                     <Text style={styles.sectionText}>{t('javaBin.about_javaBin')}</Text>
@@ -82,25 +82,25 @@ const Info = () => {
 
                         <View style={styles.listItemContainer}>
                             <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
-                            <Text style={[styles.listItemMail, styles.listItem]}>{t('javaZone.javaZone_mail')}</Text>
+                            <Link href={Assets.links.javaZoneMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.javaZone_mail')}</Link>
                         </View>
                         <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
 
                         <View style={styles.listItemContainer}>
                             <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
-                            <Text style={[styles.listItemMail, styles.listItem]}>{t('javaZone.program_mail')}</Text>
+                            <Link href={Assets.links.programMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.program_mail')}</Link>
                         </View>
                         <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
 
                         <View style={styles.listItemContainer}>
                             <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
-                            <Text style={[styles.listItemMail, styles.listItem]}>{t('javaZone.partners_mail')}</Text>
+                            <Link href={Assets.links.partnerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.partners_mail')}</Link>
                         </View>
                         <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
 
                         <View style={styles.listItemContainer}>
                             <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
-                            <Text style={[styles.listItemMail, styles.listItem]}>{t('javaZone.volunteers_mail')}</Text>
+                            <Link href={Assets.links.volunteerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.volunteers_mail')}</Link>
                         </View>
                         <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
 
@@ -134,9 +134,18 @@ const Info = () => {
                     </View>
                 </View>
 
-                <View style={styles.section}>
+                <View style={[styles.section, {width: '90%'}]}>
+                    <Text style={styles.sectionTitle}>{t('food.food')}</Text>
+                    <View style={{display: 'flex', flexDirection: 'row', width: '75%'}}>
+                        <Text style={styles.sectionText}>{t('food.about')}</Text>
+                        <CircleImage source={Assets.images.Doughnut} size={100} style={{marginHorizontal: 5}} />
+                    </View>
+                    <Text style={styles.sectionText}>{t('food.our_chefs')}</Text>
+                </View>
+
+                <View style={[styles.section, {marginBottom: 50}]}>
                     <Text style={styles.sectionTitle}>Sustainable waste management and recycling at JavaZone</Text>
-                    <Text style={styles.sectionText}>to come</Text>
+                    <Text style={styles.sectionText}>More information to come</Text>
                 </View>
             </ScrollView>
         </ScreenTemplate>
@@ -168,7 +177,7 @@ const styles = StyleSheet.create({
     },
     section: {
         marginHorizontal: 20,
-        marginVertical: 5
+        marginVertical: 5,
     },
     sectionTitle: {
         color: Assets.colors.brand.cream,
@@ -185,7 +194,7 @@ const styles = StyleSheet.create({
     },
     sectionText: {
         color: Assets.colors.brand.beige,
-        marginVertical: 5
+        marginVertical: 5,
     },
     toggleButton: {
         display: 'flex',
@@ -220,6 +229,7 @@ const styles = StyleSheet.create({
     callout: {
         color: Assets.colors.brand.dutchWhite,
         fontStyle: 'italic',
+        marginBottom: 5
     }
 });
 
