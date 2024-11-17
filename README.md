@@ -19,7 +19,7 @@
 - [x] Prettier config
 - [ ] Change expo account to javaBin account
 - [ ] Use javaBin iOS bundle identifier
-- [ ] Configure git rules
+- [x] Configure git rules
 - [x] favicon
 - [x] splash screen
 - [x] 404 route
