@@ -14,12 +14,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
 
 const RootLayout = () => {
-  const resources = { en, nb };
+                const resources = { en, nb };
   const [isRedirected, setIsRedirected] = useState(false);
   const [languageLoaded, setLanguageLoaded] = useState(false); // track if i18n is initialized
   const [language, setLanguage] = useState<string | null>(); // language (locale) to use
   const { lang } = useGlobalSearchParams();
-  const router = useRouter();
+                        const router = useRouter();
 
   useEffect(() => {
     // Set background color
