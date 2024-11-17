@@ -1,4 +1,4 @@
 export enum FlagStyle {
-    Flat = 'flat',
-    Shiny = 'shiny',
+  Flat = 'flat',
+  Shiny = 'shiny',
 }

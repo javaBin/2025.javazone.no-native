@@ -13,9 +13,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#232526"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "JavaBin",
@@ -43,9 +41,6 @@
     },
     "newArchEnabled": true,
     "owner": "carolinekristin",
-    "plugins": [
-      "expo-localization",
-      "expo-router"
-    ]
+    "plugins": ["expo-localization", "expo-router"]
   }
 }
