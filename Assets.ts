@@ -12,6 +12,7 @@ export const Assets = {
         programMail: 'mailto:program@java.no',
         partnerMail: 'mailto:partner@java.no',
         volunteerMail: 'mailto:student@java.no',
+        javaBoardMail: 'mailto:styret@java.no',
     },
     images: {
         Logo,

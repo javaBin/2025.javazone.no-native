@@ -1,21 +1,17 @@
-import {Animated, FlatList, Image, Pressable, StyleSheet, Text, View} from "react-native";
+import {Animated, Image, Pressable, StyleSheet, Text, View} from "react-native";
 import { Assets } from "@/Assets";
 import { ScreenTemplate, SvgImage } from "@/components";
 import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
+import React, {FC, useState} from "react";
 import ScrollView = Animated.ScrollView;
-import {Link} from "expo-router";
-
-enum ToggleType  {
-    javaBin,
-    javaZone
-}
+import { Link } from "expo-router";
 
 const Info = () => {
     // @ts-ignore
     const { t } = useTranslation();
     const [toggleJavaBin, setToggleJavaBin] = useState<boolean>(false);
     const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
+    const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
 
     const ToggleButton = (title: string, toggle: boolean) => {
         const handleToggle = () => {
@@ -24,9 +20,14 @@ const Info = () => {
                     setToggleJavaBin(!toggle);
                     break;
                 }
-                case t('javaZone.read_more') : {
-                    setToggleJavaZone(!toggle);}
+                case t('javaZone.read_more'): {
+                    setToggleJavaZone(!toggle);
                     break;
+                }
+                case t('principles.read_more'): {
+                    setTogglePrinciples(!togglePrinciples);
+                    break;
+                }
             }
         }
 
@@ -106,15 +107,35 @@ const Info = () => {
                         <Text style={styles.sectionText}>{t('javaZone.thank_you')}</Text>
                         <Text style={styles.sectionText}>
                             {t('javaZone.reach_core_team')}
-                            <Link href={Assets.links.javaZoneMail} style={styles.listItemMail}>
-                                {t('javaZone.javaZone_mail')}
-                            </Link>
+                            <Link href={Assets.links.javaZoneMail} style={styles.listItemMail}>{t('javaZone.javaZone_mail')}</Link>
                         </Text>
                     </View>
                 </View>
 
                 <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>A few very important principles</Text>
+                    <Text style={styles.sectionTitle}>{t('principles.principles')}</Text>
+                    <Text style={styles.sectionText}>{t('principles.intro')}</Text>
+
+                    {ToggleButton(t('principles.read_more'), togglePrinciples)}
+
+                    <View style={{display: togglePrinciples ? "flex" : "none"}}>
+                        <Text style={styles.sectionText}>{t('principles.about')}</Text>
+                        <Text style={styles.callout}>{t('principles.notify')}</Text>
+                        <Text style={styles.sectionSubTitle}>{t('principles.before_conference')}</Text>
+                        <Text style={styles.sectionText}>
+                            {t('principles.contact_us_start')}
+                            <Link href={Assets.links.javaZoneMail} style={styles.listItemMail}>{t('javaZone.javaZone_mail')}</Link>
+                            {t('principles.contact_us_middle')}
+                            <Link href={Assets.links.javaBoardMail} style={styles.listItemMail}>{t('principles.java_board_mail')}</Link>
+                            {t('principles.contact_us_end')}
+                        </Text>
+                        <Text style={styles.sectionSubTitle}>{t('principles.during_conference')}</Text>
+                        <Text style={styles.sectionText}>{t('principles.contact_stand')}</Text>
+                    </View>
+                </View>
+
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Sustainable waste management and recycling at JavaZone</Text>
                     <Text style={styles.sectionText}>to come</Text>
                 </View>
             </ScrollView>
@@ -196,6 +217,10 @@ const styles = StyleSheet.create({
         color: Assets.colors.brand.cream,
         marginBottom: 5
     },
+    callout: {
+        color: Assets.colors.brand.dutchWhite,
+        fontStyle: 'italic',
+    }
 });
 
 export default Info;

@@ -56,6 +56,20 @@
       "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen!",
       "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via "
     },
+    "principles": {
+      "principles": "Noen få svært viktige prinsipper",
+      "read_more": "Les mer om våre prinsipper",
+      "intro": "JavaZone er en 100 % fellesskapsorganisert konferanse laget av javaBin. Programmet er valgt av vår uavhengige programkomité, og de opererer under prinsippet om at ingen får betalt for å holde en presentasjon, og likeledes at ingen kan betale oss for å få presentasjonen deres akseptert.",
+      "about": "Vi som arrangører streber etter å skape en best mulig opplevelse for alle våre foredragsholdere og deltakere, og vi forventer at du gjør det samme. Alle er velkomne på JavaZone, men vi krever at du behandler dine medkonferansedeltakere med respekt. Vi forbeholder oss retten til å ta alle nødvendige tiltak for å sikre at dette prinsippet opprettholdes. For flere detaljer, se våre etiske retningslinjer som gjelder for alle arrangementer organisert av javaBin.",
+      "notify": "Skulle det oppstå en uønsket hendelse, er vi her for å hjelpe",
+      "before_conference": "Før konferansen",
+      "contact_us_start": "Du kan kontakte oss på mail: ",
+      "contact_us_middle": " (dette går til en liten gruppe mennesker, kjerne-arrangørene til JavaZone), eller ",
+      "contact_us_end": " (dette går til javaBin styret).",
+      "java_board_mail": "styret@java.no",
+      "during_conference": "Under konferansen",
+      "contact_stand": "Spør i infostanden, så tar vi kontakt. Kontaktinformasjon vil også være tilgjengelig på infostanden."
+    },
 
     "404": {
       "error_code": "Void 0",
