@@ -16,7 +16,7 @@
 
 - [ ] Caching of chosen language across routes
 - [ ] Define template for styles and other assets
-- [ ] Prettier config
+- [x] Prettier config
 - [ ] Change expo account to javaBin account
 - [ ] Use javaBin iOS bundle identifier
 - [ ] Configure git rules
