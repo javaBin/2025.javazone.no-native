@@ -15,81 +15,81 @@ import { Assets } from "@/Assets";
 import { BlurView } from "expo-blur";
 
 const RootLayout = () => {
-    const resources = {en, nb};
-    const [isRedirected, setIsRedirected] = useState(false);
-    const [ languageLoaded, setLanguageLoaded ] = useState(false); // track if i18n is initialized
-    const [ language, setLanguage ] = useState<string | null>(); // language (locale) to use
-    const { lang } = useGlobalSearchParams();
-    const router  = useRouter();
+  const resources = { en, nb };
+  const [isRedirected, setIsRedirected] = useState(false);
+  const [languageLoaded, setLanguageLoaded] = useState(false); // track if i18n is initialized
+  const [language, setLanguage] = useState<string | null>(); // language (locale) to use
+  const { lang } = useGlobalSearchParams();
+  const router = useRouter();
 
-    useEffect(() => {
-        // Set background color
-        SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
-    }, []);
+  useEffect(() => {
+    // Set background color
+    SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
+  }, []);
 
-    useEffect(() => {
-        // we either don't have a language, or we've already initialized
-        if (!language || languageLoaded) return;
+  useEffect(() => {
+    // we either don't have a language, or we've already initialized
+    if (!language || languageLoaded) return;
 
-        i18n.use(initReactI18next).init({
-            compatibilityJSON: 'v3',
-            resources,
-            lng: language,
-            fallbackLng: 'en',
-        });
+    i18n.use(initReactI18next).init({
+      compatibilityJSON: 'v3',
+      resources,
+      lng: language,
+      fallbackLng: 'en',
+    });
 
-        setLanguageLoaded(true);
-    }, [language, languageLoaded]);
+    setLanguageLoaded(true);
+  }, [language, languageLoaded]);
 
-    useEffect(() => {
-        // handle redirection to default language if no lang route provided
-        if (!lang && !isRedirected) {
-            router.replace('/en');
-            setLanguage('en-US');
-            setIsRedirected(true);
-        }
+  useEffect(() => {
+    // handle redirection to default language if no lang route provided
+    if (!lang && !isRedirected) {
+      router.replace('/en');
+      setLanguage('en-US');
+      setIsRedirected(true);
+    }
 
-        //handle language change when route param updates
-        if (lang === 'no' && language !== 'nb-no') {
-            setLanguage('nb-no');
-        } else if (lang === 'en' && language !== 'en-US') {
-            setLanguage('en-US');
-        }
-    }, [lang, isRedirected]);
+    //handle language change when route param updates
+    if (lang === 'no' && language !== 'nb-no') {
+      setLanguage('nb-no');
+    } else if (lang === 'en' && language !== 'en-US') {
+      setLanguage('en-US');
+    }
+  }, [lang, isRedirected]);
 
-    useEffect(() => {
-        const getStoredLanguageAndSet = async () => {
-            if (Platform.OS === 'web') return;
+  useEffect(() => {
+    const getStoredLanguageAndSet = async () => {
+      if (Platform.OS === 'web') return;
 
-            // get the device's current system locale from expo-localization
-            const storedLocale = await AsyncStorage.getItem('javazone_locale');
-            const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
-            setLanguage(storedLocale ? storedLocale : phoneLocale);
-        }
+      // get the device's current system locale from expo-localization
+      const storedLocale = await AsyncStorage.getItem('javazone_locale');
+      const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
+      setLanguage(storedLocale ? storedLocale : phoneLocale);
+    };
 
-        getStoredLanguageAndSet();
-    }, []);
+    getStoredLanguageAndSet();
+  }, []);
 
-    /** app reloads when the system locale is changed for iOS,
-     *  this doesn't apply for Android
-     *      need to listen for changes to the AppState and manually change the language with i18next
-     */
-    useEffect(() => {
-        if (Platform.OS !== 'android') return;
+  /** app reloads when the system locale is changed for iOS,
+   *  this doesn't apply for Android
+   *      need to listen for changes to the AppState and manually change the language with i18next
+   */
+  useEffect(() => {
+    if (Platform.OS !== 'android') return;
 
-        // any time app state changes, get and set new locale
-        const handleAppStateChange = async () => {
-            const storedLocale = await AsyncStorage.getItem('javazone_locale');
-            const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
-            await i18n.changeLanguage(storedLocale ? storedLocale : phoneLocale);
-        }
+    // any time app state changes, get and set new locale
+    const handleAppStateChange = async () => {
+      const storedLocale = await AsyncStorage.getItem('javazone_locale');
+      const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
+      await i18n.changeLanguage(storedLocale ? storedLocale : phoneLocale);
+    };
 
-        const subscription = AppState.addEventListener('change', handleAppStateChange);
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
 
-        return () => {
-            subscription.remove();
-        }
-    }, []);
+    return () => {
+      subscription.remove();
+    };
+  }, []);
 
     if (Platform.OS === 'web') {
         return (

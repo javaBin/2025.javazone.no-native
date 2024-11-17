@@ -1,7 +1,9 @@
 # First draft for JavaZone 2025
+
 ### For this year's conference we will manage the Web, iOS and Android applications in one codebase
 
 ## Development information
+
 > 💡 Project uses Expo which is an open-source platform for making universal native apps for Android, iOS, and web.
 > This implementation uses React Native and TypeScript. The template implements a language feature using i18n, 
 > which makes it easier to toggle between languages and avoid hard-coded text by having all text content stored as json.
@@ -13,7 +15,7 @@
 ### To do for setup
 - [x] Caching of chosen language across routes
 - [ ] Define template for styles and other assets
-- [ ] Prettier config
+- [x] Prettier config
 - [ ] Change expo account to javaBin account
 - [ ] Use javaBin iOS bundle identifier
 - [ ] Configure git rules

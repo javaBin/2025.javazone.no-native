@@ -9,9 +9,9 @@ import { Flag } from "@/components/index";
 import { Assets } from "@/Assets";
 
 type ScreenTemplateProps = {
-    children: React.ReactNode;
-    headerPadding?: number;
-}
+  children: React.ReactNode;
+  headerPadding?: number;
+};
 
 const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
     // useHeaderHeight is a hook that gives you the height of the header
@@ -57,14 +57,14 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
 }
 
 const styles = StyleSheet.create({
-    languagePickers: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-    },
+  languagePickers: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
 });
 
 export default ScreenTemplate;
