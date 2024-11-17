@@ -1,15 +1,26 @@
 import { SvgImage } from '@/components/index';
 import { Assets } from '@/Assets';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import React, { useState } from 'react';
 
 type HoldTheDateProps = {
   subPageHeader?: string;
 };
+
 const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
+  const [pressedIndex, setPressedIndex] = useState<number | null>(null); // Track which button is pressed
   const { t } = useTranslation();
+
+  const years = [
+    { label: '2024', link: 'https://2024.javazone.no/program' },
+    { label: '2023', link: 'https://2023.javazone.no/#/program' },
+    { label: '2022', link: 'https://2022.javazone.no/#/program' },
+    { label: '2019', link: 'https://2019.javazone.no/program' },
+    { label: '2018', link: 'https://2018.javazone.no/program' },
+  ];
+
   return (
     <View style={styles.content}>
       <SvgImage SVG={Assets.images.Logo} height={50} style={{ marginBottom: 20 }} />
@@ -31,21 +42,18 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
       <Text style={styles.callout}>{t('hold_the_date')}</Text>
 
       <View style={styles.listContainer}>
-        <Link style={styles.listItem} href="https://2024.javazone.no/program">
-          2024
-        </Link>
-        <Link style={styles.listItem} href="https://2023.javazone.no/#/program">
-          2023
-        </Link>
-        <Link style={styles.listItem} href="https://2022.javazone.no/#/program">
-          2022
-        </Link>
-        <Link style={styles.listItem} href="https://2019.javazone.no/program">
-          2019
-        </Link>
-        <Link style={styles.listItem} href="https://2018.javazone.no/program">
-          2018
-        </Link>
+        {years.map((year, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[styles.listItem, pressedIndex === index && styles.pressed]} // Highlight only the pressed button
+            onPressIn={() => setPressedIndex(index)} // Set the pressed index
+            onPressOut={() => setPressedIndex(null)} // Reset when the press is released
+          >
+            <Link style={styles.text} href={year.link}>
+              {year.label}
+            </Link>
+          </TouchableOpacity>
+        ))}
       </View>
     </View>
   );
@@ -109,8 +117,23 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   listItem: {
-    color: Assets.colors.brand.neutral,
+    padding: 5,
+    backgroundColor: 'white', // Normal state color
     marginHorizontal: 5,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 2, // Shadow effect for Android
+    shadowColor: '#000', // iOS shadow
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  pressed: {
+    backgroundColor: 'darkwhite', // Hover state color (when pressed)
+  },
+  text: {
+    color: Assets.colors.brand.neutral,
     fontSize: 18,
   },
 });
