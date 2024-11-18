@@ -1,12 +1,12 @@
-import React from "react";
-import { Dimensions, Platform, SafeAreaView, StyleSheet, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useHeaderHeight } from "@react-navigation/elements";
-import { LinearGradient } from "expo-linear-gradient";
-import { CountryCode, FlagSize, FlagStyle } from "@/models";
-import { useI18nContext } from "@/contexts/I18nContext";
-import { Flag } from "@/components/index";
-import { Assets } from "@/Assets";
+import React from 'react';
+import { Dimensions, Platform, SafeAreaView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useHeaderHeight } from '@react-navigation/elements';
+import { LinearGradient } from 'expo-linear-gradient';
+import { CountryCode, FlagSize, FlagStyle } from '@/models';
+import { useI18nContext } from '@/contexts/I18nContext';
+import { Flag } from '@/components/index';
+import { Assets } from '@/Assets';
 
 type ScreenTemplateProps = {
   children: React.ReactNode;
@@ -19,8 +19,8 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
     // @ts-ignore
     const { setLocale } = useI18nContext();
     const { top } = useSafeAreaInsets(); // can use this to define screen top based on platform
-    const newTop = Platform.OS === "android" ? top : 0;
-    const screenWidth = Dimensions.get("window").width;
+    const newTop = Platform.OS === 'android' ? top : 0;
+    const screenWidth = Dimensions.get('window').width;
 
     return (
         <LinearGradient

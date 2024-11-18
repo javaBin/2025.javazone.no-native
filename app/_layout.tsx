@@ -3,16 +3,16 @@ import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
 import { useEffect, useState } from 'react';
-import { I18nContextProvider } from "@/contexts/I18nContext";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Tabs, useGlobalSearchParams, useRouter} from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AppState, Platform, StyleSheet } from "react-native";
+import { I18nContextProvider } from '@/contexts/I18nContext';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Tabs, useGlobalSearchParams, useRouter} from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppState, Platform, StyleSheet } from 'react-native';
 import { Stack } from 'expo-router/stack';
-import { initReactI18next } from "react-i18next";
+import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
-import { Assets } from "@/Assets";
-import { BlurView } from "expo-blur";
+import { Assets } from '@/Assets';
+import { BlurView } from 'expo-blur';
 
 const RootLayout = () => {
   const resources = { en, nb };

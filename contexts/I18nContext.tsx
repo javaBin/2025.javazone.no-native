@@ -40,7 +40,7 @@ export const I18nContextProvider = ({ children }: { children: React.ReactNode })
   }, [locale]);
 
   const setLocaleParam = async (locale: string) => {
-    const routeLang = locale === 'nb-no' ? 'no' : 'en';
+    const routeLang = locale === 'nb-NO' ? 'no' : 'en';
     await updateLocale(locale);
     router.setParams({ lang: routeLang });
   };

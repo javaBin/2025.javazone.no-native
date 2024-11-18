@@ -48,7 +48,8 @@ export const Assets = {
         gradient: {
             dark: '#120707',
             medium: '#232526',
-            light: '#414345'
+            light: '#414345',
+            brown: '#1e1616',
         }
     },
     styles: StyleSheet.create({

@@ -1,4 +1,4 @@
-import { Image, ImageSourcePropType, ImageStyle, StyleSheet } from "react-native";
+import { Image, ImageSourcePropType, ImageStyle, StyleSheet } from 'react-native';
 import React from "react";
 
 interface CircleImageProps {

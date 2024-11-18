@@ -4,6 +4,7 @@ import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
+import { LinearGradient } from "expo-linear-gradient";
 
 type HoldTheDateProps = {
   subPageHeader?: string;
@@ -49,9 +50,13 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
             onPressIn={() => setPressedIndex(index)} // Set the pressed index
             onPressOut={() => setPressedIndex(null)} // Reset when the press is released
           >
-            <Link style={styles.text} href={year.link}>
-              {year.label}
-            </Link>
+            <LinearGradient start={{ x: 0.1, y: 0.4 }}
+                            style={{padding: 3, borderRadius: 3, opacity: 20}}
+                            colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}>
+              <Link style={styles.text} href={year.link}>
+                {year.label}
+              </Link>
+            </LinearGradient>
           </TouchableOpacity>
         ))}
       </View>
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
     color: Assets.colors.logo.brightOrange,
   },
   subPageHeading: {
-    fontSize: Platform.OS == 'web' ? 28 : 68,
+    fontSize: Platform.OS == 'web' ? 28 : 26,
     fontWeight: '500',
     color: Assets.colors.brand.beige,
   },
@@ -115,10 +120,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingVertical: 10,
+    marginTop: 5
   },
   listItem: {
     padding: 5,
-    backgroundColor: 'white', // Normal state color
+    //backgroundColor: Assets.colors.gradient.dark, // Normal state color
     marginHorizontal: 5,
     borderRadius: 5,
     justifyContent: 'center',
@@ -130,12 +136,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
   pressed: {
-    backgroundColor: 'darkwhite', // Hover state color (when pressed)
+    backgroundColor: Assets.colors.gradient.brown, // Hover state color (when pressed)
   },
   text: {
     color: Assets.colors.brand.neutral,
-    fontSize: 18,
-  },
+    fontSize: Platform.OS == 'web' ? 18 : 16,
+  }
 });
 
 export default HoldTheDate;
