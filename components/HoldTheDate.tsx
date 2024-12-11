@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
-import { LinearGradient } from "expo-linear-gradient";
+import { LinearGradient } from 'expo-linear-gradient';
 
 type HoldTheDateProps = {
   subPageHeader?: string;
@@ -50,9 +50,11 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
             onPressIn={() => setPressedIndex(index)} // Set the pressed index
             onPressOut={() => setPressedIndex(null)} // Reset when the press is released
           >
-            <LinearGradient start={{ x: 0.1, y: 0.4 }}
-                            style={{padding: 3, borderRadius: 3, opacity: 20}}
-                            colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}>
+            <LinearGradient
+              start={{ x: 0.1, y: 0.4 }}
+              style={{ padding: 3, borderRadius: 3, opacity: 20 }}
+              colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}
+            >
               <Link style={styles.text} href={year.link}>
                 {year.label}
               </Link>
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    width: 330,
+    width: 390,
   },
   title: {
     fontSize: Platform.OS == 'web' ? 20 : 18,
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     color: Assets.colors.brand.dutchWhite,
     marginLeft: Platform.OS == 'web' ? 5 : 1,
-    width: '60%',
+    width: '100%',
   },
   callout: {
     color: Assets.colors.logo.brightYellow,
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingVertical: 10,
-    marginTop: 5
+    marginTop: 5,
   },
   listItem: {
     padding: 5,
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
   text: {
     color: Assets.colors.brand.neutral,
     fontSize: Platform.OS == 'web' ? 18 : 16,
-  }
+  },
 });
 
 export default HoldTheDate;
