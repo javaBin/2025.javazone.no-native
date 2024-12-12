@@ -1,6 +1,6 @@
-import { HoldTheDate, ScreenTemplate, VideoPlayer } from '@/components';
+import { ScreenTemplate, VideoPlayer } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { Platform, Text, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Text } from 'react-native';
 import { Assets } from '@/Assets';
 
 const Partner = () => {
@@ -9,7 +9,7 @@ const Partner = () => {
   return (
     <ScreenTemplate>
       <Text style={styles.heading}>{t('partner.watch_partner_meeting')}</Text>
-      <VideoPlayer videoUrl={require('../../assets/videos/JavaZone_2025_Partner_meeting_1.mp4')} />
+      <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
     </ScreenTemplate>
   );
 };
