@@ -76,6 +76,10 @@
       "our_chefs": "Our chefs are well-versed in accommodating gluten, nut, dairy, and other common allergies. Simply inform the restaurant staff of your dietary needs, and they will guide you through the menu or offer personalized suggestions."
     },
 
+    "partner": {
+      "watch_partner_meeting": "Watch this recording of the first partner meeting held on December 11th."
+    },
+
     "404": {
       "error_code": "Void 0",
       "error_title": "Well, this is embarrassing...",
