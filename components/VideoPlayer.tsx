@@ -1,10 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 type VideoPlayerProps = {
   videoUrl: string;
 };
 
 const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
+  const screenWidth = Dimensions.get('window').width;
+  const videoHeight = screenWidth / 3;
+
   return (
     <>
       <div style={styles.container}>
@@ -12,7 +15,7 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
           src={`${videoUrl}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`}
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-          style={styles.video}
+          style={{ ...styles.video, width: screenWidth, height: videoHeight }}
           title="JavaZone 2025 Partner meeting #1"
         ></iframe>
       </div>
@@ -28,8 +31,6 @@ const styles = StyleSheet.create({
   },
   video: {
     position: 'relative',
-    width: 1000,
-    height: 500,
   },
 });
 
