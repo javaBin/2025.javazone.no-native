@@ -1,7 +1,7 @@
 import { SvgImage } from '@/components/index';
 import { Assets } from '@/Assets';
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Link } from 'expo-router';
+import { Link, useGlobalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -13,6 +13,7 @@ type HoldTheDateProps = {
 const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const [pressedIndex, setPressedIndex] = useState<number | null>(null); // Track which button is pressed
   const { t } = useTranslation();
+  const { lang } = useGlobalSearchParams();
 
   const years = [
     { label: '2024', link: 'https://2024.javazone.no/program' },
@@ -40,7 +41,17 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
         <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
       </View>
 
-      <Text style={styles.callout}>{t('hold_the_date')}</Text>
+      <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
+        <LinearGradient
+          start={{ x: 0.1, y: 0.4 }}
+          style={{ padding: 6, borderRadius: 3, opacity: 20, width: 100, alignItems: 'center' }}
+          colors={[Assets.colors.gradient.light, Assets.colors.gradient.medium]}
+        >
+          <Link style={{ color: '#ABABAB' }} href={`${lang}/partner`}>
+            Partners
+          </Link>
+        </LinearGradient>
+      </TouchableOpacity>
 
       <View style={styles.listContainer}>
         {years.map((year, index) => (
