@@ -40,6 +40,18 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
         <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
       </View>
 
+      <TouchableOpacity style={styles.listItem}>
+        <LinearGradient
+          start={{ x: 0.1, y: 0.4 }}
+          style={{ padding: 3, borderRadius: 3, opacity: 20 }}
+          colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}
+        >
+          <Link style={styles.text} href={'[lang]/partner'}>
+            Partners
+          </Link>
+        </LinearGradient>
+      </TouchableOpacity>
+
       <Text style={styles.callout}>{t('hold_the_date')}</Text>
 
       <View style={styles.listContainer}>
