@@ -76,6 +76,10 @@
       "our_chefs": "Kokkene våre er godt kjent med å imøtekomme gluten, nøtter, meieriprodukter og andre vanlige allergier. Bare informer restaurantpersonalet om dine kostholdsbehov, så vil de veilede deg gjennom menyen eller gi personlige forslag."
     },
 
+    "partner": {
+      "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember."
+    },
+
     "404": {
       "error_code": "Void 0",
       "error_title": "Oisann, dette er flaut...",
