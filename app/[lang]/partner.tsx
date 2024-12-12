@@ -1,6 +1,6 @@
 import { ScreenTemplate, VideoPlayer } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { Platform, StyleSheet, Text } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Assets } from '@/Assets';
 
 const Partner = () => {
@@ -8,15 +8,23 @@ const Partner = () => {
 
   return (
     <ScreenTemplate>
-      <Text style={styles.heading}>{t('partner.watch_partner_meeting')}</Text>
-      <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+      <View style={styles.content}>
+        <Text style={styles.heading}>{t('partner.watch_partner_meeting')}</Text>
+        <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+      </View>
     </ScreenTemplate>
   );
 };
 
 const styles = StyleSheet.create({
+  content: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
   heading: {
-    fontSize: Platform.OS == 'web' ? 38 : 36,
+    marginHorizontal: 20,
+    fontSize: Platform.OS == 'web' ? 20 : 18,
     fontWeight: 'bold',
     color: Assets.colors.brand.cream,
     marginBottom: 20,
