@@ -1,10 +1,12 @@
 import { ScreenTemplate, VideoPlayer } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { Platform, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 
 const Partner = () => {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery({ maxWidth: 614 });
 
   return (
     <ScreenTemplate>
@@ -22,8 +24,8 @@ const Partner = () => {
 
         <View style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 50 }}>
           <h2>{t('partner.partner_info.partner_packages')}</h2>
-          <View style={styles.partnerContentInfo}>
-            <View style={styles.partnerContentItem}>
+          <View style={[styles.partnerContentInfo, isMobile && styles.partnerContentInfoMobile]}>
+            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
               <h3>{t('partner.partner_info.standard_package')}</h3>
               <div>
                 <p>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</p>
@@ -39,7 +41,7 @@ const Partner = () => {
               </ul>
             </View>
 
-            <View style={styles.partnerContentItem}>
+            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
               <h3>{t('partner.partner_info.restaurant_stand')}</h3>
               <div>
                 <p>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</p>
@@ -52,7 +54,7 @@ const Partner = () => {
               </ul>
             </View>
 
-            <View style={styles.partnerContentItem}>
+            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
               <h3>{t('partner.partner_info.concept_stand')}</h3>
               <div>
                 <p>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</p>
@@ -64,7 +66,7 @@ const Partner = () => {
               </ul>
             </View>
 
-            <View style={styles.partnerContentItem}>
+            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
               <h3>{t('partner.partner_info.extended_package')}</h3>
               <p>{t('partner.partner_info.same_as_standard')}</p>
               <div>
@@ -72,7 +74,7 @@ const Partner = () => {
               </div>
             </View>
 
-            <View style={styles.partnerContentItem}>
+            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
               <h3>{t('partner.partner_info.partner_tickets')}</h3>
               <p>{t('partner.partner_info.partner_tickets_detail_1')}</p>
               <div>
@@ -109,11 +111,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
   },
+  partnerContentInfoMobile: {
+    flexDirection: 'column',
+  },
   partnerContentItem: {
     flexBasis: '50%',
     padding: 10,
   },
+  partnerContentItemMobile: {
+    flexBasis: 345,
+    padding: 14,
+  },
   content: {
+    marginTop: 50,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
