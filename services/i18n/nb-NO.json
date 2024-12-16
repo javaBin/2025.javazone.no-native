@@ -77,7 +77,37 @@
     },
 
     "partner": {
-      "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember."
+      "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember.",
+      "partner_info": {
+        "javaZone_2025_partner": "JavaZone 2025 Partner",
+        "partner_registration_opens": "Partnerregistrering åpner her 15. januar 2025 kl. 10:00",
+        "questions_email": "Hvis du har noen spørsmål, vennligst send oss en e-post på",
+        "partner_packages": "Partnerpakker",
+        "standard_package": "Standardpakke",
+        "price": "Pris",
+        "standard_package_detail_1": "6 kvadratmeter (3x2) med bak- og sidevegg, i hovedkonferansehallen.",
+        "standard_package_detail_2": "Profilering",
+        "standard_package_detail_3": "Logo med lenke på hjemmesiden og profilering i Oslo Spectrum",
+        "standard_package_detail_4": "Standbillett",
+        "standard_package_detail_5": "4 fleksible billetter for standpersonell.",
+        "standard_package_detail_6": "Deltakerbilletter",
+        "standard_package_detail_7": "Partnerpris på billetter for dine kolleger",
+        "restaurant_stand": "Restaurantstand",
+        "restaurant_stand_detail_1": "Alle fordelene med standardpakken med en restaurantstand",
+        "restaurant_stand_detail_2": "Ca. 80 kvadratmeter med en tilknyttet restaurant",
+        "restaurant_stand_detail_3": "Kontinuerlig matservering fra din stand gjennom hele konferansen.",
+        "restaurant_stand_detail_4": "Meny i samarbeid med arrangementsparter.",
+        "concept_stand": "Konseptstand",
+        "concept_stand_detail_1": "Alle fordelene med standardpakken.",
+        "concept_stand_detail_2": "Stand på ca. 70 kvadratmeter",
+        "concept_stand_detail_3": "Stort område for å vise frem ditt eget konsept",
+        "extended_package": "Utvidet pakke",
+        "same_as_standard": "Samme som Standard oppgradert til 12 kvadratmeter",
+        "partner_tickets": "Partnerbilletter",
+        "partner_tickets_detail_1": "Du har fire fleksible standbilletter inkludert i din partnerpakke. Disse er ment for standpersonell, og gir ikke tilgang til foredragene. Du må bestille billetter for alle dine ansatte som ønsker å delta på et foredrag (eller hvis du har mer enn fire som må være på standen samtidig).",
+        "round_robin_distribution": "Round robin-fordeling på billetter bestilt innen 15. mai",
+        "first_come_first_served": "Førstemann til mølla hvis billetter fortsatt er tilgjengelige etter 15. mai"
+      }
     },
 
     "404": {
