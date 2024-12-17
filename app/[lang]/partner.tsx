@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   partnerContentItemMobile: {
     flexBasis: 345,
-    padding: 14,
+    padding: 3,
   },
   content: {
     marginTop: 50,
