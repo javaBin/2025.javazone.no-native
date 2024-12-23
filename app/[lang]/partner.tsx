@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   partnerContentItem: {
+    marginTop: 20,
     alignItems: 'center',
     flexBasis: 'auto',
     padding: 10,
