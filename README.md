@@ -12,6 +12,9 @@
 
 > 🔤 Any changes to the `services/i18n/` files will not be updated in RunTime, rerun application `npx expo start`
 
+### To run locally
+Use `npm install` and then `npx expo start` 
+
 ### To do for setup
 - [x] Caching of chosen language across routes
 - [ ] Define template for styles and other assets

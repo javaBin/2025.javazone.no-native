@@ -18,6 +18,11 @@ const Partner = () => {
             {t('partner.partner_info.partner_registration_opens')}
           </Text>
           <Text style={[styles.sectionText, { fontSize: 16 }]}>
+          <Link style={{ color: 'inherit', textDecorationLine: 'underline' }} href="https://event.checkin.no/101610/javazone-2025-partnership">
+              Register here
+            </Link>
+          </Text>
+          <Text style={[styles.sectionText, { fontSize: 16 }]}>
             {t('partner.partner_info.questions_email')}{' '}
             <Link style={{ color: 'inherit', textDecorationLine: 'underline' }} href="mailto:partner@java.no">
               partner@java.no
