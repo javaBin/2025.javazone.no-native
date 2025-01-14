@@ -1,9 +1,11 @@
 import { ScreenTemplate, VideoPlayer } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { Platform, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 import { Link } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
 
 const Partner = () => {
   const { t } = useTranslation();
@@ -18,9 +20,17 @@ const Partner = () => {
             {t('partner.partner_info.partner_registration_opens')}
           </Text>
           <Text style={[styles.sectionText, { fontSize: 16 }]}>
-          <Link style={{ color: 'inherit', textDecorationLine: 'underline' }} href="https://event.checkin.no/101610/javazone-2025-partnership">
-              Register here
-            </Link>
+            <TouchableOpacity style={{ ...styles.registerButton, marginTop: 20 }}>
+              <LinearGradient
+                start={{ x: 0.1, y: 0.4 }}
+                style={{ padding: 6, borderRadius: 3, opacity: 20, width: 200, alignItems: 'center' }}
+                colors={[Assets.colors.gradient.light, Assets.colors.gradient.light]}
+              >
+                <Link style={{ color: '#eadfdf' }} href="https://event.checkin.no/101610/javazone-2025-partnership">
+                  Register here
+                </Link>
+              </LinearGradient>
+            </TouchableOpacity>
           </Text>
           <Text style={[styles.sectionText, { fontSize: 16 }]}>
             {t('partner.partner_info.questions_email')}{' '}
@@ -164,6 +174,17 @@ const styles = StyleSheet.create({
   sectionLightText: {
     color: Assets.colors.brand.cream,
     marginVertical: 5,
+  },
+  registerButton: {
+    marginHorizontal: 5,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 2, // Shadow effect for Android
+    shadowColor: '#000', // iOS shadow
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
   },
 });
 
