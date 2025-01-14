@@ -26,7 +26,12 @@ const Partner = () => {
                 style={{ padding: 6, borderRadius: 3, opacity: 20, width: 200, alignItems: 'center' }}
                 colors={[Assets.colors.gradient.light, Assets.colors.gradient.light]}
               >
-                <Link style={{ color: '#eadfdf' }} href="https://event.checkin.no/101610/javazone-2025-partnership">
+                <Link
+                  style={{ color: '#eadfdf' }}
+                  href="https://event.checkin.no/101610/javazone-2025-partnership"
+                  target="_blank"
+                  rel="noopener"
+                >
                   Register here
                 </Link>
               </LinearGradient>
