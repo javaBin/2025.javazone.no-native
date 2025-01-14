@@ -24,7 +24,13 @@ const Partner = () => {
               <LinearGradient
                 start={{ x: 0.1, y: 0.4 }}
                 style={{ padding: 6, borderRadius: 3, opacity: 20, width: 200, alignItems: 'center' }}
-                colors={[Assets.colors.gradient.light, Assets.colors.gradient.light]}
+                colors={[
+                  Assets.colors.gradient.dark,
+                  Assets.colors.gradient.medium,
+                  Assets.colors.gradient.light,
+                  Assets.colors.gradient.medium,
+                  Assets.colors.gradient.dark,
+                ]}
               >
                 <Link
                   style={{ color: '#eadfdf' }}
