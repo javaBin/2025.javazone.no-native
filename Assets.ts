@@ -4,6 +4,8 @@ import JavaBinLogo from '@/assets/images/javaBin-logo.png';
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
+import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
+import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import Logo from '@/assets/images/javaZone-logo.svg';
 import { StyleSheet } from "react-native";
 
@@ -24,6 +26,8 @@ export const Assets = {
     icons: {
         TriangleRight,
         TriangleDown,
+        MenuRoundedInactive,
+        MenuRoundedActive,
     },
     colors: {
         transparent: 'transparent',

@@ -13,11 +13,13 @@ const Info = () => {
     const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
     const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
     const router = useRouter();
+    const styles = Platform.OS === 'web' ? webStyles : nativeStyles;
 
-    useEffect(() => {
-        // temporary until we fix info page for web
-        // this version is only for native and todo: needs refactoring
-        if (Platform.OS === 'web') router.navigate('[lang]/index');
+    useEffect(() => { // todo: set native style if screen dimensions equals phone
+        if (Platform.OS !== 'web') return;
+        setToggleJavaBin(true);
+        setToggleJavaZone(true);
+        setTogglePrinciples(true);
     }, []);
 
     const ToggleButton = (title: string, toggle: boolean) => {
@@ -32,7 +34,7 @@ const Info = () => {
                     break;
                 }
                 case t('principles.read_more'): {
-                    setTogglePrinciples(!togglePrinciples);
+                    setTogglePrinciples(!toggle);
                     break;
                 }
             }
@@ -54,7 +56,10 @@ const Info = () => {
 
     return (
         <ScreenTemplate>
-            <ScrollView style={{width: '100%'}} contentContainerStyle={styles.container} alwaysBounceVertical={false}>
+            <ScrollView id={'scrollViewTest'} style={{width: Platform.OS !== 'web' ? '100%' : '80%'}}
+                        contentContainerStyle={styles.container}
+                        alwaysBounceVertical={false}
+                        showsVerticalScrollIndicator={false}>
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>{t('javaBin.about')}</Text>
                     <Text style={styles.sectionText}>{t('javaBin.about_javaBin')}</Text>
@@ -87,29 +92,37 @@ const Info = () => {
                         <Text style={styles.sectionText}>{t('javaZone.about_organizers')}</Text>
                         <Text style={styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
 
-                        <View style={styles.listItemContainer}>
-                            <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
-                            <Link href={Assets.links.javaZoneMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.javaZone_mail')}</Link>
+                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                            <View style={styles.listItemContainer}>
+                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
+                                <Link href={Assets.links.javaZoneMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.javaZone_mail')}</Link>
+                            </View>
+                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
                         </View>
-                        <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
 
-                        <View style={styles.listItemContainer}>
-                            <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
-                            <Link href={Assets.links.programMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.program_mail')}</Link>
+                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                            <View style={styles.listItemContainer}>
+                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
+                                <Link href={Assets.links.programMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.program_mail')}</Link>
+                            </View>
+                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
                         </View>
-                        <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
 
-                        <View style={styles.listItemContainer}>
-                            <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
-                            <Link href={Assets.links.partnerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.partners_mail')}</Link>
+                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                            <View style={styles.listItemContainer}>
+                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
+                                <Link href={Assets.links.partnerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.partners_mail')}</Link>
+                            </View>
+                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
                         </View>
-                        <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
 
-                        <View style={styles.listItemContainer}>
-                            <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
-                            <Link href={Assets.links.volunteerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.volunteers_mail')}</Link>
+                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                            <View style={styles.listItemContainer}>
+                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
+                                <Link href={Assets.links.volunteerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.volunteers_mail')}</Link>
+                            </View>
+                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
                         </View>
-                        <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
 
                         <Text style={styles.sectionText}>{t('javaZone.thank_you')}</Text>
                         <Text style={styles.sectionText}>
@@ -141,17 +154,23 @@ const Info = () => {
                     </View>
                 </View>
 
-                <View style={[styles.section, {width: '90%'}]}>
+                <View style={[styles.section, Platform.OS !== 'web' ? {width: '90%'} : {width: '100%'}]}>
                     <Text style={styles.sectionTitle}>{t('food.food')}</Text>
-                    <View style={{display: 'flex', flexDirection: 'row', width: '75%'}}>
-                        <Text style={styles.sectionText}>{t('food.about')}</Text>
-                        <CircleImage source={Assets.images.Doughnut} size={100} style={{marginHorizontal: 5}} />
+                    <View style={styles.paragraphImageContainer}>
+                        <View style={{display: 'flex', width: Platform.OS === 'web' ? '80%' : '100%'}}>
+                            <Text style={styles.sectionText}>{t('food.about')}</Text>
+                            <Text style={[styles.sectionText, {display: Platform.OS === 'web' ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                        </View>
+                        <CircleImage source={Assets.images.Doughnut}
+                                     size={Platform.OS !== 'web' ? 100 : 210}
+                                     style={{marginHorizontal: 5, position: Platform.OS === 'web' ? 'absolute' : 'static', top: -30, right: 0}}
+                        />
                     </View>
-                    <Text style={styles.sectionText}>{t('food.our_chefs')}</Text>
+                    <Text style={[styles.sectionText, {display: Platform.OS !== 'web' ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                 </View>
 
                 <View style={[styles.section, {marginBottom: 50}]}>
-                    <Text style={styles.sectionTitle}>Sustainable waste management and recycling at JavaZone</Text>
+                    <Text style={styles.sectionTitle}>♻️ Sustainable waste management and recycling at JavaZone</Text>
                     <Text style={styles.sectionText}>More information to come</Text>
                 </View>
             </ScrollView>
@@ -159,7 +178,101 @@ const Info = () => {
     )
 }
 
-const styles = StyleSheet.create({
+const webStyles = StyleSheet.create({
+    container: {
+        display: "flex",
+        width: '100%',
+        alignItems: "flex-start",
+        justifyContent: "center",
+        marginTop: 30,
+    },
+    imageContainer: {
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
+    image: {
+        width: '50%',
+        objectFit: 'scale-down',
+        resizeMode: 'contain'
+    },
+    intro: {
+        color: Assets.colors.logo.brightOrange,
+        fontStyle: 'italic',
+        fontSize: 20
+    },
+    section: {
+        marginHorizontal: 20,
+        marginVertical: 5,
+    },
+    sectionTitle: {
+        color: Assets.colors.brand.cream,
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginTop: 5
+    },
+    sectionSubTitle: {
+        color: Assets.colors.brand.cream,
+        fontSize: 20,
+        fontWeight: 'semibold',
+        fontStyle: 'italic',
+        marginTop: 5
+    },
+    sectionText: {
+        color: Assets.colors.brand.beige,
+        marginVertical: 5,
+        fontSize: 18
+    },
+    toggleButton: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: "flex-start",
+        marginVertical: 5
+    },
+    toggleTitle: {
+        color: Assets.colors.logo.brightOrange,
+        fontSize: 20,
+    },
+    listItemContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 10
+    },
+    listItem: {
+        display: "flex",
+        marginRight: 5,
+        flexWrap: "wrap",
+        fontSize: 18,
+    },
+    listItemRole: {
+        color: Assets.colors.brand.cream,
+    },
+    listItemMail: {
+        color: Assets.colors.logo.brightYellow,
+    },
+    listItemName: {
+        color: Assets.colors.brand.dutchWhite,
+        marginBottom: 5,
+        marginTop: 10
+    },
+    callout: {
+        color: Assets.colors.brand.dutchWhite,
+        fontStyle: 'italic',
+        marginVertical: 5,
+        fontSize: 18
+    },
+    paragraphImageContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: '95%',
+        justifyContent: "space-between",
+        position: 'relative'
+    }
+})
+
+const nativeStyles = StyleSheet.create({
     container: {
         display: "flex",
         width: '100%',
@@ -237,6 +350,11 @@ const styles = StyleSheet.create({
         color: Assets.colors.brand.dutchWhite,
         fontStyle: 'italic',
         marginBottom: 5
+    },
+    paragraphImageContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: '75%'
     }
 });
 

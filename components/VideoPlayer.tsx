@@ -1,4 +1,5 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
+import {Fragment} from "react";
 
 type VideoPlayerProps = {
   videoUrl: string;
@@ -9,8 +10,8 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
   const videoHeight = screenWidth / 3;
 
   return (
-    <>
-      <div style={styles.container}>
+    <Fragment>
+      <View style={styles.container}>
         <iframe
           src={`${videoUrl}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`}
           frameBorder="0"
@@ -18,9 +19,9 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
           style={{ ...styles.video, width: screenWidth, height: videoHeight }}
           title="JavaZone 2025 Partner meeting #1"
         ></iframe>
-      </div>
+      </View>
       <script src="https://player.vimeo.com/api/player.js"></script>
-    </>
+    </Fragment>
   );
 };
 
