@@ -14,14 +14,13 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from "@/components";
-import {getDefaultHeaderHeight} from "@react-navigation/elements"; // todo: delete this package
 
 const RootLayout = () => {
     const resources = { en, nb };
     const [isRedirected, setIsRedirected] = useState(false);
     const [languageLoaded, setLanguageLoaded] = useState(false); // track if i18n is initialized
     const [language, setLanguage] = useState<string | null>(); // language (locale) to use
-    const [toggleMenu, setToggleMenu] = useState<boolean>(false); // todo: make hamburger icon into X icon when active toggle
+    const [toggleMenu, setToggleMenu] = useState<boolean>(false); // todo: make hamburger icon into X icon when active toggle?
     const { lang } = useGlobalSearchParams();
     const router = useRouter();
 
@@ -70,6 +69,11 @@ const RootLayout = () => {
             const storedLocale = await AsyncStorage.getItem('javazone_locale');
             const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
             setLanguage(storedLocale ? storedLocale : phoneLocale);
+
+            if (!isRedirected) {
+                router.replace(`/${lang}`); // test if this affects performance or not
+                setIsRedirected(true);
+            }
         };
 
         getStoredLanguageAndSet();
@@ -99,12 +103,6 @@ const RootLayout = () => {
     const screensOptions = {
         headerShown: true,
         //headerBackVisible: Platform.OS !== 'web', // todo: use hook instead to remove back button on web
-        headerStyle: {
-            //backgroundColor: Assets.colors.gradient.medium,
-            //elevation: 0,
-            //shadowOpacity: 0,
-            //borderBottomWidth: 0,
-        },
         headerTransparent: true,
         headerBackground: () => (
             <BlurView
@@ -148,7 +146,6 @@ const RootLayout = () => {
             width: '100%',
         },
         drawer: {
-            //backgroundColor: Assets.colors.gradient.light,
             width: '15%',
             position: 'absolute',
             zIndex: 1,
