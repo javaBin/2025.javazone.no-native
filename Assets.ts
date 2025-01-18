@@ -6,6 +6,10 @@ import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
 import Logo from '@/assets/images/logo/javaZone-logo.svg';
 import { StyleSheet } from 'react-native';
+import HeroDivider from '@/assets/images/hero/hero-divider.svg';
+import HeroDuke from '@/assets/images/hero/hero-duke.svg';
+import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
+import HeroYear from '@/assets/images/hero/hero-year.svg';
 
 export const Assets = {
   fonts: {
@@ -24,6 +28,12 @@ export const Assets = {
     Logo,
     JavaBinLogo,
     Doughnut,
+    hero: {
+      divider: HeroDivider,
+      duke: HeroDuke,
+      javaZone: HeroJavaZone,
+      year: HeroYear,
+    },
   },
   icons: {
     TriangleRight,
