@@ -80,7 +80,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 const styles = StyleSheet.create({
   content: {
     width: '100%',
-    alignItems: 'center',
+    alignItems: 'left',
     justifyContent: 'space-around',
   },
   heading: {
