@@ -5,7 +5,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
-import { Flag } from '@/components/index';
+import { Flag } from '@/components';
 import { Assets } from '@/Assets';
 
 type ScreenTemplateProps = {

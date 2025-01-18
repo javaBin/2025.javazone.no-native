@@ -197,7 +197,7 @@ const webStyles = StyleSheet.create({
         objectFit: 'scale-down',
         resizeMode: 'contain'
     },
-    intro: {
+    intro: { // check
         color: Assets.colors.logo.brightOrange,
         fontStyle: 'italic',
         fontSize: 20
@@ -206,20 +206,20 @@ const webStyles = StyleSheet.create({
         marginHorizontal: 20,
         marginVertical: 5,
     },
-    sectionTitle: {
+    sectionTitle: { // check
         color: Assets.colors.brand.cream,
         fontSize: 24,
         fontWeight: 'bold',
         marginTop: 5
     },
-    sectionSubTitle: {
+    sectionSubTitle: { // check
         color: Assets.colors.brand.cream,
         fontSize: 20,
         fontWeight: 'semibold',
         fontStyle: 'italic',
         marginTop: 5
     },
-    sectionText: {
+    sectionText: { // check
         color: Assets.colors.brand.beige,
         marginVertical: 5,
         fontSize: 18
@@ -257,7 +257,7 @@ const webStyles = StyleSheet.create({
         marginBottom: 5,
         marginTop: 10
     },
-    callout: {
+    callout: { // check
         color: Assets.colors.brand.dutchWhite,
         fontStyle: 'italic',
         marginVertical: 5,
@@ -290,7 +290,7 @@ const nativeStyles = StyleSheet.create({
         width: '50%',
         objectFit: 'scale-down',
     },
-    intro: {
+    intro: { // check
         color: Assets.colors.logo.brightOrange,
         fontStyle: 'italic',
         fontSize: 16
@@ -305,14 +305,14 @@ const nativeStyles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 5
     },
-    sectionSubTitle: {
+    sectionSubTitle: { // check
         color: Assets.colors.brand.cream,
         fontSize: 16,
         fontWeight: 'semibold',
         fontStyle: 'italic',
         marginTop: 5
     },
-    sectionText: {
+    sectionText: { // check
         color: Assets.colors.brand.beige,
         marginVertical: 5,
     },
@@ -346,7 +346,7 @@ const nativeStyles = StyleSheet.create({
         color: Assets.colors.brand.cream,
         marginBottom: 5
     },
-    callout: {
+    callout: { // check
         color: Assets.colors.brand.dutchWhite,
         fontStyle: 'italic',
         marginBottom: 5

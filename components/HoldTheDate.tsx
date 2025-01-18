@@ -15,7 +15,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
 
-  const years = [
+  const years = [ // todo: use t, not array
     { label: '2024', link: 'https://2024.javazone.no/program' },
     { label: '2023', link: 'https://2023.javazone.no/#/program' },
     { label: '2022', link: 'https://2022.javazone.no/#/program' },

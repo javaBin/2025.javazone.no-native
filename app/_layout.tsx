@@ -98,7 +98,7 @@ const RootLayout = () => {
 
     const screensOptions = {
         headerShown: true,
-        //headerBackVisible: Platform.OS !== 'web', // todo: use hook instead
+        //headerBackVisible: Platform.OS !== 'web', // todo: use hook instead to remove back button on web
         headerStyle: {
             backgroundColor: Assets.colors.gradient.medium,
             elevation: 0,
@@ -161,12 +161,14 @@ const RootLayout = () => {
                         <Link href={{pathname: `${lang}/program`}} style={styles.navLink}>Program</Link>
                         <Link href={{pathname: `${lang}/partner`}} style={styles.navLink}>Partner</Link>
                         <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink}>Speaker</Link>
+                        <Link href={{pathname: `${lang}/info`}} style={styles.navLink}>Info</Link>
                     </View>
                     <Stack initialRouteName="[lang]/index" screenOptions={screensOptions}>
                         <Stack.Screen name="[lang]/index" options={{title: ""}}/>
                         <Stack.Screen name="[lang]/program" options={{title: "Program"}}/>
                         <Stack.Screen name="[lang]/partner" options={{title: "Partner"}}/>
                         <Stack.Screen name="[lang]/speaker" options={{title: "Speaker"}}/>
+                        <Stack.Screen name="[lang]/info" options={{title: "Info"}}/>
                     </Stack>
                 </I18nContextProvider>
             </SafeAreaProvider>
