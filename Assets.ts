@@ -69,6 +69,7 @@ export const Assets = {
             flexDirection: 'column',
             color: '#ECDFCC', // cream
         },
+        pageTitle: {},
         text: {
             color: '#D6BD98', // beige
             marginVertical: 5,

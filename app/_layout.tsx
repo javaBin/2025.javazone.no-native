@@ -147,6 +147,8 @@ const RootLayout = () => {
             right: 0,
             top: 64, // default header height 64 - do not change!
             display: toggleMenu ? 'flex' : 'none',
+            justifyContent: 'center',
+            alignItems: 'flex-start'
         },
         navLink: {
             color: Assets.colors.logo.brightOrange
