@@ -5,12 +5,6 @@ import { Link, useGlobalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts, Cinzel_400Regular, Cinzel_700Bold, Cinzel_800ExtraBold } from '@expo-google-fonts/cinzel';
-import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-} from '@expo-google-fonts/playfair-display';
 
 type HoldTheDateProps = {
   subPageHeader?: string;
@@ -20,15 +14,6 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const [pressedIndex, setPressedIndex] = useState<number | null>(null); // Track which button is pressed
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
-
-  let [fontsLoaded] = useFonts({
-    Cinzel_400Regular,
-    Cinzel_700Bold,
-    Cinzel_800ExtraBold,
-    PlayfairDisplay_400Regular,
-    PlayfairDisplay_700Bold,
-    PlayfairDisplay_800ExtraBold,
-  });
 
   const years = [
     { label: '2024', link: 'https://2024.javazone.no/program' },

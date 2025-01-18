@@ -8,10 +8,6 @@ import Logo from '@/assets/images/logo/javaZone-logo.svg';
 import { StyleSheet } from 'react-native';
 
 export const Assets = {
-  fonts: {
-    cinzelRegular: 'PlayfairDisplay_400Regular',
-    cinzelBold: 'Cinzel-Bold',
-  },
   links: {
     javaBinMail: 'mailto:javazone@java.no',
     javaZoneMail: 'mailto:javazone@java.no',
