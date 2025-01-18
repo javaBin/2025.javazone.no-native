@@ -5,9 +5,9 @@ import nb from '@/services/i18n/nb-NO.json';
 import { useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {Link, Tabs, useGlobalSearchParams, useRouter} from 'expo-router';
+import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {AppState, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import { AppState, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Stack } from 'expo-router/stack';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
@@ -100,9 +100,11 @@ const RootLayout = () => {
         };
     }, []);
 
+    const webScreenOptions = Platform.OS === 'web' ? {
+        headerLeft: () => null
+    } : {}
     const screensOptions = {
         headerShown: true,
-        //headerBackVisible: Platform.OS !== 'web', // todo: use hook instead to remove back button on web
         headerTransparent: true,
         headerBackground: () => (
             <BlurView
@@ -174,7 +176,7 @@ const RootLayout = () => {
                         <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink}>Speaker</Link>
                         <Link href={{pathname: `${lang}/info`}} style={styles.navLink}>Info</Link>
                     </BlurView>
-                    <Stack initialRouteName="[lang]/index" screenOptions={screensOptions}>
+                    <Stack initialRouteName="[lang]/index" screenOptions={{...screensOptions, ...webScreenOptions}}>
                         <Stack.Screen name="[lang]/index" options={{title: ""}}/>
                         <Stack.Screen name="[lang]/program" options={{title: "Program"}}/>
                         <Stack.Screen name="[lang]/partner" options={{title: "Partner"}}/>

@@ -41,18 +41,6 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
         <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
       </View>
 
-      <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
-        <LinearGradient
-          start={{ x: 0.1, y: 0.4 }}
-          style={{ padding: 6, borderRadius: 3, opacity: 20, width: 100, alignItems: 'center' }}
-          colors={[Assets.colors.gradient.light, Assets.colors.gradient.medium]}
-        >
-          <Link style={{ color: '#ABABAB' }} href={`${lang}/partner`}>
-            Partners
-          </Link>
-        </LinearGradient>
-      </TouchableOpacity>
-
       <View style={styles.listContainer}>
         {years.map((year, index) => (
           <TouchableOpacity
