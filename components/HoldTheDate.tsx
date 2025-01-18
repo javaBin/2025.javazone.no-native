@@ -5,6 +5,12 @@ import { Link, useGlobalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts, Cinzel_400Regular, Cinzel_700Bold, Cinzel_800ExtraBold } from '@expo-google-fonts/cinzel';
+import {
+  PlayfairDisplay_400Regular,
+  PlayfairDisplay_700Bold,
+  PlayfairDisplay_800ExtraBold,
+} from '@expo-google-fonts/playfair-display';
 
 type HoldTheDateProps = {
   subPageHeader?: string;
@@ -14,6 +20,15 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const [pressedIndex, setPressedIndex] = useState<number | null>(null); // Track which button is pressed
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
+
+  let [fontsLoaded] = useFonts({
+    Cinzel_400Regular,
+    Cinzel_700Bold,
+    Cinzel_800ExtraBold,
+    PlayfairDisplay_400Regular,
+    PlayfairDisplay_700Bold,
+    PlayfairDisplay_800ExtraBold,
+  });
 
   const years = [
     { label: '2024', link: 'https://2024.javazone.no/program' },
@@ -40,6 +55,14 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
         <Text style={[styles.title, styles.titleLeft]}>{t('location_title')}</Text>
         <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
       </View>
+
+      <Text style={{ fontFamily: 'Cinzel_400Regular', fontSize: 18, marginTop: 20 }}>Test 1</Text>
+      <Text style={{ fontFamily: 'Cinzel_700Bold', fontSize: 18 }}>Test 2</Text>
+      <Text style={{ fontFamily: 'Cinzel_800ExtraBold', fontSize: 18 }}>Test 3</Text>
+
+      <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 18, marginTop: 20 }}>Test 4</Text>
+      <Text style={{ fontFamily: 'PlayfairDisplay_700Bold', fontSize: 18 }}>Test 5</Text>
+      <Text style={{ fontFamily: 'PlayfairDisplay_800ExtraBold', fontSize: 18 }}>Test 6</Text>
 
       <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
         <LinearGradient
