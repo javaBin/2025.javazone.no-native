@@ -30,7 +30,7 @@
       "package": "com.JavaBin"
     },
     "web": {
-      "favicon": "./assets/images/javaZone-logo.png",
+      "favicon": "./assets/images/logo/javaZone2025-favIcon.png",
       "bundler": "metro",
       "backgroundColor": "#232526"
     },

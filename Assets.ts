@@ -1,13 +1,17 @@
 // @ts-ignore
-import JavaBinLogo from '@/assets/images/javaBin-logo.png';
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.png';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
-import Logo from '@/assets/images/javaZone-logo.svg';
+import Logo from '@/assets/images/logo/javaZone-logo.svg';
 import { StyleSheet } from 'react-native';
 
 export const Assets = {
+  fonts: {
+    cinzelRegular: 'PlayfairDisplay_400Regular',
+    cinzelBold: 'Cinzel-Bold',
+  },
   links: {
     javaBinMail: 'mailto:javazone@java.no',
     javaZoneMail: 'mailto:javazone@java.no',
@@ -50,6 +54,14 @@ export const Assets = {
       medium: '#232526',
       light: '#414345',
       brown: '#1e1616',
+    },
+    jz2025ThemeColors: {
+      crimsonRed: '#B10A32',
+      darkBrown: '#403532',
+      linen: '#F9F6F5',
+      cyberYellow: '#FFD400',
+      orangeYellow: '#FCAF17',
+      vividOrange: '#F7941D',
     },
   },
   styles: StyleSheet.create({

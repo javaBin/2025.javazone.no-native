@@ -1,12 +1,13 @@
 import React from 'react';
-import { Dimensions, Platform, SafeAreaView, StyleSheet, View } from 'react-native';
+import { Dimensions, Platform, SafeAreaView, StyleSheet, View, ImageBackground } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useHeaderHeight } from '@react-navigation/elements';
-import { LinearGradient } from 'expo-linear-gradient';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
 import { Flag } from '@/components/index';
 import { Assets } from '@/Assets';
+import { useMediaQuery } from 'react-responsive';
+import { VerticalLinesRightLeft } from '@/components';
 
 type ScreenTemplateProps = {
   children: React.ReactNode;
@@ -14,47 +15,43 @@ type ScreenTemplateProps = {
 };
 
 const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
-    // useHeaderHeight is a hook that gives you the height of the header
-    const headerHeight = useHeaderHeight();
-    // @ts-ignore
-    const { setLocale } = useI18nContext();
-    const { top } = useSafeAreaInsets(); // can use this to define screen top based on platform
-    const newTop = Platform.OS === 'android' ? top : 0;
-    const screenWidth = Dimensions.get('window').width;
+  const headerHeight = useHeaderHeight();
+  // @ts-ignore
+  const { setLocale } = useI18nContext();
+  const { top } = useSafeAreaInsets();
+  const newTop = Platform.OS === 'android' ? top : 0;
+  const isMobile = useMediaQuery({ maxWidth: 614 });
 
-    return (
-        <LinearGradient
-            colors={[
-                Assets.colors.gradient.medium,
-                Assets.colors.gradient.dark
-            ]}
-            style={{ flex: 1, width: screenWidth, paddingTop: headerPadding ? headerHeight : 0 }}
-            locations={[0, 1]}
-        >
-            <SafeAreaView style={Assets.styles.safeArea}>
-                <View style={[Assets.styles.container, {marginTop: newTop}]}>
-                    <View style={styles.languagePickers}>
-                        <Flag
-                            flagLocale={'nb-NO'}
-                            countryCode={CountryCode.Norwegian}
-                            flagStyle={FlagStyle.Flat}
-                            flagSize={FlagSize.Small}
-                            onPress={async () => await setLocale('nb-NO')}
-                        />
-                        <Flag
-                            flagLocale={'en-US'}
-                            countryCode={CountryCode.British}
-                            flagStyle={FlagStyle.Flat}
-                            flagSize={FlagSize.Small}
-                            onPress={async () => await setLocale('en-US')}
-                        />
-                    </View>
-                    {children}
-                </View>
-            </SafeAreaView>
-        </LinearGradient>
-    )
-}
+  return (
+    <ImageBackground
+      source={require('@/assets/images/background/marble-white.png')}
+      style={{ flex: 1, width: '100%', height: '100%' }}
+    >
+      <SafeAreaView style={Assets.styles.safeArea}>
+        <VerticalLinesRightLeft />
+        <View style={[Assets.styles.container, { marginTop: newTop }]}>
+          <View style={styles.languagePickers}>
+            <Flag
+              flagLocale={'nb-NO'}
+              countryCode={CountryCode.Norwegian}
+              flagStyle={FlagStyle.Flat}
+              flagSize={FlagSize.Small}
+              onPress={async () => await setLocale('nb-NO')}
+            />
+            <Flag
+              flagLocale={'en-US'}
+              countryCode={CountryCode.British}
+              flagStyle={FlagStyle.Flat}
+              flagSize={FlagSize.Small}
+              onPress={async () => await setLocale('en-US')}
+            />
+          </View>
+          {children}
+        </View>
+      </SafeAreaView>
+    </ImageBackground>
+  );
+};
 
 const styles = StyleSheet.create({
   languagePickers: {
@@ -63,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     position: 'absolute',
     top: 0,
-    right: 0,
+    right: 100,
   },
 });
 
