@@ -55,7 +55,7 @@ const Info = () => {
 
     return (
         <ScreenTemplate>
-            <ScrollView id={'scrollViewTest'} style={{width: screenWidth >= 768 ? '100%' : '90%'}}
+            <ScrollView id={'scrollViewTest'} style={{width: screenWidth < 768 ? '100%' : '90%'}}
                         contentContainerStyle={styles.container}
                         alwaysBounceVertical={false}
                         showsVerticalScrollIndicator={false}>
