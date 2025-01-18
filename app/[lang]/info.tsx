@@ -1,4 +1,4 @@
-import { Animated, Image, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Animated, Image, Platform, Pressable, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
 import { CircleImage, ScreenTemplate, SvgImage } from '@/components';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +12,7 @@ const Info = () => {
     const [toggleJavaBin, setToggleJavaBin] = useState<boolean>(false);
     const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
     const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
+    const screenWidth = Dimensions.get('window').width;
 
     useEffect(() => { // todo: set native style if screen dimensions equals phone
         if (Platform.OS !== 'web') return;
@@ -54,7 +55,7 @@ const Info = () => {
 
     return (
         <ScreenTemplate>
-            <ScrollView id={'scrollViewTest'} style={{width: Platform.OS !== 'web' ? '100%' : '80%'}}
+            <ScrollView id={'scrollViewTest'} style={{width: screenWidth >= 768 ? '100%' : '90%'}}
                         contentContainerStyle={styles.container}
                         alwaysBounceVertical={false}
                         showsVerticalScrollIndicator={false}>
@@ -90,7 +91,7 @@ const Info = () => {
                         <Text style={Assets.styles.text}>{t('javaZone.about_organizers')}</Text>
                         <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
 
-                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                        <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
                                 <Link href={Assets.links.javaZoneMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.javaZone_mail')}</Link>
@@ -98,7 +99,7 @@ const Info = () => {
                             <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
                         </View>
 
-                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                        <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
                                 <Link href={Assets.links.programMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.program_mail')}</Link>
@@ -106,7 +107,7 @@ const Info = () => {
                             <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
                         </View>
 
-                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                        <View style={{display: 'flex', flexDirection:screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
                                 <Link href={Assets.links.partnerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.partners_mail')}</Link>
@@ -114,7 +115,7 @@ const Info = () => {
                             <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
                         </View>
 
-                        <View style={{display: 'flex', flexDirection: Platform.OS === 'web' ? 'row' : 'column'}}>
+                        <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
                                 <Link href={Assets.links.volunteerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.volunteers_mail')}</Link>
@@ -152,19 +153,19 @@ const Info = () => {
                     </View>
                 </View>
 
-                <View style={[styles.section, Platform.OS !== 'web' ? {width: '90%'} : {width: '100%'}]}>
+                <View style={[styles.section, screenWidth < 768 ? {width: '90%'} : {width: '100%'}]}>
                     <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
                     <View style={styles.paragraphImageContainer}>
-                        <View style={{display: 'flex', width: Platform.OS === 'web' ? '80%' : '100%'}}>
+                        <View style={{display: 'flex', width: screenWidth >= 768 ? '90%' : '100%'}}>
                             <Text style={Assets.styles.text}>{t('food.about')}</Text>
-                            <Text style={[Assets.styles.text, {display: Platform.OS === 'web' ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                            <Text style={[Assets.styles.text, {display: screenWidth >= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                         </View>
                         <CircleImage source={Assets.images.Doughnut}
-                                     size={Platform.OS !== 'web' ? 100 : 200}
-                                     style={{marginHorizontal: 5, zIndex: 5}}
+                                     size={screenWidth < 768 ? 100 : 200}
+                                     style={{marginHorizontal: 5}}
                         />
                     </View>
-                    <Text style={[Assets.styles.text, {display: Platform.OS !== 'web' ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                    <Text style={[Assets.styles.text, {display: screenWidth < 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                 </View>
 
                 <View style={[styles.section, {marginBottom: 50}]}>
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     },
     toggleTitle: {
         color: Assets.colors.logo.brightOrange,
-        fontSize: Platform.OS === 'web' ? 20 : 16,
+        fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
     },
     listItemContainer: {
         display: 'flex',
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
         display: "flex",
         marginRight: 5,
         flexWrap: "wrap",
-        fontSize: Platform.OS === 'web' ? 18 : 14,
+        fontSize: Dimensions.get('window').width >= 768 ? 18 : 14,
     },
     listItemRole: {
         color: Assets.colors.brand.cream,
@@ -228,14 +229,14 @@ const styles = StyleSheet.create({
         color: Assets.colors.logo.brightYellow,
     },
     listItemName: {
-        color: Platform.OS === 'web' ? Assets.colors.brand.dutchWhite : Assets.colors.brand.cream,
+        color: Dimensions.get('window').width >= 768 ? Assets.colors.brand.dutchWhite : Assets.colors.brand.cream,
         marginBottom: 5,
-        marginTop: Platform.OS === 'web' ? 10 : 0
+        marginTop: Dimensions.get('window').width >= 768 ? 10 : 0
     },
     paragraphImageContainer: {
         display: 'flex',
         flexDirection: 'row',
-        width: Platform.OS == 'web' ? '95%' : '75%',
+        width: Dimensions.get('window').width >= 768 ? '95%' : '75%',
         justifyContent: "space-between",
     }
 });

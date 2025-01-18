@@ -24,16 +24,10 @@ const Partner = () => {
               <LinearGradient
                 start={{ x: 0.1, y: 0.4 }}
                 style={{ padding: 6, borderRadius: 3, opacity: 20, width: 200, alignItems: 'center' }}
-                colors={[
-                  Assets.colors.gradient.dark,
-                  Assets.colors.gradient.medium,
-                  Assets.colors.gradient.light,
-                  Assets.colors.gradient.medium,
-                  Assets.colors.gradient.dark,
-                ]}
+                colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}
               >
                 <Link
-                  style={{ color: '#eadfdf' }}
+                  style={{ color: Assets.colors.brand.neutral }}
                   href="https://event.checkin.no/101610/javazone-2025-partnership"
                   target="_blank"
                   rel="noopener"

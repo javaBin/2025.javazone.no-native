@@ -148,7 +148,7 @@ const RootLayout = () => {
             width: '100%',
         },
         drawer: {
-            width: '15%',
+            //width: '15%',
             position: 'absolute',
             zIndex: 1,
             right: 0,
@@ -161,7 +161,7 @@ const RootLayout = () => {
         },
         navLink: {
             color: Assets.colors.logo.brightOrange,
-            marginHorizontal: 20,
+            paddingHorizontal: 20,
             marginVertical: 3
         }
     });
