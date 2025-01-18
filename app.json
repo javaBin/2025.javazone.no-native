@@ -41,6 +41,6 @@
     },
     "newArchEnabled": true,
     "owner": "carolinekristin",
-    "plugins": ["expo-localization", "expo-router"]
+    "plugins": ["expo-localization", "expo-router", "expo-font"]
   }
 }

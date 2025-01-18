@@ -86,18 +86,18 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: Platform.OS == 'web' ? 38 : 36,
     fontWeight: 'bold',
-    color: Assets.colors.brand.cream,
+    color: Assets.colors.brand.charcoal,
   },
   subHeading: {
     fontSize: Platform.OS == 'web' ? 32 : 28,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    color: Assets.colors.logo.brightOrange,
+    color: Assets.colors.brand.charcoal,
   },
   subPageHeading: {
     fontSize: Platform.OS == 'web' ? 28 : 26,
     fontWeight: '500',
-    color: Assets.colors.brand.beige,
+    color: Assets.colors.brand.charcoal,
   },
   titleContainer: {
     display: 'flex',
@@ -111,13 +111,13 @@ const styles = StyleSheet.create({
   },
   titleLeft: {
     alignSelf: 'flex-start',
-    color: Assets.colors.brand.beige,
+    color: Assets.colors.brand.charcoal,
     fontWeight: '500',
     width: '50%',
   },
   titleRight: {
     alignSelf: 'flex-end',
-    color: Assets.colors.brand.dutchWhite,
+    color: Assets.colors.brand.charcoal,
     marginLeft: Platform.OS == 'web' ? 5 : 1,
     width: '100%',
   },

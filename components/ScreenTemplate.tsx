@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Platform, SafeAreaView, StyleSheet, View, ImageBackground } from 'react-native';
+import { ImageBackground, Platform, SafeAreaView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
@@ -24,9 +24,10 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
 
   return (
     <ImageBackground
-      source={require('@/assets/images/background/marble-white.png')}
+      source={require('@/assets/images/background/texture-marble.png')}
       style={{ flex: 1, width: '100%', height: '100%' }}
     >
+      <View style={styles.overlay} />
       <SafeAreaView style={Assets.styles.safeArea}>
         <VerticalLinesRightLeft />
         <View style={[Assets.styles.container, { marginTop: newTop }]}>
@@ -61,6 +62,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     right: 100,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(254, 240, 195, 0.6)',
+    opacity: 0.5,
   },
 });
 
