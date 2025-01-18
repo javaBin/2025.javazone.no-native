@@ -9,7 +9,7 @@ interface CircleImageProps {
 
 const CircleImage: React.FC<CircleImageProps> = ({source, size, style}: CircleImageProps) => {
     const styles = StyleSheet.create({
-        profilePicture: {
+        image: {
             width: size,
             height: size,
             borderRadius: size / 2,
@@ -17,7 +17,7 @@ const CircleImage: React.FC<CircleImageProps> = ({source, size, style}: CircleIm
     });
 
     return (
-        <Image style={[styles.profilePicture, style]} source={source} />
+        <Image style={[styles.image, style]} source={source} />
     )
 }
 

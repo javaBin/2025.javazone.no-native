@@ -15,7 +15,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
 
-  const years = [
+  const years = [ // todo: use t, not array
     { label: '2024', link: 'https://2024.javazone.no/program' },
     { label: '2023', link: 'https://2023.javazone.no/#/program' },
     { label: '2022', link: 'https://2022.javazone.no/#/program' },
@@ -40,18 +40,6 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
         <Text style={[styles.title, styles.titleLeft]}>{t('location_title')}</Text>
         <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
       </View>
-
-      <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
-        <LinearGradient
-          start={{ x: 0.1, y: 0.4 }}
-          style={{ padding: 6, borderRadius: 3, opacity: 20, width: 100, alignItems: 'center' }}
-          colors={[Assets.colors.gradient.light, Assets.colors.gradient.medium]}
-        >
-          <Link style={{ color: '#ABABAB' }} href={`${lang}/partner`}>
-            Partners
-          </Link>
-        </LinearGradient>
-      </TouchableOpacity>
 
       <View style={styles.listContainer}>
         {years.map((year, index) => (

@@ -7,7 +7,7 @@ import TriangleDown from '@/assets/icons/triangle-down.svg';
 import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import Logo from '@/assets/images/javaZone-logo.svg';
-import { StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from "react-native";
 
 export const Assets = {
     links: {
@@ -56,20 +56,48 @@ export const Assets = {
             brown: '#1e1616',
         },
     },
-  },
-  styles: StyleSheet.create({
-    safeArea: {
-      flex: 1,
-      position: 'relative',
-      marginHorizontal: 0,
-      zIndex: 1,
-    },
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      color: '#ECDFCC', // cream
-    },
-  }),
-};
+    styles: StyleSheet.create({
+        safeArea: {
+            flex: 1,
+            position: 'relative',
+            marginHorizontal: 0,
+        },
+        container: {
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            color: '#ECDFCC', // cream
+        },
+        pageTitle: {},
+        text: {
+            color: '#D6BD98', // beige
+            marginVertical: 5,
+            fontSize: Platform.OS === 'web' ? 18 : 14
+        },
+        sectionTitle: {
+            color: '#ECDFCC', // cream
+            fontSize: Platform.OS === 'web' ? 24 : 20,
+            fontWeight: 'bold',
+            marginTop: 5
+        },
+        sectionSubTitle: {
+            color: '#ECDFCC', // cream
+            fontSize: Platform.OS === 'web' ? 20 : 16,
+            fontWeight: 'semibold',
+            fontStyle: 'italic',
+            marginTop: 5
+        },
+        callout: {
+            color: '#EFDFBB', // dutch-white
+            fontStyle: 'italic',
+            marginBottom: 5,
+            fontSize: Platform.OS === 'web' ? 18 : 14,
+        },
+        intro: {
+            color: '#ED6F24', // bright-orange
+            fontStyle: 'italic',
+            fontSize: Platform.OS === 'web' ? 20 : 16,
+        },
+    }),
+}
