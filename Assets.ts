@@ -7,7 +7,7 @@ import TriangleDown from '@/assets/icons/triangle-down.svg';
 import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import Logo from '@/assets/images/javaZone-logo.svg';
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const Assets = {
     links: {
@@ -54,20 +54,22 @@ export const Assets = {
             medium: '#232526',
             light: '#414345',
             brown: '#1e1616',
-        }
+        },
     },
-    styles: StyleSheet.create({
-        safeArea: {
-            flex: 1,
-            position: 'relative',
-            marginHorizontal: 0,
-        },
-        container: {
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            color: '#ECDFCC', // cream
-        },
-    }),
-}
+  },
+  styles: StyleSheet.create({
+    safeArea: {
+      flex: 1,
+      position: 'relative',
+      marginHorizontal: 0,
+      zIndex: 1,
+    },
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      color: '#ECDFCC', // cream
+    },
+  }),
+};
