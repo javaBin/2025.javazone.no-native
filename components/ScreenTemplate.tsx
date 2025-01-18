@@ -28,7 +28,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
                 Assets.colors.gradient.medium,
                 Assets.colors.gradient.dark
             ]}
-            style={{ flex: 1, width: screenWidth, paddingTop: headerPadding ? headerHeight : 0 }}
+            style={{ flex: 1, width: screenWidth, paddingTop: headerPadding ? headerHeight : 64 }}
             locations={[0, 1]}
         >
             <SafeAreaView style={Assets.styles.safeArea}>

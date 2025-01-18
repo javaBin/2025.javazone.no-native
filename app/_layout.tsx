@@ -100,14 +100,22 @@ const RootLayout = () => {
         headerShown: true,
         //headerBackVisible: Platform.OS !== 'web', // todo: use hook instead to remove back button on web
         headerStyle: {
-            backgroundColor: Assets.colors.gradient.medium,
-            elevation: 0,
-            shadowOpacity: 0,
-            borderBottomWidth: 0,
+            //backgroundColor: Assets.colors.gradient.medium,
+            //elevation: 0,
+            //shadowOpacity: 0,
+            //borderBottomWidth: 0,
         },
+        headerTransparent: true,
+        headerBackground: () => (
+            <BlurView
+                tint="dark"
+                intensity={90}
+                style={StyleSheet.absoluteFill}
+            />
+        ),
         headerTintColor: Assets.colors.brand.cream,
         headerTitle: () => (
-            <Pressable onPress={() => router.replace(`/${lang}`)} style={{}}>
+            <Pressable onPress={() => router.replace(`/${lang}`)}>
                 <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
                     <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{marginHorizontal: 10}} />
                     <Text style={{
@@ -140,18 +148,22 @@ const RootLayout = () => {
             width: '100%',
         },
         drawer: {
-            backgroundColor: Assets.colors.gradient.light,
-            width: '20%',
+            //backgroundColor: Assets.colors.gradient.light,
+            width: '15%',
             position: 'absolute',
             zIndex: 1,
             right: 0,
             top: 64, // default header height 64 - do not change!
             display: toggleMenu ? 'flex' : 'none',
             justifyContent: 'center',
-            alignItems: 'flex-start'
+            alignItems: 'flex-start',
+            overflow: 'hidden',
+            paddingVertical: 5
         },
         navLink: {
-            color: Assets.colors.logo.brightOrange
+            color: Assets.colors.logo.brightOrange,
+            marginHorizontal: 20,
+            marginVertical: 3
         }
     });
 
@@ -159,12 +171,12 @@ const RootLayout = () => {
         return (
             <SafeAreaProvider>
                 <I18nContextProvider>
-                    <View style={styles.drawer}>
+                    <BlurView tint="dark" intensity={90} style={styles.drawer}>
                         <Link href={{pathname: `${lang}/program`}} style={styles.navLink}>Program</Link>
                         <Link href={{pathname: `${lang}/partner`}} style={styles.navLink}>Partner</Link>
                         <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink}>Speaker</Link>
                         <Link href={{pathname: `${lang}/info`}} style={styles.navLink}>Info</Link>
-                    </View>
+                    </BlurView>
                     <Stack initialRouteName="[lang]/index" screenOptions={screensOptions}>
                         <Stack.Screen name="[lang]/index" options={{title: ""}}/>
                         <Stack.Screen name="[lang]/program" options={{title: "Program"}}/>
