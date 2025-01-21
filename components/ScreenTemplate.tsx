@@ -8,6 +8,12 @@ import { Flag } from '@/components/index';
 import { Assets } from '@/Assets';
 import { useMediaQuery } from 'react-responsive';
 import { VerticalLinesRightLeft } from '@/components';
+import { useFonts, Cinzel_400Regular, Cinzel_700Bold, Cinzel_800ExtraBold } from '@expo-google-fonts/cinzel';
+import {
+  PlayfairDisplay_400Regular,
+  PlayfairDisplay_700Bold,
+  PlayfairDisplay_800ExtraBold,
+} from '@expo-google-fonts/playfair-display';
 
 type ScreenTemplateProps = {
   children: React.ReactNode;
@@ -21,6 +27,14 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
   const isMobile = useMediaQuery({ maxWidth: 614 });
+  let [fontsLoaded] = useFonts({
+    Cinzel_400Regular,
+    Cinzel_700Bold,
+    Cinzel_800ExtraBold,
+    PlayfairDisplay_400Regular,
+    PlayfairDisplay_700Bold,
+    PlayfairDisplay_800ExtraBold,
+  });
 
   return (
     <ImageBackground
@@ -65,7 +79,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(254, 240, 195, 0.6)',
+    backgroundColor: 'rgba(254, 240, 195, 6)',
     opacity: 0.5,
   },
 });

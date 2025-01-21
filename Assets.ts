@@ -12,10 +12,6 @@ import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
 import HeroYear from '@/assets/images/hero/hero-year.svg';
 
 export const Assets = {
-  fonts: {
-    cinzelRegular: 'PlayfairDisplay_400Regular',
-    cinzelBold: 'Cinzel-Bold',
-  },
   links: {
     javaBinMail: 'mailto:javazone@java.no',
     javaZoneMail: 'mailto:javazone@java.no',

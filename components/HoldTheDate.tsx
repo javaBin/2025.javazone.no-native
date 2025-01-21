@@ -27,37 +27,15 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     <View style={styles.content}>
       <Hero />
 
-      <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
-        <LinearGradient
-          start={{ x: 0.1, y: 0.4 }}
-          style={{ padding: 6, borderRadius: 3, opacity: 20, width: 100, alignItems: 'center' }}
-          colors={[Assets.colors.gradient.light, Assets.colors.gradient.medium]}
-        >
-          <Link style={{ color: '#ABABAB' }} href={`${lang}/partner`}>
-            Partners
-          </Link>
-        </LinearGradient>
-      </TouchableOpacity>
+      <Text style={styles.heading}>{t('javaZone_2025')}</Text>
+      {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}
+      <Text style={styles.subHeading}>{t('in_progress')}</Text>
 
-      <View style={styles.listContainer}>
-        {years.map((year, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[styles.listItem, pressedIndex === index && styles.pressed]} // Highlight only the pressed button
-            onPressIn={() => setPressedIndex(index)} // Set the pressed index
-            onPressOut={() => setPressedIndex(null)} // Reset when the press is released
-          >
-            <LinearGradient
-              start={{ x: 0.1, y: 0.4 }}
-              style={{ padding: 3, borderRadius: 3, opacity: 20 }}
-              colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}
-            >
-              <Link style={styles.text} href={year.link}>
-                {year.label}
-              </Link>
-            </LinearGradient>
-          </TouchableOpacity>
-        ))}
+      <View style={[styles.titleContainer, { marginTop: 20, flexDirection: 'column' }]}>
+        <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 40 }}>
+          Velkommen til NOVA Spektrum, Lillestrøm
+        </Text>
+        <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 40 }}>September 3-4</Text>
       </View>
     </View>
   );
@@ -90,7 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    width: 390,
+    width: 'auto',
   },
   title: {
     fontSize: Platform.OS == 'web' ? 20 : 18,
