@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(254, 240, 195, 0.6)',
+    backgroundColor: 'rgba(254, 240, 195, 6)',
     opacity: 0.5,
   },
 });
