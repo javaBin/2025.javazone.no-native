@@ -1,4 +1,4 @@
-import { SvgImage } from '@/components/index';
+import { SvgImage, Hero } from '@/components/index';
 import { Assets } from '@/Assets';
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Link, useGlobalSearchParams } from 'expo-router';
@@ -25,21 +25,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 
   return (
     <View style={styles.content}>
-      <SvgImage SVG={Assets.images.Logo} height={50} style={{ marginBottom: 20 }} />
-
-      <Text style={styles.heading}>{t('javaZone_2025')}</Text>
-      {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}
-      <Text style={styles.subHeading}>{t('in_progress')}</Text>
-
-      <View style={[styles.titleContainer, { marginTop: 20 }]}>
-        <Text style={[styles.title, styles.titleLeft]}>{t('conference_title')}</Text>
-        <Text style={[styles.title, styles.titleRight]}>{t('conference_date')}</Text>
-      </View>
-
-      <View style={styles.titleContainer}>
-        <Text style={[styles.title, styles.titleLeft]}>{t('location_title')}</Text>
-        <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
-      </View>
+      <Hero />
 
       <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
         <LinearGradient
