@@ -27,10 +27,6 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     <View style={styles.content}>
       <Hero />
 
-      <Text style={styles.heading}>{t('javaZone_2025')}</Text>
-      {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}
-      <Text style={styles.subHeading}>{t('in_progress')}</Text>
-
       <View style={[styles.titleContainer, { marginTop: 20, flexDirection: 'column' }]}>
         <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 40 }}>
           Velkommen til NOVA Spektrum, Lillestrøm
