@@ -8,7 +8,6 @@ import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import Logo from '@/assets/images/javaZone-logo.svg';
 import { Platform, StyleSheet, Dimensions } from "react-native";
-import {red} from "react-native-reanimated/lib/typescript/Colors";
 
 const screenWidth = Dimensions.get('window').width;
 
