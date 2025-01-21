@@ -23,18 +23,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     { label: '2018', link: 'https://2018.javazone.no/program' },
   ];
 
-  return (
-    <View style={styles.content}>
-      <Hero />
-
-      <View style={[styles.titleContainer, { marginTop: 20, flexDirection: 'column' }]}>
-        <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 40 }}>
-          Velkommen til NOVA Spektrum, Lillestrøm
-        </Text>
-        <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 40 }}>September 3-4</Text>
-      </View>
-    </View>
-  );
+  return <View style={styles.content}></View>;
 };
 
 const styles = StyleSheet.create({
