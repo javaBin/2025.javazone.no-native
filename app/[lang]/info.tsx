@@ -55,11 +55,11 @@ const Info = () => {
 
     return (
         <ScreenTemplate>
-            <ScrollView id={'scrollViewTest'} style={{width: screenWidth < 768 ? '100%' : '90%'}}
-                        contentContainerStyle={styles.container}
+            <ScrollView style={{width: screenWidth < 768 ? '100%' : '90%'}}
+                        contentContainerStyle={Assets.styles.scrollContainer}
                         alwaysBounceVertical={false}
                         showsVerticalScrollIndicator={false}>
-                <View style={styles.section}>
+                <View style={Assets.styles.section}>
                     <Text style={Assets.styles.sectionTitle}>{t('javaBin.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
 
@@ -78,7 +78,7 @@ const Info = () => {
                     </View>
                 </View>
 
-                <View style={styles.section}>
+                <View style={Assets.styles.section}>
                     <Text style={Assets.styles.sectionTitle}>{t('javaZone.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
 
@@ -131,7 +131,7 @@ const Info = () => {
                     </View>
                 </View>
 
-                <View style={styles.section}>
+                <View style={Assets.styles.section}>
                     <Text style={Assets.styles.sectionTitle}>{t('principles.principles')}</Text>
                     <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
 
@@ -153,7 +153,7 @@ const Info = () => {
                     </View>
                 </View>
 
-                <View style={[styles.section, screenWidth < 768 ? {width: '90%'} : {width: '100%'}]}>
+                <View style={[Assets.styles.section, screenWidth < 768 ? {width: '90%'} : {width: '100%'}]}>
                     <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
                     <View style={styles.paragraphImageContainer}>
                         <View style={{display: 'flex', width: screenWidth >= 768 ? '90%' : '100%'}}>
@@ -168,7 +168,7 @@ const Info = () => {
                     <Text style={[Assets.styles.text, {display: screenWidth < 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                 </View>
 
-                <View style={[styles.section, {marginBottom: 50}]}>
+                <View style={[Assets.styles.section, {marginBottom: 50}]}>
                     <Text style={Assets.styles.sectionTitle}>♻️ Sustainable waste management and recycling at JavaZone</Text>
                     <Text style={Assets.styles.text}>More information to come</Text>
                 </View>
@@ -178,13 +178,6 @@ const Info = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        display: "flex",
-        width: '100%',
-        alignItems: "flex-start",
-        justifyContent: "center",
-        marginTop: 30,
-    },
     imageContainer: {
         width: '100%',
         display: 'flex',
@@ -195,10 +188,6 @@ const styles = StyleSheet.create({
         width: '50%',
         objectFit: 'scale-down',
         resizeMode: 'contain'
-    },
-    section: {
-        marginHorizontal: 20,
-        marginVertical: 5,
     },
     toggleButton: {
         display: 'flex',
