@@ -16,11 +16,11 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const { lang } = useGlobalSearchParams();
 
   const years = [ // todo: use t, not array
-    { label: '2024', link: 'https://2024.javazone.no/program' },
-    { label: '2023', link: 'https://2023.javazone.no/#/program' },
-    { label: '2022', link: 'https://2022.javazone.no/#/program' },
-    { label: '2019', link: 'https://2019.javazone.no/program' },
-    { label: '2018', link: 'https://2018.javazone.no/program' },
+    { label: '2024', link: Assets.links.program24 },
+    { label: '2023', link: Assets.links.program23 },
+    { label: '2022', link: Assets.links.program22 },
+    { label: '2019', link: Assets.links.program19 },
+    { label: '2018', link: Assets.links.program18 },
   ];
 
   return (
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     color: Assets.colors.brand.beige,
     fontWeight: '500',
-    width: '50%',
+    width: Platform.OS === 'web' ? '50%' : '40%',
   },
   titleRight: {
     alignSelf: 'flex-end',

@@ -171,10 +171,10 @@ const RootLayout = () => {
             <SafeAreaProvider>
                 <I18nContextProvider>
                     <BlurView tint="dark" intensity={90} style={styles.drawer}>
-                        <Link href={{pathname: `${lang}/program`}} style={styles.navLink}>Program</Link>
-                        <Link href={{pathname: `${lang}/partner`}} style={styles.navLink}>Partner</Link>
-                        <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink}>Speaker</Link>
-                        <Link href={{pathname: `${lang}/info`}} style={styles.navLink}>Info</Link>
+                        <Link href={{pathname: `${lang}/program`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Program</Link>
+                        <Link href={{pathname: `${lang}/partner`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Partner</Link>
+                        <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Speaker</Link>
+                        <Link href={{pathname: `${lang}/info`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Info</Link>
                     </BlurView>
                     <Stack initialRouteName="[lang]/index" screenOptions={{...screensOptions, ...webScreenOptions}}>
                         <Stack.Screen name="[lang]/index" options={{title: ""}}/>

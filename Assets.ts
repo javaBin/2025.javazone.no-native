@@ -8,17 +8,23 @@ import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import Logo from '@/assets/images/javaZone-logo.svg';
 import { Platform, StyleSheet, Dimensions } from "react-native";
+import {red} from "react-native-reanimated/lib/typescript/Colors";
 
 const screenWidth = Dimensions.get('window').width;
 
 export const Assets = {
     links: {
-        javaBinMail: 'mailto:javazone@java.no',
+        javaBinMail: 'mailto:javazone@java.no', // todo: is this correct?
         javaZoneMail: 'mailto:javazone@java.no',
         programMail: 'mailto:program@java.no',
         partnerMail: 'mailto:partner@java.no',
         volunteerMail: 'mailto:student@java.no',
         javaBoardMail: 'mailto:styret@java.no',
+        program24: 'https://2024.javazone.no/program',
+        program23: 'https://2023.javazone.no/#/program',
+        program22: 'https://2022.javazone.no/#/program',
+        program19: 'https://2019.javazone.no/program',
+        program18: 'https://2018.javazone.no/program',
     },
     images: {
         Logo,
@@ -72,6 +78,13 @@ export const Assets = {
             flexDirection: 'column',
             color: '#ECDFCC', // cream
         },
+        scrollContainer: {
+            display: "flex",
+            width: '100%',
+            alignItems: "flex-start",
+            justifyContent: "center",
+            marginTop: 30,
+        },
         pageTitle: {},
         text: {
             color: '#D6BD98', // beige
@@ -91,6 +104,10 @@ export const Assets = {
             fontStyle: 'italic',
             marginTop: 5
         },
+        section: {
+            marginHorizontal: 20,
+            marginVertical: 5,
+        },
         callout: {
             color: '#EFDFBB', // dutch-white
             fontStyle: 'italic',
@@ -101,6 +118,11 @@ export const Assets = {
             color: '#ED6F24', // bright-orange
             fontStyle: 'italic',
             fontSize: screenWidth >= 768 ? 20 : 16,
+        },
+        listText: {
+            color: '#ECDFCC', // cream
+            marginVertical: 5,
+            fontSize: screenWidth >= 768 ? 18 : 14,
         },
     }),
 }
