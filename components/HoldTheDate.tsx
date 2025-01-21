@@ -41,6 +41,26 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
         <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
       </View>
 
+      <Text style={{ fontFamily: 'Cinzel_400Regular', fontSize: 18, marginTop: 20 }}>Test 1</Text>
+      <Text style={{ fontFamily: 'Cinzel_700Bold', fontSize: 18 }}>Test 2</Text>
+      <Text style={{ fontFamily: 'Cinzel_800ExtraBold', fontSize: 18 }}>Test 3</Text>
+
+      <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 18, marginTop: 20 }}>Test 4</Text>
+      <Text style={{ fontFamily: 'PlayfairDisplay_700Bold', fontSize: 18 }}>Test 5</Text>
+      <Text style={{ fontFamily: 'PlayfairDisplay_800ExtraBold', fontSize: 18 }}>Test 6</Text>
+
+      <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
+        <LinearGradient
+          start={{ x: 0.1, y: 0.4 }}
+          style={{ padding: 6, borderRadius: 3, opacity: 20, width: 100, alignItems: 'center' }}
+          colors={[Assets.colors.gradient.light, Assets.colors.gradient.medium]}
+        >
+          <Link style={{ color: '#ABABAB' }} href={`${lang}/partner`}>
+            Partners
+          </Link>
+        </LinearGradient>
+      </TouchableOpacity>
+
       <View style={styles.listContainer}>
         {years.map((year, index) => (
           <TouchableOpacity
@@ -74,18 +94,18 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: Platform.OS == 'web' ? 38 : 36,
     fontWeight: 'bold',
-    color: Assets.colors.brand.cream,
+    color: Assets.colors.brand.charcoal,
   },
   subHeading: {
     fontSize: Platform.OS == 'web' ? 32 : 28,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    color: Assets.colors.logo.brightOrange,
+    color: Assets.colors.brand.charcoal,
   },
   subPageHeading: {
     fontSize: Platform.OS == 'web' ? 28 : 26,
     fontWeight: '500',
-    color: Assets.colors.brand.beige,
+    color: Assets.colors.brand.charcoal,
   },
   titleContainer: {
     display: 'flex',
@@ -99,13 +119,13 @@ const styles = StyleSheet.create({
   },
   titleLeft: {
     alignSelf: 'flex-start',
-    color: Assets.colors.brand.beige,
+    color: Assets.colors.brand.charcoal,
     fontWeight: '500',
     width: Platform.OS === 'web' ? '50%' : '40%',
   },
   titleRight: {
     alignSelf: 'flex-end',
-    color: Assets.colors.brand.dutchWhite,
+    color: Assets.colors.brand.charcoal,
     marginLeft: Platform.OS == 'web' ? 5 : 1,
     width: '100%',
   },

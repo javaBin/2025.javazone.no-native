@@ -1,5 +1,5 @@
 // @ts-ignore
-import JavaBinLogo from '@/assets/images/javaBin-logo.png';
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.png';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 import TriangleRight from '@/assets/icons/triangle-right.svg';
