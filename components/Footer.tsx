@@ -36,7 +36,6 @@ const Footer = () => {
 
 const styles = StyleSheet.create({
   footer: {
-    backgroundColor: '#fff',
     paddingTop: 10,
     paddingBottom: 20,
     alignItems: 'center',
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
   },
   menuItem: {
     fontSize: 14,
-    color: '#333',
+    color: '#666',
     marginHorizontal: 10,
   },
   icons: {
