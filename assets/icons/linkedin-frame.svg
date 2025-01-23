@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.11 46.11">
+  <defs>
+    <style>
+      .cls-1{fill:#fbae17;}
+      .cls-2{fill:#f9a51a;}
+      .cls-3{fill:#f6921e;}
+      .cls-4{fill:#ffd300;}
+      .cls-5{fill:#403431;}
+    </style>
+  </defs>
+  <g id="Layer_1-2">
+    <polygon class="cls-4" points="23.06 6.37 23.06 0 0 23.06 6.36 23.06 23.06 6.37"/>
+    <polyline class="cls-2" points="6.36 23.06 0 23.06 23.06 46.11 23.06 39.75"/>
+    <polygon class="cls-1" points="39.75 23.06 46.11 23.06 23.06 0 23.06 6.37 39.75 23.06"/>
+    <polygon class="cls-3" points="39.75 23.06 23.06 39.75 23.06 46.11 46.11 23.06 39.75 23.06"/>
+    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="16" fill="#403431">IN</text>
+  </g>
+</svg>
