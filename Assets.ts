@@ -7,6 +7,8 @@ import TriangleDown from '@/assets/icons/triangle-down.svg';
 import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import Logo from '@/assets/images/logo/javaZone-logo.svg';
+import GreekTemple from '@/assets/icons/greek-temple.svg';
+import GreekHelmet from '@/assets/icons/greek-helmet.svg';
 import { Platform, StyleSheet, Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get('window').width;
@@ -35,6 +37,8 @@ export const Assets = {
         TriangleDown,
         MenuRoundedInactive,
         MenuRoundedActive,
+        GreekTemple,
+        GreekHelmet,
     },
     colors: {
         transparent: 'transparent',

@@ -122,10 +122,10 @@ const Partner = () => {
 
             <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
               <Text style={[Assets.styles.callout, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
-              <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
               <View>
                 <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
               </View>
+              <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
             </View>
 
           </View>

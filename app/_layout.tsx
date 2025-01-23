@@ -140,6 +140,10 @@ const RootLayout = () => {
             position: 'absolute',
             bottom: 0,
         },
+        tabBarLabel: {
+            fontSize: 12,
+            fontFamily: 'Cinzel_400Regular',
+        },
         blurContainer: {
             flex: 1,
             padding: 42,
@@ -197,11 +201,24 @@ const RootLayout = () => {
                     <Tabs initialRouteName="[lang]/index" screenOptions={{
                         headerShown: false,
                         tabBarStyle: styles.tabBar,
+                        tabBarLabelStyle: styles.tabBarLabel,
+                        tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
+                        tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
                         tabBarBackground: () => (
                             <BlurView tint="light" intensity={80} style={styles.blurContainer} />
                         )}}>
-                        <Tabs.Screen name="[lang]/index" options={{title: "Home"}}/>
-                        <Tabs.Screen name="[lang]/program" options={{title: "Program"}}/>
+                        <Tabs.Screen name="[lang]/index" options={{
+                            title: "Home",
+                            tabBarIcon: () => (
+                                <SvgImage SVG={Assets.icons.GreekTemple} height={24} title={"game-icons:greek-temple"} />
+                            ),
+                        }}/>
+                        <Tabs.Screen name="[lang]/program" options={{
+                            title: "Program",
+                            tabBarIcon: () => (
+                                <SvgImage SVG={Assets.icons.GreekHelmet} height={24} />
+                            ),
+                        }}/>
                         <Tabs.Screen name="[lang]/partner" options={{title: "Partner"}}/>
                         <Tabs.Screen name="[lang]/speaker" options={{title: "Speaker"}}/>
                         <Tabs.Screen name="[lang]/info" options={{title: "Info"}}/>
