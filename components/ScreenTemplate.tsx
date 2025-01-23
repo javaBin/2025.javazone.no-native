@@ -48,7 +48,6 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
           </View>
           {children}
         </View>
-        <Footer />
       </SafeAreaView>
     </LinearGradient>
   );
