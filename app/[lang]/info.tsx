@@ -1,6 +1,7 @@
 import { Animated, Image, Platform, Pressable, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
-import { CircleImage, ScreenTemplate, SvgImage } from '@/components';
+import { ScreenTemplate } from '@/components';
+import {CircleImage, SvgImage, ToggleText} from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import ScrollView = Animated.ScrollView;
@@ -21,36 +22,21 @@ const Info = () => {
         setTogglePrinciples(true);
     }, []);
 
-    const ToggleButton = (title: string, toggle: boolean) => {
-        const handleToggle = () => {
-            switch (title) {
-                case t('javaBin.read_more'): {
-                    setToggleJavaBin(!toggle);
-                    break;
-                }
-                case t('javaZone.read_more'): {
-                    setToggleJavaZone(!toggle);
-                    break;
-                }
-                case t('principles.read_more'): {
-                    setTogglePrinciples(!toggle);
-                    break;
-                }
+    const handleToggle = (title: string, toggle: boolean) => {
+        switch (title) {
+            case t('javaBin.read_more'): {
+                setToggleJavaBin(!toggle);
+                break;
+            }
+            case t('javaZone.read_more'): {
+                setToggleJavaZone(!toggle);
+                break;
+            }
+            case t('principles.read_more'): {
+                setTogglePrinciples(!toggle);
+                break;
             }
         }
-
-        return (
-            <Pressable style={styles.toggleButton} onPress={handleToggle}>
-                <Text style={styles.toggleTitle}>{title}</Text>
-                <View style={{width: 22}}>
-                    {
-                        toggle ?
-                            <SvgImage SVG={Assets.icons.TriangleDown} height={22} width={22}/> :
-                            <SvgImage SVG={Assets.icons.TriangleRight} height={22} width={22}/>
-                    }
-                </View>
-            </Pressable>
-        )
     }
 
     return (
@@ -63,7 +49,7 @@ const Info = () => {
                     <Text style={Assets.styles.sectionTitle}>{t('javaBin.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
 
-                    {ToggleButton(t('javaBin.read_more'), toggleJavaBin)}
+                    <ToggleText title={t('javaBin.read_more')} toggle={toggleJavaBin} handleToggle={() => handleToggle(t('javaBin.read_more'), toggleJavaBin)}/>
 
                     <View style={{display: toggleJavaBin ? "flex" : "none"}}>
                         <Text style={Assets.styles.text}>{t('javaBin.about_JavaZone')}</Text>
@@ -82,7 +68,7 @@ const Info = () => {
                     <Text style={Assets.styles.sectionTitle}>{t('javaZone.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
 
-                    {ToggleButton(t('javaZone.read_more'), toggleJavaZone)}
+                    <ToggleText title={t('javaZone.read_more')} toggle={toggleJavaZone} handleToggle={() => handleToggle(t('javaZone.read_more'), toggleJavaZone)}/>
 
                     <View style={{display: toggleJavaZone ? "flex" : "none"}}>
                         <Text style={Assets.styles.text}>{t('javaZone.goal')}</Text>
@@ -135,7 +121,7 @@ const Info = () => {
                     <Text style={Assets.styles.sectionTitle}>{t('principles.principles')}</Text>
                     <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
 
-                    {ToggleButton(t('principles.read_more'), togglePrinciples)}
+                    <ToggleText title={t('principles.read_more')} toggle={togglePrinciples} handleToggle={() => handleToggle(t('principles.read_more'), togglePrinciples)}/>
 
                     <View style={{display: togglePrinciples ? "flex" : "none"}}>
                         <Text style={Assets.styles.text}>{t('principles.about')}</Text>
@@ -187,24 +173,24 @@ const styles = StyleSheet.create({
     image: {
         width: '50%',
         objectFit: 'scale-down',
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
     toggleButton: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: "flex-start",
-        marginVertical: 5
+        marginVertical: 5,
     },
     toggleTitle: {
         color: Assets.colors.jz2025ThemeColors.crimsonRed,
         fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
-        fontFamily: 'Cinzel_500Medium'
+        fontFamily: 'Cinzel_500Medium',
     },
     listItemContainer: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: 10
+        marginTop: 10,
     },
     listItem: {
         display: "flex",

@@ -13,7 +13,7 @@ import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
-import { SvgImage } from "@/components";
+import { SvgImage } from "@/UI";
 
 const RootLayout = () => {
     const resources = { en, nb };

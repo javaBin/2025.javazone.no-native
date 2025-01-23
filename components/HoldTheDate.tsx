@@ -1,4 +1,4 @@
-import { SvgImage } from '@/components/index';
+import { SvgImage } from '@/UI/index';
 import { Assets } from '@/Assets';
 import {Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import { Link, useGlobalSearchParams } from 'expo-router';
