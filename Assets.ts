@@ -68,6 +68,7 @@ export const Assets = {
         },
         jz2025ThemeColors: {
             crimsonRed: '#B10A32',
+            darkRed: '#780722',
             darkBrown: '#403532',
             linen: '#F9F6F5',
             cyberYellow: '#FFD400',
@@ -128,19 +129,14 @@ export const Assets = {
         },
         intro: {
             color: '#403532', // dark-brown
-            //fontStyle: 'italic',
             marginBottom: 5,
             fontSize: screenWidth >= 768 ? 18 : 14,
             fontFamily: 'Cinzel_400Regular',
         },
         callout: {
             color: '#FCAF17', // orange-yellow
-            //fontStyle: 'italic',
             fontSize: screenWidth >= 768 ? 20 : 16,
             fontFamily: 'PlayfairDisplay_400Regular_Italic',
-            //textShadowColor: 'rgba(64, 53, 50, 0.25)', // dark-brown
-            //textShadowOffset: {width: -1, height: 1},
-            //textShadowRadius: 5,
         },
         listText: {
             color: '#1e1616', // gradient.brown

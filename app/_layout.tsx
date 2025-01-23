@@ -14,6 +14,7 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from "@/UI";
+import absoluteFill = StyleSheet.absoluteFill;
 
 const RootLayout = () => {
     const resources = { en, nb };
@@ -101,40 +102,6 @@ const RootLayout = () => {
         };
     }, []);
 
-    const webScreenOptions = Platform.OS === 'web' ? {
-        headerLeft: () => null
-    } : {}
-    const screensOptions = {
-        headerShown: true,
-        headerTransparent: true,
-        headerBackground: () => (
-            <BlurView
-                tint="light"
-                intensity={90}
-                style={StyleSheet.absoluteFill}
-            />
-        ),
-        headerTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
-        headerTitle: () => (
-            <Pressable onPress={() => router.replace(`/${lang}`)}>
-                <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
-                    <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{marginHorizontal: 10}} />
-                    <Text style={{
-                        color: Assets.colors.jz2025ThemeColors.vividOrange,
-                        fontSize: 20,
-                        marginTop: 5}}
-                    >JavaZone 2025
-                    </Text>
-                </View>
-            </Pressable>
-        ),
-        headerRight: () => (
-            <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={{marginHorizontal: 10, display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-end'}}>
-                <SvgImage SVG={toggleMenu ? Assets.icons.MenuRoundedActive : Assets.icons.MenuRoundedInactive} height={24} width={24} style={{width: 'auto'}} />
-            </Pressable>
-        ),
-    };
-
     const styles = StyleSheet.create({
         tabBar: {
             position: 'absolute',
@@ -144,7 +111,7 @@ const RootLayout = () => {
             fontSize: 12,
             fontFamily: 'Cinzel_400Regular',
         },
-        blurContainer: {
+        tabBarBlurContainer: {
             flex: 1,
             padding: 42,
             textAlign: 'center',
@@ -154,8 +121,13 @@ const RootLayout = () => {
             width: '100%',
             bottom: 0 // only moves blurcontainer, not the actual tabs
         },
+        headerTitle: {
+            color: Assets.colors.jz2025ThemeColors.vividOrange,
+            fontFamily: 'Cinzel_500Medium',
+            fontSize: 20,
+            marginTop: 5
+        },
         drawer: {
-            //width: '15%',
             position: 'absolute',
             zIndex: 1,
             right: 0,
@@ -174,6 +146,49 @@ const RootLayout = () => {
         }
     });
 
+    const screenOptions = {
+        headerShown: true,
+        headerTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
+        headerTitle: () => (
+            <Pressable onPress={() => router.replace(`/${lang}`)}>
+                <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                    <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{marginHorizontal: 10}} />
+                    <Text style={styles.headerTitle}>
+                        JavaZone 2025
+                    </Text>
+                </View>
+            </Pressable>
+        ),
+    }
+
+    const nativeScreenOptions = {
+        tabBarStyle: styles.tabBar,
+        tabBarLabelStyle: styles.tabBarLabel,
+        tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
+        tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
+        tabBarBackground: () => (
+            <BlurView tint="light" intensity={80} style={styles.tabBarBlurContainer} />
+        ),
+        headerShown: false, // todo: debating what to do with a possible header for native, BlurView doesn't work for some reason
+    }
+
+    const webScreenOptions = {
+        headerTransparent: true,
+        headerBackground: () => (
+            <BlurView
+                tint="light"
+                intensity={90}
+                style={StyleSheet.absoluteFill}
+            />
+        ),
+        headerLeft: () => null, // this is to disable "<-" back button on web-app
+        headerRight: () => (
+            <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={{marginHorizontal: 10, display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-end'}}>
+                <SvgImage SVG={toggleMenu ? Assets.icons.MenuRoundedActive : Assets.icons.MenuRoundedInactive} height={24} width={24} style={{width: 'auto'}} />
+            </Pressable>
+        ),
+    };
+
     if (Platform.OS === 'web') {
         return (
             <SafeAreaProvider>
@@ -184,7 +199,7 @@ const RootLayout = () => {
                         <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Speaker</Link>
                         <Link href={{pathname: `${lang}/info`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Info</Link>
                     </BlurView>
-                    <Stack initialRouteName="[lang]/index" screenOptions={{...screensOptions, ...webScreenOptions}}>
+                    <Stack initialRouteName="[lang]/index" screenOptions={{...screenOptions, ...webScreenOptions}}>
                         <Stack.Screen name="[lang]/index" options={{title: ""}}/>
                         <Stack.Screen name="[lang]/program" options={{title: "Program"}}/>
                         <Stack.Screen name="[lang]/partner" options={{title: "Partner"}}/>
@@ -198,15 +213,7 @@ const RootLayout = () => {
         return (
             <SafeAreaProvider>
                 <I18nContextProvider>
-                    <Tabs initialRouteName="[lang]/index" screenOptions={{
-                        headerShown: false,
-                        tabBarStyle: styles.tabBar,
-                        tabBarLabelStyle: styles.tabBarLabel,
-                        tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
-                        tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
-                        tabBarBackground: () => (
-                            <BlurView tint="light" intensity={80} style={styles.blurContainer} />
-                        )}}>
+                    <Tabs initialRouteName="[lang]/index" screenOptions={{...nativeScreenOptions}}>
                         <Tabs.Screen name="[lang]/index" options={{
                             title: "Home",
                             tabBarIcon: () => (

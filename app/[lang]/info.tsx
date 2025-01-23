@@ -15,13 +15,13 @@ const Info = () => {
     const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
     const screenWidth = Dimensions.get('window').width;
 
-    useEffect(() => { // todo: set native style if screen dimensions equals phone
-        if (Platform.OS !== 'web') return;
-        setToggleJavaBin(true);
-        setToggleJavaZone(true);
-        setTogglePrinciples(true);
+    useEffect(() => {
+        if (screenWidth > 768) {
+            setToggleJavaBin(true);
+            setToggleJavaZone(true);
+            setTogglePrinciples(true);
+        }
     }, []);
-
     const handleToggle = (title: string, toggle: boolean) => {
         switch (title) {
             case t('javaBin.read_more'): {
@@ -139,19 +139,19 @@ const Info = () => {
                     </View>
                 </View>
 
-                <View style={[Assets.styles.section, screenWidth < 768 ? {width: '90%'} : {width: '100%'}]}>
+                <View style={[Assets.styles.section, screenWidth <= 768 ? {width: '90%'} : {width: '100%'}]}>
                     <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
                     <View style={styles.paragraphImageContainer}>
-                        <View style={{display: 'flex', width: screenWidth >= 768 ? '90%' : '100%'}}>
-                            <Text style={Assets.styles.text}>{t('food.about')}</Text>
-                            <Text style={[Assets.styles.text, {display: screenWidth >= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                        <View style={{display: 'flex', width: screenWidth > 768 ? '75%' : screenWidth-200}}>
+                            <Text style={[Assets.styles.text]}>{t('food.about')}</Text>
+                            <Text style={[Assets.styles.text, {display: screenWidth > 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                         </View>
                         <CircleImage source={Assets.images.Doughnut}
-                                     size={screenWidth < 768 ? 100 : 200}
-                                     style={{marginHorizontal: 5}}
+                                     size={screenWidth <= 768 ? 100 : 200}
+                                     style={{marginHorizontal: screenWidth > 768 ? 'auto' : 20}}
                         />
                     </View>
-                    <Text style={[Assets.styles.text, {display: screenWidth < 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                    <Text style={[Assets.styles.text, {display: screenWidth <= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                 </View>
 
                 <View style={[Assets.styles.section, {marginBottom: 50}]}>
@@ -213,8 +213,7 @@ const styles = StyleSheet.create({
     paragraphImageContainer: {
         display: 'flex',
         flexDirection: 'row',
-        width: Dimensions.get('window').width >= 768 ? '95%' : '75%',
-        justifyContent: "space-between",
+        width: '100%',
     }
 });
 

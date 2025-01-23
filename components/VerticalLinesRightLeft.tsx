@@ -12,10 +12,13 @@ const VerticalLinesRightLeft = () => {
       <View style={isMobile ? {...mobileStyles.verticalLineLeftVividOrange, ...styles.shadow} : {...styles.verticalLineLeftVividOrange, ...styles.shadow}} />
       <View style={isMobile ? {...mobileStyles.verticalLineLeftCyberYellow, ...styles.shadow} : {...styles.verticalLineLeftCyberYellow, ...styles.shadow}} />
       <View style={isMobile ? {...mobileStyles.verticalLineLeftOrangeYellow, ...styles.shadow} : {...styles.verticalLineLeftOrangeYellow, ...styles.shadow}} />
+      <View style={isMobile ? {...mobileStyles.verticalLineLeftDarkRed, ...styles.shadow} : {...styles.verticalLineLeftDarkRed, ...styles.shadow}} />
+
       <View style={isMobile ? {...mobileStyles.verticalLineRight, ...styles.shadow} : {...styles.verticalLineRight, ...styles.shadow}} />
       <View style={isMobile ? {...mobileStyles.verticalLineRightVividOrange, ...styles.shadow} : {...styles.verticalLineRightVividOrange, ...styles.shadow}} />
       <View style={isMobile ? {...mobileStyles.verticalLineRightCyberYellow, ...styles.shadow} : {...styles.verticalLineRightCyberYellow, ...styles.shadow}} />
       <View style={isMobile ? {...mobileStyles.verticalLineRightOrangeYellow, ...styles.shadow} : {...styles.verticalLineRightOrangeYellow, ...styles.shadow}} />
+      <View style={isMobile ? {...mobileStyles.verticalLineRightDarkRed, ...styles.shadow} : {...styles.verticalLineRightDarkRed, ...styles.shadow}} />
     </>
   );
 };
@@ -59,6 +62,14 @@ const styles = StyleSheet.create({
     width: 10,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
   },
+  verticalLineLeftDarkRed: {
+    position: 'absolute',
+    left: 30,
+    top: 0,
+    bottom: 0,
+    width: 15,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
+  },
   verticalLineRight: {
     position: 'absolute',
     right: 0,
@@ -90,6 +101,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: 10,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
+  },
+  verticalLineRightDarkRed: {
+    position: 'absolute',
+    right: 30,
+    top: 0,
+    bottom: 0,
+    width: 15,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
 });
 
@@ -126,6 +145,14 @@ const mobileStyles = StyleSheet.create({
     width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
   },
+  verticalLineLeftDarkRed: {
+    position: 'absolute',
+    left: 7.5,
+    top: 0,
+    bottom: 0,
+    width: 5,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
+  },
   verticalLineRight: {
     position: 'absolute',
     right: 0,
@@ -157,6 +184,14 @@ const mobileStyles = StyleSheet.create({
     bottom: 0,
     width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
+  },
+  verticalLineRightDarkRed: {
+    position: 'absolute',
+    right: 7.5,
+    top: 0,
+    bottom: 0,
+    width: 5,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
 });
 
