@@ -1,6 +1,6 @@
 import { SvgImage } from '@/components/index';
 import { Assets } from '@/Assets';
-import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import { Link, useGlobalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
@@ -25,9 +25,9 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 
   return (
     <View style={styles.content}>
-      <SvgImage SVG={Assets.images.Logo} height={50} style={{ marginBottom: 20 }} />
+      <SvgImage SVG={Assets.images.Logo} height={50} />
 
-      <Text style={styles.heading}>{t('javaZone_2025')}</Text>
+      <Text style={[styles.heading, {marginTop: 20}]}>{t('javaZone_2025')}</Text>
       {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}
       <Text style={styles.subHeading}>{t('in_progress')}</Text>
 
@@ -41,26 +41,6 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
         <Text style={[styles.title, styles.titleRight]}>{t('location')}</Text>
       </View>
 
-      <Text style={{ fontFamily: 'Cinzel_400Regular', fontSize: 18, marginTop: 20 }}>Test 1</Text>
-      <Text style={{ fontFamily: 'Cinzel_700Bold', fontSize: 18 }}>Test 2</Text>
-      <Text style={{ fontFamily: 'Cinzel_800ExtraBold', fontSize: 18 }}>Test 3</Text>
-
-      <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 18, marginTop: 20 }}>Test 4</Text>
-      <Text style={{ fontFamily: 'PlayfairDisplay_700Bold', fontSize: 18 }}>Test 5</Text>
-      <Text style={{ fontFamily: 'PlayfairDisplay_800ExtraBold', fontSize: 18 }}>Test 6</Text>
-
-      <TouchableOpacity style={{ ...styles.listItem, marginTop: 20 }}>
-        <LinearGradient
-          start={{ x: 0.1, y: 0.4 }}
-          style={{ padding: 6, borderRadius: 3, opacity: 20, width: 100, alignItems: 'center' }}
-          colors={[Assets.colors.gradient.light, Assets.colors.gradient.medium]}
-        >
-          <Link style={{ color: '#ABABAB' }} href={`${lang}/partner`}>
-            Partners
-          </Link>
-        </LinearGradient>
-      </TouchableOpacity>
-
       <View style={styles.listContainer}>
         {years.map((year, index) => (
           <TouchableOpacity
@@ -72,7 +52,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
             <LinearGradient
               start={{ x: 0.1, y: 0.4 }}
               style={{ padding: 3, borderRadius: 3, opacity: 20 }}
-              colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}
+              colors={[Assets.colors.jz2025ThemeColors.cyberYellow, Assets.colors.jz2025ThemeColors.orangeYellow]}
             >
               <Link style={styles.text} href={year.link}>
                 {year.label}
@@ -81,6 +61,15 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
           </TouchableOpacity>
         ))}
       </View>
+
+      <Text style={{ fontFamily: 'Cinzel_400Regular', fontSize: 18, marginTop: 20 }}>Test 1</Text>
+      <Text style={{ fontFamily: 'Cinzel_700Bold', fontSize: 18 }}>Test 2</Text>
+      <Text style={{ fontFamily: 'Cinzel_800ExtraBold', fontSize: 18 }}>Test 3</Text>
+
+      <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 18, marginTop: 20 }}>Test 4</Text>
+      <Text style={{ fontFamily: 'PlayfairDisplay_700Bold', fontSize: 18 }}>Test 5</Text>
+      <Text style={{ fontFamily: 'PlayfairDisplay_800ExtraBold', fontSize: 18 }}>Test 6</Text>
+
     </View>
   );
 };
@@ -95,24 +84,27 @@ const styles = StyleSheet.create({
     fontSize: Platform.OS == 'web' ? 38 : 36,
     fontWeight: 'bold',
     color: Assets.colors.brand.charcoal,
+    fontFamily: 'Cinzel_400Regular'
   },
   subHeading: {
     fontSize: Platform.OS == 'web' ? 32 : 28,
     fontWeight: 'bold',
     textTransform: 'uppercase',
     color: Assets.colors.brand.charcoal,
+    fontFamily: 'Cinzel_700Bold'
   },
   subPageHeading: {
     fontSize: Platform.OS == 'web' ? 28 : 26,
     fontWeight: '500',
     color: Assets.colors.brand.charcoal,
+    fontFamily: 'Cinzel_600SemiBold'
   },
   titleContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    width: 390,
+    width: Dimensions.get('window').width >= 768 ? 400 : 380,
   },
   title: {
     fontSize: Platform.OS == 'web' ? 20 : 18,
@@ -121,13 +113,15 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     color: Assets.colors.brand.charcoal,
     fontWeight: '500',
-    width: Platform.OS === 'web' ? '50%' : '40%',
+    width: Platform.OS === 'web' ? '50%' : '30%',
+    marginLeft: Platform.OS === 'web' ? 0 : 5,
+    fontFamily: 'PlayfairDisplay_700Bold'
   },
   titleRight: {
     alignSelf: 'flex-end',
     color: Assets.colors.brand.charcoal,
-    marginLeft: Platform.OS == 'web' ? 5 : 1,
-    width: '100%',
+    marginLeft: Platform.OS === 'web' ? 5 : 1,
+    fontFamily: 'PlayfairDisplay_400Regular',
   },
   callout: {
     color: Assets.colors.logo.brightYellow,

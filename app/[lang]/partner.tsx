@@ -24,8 +24,8 @@ const Partner = () => {
 
   return (
     <ScreenTemplate>
-      <ScrollView style={{width: screenWidth < 768 ? '100%' : '90%'}}
-                  contentContainerStyle={Assets.styles.scrollContainer}
+      <ScrollView style={Assets.styles.scrollContainer}
+                  contentContainerStyle={Assets.styles.scrollContentContainer}
                   alwaysBounceVertical={false}
                   showsVerticalScrollIndicator={false}>
 
@@ -37,7 +37,7 @@ const Partner = () => {
 
           <Text style={Assets.styles.text}>
             {t('partner.partner_info.questions_email')}{' '}
-            <Link style={{ color: 'inherit', textDecorationLine: 'underline' }} href={Assets.links.partnerMail}>
+            <Link style={{ color: Assets.colors.jz2025ThemeColors.crimsonRed, textDecorationLine: 'underline' }} href={Assets.links.partnerMail}>
               {t('javaZone.partners_mail')}
             </Link>
           </Text>
@@ -47,10 +47,10 @@ const Partner = () => {
               <LinearGradient
                 start={{ x: 0.1, y: 0.4 }}
                 style={{ padding: 6, borderRadius: 3, opacity: 20, width: 200, alignItems: 'center' }}
-                colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}
+                colors={[Assets.colors.jz2025ThemeColors.cyberYellow, Assets.colors.jz2025ThemeColors.orangeYellow]}
               >
                 <Link
-                  style={{ color: Assets.colors.logo.mediumYellow }}
+                  style={{ color: Assets.colors.jz2025ThemeColors.darkBrown, fontFamily: 'Cinzel_500Medium' }}
                   href="https://event.checkin.no/101610/javazone-2025-partnership"
                   target="_blank"
                   rel="noopener"
@@ -65,66 +65,66 @@ const Partner = () => {
         <View style={Assets.styles.section}>
           <Text style={Assets.styles.sectionTitle}>{t('partner.partner_info.partner_packages')}</Text>
           <View style={[styles.partnerContentInfo, isMobile && styles.partnerContentInfoMobile]}>
-            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.intro}>{t('partner.partner_info.standard_package')}</Text>
+            <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
+              <Text style={Assets.styles.callout}>{t('partner.partner_info.standard_package')}</Text>
               <View>
-                <Text style={Assets.styles.callout}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
+                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
               </View>
               <View>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.standard_package_detail_1')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.standard_package_detail_2')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.standard_package_detail_3')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.standard_package_detail_4')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.standard_package_detail_5')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.standard_package_detail_6')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.standard_package_detail_7')}</Text>
-              </View>
-            </View>
-
-            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.intro}>{t('partner.partner_info.restaurant_stand')}</Text>
-              <View>
-                <Text style={Assets.styles.callout}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
-              </View>
-              <View>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.restaurant_stand_detail_1')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.restaurant_stand_detail_2')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.restaurant_stand_detail_3')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.restaurant_stand_detail_4')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_1')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_2')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_3')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_4')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_5')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_6')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_7')}</Text>
               </View>
             </View>
 
-            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.intro}>{t('partner.partner_info.concept_stand')}</Text>
+            <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
+              <Text style={Assets.styles.callout}>{t('partner.partner_info.restaurant_stand')}</Text>
               <View>
-                <Text style={Assets.styles.callout}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
+                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
               </View>
               <View>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.concept_stand_detail_1')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.concept_stand_detail_2')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.concept_stand_detail_3')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_1')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_2')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_3')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_4')}</Text>
               </View>
             </View>
 
-            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.intro}>{t('partner.partner_info.partner_tickets')}</Text>
-              <Text style={Assets.styles.callout}>
+            <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
+              <Text style={Assets.styles.callout}>{t('partner.partner_info.concept_stand')}</Text>
+              <View>
+                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
+              </View>
+              <View>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_1')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_2')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_3')}</Text>
+              </View>
+            </View>
+
+            <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
+              <Text style={Assets.styles.callout}>{t('partner.partner_info.partner_tickets')}</Text>
+              <Text style={Assets.styles.intro}>
                 {t('partner.partner_info.price')}: 9 220,- NOK ex VAT incl ticket fee
               </Text>
               <Text style={[Assets.styles.text]}>
                 {t('partner.partner_info.partner_tickets_detail_1')}
               </Text>
               <View>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.round_robin_distribution')}</Text>
-                <Text style={Assets.styles.listText}>• {t('partner.partner_info.first_come_first_served')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.round_robin_distribution')}</Text>
+                <Text style={Assets.styles.listText}>- {t('partner.partner_info.first_come_first_served')}</Text>
               </View>
             </View>
 
-            <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={[Assets.styles.intro, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
+            <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
+              <Text style={[Assets.styles.callout, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
               <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
               <View>
-                <Text style={Assets.styles.callout}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
+                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
               </View>
             </View>
 
@@ -153,15 +153,25 @@ const styles = StyleSheet.create({
   partnerContentInfoMobile: {
     flexDirection: 'column',
   },
+  partnerContentItemUniversal: {
+    backgroundColor: Assets.colors.jz2025ThemeColors.linen,
+    marginVertical: 10,
+    marginRight: Platform.OS === 'web' && Dimensions.get('window').width > 768 ? 'auto' : 0,
+    borderRadius: 15,
+    shadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
+    shadowOpacity: 0.1,
+    shadowOffset: {width: -1, height: 1},
+    shadowRadius: 10,
+  },
   partnerContentItem: {
     alignItems: 'flex-start',
     flexBasis: 'auto',
     padding: 20,
-    width: Dimensions.get('window').width >= 768 ? '50%' : '100%',
+    width: Dimensions.get('window').width >= 768 ? '45%' : '100%',
   },
   partnerContentItemMobile: {
     flexBasis: 'auto',
-    padding: 3,
+    padding: 10,
   },
   content: {
     marginTop: 10,

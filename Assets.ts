@@ -6,7 +6,7 @@ import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
 import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
-import Logo from '@/assets/images/javaZone-logo.svg';
+import Logo from '@/assets/images/logo/javaZone-logo.svg';
 import { Platform, StyleSheet, Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get('window').width;
@@ -62,6 +62,14 @@ export const Assets = {
             light: '#414345',
             brown: '#1e1616',
         },
+        jz2025ThemeColors: {
+            crimsonRed: '#B10A32',
+            darkBrown: '#403532',
+            linen: '#F9F6F5',
+            cyberYellow: '#FFD400',
+            orangeYellow: '#FCAF17',
+            vividOrange: '#F7941D',
+        },
     },
     styles: StyleSheet.create({
         safeArea: {
@@ -75,9 +83,12 @@ export const Assets = {
             alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'column',
-            color: '#ECDFCC', // cream
         },
         scrollContainer: {
+            width: screenWidth < 768 ? '90%' : '80%',
+            marginTop: Platform.OS === 'web' ? 50 : 0
+        },
+        scrollContentContainer: {
             display: "flex",
             width: '100%',
             alignItems: "flex-start",
@@ -86,42 +97,52 @@ export const Assets = {
         },
         pageTitle: {},
         text: {
-            color: '#D6BD98', // beige
+            color: '#2D2D2D', // charcoal
             marginVertical: 5,
-            fontSize: screenWidth >= 768 ? 18 : 14
+            fontSize: screenWidth >= 768 ? 18 : 14,
+            fontFamily: 'PlayfairDisplay_400Regular',
+            textAlign: 'justify'
         },
         sectionTitle: {
-            color: '#ECDFCC', // cream
+            color: '#F7941D', // vivid-orange
             fontSize: screenWidth >= 768 ? 24 : 20,
             fontWeight: 'bold',
-            marginTop: 5
+            marginTop: 5,
+            fontFamily: 'Cinzel_700Bold',
         },
         sectionSubTitle: {
-            color: '#ECDFCC', // cream
+            color: '#F7941D', // vivid-orange
             fontSize: screenWidth >= 768 ? 20 : 16,
             fontWeight: 'semibold',
             fontStyle: 'italic',
-            marginTop: 5
+            marginTop: 5,
+            fontFamily: 'Cinzel_600SemiBold',
         },
         section: {
             marginHorizontal: 20,
             marginVertical: 5,
         },
-        callout: {
-            color: '#EFDFBB', // dutch-white
-            fontStyle: 'italic',
+        intro: {
+            color: '#403532', // dark-brown
+            //fontStyle: 'italic',
             marginBottom: 5,
             fontSize: screenWidth >= 768 ? 18 : 14,
+            fontFamily: 'Cinzel_400Regular',
         },
-        intro: {
-            color: '#ED6F24', // bright-orange
-            fontStyle: 'italic',
+        callout: {
+            color: '#FCAF17', // orange-yellow
+            //fontStyle: 'italic',
             fontSize: screenWidth >= 768 ? 20 : 16,
+            fontFamily: 'PlayfairDisplay_400Regular_Italic',
+            //textShadowColor: 'rgba(64, 53, 50, 0.25)', // dark-brown
+            //textShadowOffset: {width: -1, height: 1},
+            //textShadowRadius: 5,
         },
         listText: {
-            color: '#ECDFCC', // cream
+            color: '#1e1616', // gradient.brown
             marginVertical: 5,
             fontSize: screenWidth >= 768 ? 18 : 14,
+            fontFamily: 'PlayfairDisplay_400Regular',
         },
     }),
 }

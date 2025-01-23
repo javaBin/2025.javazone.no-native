@@ -7,7 +7,7 @@ import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppState, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import {AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import { Stack } from 'expo-router/stack';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
@@ -23,6 +23,7 @@ const RootLayout = () => {
     const [toggleMenu, setToggleMenu] = useState<boolean>(false); // todo: make hamburger icon into X icon when active toggle?
     const { lang } = useGlobalSearchParams();
     const router = useRouter();
+    const screenWidth = Dimensions.get('window').width;
 
     useEffect(() => {
         // Set background color
@@ -108,18 +109,18 @@ const RootLayout = () => {
         headerTransparent: true,
         headerBackground: () => (
             <BlurView
-                tint="dark"
+                tint="light"
                 intensity={90}
                 style={StyleSheet.absoluteFill}
             />
         ),
-        headerTintColor: Assets.colors.brand.cream,
+        headerTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
         headerTitle: () => (
             <Pressable onPress={() => router.replace(`/${lang}`)}>
                 <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
                     <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{marginHorizontal: 10}} />
                     <Text style={{
-                        color: Assets.colors.brand.cream,
+                        color: Assets.colors.jz2025ThemeColors.vividOrange,
                         fontSize: 20,
                         marginTop: 5}}
                     >JavaZone 2025
@@ -137,15 +138,17 @@ const RootLayout = () => {
     const styles = StyleSheet.create({
         tabBar: {
             position: 'absolute',
+            bottom: 0,
         },
         blurContainer: {
             flex: 1,
-            padding: 30,
+            padding: 42,
             textAlign: 'center',
             justifyContent: 'center',
             overflow: 'hidden',
             position: "absolute",
             width: '100%',
+            bottom: 0 // only moves blurcontainer, not the actual tabs
         },
         drawer: {
             //width: '15%',
@@ -161,8 +164,9 @@ const RootLayout = () => {
         },
         navLink: {
             color: Assets.colors.logo.brightOrange,
-            paddingHorizontal: 20,
-            marginVertical: 3
+            paddingHorizontal: screenWidth >= 768 ? 50 : 20,
+            marginVertical: 3,
+            fontSize: screenWidth >= 768 ? 18 : 16,
         }
     });
 
@@ -170,7 +174,7 @@ const RootLayout = () => {
         return (
             <SafeAreaProvider>
                 <I18nContextProvider>
-                    <BlurView tint="dark" intensity={90} style={styles.drawer}>
+                    <BlurView tint="light" intensity={90} style={styles.drawer}>
                         <Link href={{pathname: `${lang}/program`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Program</Link>
                         <Link href={{pathname: `${lang}/partner`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Partner</Link>
                         <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Speaker</Link>
@@ -194,7 +198,7 @@ const RootLayout = () => {
                         headerShown: false,
                         tabBarStyle: styles.tabBar,
                         tabBarBackground: () => (
-                            <BlurView tint="dark" intensity={80} style={styles.blurContainer} />
+                            <BlurView tint="light" intensity={80} style={styles.blurContainer} />
                         )}}>
                         <Tabs.Screen name="[lang]/index" options={{title: "Home"}}/>
                         <Tabs.Screen name="[lang]/program" options={{title: "Program"}}/>

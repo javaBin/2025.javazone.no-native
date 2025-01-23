@@ -8,9 +8,16 @@ import { Flag } from '@/components/index';
 import { Assets } from '@/Assets';
 import { useMediaQuery } from 'react-responsive';
 import { VerticalLinesRightLeft } from '@/components';
-import { useFonts, Cinzel_400Regular, Cinzel_700Bold, Cinzel_800ExtraBold } from '@expo-google-fonts/cinzel';
+import { // todo: refactor font loading into assets?
+  useFonts,
+  Cinzel_400Regular,
+  Cinzel_700Bold,
+  Cinzel_800ExtraBold,
+  Cinzel_600SemiBold, Cinzel_500Medium
+} from '@expo-google-fonts/cinzel';
 import {
   PlayfairDisplay_400Regular,
+  PlayfairDisplay_400Regular_Italic,
   PlayfairDisplay_700Bold,
   PlayfairDisplay_800ExtraBold,
 } from '@expo-google-fonts/playfair-display';
@@ -26,12 +33,15 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
   const { setLocale } = useI18nContext();
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
-  const isMobile = useMediaQuery({ maxWidth: 614 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   let [fontsLoaded] = useFonts({
     Cinzel_400Regular,
+    Cinzel_500Medium,
+    Cinzel_600SemiBold,
     Cinzel_700Bold,
     Cinzel_800ExtraBold,
     PlayfairDisplay_400Regular,
+    PlayfairDisplay_400Regular_Italic,
     PlayfairDisplay_700Bold,
     PlayfairDisplay_800ExtraBold,
   });
@@ -75,12 +85,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     position: 'absolute',
     top: 0,
-    right: 100,
+    right: 40,
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(254, 240, 195, 0.6)',
-    opacity: 0.5,
+    backgroundColor: 'rgba(254,211,195,0.6)',
+    opacity: 0.3,
   },
 });
 

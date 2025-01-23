@@ -55,8 +55,8 @@ const Info = () => {
 
     return (
         <ScreenTemplate>
-            <ScrollView style={{width: screenWidth < 768 ? '100%' : '90%'}}
-                        contentContainerStyle={Assets.styles.scrollContainer}
+            <ScrollView style={Assets.styles.scrollContainer}
+                        contentContainerStyle={Assets.styles.scrollContentContainer}
                         alwaysBounceVertical={false}
                         showsVerticalScrollIndicator={false}>
                 <View style={Assets.styles.section}>
@@ -73,7 +73,7 @@ const Info = () => {
 
                         <View style={styles.imageContainer}>
                             <Image source={Assets.images.JavaBinLogo} style={styles.image}/>
-                            <Text style={Assets.styles.intro}>{t('javaBin.intro')}</Text>
+                            <Text style={Assets.styles.callout}>{t('javaBin.intro')}</Text>
                         </View>
                     </View>
                 </View>
@@ -139,7 +139,7 @@ const Info = () => {
 
                     <View style={{display: togglePrinciples ? "flex" : "none"}}>
                         <Text style={Assets.styles.text}>{t('principles.about')}</Text>
-                        <Text style={Assets.styles.callout}>{t('principles.notify')}</Text>
+                        <Text style={Assets.styles.intro}>{t('principles.notify')}</Text>
                         <Text style={Assets.styles.sectionSubTitle}>{t('principles.before_conference')}</Text>
                         <Text style={Assets.styles.text}>
                             {t('principles.contact_us_start')}
@@ -197,8 +197,9 @@ const styles = StyleSheet.create({
         marginVertical: 5
     },
     toggleTitle: {
-        color: Assets.colors.logo.brightOrange,
+        color: Assets.colors.jz2025ThemeColors.crimsonRed,
         fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
+        fontFamily: 'Cinzel_500Medium'
     },
     listItemContainer: {
         display: 'flex',
@@ -210,15 +211,16 @@ const styles = StyleSheet.create({
         marginRight: 5,
         flexWrap: "wrap",
         fontSize: Dimensions.get('window').width >= 768 ? 18 : 14,
+        fontFamily: 'PlayfairDisplay_400Regular',
     },
     listItemRole: {
-        color: Assets.colors.brand.cream,
+        color: Assets.colors.gradient.brown,
     },
     listItemMail: {
-        color: Assets.colors.logo.brightYellow,
+        color: Assets.colors.jz2025ThemeColors.crimsonRed,
     },
     listItemName: {
-        color: Dimensions.get('window').width >= 768 ? Assets.colors.brand.dutchWhite : Assets.colors.brand.cream,
+        color: Dimensions.get('window').width >= 768 ? Assets.colors.jz2025ThemeColors.darkBrown : Assets.colors.gradient.brown,
         marginBottom: 5,
         marginTop: Dimensions.get('window').width >= 768 ? 10 : 0
     },
