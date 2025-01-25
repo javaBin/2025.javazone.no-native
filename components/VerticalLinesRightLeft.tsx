@@ -1,11 +1,13 @@
 import { View, StyleSheet, Dimensions, Animated, Easing } from 'react-native';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Assets } from '@/Assets';
 
 const { width: screenWidth } = Dimensions.get('window');
 const isMobile = screenWidth < 768; // Define your mobile breakpoint
 
 const VerticalLinesRightLeft = () => {
+  const [containerStyle, setContainerStyle] = useState(styles.container);
+
   const leftLineWidth = useRef(new Animated.Value(isMobile ? 250 : 1000)).current;
   const leftVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
   const leftOrangeYellowWidth = useRef(new Animated.Value(isMobile ? 80 : 300)).current;
@@ -66,7 +68,9 @@ const VerticalLinesRightLeft = () => {
           easing: Easing.linear,
           useNativeDriver: false,
         }),
-      ]).start();
+      ]).start(() => {
+        setContainerStyle(styles.containerAfterAnimation);
+      });
     };
 
     const timeoutId = setTimeout(animateLines, 1000);
@@ -75,7 +79,7 @@ const VerticalLinesRightLeft = () => {
   }, [isMobile]);
 
   return (
-    <View style={styles.container}>
+    <View style={containerStyle}>
       <Animated.View
         style={[isMobile ? mobileStyles.verticalLineLeft : styles.verticalLineLeft, { width: leftLineWidth }]}
       />
@@ -130,6 +134,14 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: 1,
+  },
+  containerAfterAnimation: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: -1,
   },
   verticalLineLeft: {
     position: 'absolute',
