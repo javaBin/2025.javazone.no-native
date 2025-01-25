@@ -6,14 +6,14 @@ const { width: screenWidth } = Dimensions.get('window');
 const isMobile = screenWidth < 768; // Define your mobile breakpoint
 
 const VerticalLinesRightLeft = () => {
-  const leftLineWidth = useRef(new Animated.Value(1000)).current;
-  const leftVividOrangeWidth = useRef(new Animated.Value(100)).current;
-  const leftOrangeYellowWidth = useRef(new Animated.Value(100)).current;
-  const leftCyberYellowWidth = useRef(new Animated.Value(100)).current;
-  const rightLineWidth = useRef(new Animated.Value(1000)).current;
-  const rightVividOrangeWidth = useRef(new Animated.Value(100)).current;
-  const rightOrangeYellowWidth = useRef(new Animated.Value(100)).current;
-  const rightCyberYellowWidth = useRef(new Animated.Value(100)).current;
+  const leftLineWidth = useRef(new Animated.Value(isMobile ? 250 : 1000)).current;
+  const leftVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
+  const leftOrangeYellowWidth = useRef(new Animated.Value(isMobile ? 80 : 300)).current;
+  const leftCyberYellowWidth = useRef(new Animated.Value(isMobile ? 70 : 200)).current;
+  const rightLineWidth = useRef(new Animated.Value(isMobile ? 250 : 1000)).current;
+  const rightVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
+  const rightOrangeYellowWidth = useRef(new Animated.Value(isMobile ? 80 : 300)).current;
+  const rightCyberYellowWidth = useRef(new Animated.Value(isMobile ? 70 : 200)).current;
 
   useEffect(() => {
     const animateLines = () => {
