@@ -5,20 +5,29 @@ import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
 import Logo from '@/assets/images/logo/javaZone-logo.svg';
-import { StyleSheet } from 'react-native';
 import HeroDivider from '@/assets/images/hero/hero-divider.svg';
 import HeroDuke from '@/assets/images/hero/hero-duke.svg';
 import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
 import HeroYear from '@/assets/images/hero/hero-year.svg';
+import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
+import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
+import { Platform, StyleSheet, Dimensions } from 'react-native';
+
+const screenWidth = Dimensions.get('window').width;
 
 export const Assets = {
   links: {
-    javaBinMail: 'mailto:javazone@java.no',
+    javaBinMail: 'mailto:javazone@java.no', // todo: is this correct?
     javaZoneMail: 'mailto:javazone@java.no',
     programMail: 'mailto:program@java.no',
     partnerMail: 'mailto:partner@java.no',
     volunteerMail: 'mailto:student@java.no',
     javaBoardMail: 'mailto:styret@java.no',
+    program24: 'https://2024.javazone.no/program',
+    program23: 'https://2023.javazone.no/#/program',
+    program22: 'https://2022.javazone.no/#/program',
+    program19: 'https://2019.javazone.no/program',
+    program18: 'https://2018.javazone.no/program',
   },
   images: {
     Logo,
@@ -34,6 +43,8 @@ export const Assets = {
   icons: {
     TriangleRight,
     TriangleDown,
+    MenuRoundedInactive,
+    MenuRoundedActive,
   },
   colors: {
     transparent: 'transparent',
@@ -83,6 +94,52 @@ export const Assets = {
       justifyContent: 'center',
       flexDirection: 'column',
       color: '#ECDFCC', // cream
+    },
+    scrollContainer: {
+      display: 'flex',
+      width: '100%',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      marginTop: 30,
+    },
+    pageTitle: {},
+    text: {
+      color: '#D6BD98', // beige
+      marginVertical: 5,
+      fontSize: screenWidth >= 768 ? 18 : 14,
+    },
+    sectionTitle: {
+      color: '#ECDFCC', // cream
+      fontSize: screenWidth >= 768 ? 24 : 20,
+      fontWeight: 'bold',
+      marginTop: 5,
+    },
+    sectionSubTitle: {
+      color: '#ECDFCC', // cream
+      fontSize: screenWidth >= 768 ? 20 : 16,
+      fontWeight: 'semibold',
+      fontStyle: 'italic',
+      marginTop: 5,
+    },
+    section: {
+      marginHorizontal: 20,
+      marginVertical: 5,
+    },
+    callout: {
+      color: '#EFDFBB', // dutch-white
+      fontStyle: 'italic',
+      marginBottom: 5,
+      fontSize: screenWidth >= 768 ? 18 : 14,
+    },
+    intro: {
+      color: '#ED6F24', // bright-orange
+      fontStyle: 'italic',
+      fontSize: screenWidth >= 768 ? 20 : 16,
+    },
+    listText: {
+      color: '#ECDFCC', // cream
+      marginVertical: 5,
+      fontSize: screenWidth >= 768 ? 18 : 14,
     },
   }),
 };

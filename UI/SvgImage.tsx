@@ -12,15 +12,16 @@ type SvgImageProps = {
 const SvgImage: React.FC<SvgImageProps> = ({ SVG, height, width, style }) => {
   return (
     <View
-      style={[
-        style,
-        {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-        },
-      ]}
+      style={
+        style
+          ? style
+          : {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+            }
+      }
     >
       <SVG height={height} width={width !== undefined ? width : '100%'} />
     </View>

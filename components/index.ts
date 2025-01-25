@@ -1,7 +1,9 @@
 import React from 'react';
 import Flag from '@/components/Flag';
-import SvgImage from '@/components/SvgImage';
-import CircleImage from '@/components/CircleImage';
+import Header from '@/components/Header';
+import SvgImage from '@/UI/SvgImage';
+import CircleImage from '@/UI/CircleImage';
+import NotFoundComponent from '@/components/NotFoundComponent';
 
 const HoldTheDate = React.lazy(() => import('@/components/HoldTheDate'));
 const ScreenTemplate = React.lazy(() => import('@/components/ScreenTemplate'));
@@ -12,6 +14,7 @@ const WelcomeSection = React.lazy(() => import('@/components/WelcomeSection'));
 
 export {
   Flag,
+  Header,
   SvgImage,
   HoldTheDate,
   CircleImage,
@@ -20,4 +23,5 @@ export {
   VerticalLinesRightLeft,
   Hero,
   WelcomeSection,
+  NotFoundComponent,
 };

@@ -46,7 +46,7 @@
       "partners": "Partners",
       "partners_name": "Anders Karlsen",
       "volunteers": "Volunteers",
-      "volunteers_name": "Bendik Dyrli, Ellaoui Abdellaoui and Ole Berg",
+      "volunteers_name": "Ole Berg",
       "javaZone_mail": "javazone@java.no",
       "program_mail": "program@java.no",
       "partners_mail": "partner@java.no",
@@ -79,6 +79,7 @@
       "partner_info": {
         "javaZone_2025_partner": "JavaZone 2025 Partner",
         "partner_registration_opens": "Partner registration opens January 15th 2025 at 10:00",
+        "register_cta": "Register here",
         "questions_email": "If you have any questions, please send us an email at",
         "partner_packages": "Partner packages",
         "standard_package": "Standard package",

@@ -5,20 +5,22 @@ import nb from '@/services/i18n/nb-NO.json';
 import { useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Tabs, useGlobalSearchParams, useRouter} from 'expo-router';
+import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppState, Platform, StyleSheet } from 'react-native';
+import { AppState, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Stack } from 'expo-router/stack';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
+import { SvgImage } from '@/components';
 
 const RootLayout = () => {
   const resources = { en, nb };
   const [isRedirected, setIsRedirected] = useState(false);
   const [languageLoaded, setLanguageLoaded] = useState(false); // track if i18n is initialized
   const [language, setLanguage] = useState<string | null>(); // language (locale) to use
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false); // todo: make hamburger icon into X icon when active toggle?
   const { lang } = useGlobalSearchParams();
   const router = useRouter();
 
@@ -42,8 +44,10 @@ const RootLayout = () => {
   }, [language, languageLoaded]);
 
   useEffect(() => {
+    if (Platform.OS !== 'web') return;
+
     // handle redirection to default language if no lang route provided
-    if (!lang && !isRedirected) {
+    if ((!lang && !isRedirected) || (lang !== 'no' && lang !== 'en')) {
       router.replace('/en');
       setLanguage('en-US');
       setIsRedirected(true);
@@ -65,6 +69,11 @@ const RootLayout = () => {
       const storedLocale = await AsyncStorage.getItem('javazone_locale');
       const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
       setLanguage(storedLocale ? storedLocale : phoneLocale);
+
+      if (!isRedirected) {
+        router.replace(`/${lang}`); // test if this affects performance or not
+        setIsRedirected(true);
+      }
     };
 
     getStoredLanguageAndSet();
@@ -91,55 +100,132 @@ const RootLayout = () => {
     };
   }, []);
 
-    if (Platform.OS === 'web') {
-        return (
-            <SafeAreaProvider>
-                <I18nContextProvider>
-                    <Stack initialRouteName="[lang]/index" screenOptions={{headerShown: false}}>
-                        <Stack.Screen name="[lang]/index"/>
-                        <Stack.Screen name="[lang]/program"/>
-                        <Stack.Screen name="[lang]/partner"/>
-                        <Stack.Screen name="[lang]/speaker"/>
-                    </Stack>
-                </I18nContextProvider>
-            </SafeAreaProvider>
-        );
-    } else {
-        return (
-            <SafeAreaProvider>
-                <I18nContextProvider>
-                    <Tabs initialRouteName="[lang]/index" screenOptions={{
-                        headerShown: false,
-                        tabBarStyle: styles.tabBar,
-                        tabBarBackground: () => (
-                            <BlurView tint="dark" intensity={80} style={styles.blurContainer} />
-                        )}}>
-                        <Tabs.Screen name="[lang]/index" options={{title: "Home"}}/>
-                        <Tabs.Screen name="[lang]/program" options={{title: "Program"}}/>
-                        <Tabs.Screen name="[lang]/partner" options={{title: "Partner"}}/>
-                        <Tabs.Screen name="[lang]/speaker" options={{title: "Speaker"}}/>
-                        <Tabs.Screen name="[lang]/info" options={{title: "Info"}}/>
+  const webScreenOptions =
+    Platform.OS === 'web'
+      ? {
+          headerLeft: () => null,
+        }
+      : {};
+  const screensOptions = {
+    headerShown: true,
+    headerTransparent: true,
+    headerBackground: () => <BlurView tint="dark" intensity={90} style={StyleSheet.absoluteFill} />,
+    headerTintColor: Assets.colors.brand.cream,
+    headerTitle: () => (
+      <Pressable onPress={() => router.replace(`/${lang}`)}>
+        <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
+          <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
+          <Text
+            style={{
+              color: Assets.colors.brand.cream,
+              fontSize: 20,
+              marginTop: 5,
+            }}
+          >
+            JavaZone 2025
+          </Text>
+        </View>
+      </Pressable>
+    ),
+    headerRight: () => (
+      <Pressable
+        onPress={() => setToggleMenu(!toggleMenu)}
+        style={{ marginHorizontal: 10, display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-end' }}
+      >
+        <SvgImage
+          SVG={toggleMenu ? Assets.icons.MenuRoundedActive : Assets.icons.MenuRoundedInactive}
+          height={24}
+          width={24}
+          style={{ width: 'auto' }}
+        />
+      </Pressable>
+    ),
+  };
 
-                        <Tabs.Screen name="+not-found" options={{href: null}}/>
-                    </Tabs>
-                </I18nContextProvider>
-            </SafeAreaProvider>
-        );
-    }
-}
-
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
     tabBar: {
-        position: 'absolute',
+      position: 'absolute',
     },
     blurContainer: {
-        flex: 1,
-        padding: 30,
-        textAlign: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        position: "absolute",
-        width: '100%',
+      flex: 1,
+      padding: 30,
+      textAlign: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+      position: 'absolute',
+      width: '100%',
     },
-});
+    drawer: {
+      //width: '15%',
+      position: 'absolute',
+      zIndex: 1,
+      right: 0,
+      top: 64, // default header height 64 - do not change!
+      display: toggleMenu ? 'flex' : 'none',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      overflow: 'hidden',
+      paddingVertical: 5,
+    },
+    navLink: {
+      color: Assets.colors.logo.brightOrange,
+      paddingHorizontal: 20,
+      marginVertical: 3,
+    },
+  });
+
+  if (Platform.OS === 'web') {
+    return (
+      <SafeAreaProvider>
+        <I18nContextProvider>
+          <BlurView tint="dark" intensity={90} style={styles.drawer}>
+            <Link href={{ pathname: `${lang}/program` }} style={styles.navLink} onPress={() => setToggleMenu(false)}>
+              Program
+            </Link>
+            <Link href={{ pathname: `${lang}/partner` }} style={styles.navLink} onPress={() => setToggleMenu(false)}>
+              Partner
+            </Link>
+            <Link href={{ pathname: `${lang}/speaker` }} style={styles.navLink} onPress={() => setToggleMenu(false)}>
+              Speaker
+            </Link>
+            <Link href={{ pathname: `${lang}/info` }} style={styles.navLink} onPress={() => setToggleMenu(false)}>
+              Info
+            </Link>
+          </BlurView>
+          <Stack initialRouteName="[lang]/index" screenOptions={{ ...screensOptions, ...webScreenOptions }}>
+            <Stack.Screen name="[lang]/index" options={{ title: '' }} />
+            <Stack.Screen name="[lang]/program" options={{ title: 'Program' }} />
+            <Stack.Screen name="[lang]/partner" options={{ title: 'Partner' }} />
+            <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
+            <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
+          </Stack>
+        </I18nContextProvider>
+      </SafeAreaProvider>
+    );
+  } else {
+    return (
+      <SafeAreaProvider>
+        <I18nContextProvider>
+          <Tabs
+            initialRouteName="[lang]/index"
+            screenOptions={{
+              headerShown: false,
+              tabBarStyle: styles.tabBar,
+              tabBarBackground: () => <BlurView tint="dark" intensity={80} style={styles.blurContainer} />,
+            }}
+          >
+            <Tabs.Screen name="[lang]/index" options={{ title: 'Home' }} />
+            <Tabs.Screen name="[lang]/program" options={{ title: 'Program' }} />
+            <Tabs.Screen name="[lang]/partner" options={{ title: 'Partner' }} />
+            <Tabs.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
+            <Tabs.Screen name="[lang]/info" options={{ title: 'Info' }} />
+
+            <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
+          </Tabs>
+        </I18nContextProvider>
+      </SafeAreaProvider>
+    );
+  }
+};
+
 export default RootLayout;

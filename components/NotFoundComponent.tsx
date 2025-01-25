@@ -1,12 +1,10 @@
-// @ts-ignore
-import { ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { Platform, StyleSheet, Text, View, Dimensions } from 'react-native';
 // @ts-ignore
 import { Assets } from '@/Assets';
 import { Link } from 'expo-router';
 
-const NotFound = () => {
+const NotFoundComponent = () => {
   const { t } = useTranslation();
   const screenWidth = Dimensions.get('window').width;
 
@@ -53,28 +51,26 @@ const NotFound = () => {
   });
 
   return (
-    <ScreenTemplate>
-      <View style={styles.content}>
-        <Text style={styles.errorCode}>{t('404.error_code')}</Text>
-        <Text style={styles.errorTitle}>{t('404.error_title')}</Text>
+    <View style={styles.content}>
+      <Text style={styles.errorCode}>{t('404.error_code')}</Text>
+      <Text style={styles.errorTitle}>{t('404.error_title')}</Text>
 
-        <Text style={[styles.errorMessageMedium, styles.text]}>
-          {t('404.lost_page_start')}
-          <Text style={styles.highlight}>{t('404.404')}</Text>
-          {t('404.lost_page_end')}
-        </Text>
+      <Text style={[styles.errorMessageMedium, styles.text]}>
+        {t('404.lost_page_start')}
+        <Text style={styles.highlight}>{t('404.404')}</Text>
+        {t('404.lost_page_end')}
+      </Text>
 
-        <Text style={[styles.errorMessageMedium, styles.text]}>{t('404.tech_fails')}</Text>
+      <Text style={[styles.errorMessageMedium, styles.text]}>{t('404.tech_fails')}</Text>
 
-        <Text style={[styles.errorMessageLight, styles.text]}>
-          {t('404.tell_us_start')}
-          <Link href={Assets.links.javaBinMail} style={styles.link}>
-            {t('404.tell_us_end')}
-          </Link>
-        </Text>
-      </View>
-    </ScreenTemplate>
+      <Text style={[styles.errorMessageLight, styles.text]}>
+        {t('404.tell_us_start')}
+        <Link href={Assets.links.javaBinMail} style={styles.link}>
+          {t('404.tell_us_end')}
+        </Link>
+      </Text>
+    </View>
   );
 };
 
-export default NotFound;
+export default NotFoundComponent;
