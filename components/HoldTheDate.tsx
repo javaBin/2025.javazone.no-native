@@ -1,18 +1,15 @@
 import { SvgImage } from '@/UI/index';
 import { Assets } from '@/Assets';
-import {Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Platform, StyleSheet, Text, View} from 'react-native';
 import { Link, useGlobalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-import {LinkText} from "@/UI";
 
 type HoldTheDateProps = {
   subPageHeader?: string;
 };
 
 const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
-  const [pressedIndex, setPressedIndex] = useState<number | null>(null); // Track which button is pressed
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
 
