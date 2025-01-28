@@ -70,12 +70,17 @@ const VerticalLinesRightLeft = () => {
         }),
       ]).start(() => {
         setContainerStyle(styles.containerAfterAnimation);
+        localStorage.setItem('animationPlayed', 'true');
       });
     };
 
-    const timeoutId = setTimeout(animateLines, 1000);
-
-    return () => clearTimeout(timeoutId);
+    const animationPlayed = localStorage.getItem('animationPlayed');
+    if (!animationPlayed) {
+      const timeoutId = setTimeout(animateLines, 1000);
+      return () => clearTimeout(timeoutId);
+    } else {
+      setContainerStyle(styles.containerAfterAnimation);
+    }
   }, [isMobile]);
 
   return (
