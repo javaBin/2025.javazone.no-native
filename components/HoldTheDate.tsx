@@ -5,6 +5,7 @@ import { Link, useGlobalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+import {LinkText} from "@/UI";
 
 type HoldTheDateProps = {
   subPageHeader?: string;
@@ -43,33 +44,16 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 
       <View style={styles.listContainer}>
         {years.map((year, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[styles.listItem, pressedIndex === index && styles.pressed]} // Highlight only the pressed button
-            onPressIn={() => setPressedIndex(index)} // Set the pressed index
-            onPressOut={() => setPressedIndex(null)} // Reset when the press is released
-          >
-            <LinearGradient
-              start={{ x: 0.1, y: 0.4 }}
-              style={{ padding: 3, borderRadius: 3, opacity: 20 }}
-              colors={[Assets.colors.jz2025ThemeColors.cyberYellow, Assets.colors.jz2025ThemeColors.orangeYellow]}
-            >
-              <Link style={styles.text} href={year.link}>
-                {year.label}
-              </Link>
-            </LinearGradient>
-          </TouchableOpacity>
+            <Link key={index} href={year.link} rel="noopener norefferer" style={{
+              color: Assets.colors.jz2025ThemeColors.vividOrange,
+              fontFamily: 'Cinzel_400Regular',
+              fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
+              textDecorationLine: 'underline',
+              marginHorizontal: 5}}>
+              {year.label}
+            </Link>
         ))}
       </View>
-
-      <Text style={{ fontFamily: 'Cinzel_400Regular', fontSize: 18, marginTop: 20 }}>Test 1</Text>
-      <Text style={{ fontFamily: 'Cinzel_700Bold', fontSize: 18 }}>Test 2</Text>
-      <Text style={{ fontFamily: 'Cinzel_800ExtraBold', fontSize: 18 }}>Test 3</Text>
-
-      <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 18, marginTop: 20 }}>Test 4</Text>
-      <Text style={{ fontFamily: 'PlayfairDisplay_700Bold', fontSize: 18 }}>Test 5</Text>
-      <Text style={{ fontFamily: 'PlayfairDisplay_800ExtraBold', fontSize: 18 }}>Test 6</Text>
-
     </View>
   );
 };
@@ -106,10 +90,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: 'space-between',
     //width: Dimensions.get('window').width > 768 ? '50%' : '80%',
-    width: Dimensions.get('window').width >= 768 ? 400 : 380,
+    width: Dimensions.get('window').width > 768 ? 400 : 380,
   },
   title: {
-    fontSize: Platform.OS == 'web' ? 20 : 18,
+    fontSize: Dimensions.get('window').width > 768 ? 20 : 18,
     textAlign: "left",
   },
   titleLeft: {
@@ -117,16 +101,16 @@ const styles = StyleSheet.create({
     color: Assets.colors.brand.charcoal,
     fontWeight: '500',
     //width: Platform.OS === 'web' ? '50%' : '30%',
-    marginLeft: Platform.OS === 'web' ? 0 : 5,
+    marginLeft: Dimensions.get('window').width > 768 ? 0 : 5,
     fontFamily: 'PlayfairDisplay_700Bold',
     width: '30%',
   },
   titleRight: {
     alignSelf: 'flex-end',
     color: Assets.colors.brand.charcoal,
-    marginLeft: Platform.OS === 'web' ? 5 : 1,
+    marginLeft: Dimensions.get('window').width > 768 ? 10 : 5,
     fontFamily: 'PlayfairDisplay_400Regular',
-    width: '60%',
+    width: '70%',
   },
   callout: {
     color: Assets.colors.logo.brightYellow,

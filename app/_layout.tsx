@@ -216,18 +216,33 @@ const RootLayout = () => {
                         <Tabs.Screen name="[lang]/index" options={{
                             title: "Home",
                             tabBarIcon: () => (
-                                <SvgImage SVG={Assets.icons.GreekTemple} height={24} title={"game-icons:greek-temple"} />
+                                <SvgImage SVG={Assets.icons.Home} height={24} title={"game-icons:greek-temple"} />
                             ),
                         }}/>
                         <Tabs.Screen name="[lang]/program" options={{
                             title: "Program",
                             tabBarIcon: () => (
-                                <SvgImage SVG={Assets.icons.GreekHelmet} height={24} />
+                                <SvgImage SVG={Assets.icons.Program} height={24} />
                             ),
                         }}/>
-                        <Tabs.Screen name="[lang]/partner" options={{title: "Partner"}}/>
-                        <Tabs.Screen name="[lang]/speaker" options={{title: "Speaker"}}/>
-                        <Tabs.Screen name="[lang]/info" options={{title: "Info"}}/>
+                        <Tabs.Screen name="[lang]/partner" options={{
+                            title: "Partner",
+                            tabBarIcon: () => (
+                                <SvgImage SVG={Assets.icons.Partner} height={24} />
+                            ),
+                        }}/>
+                        <Tabs.Screen name="[lang]/speaker" options={{
+                            title: "Speaker",
+                            tabBarIcon: () => (
+                                <SvgImage SVG={Assets.icons.Speaker} height={24} />
+                            ),
+                        }}/>
+                        <Tabs.Screen name="[lang]/info" options={{
+                            title: "Info",
+                            tabBarIcon: () => (
+                                <SvgImage SVG={Assets.icons.Info} height={24} />
+                            ),
+                        }}/>
 
                         <Tabs.Screen name="[lang]/+not-found" options={{href: null}}/>
                     </Tabs>
