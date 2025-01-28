@@ -15,7 +15,8 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
 
-  const years = [ // todo: use t, not array
+  const years = [
+    // todo: use t, not array
     { label: '2024', link: Assets.links.program24 },
     { label: '2023', link: Assets.links.program23 },
     { label: '2022', link: Assets.links.program22 },
