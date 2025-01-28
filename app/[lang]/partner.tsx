@@ -26,7 +26,7 @@ const Partner = () => {
   return (
     <ScreenTemplate>
       <ScrollView
-        style={{ width: screenWidth < 768 ? '100%' : '90%', padding: 30 }}
+        style={{ width: screenWidth < 768 ? '100%' : '90%' }}
         contentContainerStyle={Assets.styles.scrollContainer}
         alwaysBounceVertical={false}
         showsVerticalScrollIndicator={false}

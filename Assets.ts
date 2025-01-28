@@ -89,6 +89,7 @@ export const Assets = {
       zIndex: 1,
     },
     container: {
+      padding: 40,
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
