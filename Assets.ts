@@ -1,5 +1,5 @@
 // @ts-ignore
-import JavaBinLogo from '@/assets/images/logo/javaBin-logo.png';
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 import TriangleRight from '@/assets/icons/triangle-right.svg';
@@ -109,14 +109,14 @@ export const Assets = {
             textAlign: 'justify'
         },
         sectionTitle: {
-            color: '#F7941D', // vivid-orange
+            color: '#403532', // dark-brown
             fontSize: screenWidth >= 768 ? 24 : 20,
             fontWeight: 'bold',
             marginTop: 5,
             fontFamily: 'Cinzel_700Bold',
         },
         sectionSubTitle: {
-            color: '#F7941D', // vivid-orange
+            color: '#403532', // dark-brown
             fontSize: screenWidth >= 768 ? 20 : 16,
             fontWeight: 'semibold',
             fontStyle: 'italic',
@@ -134,7 +134,7 @@ export const Assets = {
             fontFamily: 'Cinzel_400Regular',
         },
         callout: {
-            color: '#FCAF17', // orange-yellow
+            color: '#B10A32', // crimson-red
             fontSize: screenWidth >= 768 ? 20 : 16,
             fontFamily: 'PlayfairDisplay_400Regular_Italic',
         },

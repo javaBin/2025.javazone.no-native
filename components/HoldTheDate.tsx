@@ -104,24 +104,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
+    justifyContent: 'space-between',
+    //width: Dimensions.get('window').width > 768 ? '50%' : '80%',
     width: Dimensions.get('window').width >= 768 ? 400 : 380,
   },
   title: {
     fontSize: Platform.OS == 'web' ? 20 : 18,
+    textAlign: "left",
   },
   titleLeft: {
     alignSelf: 'flex-start',
     color: Assets.colors.brand.charcoal,
     fontWeight: '500',
-    width: Platform.OS === 'web' ? '50%' : '30%',
+    //width: Platform.OS === 'web' ? '50%' : '30%',
     marginLeft: Platform.OS === 'web' ? 0 : 5,
-    fontFamily: 'PlayfairDisplay_700Bold'
+    fontFamily: 'PlayfairDisplay_700Bold',
+    width: '30%',
   },
   titleRight: {
     alignSelf: 'flex-end',
     color: Assets.colors.brand.charcoal,
     marginLeft: Platform.OS === 'web' ? 5 : 1,
     fontFamily: 'PlayfairDisplay_400Regular',
+    width: '60%',
   },
   callout: {
     color: Assets.colors.logo.brightYellow,

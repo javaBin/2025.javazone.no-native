@@ -14,7 +14,6 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from "@/UI";
-import absoluteFill = StyleSheet.absoluteFill;
 
 const RootLayout = () => {
     const resources = { en, nb };

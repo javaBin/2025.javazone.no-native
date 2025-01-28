@@ -6,6 +6,7 @@ import { Assets } from '@/Assets';
 import { Link } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
+import {LinkText} from "@/UI";
 
 const Partner = () => {
   const { t } = useTranslation();
@@ -41,9 +42,7 @@ const Partner = () => {
 
           <Text style={Assets.styles.text}>
             {t('partner.partner_info.questions_email')}{' '}
-            <Link style={{ color: Assets.colors.jz2025ThemeColors.crimsonRed, textDecorationLine: 'underline' }} href={Assets.links.partnerMail}>
-              {t('javaZone.partners_mail')}
-            </Link>
+            <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail}/>
           </Text>
 
           <Text style={Assets.styles.text}>
@@ -70,7 +69,7 @@ const Partner = () => {
           <Text style={Assets.styles.sectionTitle}>{t('partner.partner_info.partner_packages')}</Text>
           <View style={[styles.partnerContentInfo, isMobile && styles.partnerContentInfoMobile]}>
             <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.callout}>{t('partner.partner_info.standard_package')}</Text>
+              <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.standard_package')}</Text>
               <View>
                 <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
               </View>
@@ -86,7 +85,7 @@ const Partner = () => {
             </View>
 
             <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.callout}>{t('partner.partner_info.restaurant_stand')}</Text>
+              <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.restaurant_stand')}</Text>
               <View>
                 <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
               </View>
@@ -99,7 +98,7 @@ const Partner = () => {
             </View>
 
             <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.callout}>{t('partner.partner_info.concept_stand')}</Text>
+              <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.concept_stand')}</Text>
               <View>
                 <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
               </View>
@@ -111,7 +110,7 @@ const Partner = () => {
             </View>
 
             <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={Assets.styles.callout}>{t('partner.partner_info.partner_tickets')}</Text>
+              <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_tickets')}</Text>
               <Text style={Assets.styles.intro}>
                 {t('partner.partner_info.price')}: 9 220,- NOK ex VAT incl ticket fee
               </Text>
@@ -125,7 +124,7 @@ const Partner = () => {
             </View>
 
             <View style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={[Assets.styles.callout, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
+              <Text style={[Assets.styles.sectionSubTitle, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
               <View>
                 <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
               </View>

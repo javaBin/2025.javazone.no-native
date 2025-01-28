@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         marginVertical: 5,
     },
     toggleTitle: {
-        color: Assets.colors.jz2025ThemeColors.crimsonRed,
+        color: Assets.colors.jz2025ThemeColors.vividOrange,
         fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
         fontFamily: 'Cinzel_500Medium',
     },

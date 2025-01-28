@@ -1,11 +1,10 @@
-import { Animated, Image, Platform, Pressable, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Animated, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
 import { ScreenTemplate } from '@/components';
-import {CircleImage, SvgImage, ToggleText} from '@/UI';
+import {CircleImage, LinkText, SvgImage, ToggleText} from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import ScrollView = Animated.ScrollView;
-import { Link } from 'expo-router';
 
 const Info = () => {
     // @ts-ignore
@@ -58,7 +57,7 @@ const Info = () => {
                         <Text style={Assets.styles.text}>{t('javaBin.about_becoming_active')}</Text>
 
                         <View style={styles.imageContainer}>
-                            <Image source={Assets.images.JavaBinLogo} style={styles.image}/>
+                            <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image}/>
                             <Text style={Assets.styles.callout}>{t('javaBin.intro')}</Text>
                         </View>
                     </View>
@@ -80,7 +79,7 @@ const Info = () => {
                         <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
-                                <Link href={Assets.links.javaZoneMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.javaZone_mail')}</Link>
+                                <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
                             </View>
                             <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
                         </View>
@@ -88,7 +87,7 @@ const Info = () => {
                         <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
-                                <Link href={Assets.links.programMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.program_mail')}</Link>
+                                <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} style={styles.listItem}/>
                             </View>
                             <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
                         </View>
@@ -96,7 +95,7 @@ const Info = () => {
                         <View style={{display: 'flex', flexDirection:screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
-                                <Link href={Assets.links.partnerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.partners_mail')}</Link>
+                                <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} style={styles.listItem}/>
                             </View>
                             <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
                         </View>
@@ -104,7 +103,7 @@ const Info = () => {
                         <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
                             <View style={styles.listItemContainer}>
                                 <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
-                                <Link href={Assets.links.volunteerMail} style={[styles.listItemMail, styles.listItem]}>{t('javaZone.volunteers_mail')}</Link>
+                                <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} style={styles.listItem}/>
                             </View>
                             <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
                         </View>
@@ -112,7 +111,7 @@ const Info = () => {
                         <Text style={Assets.styles.text}>{t('javaZone.thank_you')}</Text>
                         <Text style={Assets.styles.text}>
                             {t('javaZone.reach_core_team')}
-                            <Link href={Assets.links.javaZoneMail} style={styles.listItemMail}>{t('javaZone.javaZone_mail')}</Link>
+                            <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
                         </Text>
                     </View>
                 </View>
@@ -129,9 +128,9 @@ const Info = () => {
                         <Text style={Assets.styles.sectionSubTitle}>{t('principles.before_conference')}</Text>
                         <Text style={Assets.styles.text}>
                             {t('principles.contact_us_start')}
-                            <Link href={Assets.links.javaZoneMail} style={styles.listItemMail}>{t('javaZone.javaZone_mail')}</Link>
+                            <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
                             {t('principles.contact_us_middle')}
-                            <Link href={Assets.links.javaBoardMail} style={styles.listItemMail}>{t('principles.java_board_mail')}</Link>
+                            <LinkText title={t('principles.java_board_mail')} href={Assets.links.javaBoardMail} style={styles.listItem}/>
                             {t('principles.contact_us_end')}
                         </Text>
                         <Text style={Assets.styles.sectionSubTitle}>{t('principles.during_conference')}</Text>
@@ -169,23 +168,13 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
+        marginVertical: 10,
     },
     image: {
-        width: '50%',
+        width: Dimensions.get('window').width >= 768 ? '50%' : '80%',
         objectFit: 'scale-down',
         resizeMode: 'contain',
-    },
-    toggleButton: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: "flex-start",
-        marginVertical: 5,
-    },
-    toggleTitle: {
-        color: Assets.colors.jz2025ThemeColors.crimsonRed,
-        fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
-        fontFamily: 'Cinzel_500Medium',
+        marginBottom: Dimensions.get('window').width >= 768 ? 20 : 0,
     },
     listItemContainer: {
         display: 'flex',
@@ -194,7 +183,6 @@ const styles = StyleSheet.create({
     },
     listItem: {
         display: "flex",
-        marginRight: 5,
         flexWrap: "wrap",
         fontSize: Dimensions.get('window').width >= 768 ? 18 : 14,
         fontFamily: 'PlayfairDisplay_400Regular',
@@ -203,7 +191,7 @@ const styles = StyleSheet.create({
         color: Assets.colors.gradient.brown,
     },
     listItemMail: {
-        color: Assets.colors.jz2025ThemeColors.crimsonRed,
+        color: Assets.colors.jz2025ThemeColors.vividOrange,
     },
     listItemName: {
         color: Dimensions.get('window').width >= 768 ? Assets.colors.jz2025ThemeColors.darkBrown : Assets.colors.gradient.brown,
