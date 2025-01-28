@@ -1,6 +1,6 @@
 import { ScreenTemplate, VideoPlayer } from '@/components';
 import { useTranslation } from 'react-i18next';
-import {Platform, StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
+import { Platform, StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 import { Link } from 'expo-router';
@@ -13,27 +13,27 @@ const Partner = () => {
   const screenWidth = Dimensions.get('window').width;
 
   const temporaryVideoFix = () => {
-    return Platform.OS === 'web' ?
-     (
-        <View style={[styles.content, {marginBottom: 50}]}>
-          <Text style={[Assets.styles.sectionTitle, {marginHorizontal: 15}]}>{t('partner.watch_partner_meeting')}</Text>
-          <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
-        </View>
-    ) : (<View style={{marginBottom: 50}}></View>)
-  }
+    return Platform.OS === 'web' ? (
+      <View style={[styles.content, { marginBottom: 50 }]}>
+        <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15 }]}>{t('partner.watch_partner_meeting')}</Text>
+        <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+      </View>
+    ) : (
+      <View style={{ marginBottom: 50 }}></View>
+    );
+  };
 
   return (
     <ScreenTemplate>
-      <ScrollView style={{width: screenWidth < 768 ? '100%' : '90%'}}
-                  contentContainerStyle={Assets.styles.scrollContainer}
-                  alwaysBounceVertical={false}
-                  showsVerticalScrollIndicator={false}>
-
+      <ScrollView
+        style={{ width: screenWidth < 768 ? '100%' : '90%' }}
+        contentContainerStyle={Assets.styles.scrollContainer}
+        alwaysBounceVertical={false}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={Assets.styles.section}>
           <Text style={Assets.styles.sectionTitle}>{t('partner.partner_info.javaZone_2025_partner')}</Text>
-          <Text style={Assets.styles.sectionSubTitle}>
-            {t('partner.partner_info.partner_registration_opens')}
-          </Text>
+          <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_registration_opens')}</Text>
 
           <Text style={Assets.styles.text}>
             {t('partner.partner_info.questions_email')}{' '}
@@ -111,9 +111,7 @@ const Partner = () => {
               <Text style={Assets.styles.callout}>
                 {t('partner.partner_info.price')}: 9 220,- NOK ex VAT incl ticket fee
               </Text>
-              <Text style={[Assets.styles.text]}>
-                {t('partner.partner_info.partner_tickets_detail_1')}
-              </Text>
+              <Text style={[Assets.styles.text]}>{t('partner.partner_info.partner_tickets_detail_1')}</Text>
               <View>
                 <Text style={Assets.styles.listText}>• {t('partner.partner_info.round_robin_distribution')}</Text>
                 <Text style={Assets.styles.listText}>• {t('partner.partner_info.first_come_first_served')}</Text>
@@ -121,13 +119,14 @@ const Partner = () => {
             </View>
 
             <View style={[styles.partnerContentItem, isMobile && styles.partnerContentItemMobile]}>
-              <Text style={[Assets.styles.intro, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
+              <Text style={[Assets.styles.intro, { maxWidth: '100%' }]}>
+                {t('partner.partner_info.extended_package')}
+              </Text>
               <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
               <View>
                 <Text style={Assets.styles.callout}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
               </View>
             </View>
-
           </View>
         </View>
 
