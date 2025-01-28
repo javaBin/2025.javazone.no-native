@@ -26,7 +26,7 @@ const Partner = () => {
   return (
     <ScreenTemplate>
       <ScrollView
-        style={{ width: screenWidth < 768 ? '100%' : '90%' }}
+        style={{ width: screenWidth < 768 ? '100%' : '90%', padding: 30 }}
         contentContainerStyle={Assets.styles.scrollContainer}
         alwaysBounceVertical={false}
         showsVerticalScrollIndicator={false}
@@ -170,7 +170,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: Platform.OS == 'web' ? 20 : 18,
     fontWeight: 'bold',
-    color: Assets.colors.brand.cream,
   },
   registerButton: {
     marginHorizontal: 5,

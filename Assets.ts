@@ -93,7 +93,6 @@ export const Assets = {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
-      color: '#ECDFCC', // cream
     },
     scrollContainer: {
       display: 'flex',
@@ -104,18 +103,15 @@ export const Assets = {
     },
     pageTitle: {},
     text: {
-      color: '#D6BD98', // beige
       marginVertical: 5,
       fontSize: screenWidth >= 768 ? 18 : 14,
     },
     sectionTitle: {
-      color: '#ECDFCC', // cream
       fontSize: screenWidth >= 768 ? 24 : 20,
       fontWeight: 'bold',
       marginTop: 5,
     },
     sectionSubTitle: {
-      color: '#ECDFCC', // cream
       fontSize: screenWidth >= 768 ? 20 : 16,
       fontWeight: 'semibold',
       fontStyle: 'italic',
@@ -126,7 +122,6 @@ export const Assets = {
       marginVertical: 5,
     },
     callout: {
-      color: '#EFDFBB', // dutch-white
       fontStyle: 'italic',
       marginBottom: 5,
       fontSize: screenWidth >= 768 ? 18 : 14,
@@ -137,7 +132,6 @@ export const Assets = {
       fontSize: screenWidth >= 768 ? 20 : 16,
     },
     listText: {
-      color: '#ECDFCC', // cream
       marginVertical: 5,
       fontSize: screenWidth >= 768 ? 18 : 14,
     },
