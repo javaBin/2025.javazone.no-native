@@ -3,6 +3,10 @@ import { Platform, StyleSheet, Dimensions } from "react-native";
 import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
+// @ts-ignore
+import TextureMarble from '@/assets/images/background/texture-marble.png';
+
+// Icons
 import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
 import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
@@ -31,12 +35,14 @@ export const Assets = {
         program22: 'https://2022.javazone.no/#/program',
         program19: 'https://2019.javazone.no/program',
         program18: 'https://2018.javazone.no/program',
+        partnerRegistration: 'https://event.checkin.no/101610/javazone-2025-partnership',
     },
     images: {
         Logo,
         JavaBinLogo,
         Doughnut,
     },
+    background: TextureMarble,
     icons: {
         TriangleRight,
         TriangleDown,
@@ -78,9 +84,12 @@ export const Assets = {
             crimsonRed: '#B10A32',
             darkRed: '#780722',
             darkBrown: '#403532',
+            lightBrown: '#6c605c',
             linen: '#F9F6F5',
             cyberYellow: '#FFD400',
+            cyberYellowOpacity: 'rgba(255, 212, 0, 0.7)',
             orangeYellow: '#FCAF17',
+            orangeYellowOpacity: 'rgba(252, 175, 23, 0.7)',
             vividOrange: '#F7941D',
         },
     },
@@ -98,7 +107,7 @@ export const Assets = {
             flexDirection: 'column',
         },
         scrollContainer: {
-            width: screenWidth < 768 ? '90%' : '80%',
+            width: screenWidth <= 768 ? '90%' : '80%',
             marginTop: Platform.OS === 'web' ? 50 : 0
         },
         scrollContentContainer: {
@@ -110,22 +119,22 @@ export const Assets = {
         },
         pageTitle: {},
         text: {
-            color: '#2D2D2D', // charcoal
+            color: '#403532', // dark-brown
             marginVertical: 5,
-            fontSize: screenWidth >= 768 ? 18 : 14,
+            fontSize: screenWidth > 768 ? 18 : 16,
             fontFamily: 'PlayfairDisplay_400Regular',
-            textAlign: 'justify'
+            textAlign: 'justify',
         },
         sectionTitle: {
             color: '#403532', // dark-brown
-            fontSize: screenWidth >= 768 ? 24 : 20,
+            fontSize: screenWidth > 768 ? 24 : 20,
             fontWeight: 'bold',
             marginTop: 5,
             fontFamily: 'Cinzel_700Bold',
         },
         sectionSubTitle: {
             color: '#403532', // dark-brown
-            fontSize: screenWidth >= 768 ? 20 : 16,
+            fontSize: screenWidth > 768 ? 20 : 18,
             fontWeight: 'semibold',
             fontStyle: 'italic',
             marginTop: 5,
@@ -137,20 +146,24 @@ export const Assets = {
         },
         intro: {
             color: '#403532', // dark-brown
-            marginBottom: 5,
-            fontSize: screenWidth >= 768 ? 18 : 14,
+            marginVertical: 5,
+            fontSize: screenWidth > 768 ? 18 : 16,
             fontFamily: 'Cinzel_400Regular',
         },
         callout: {
             color: '#B10A32', // crimson-red
-            fontSize: screenWidth >= 768 ? 20 : 16,
+            fontSize: screenWidth > 768 ? 20 : 18,
             fontFamily: 'PlayfairDisplay_400Regular_Italic',
         },
         listText: {
             color: '#1e1616', // gradient.brown
             marginVertical: 5,
-            fontSize: screenWidth >= 768 ? 18 : 14,
+            fontSize: screenWidth > 768 ? 18 : 16,
             fontFamily: 'PlayfairDisplay_400Regular',
         },
+        disclaimerText: {
+            color: '#6c605c', // light-brown
+            fontSize: screenWidth > 768 ? 16 : 14,
+        }
     }),
 }

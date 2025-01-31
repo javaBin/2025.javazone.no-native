@@ -1,12 +1,17 @@
 import { ScreenTemplate, VideoPlayer } from '@/components';
 import { useTranslation } from 'react-i18next';
-import {Platform, StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
-import { Link } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import {LinkText} from "@/UI";
+import { LinkButton, LinkText } from "@/UI";
 
 const Partner = () => {
   const { t } = useTranslation();
@@ -19,7 +24,7 @@ const Partner = () => {
           <Text style={[Assets.styles.sectionTitle, {
             marginHorizontal: 15,
             textAlign: 'center',
-            marginBottom: Platform.OS !== 'web' ? 10 : 0}]}>
+            marginBottom: isMobile ? 10 : 0}]}>
             {t('partner.watch_partner_meeting')}
           </Text>
           <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
@@ -45,24 +50,7 @@ const Partner = () => {
             <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail}/>
           </Text>
 
-          <Text style={Assets.styles.text}>
-            <TouchableOpacity style={styles.registerButton}>
-              <LinearGradient
-                start={{ x: 0.1, y: 0.4 }}
-                style={{ padding: 6, borderRadius: 3, opacity: 20, width: 200, alignItems: 'center' }}
-                colors={[Assets.colors.jz2025ThemeColors.cyberYellow, Assets.colors.jz2025ThemeColors.orangeYellow]}
-              >
-                <Link
-                  style={{ color: Assets.colors.jz2025ThemeColors.darkBrown, fontFamily: 'Cinzel_500Medium' }}
-                  href="https://event.checkin.no/101610/javazone-2025-partnership"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {t('partner.partner_info.register_cta')}
-                </Link>
-              </LinearGradient>
-            </TouchableOpacity>
-          </Text>
+          <LinkButton href={Assets.links.partnerRegistration} title={t('partner.partner_info.register_cta')} targetBlank={true}/>
         </View>
 
         <View style={Assets.styles.section}>
@@ -185,17 +173,6 @@ const styles = StyleSheet.create({
     fontSize: Platform.OS == 'web' ? 20 : 18,
     fontWeight: 'bold',
     color: Assets.colors.brand.cream,
-  },
-  registerButton: {
-    marginHorizontal: 5,
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 2, // Shadow effect for Android
-    shadowColor: '#000', // iOS shadow
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    shadowOffset: { width: 0, height: 2 },
   },
 });
 

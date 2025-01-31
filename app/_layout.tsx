@@ -13,8 +13,7 @@ import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
-import {LinkText, SvgImage} from "@/UI";
-import {VerticalLinesRightLeft} from "@/components";
+import { SvgImage } from "@/UI";
 
 const RootLayout = () => {
     const resources = { en, nb };
@@ -119,7 +118,7 @@ const RootLayout = () => {
             overflow: 'hidden',
             position: "absolute",
             width: '100%',
-            bottom: 0 // only moves blurcontainer, not the actual tabs
+            bottom: 0 // only moves blurContainer, not the actual tabs
         },
         header: {
             display: "flex",
@@ -148,7 +147,7 @@ const RootLayout = () => {
             position: 'absolute',
             zIndex: 1,
             right: 0,
-            top: 64, // default header height 64 - do not change!
+            top: 62, // default header height 64, using 62 to not have a gap - do not change!
             display: toggleMenu ? 'flex' : 'none',
             justifyContent: 'center',
             alignItems: 'flex-start',
@@ -173,10 +172,8 @@ const RootLayout = () => {
         navItem: {
             fontFamily: 'PlayfairDisplay_400Regular',
             color: Assets.colors.jz2025ThemeColors.darkBrown,
-            textDecorationLine: 'underline',
-            marginHorizontal: 5,
-            marginVertical: 5,
             fontSize: 18,
+            margin: 5,
         },
     });
 

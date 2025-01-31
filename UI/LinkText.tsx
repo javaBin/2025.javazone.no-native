@@ -11,7 +11,12 @@ type LinkTextProps = {
 
 const LinkText: React.FC<LinkTextProps> = ({title, href, style}) => {
     return (
-        <Link href={href} rel="noopener norefferer" style={{...styles.listItemMail, ...{style}}}>{title}</Link>
+        <Link href={href}
+              rel="noopener norefferer"
+              style={{...styles.listItemMail, ...{style}}}
+        >
+            {title}
+        </Link>
     )
 }
 
@@ -19,7 +24,7 @@ const styles = StyleSheet.create({
     listItemMail: {
         color: Assets.colors.jz2025ThemeColors.vividOrange,
         fontFamily: 'PlayfairDisplay_400Regular',
-        fontSize: Dimensions.get('window').width >= 768 ? 18 : 14,
+        fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
         textDecorationLine: 'underline',
         marginHorizontal: 3
     }

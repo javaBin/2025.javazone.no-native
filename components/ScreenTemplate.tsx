@@ -48,7 +48,7 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
 
   return (
     <ImageBackground
-      source={require('@/assets/images/background/texture-marble.png')}
+      source={Assets.background}
       style={{ flex: 1, width: '100%', height: '100%' }}
     >
       <View style={styles.overlay} />
