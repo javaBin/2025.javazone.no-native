@@ -13,7 +13,8 @@ import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
-import { SvgImage } from "@/UI";
+import {LinkText, SvgImage} from "@/UI";
+import {VerticalLinesRightLeft} from "@/components";
 
 const RootLayout = () => {
     const resources = { en, nb };
@@ -120,11 +121,28 @@ const RootLayout = () => {
             width: '100%',
             bottom: 0 // only moves blurcontainer, not the actual tabs
         },
+        header: {
+            display: "flex",
+            flexDirection: 'row',
+            width: screenWidth,
+        },
+        headerLogoTitle: {
+            flexDirection: 'row',
+            width: '100%',
+            alignItems: 'center',
+            marginLeft: screenWidth > 768 ? 100 : 0,
+        },
         headerTitle: {
-            color: Assets.colors.jz2025ThemeColors.vividOrange,
+            color: Assets.colors.jz2025ThemeColors.darkBrown,
             fontFamily: 'Cinzel_500Medium',
             fontSize: 20,
-            marginTop: 5
+            marginTop: 5,
+        },
+        hamburger: {
+            marginHorizontal: 20,
+            display: screenWidth > 768 ? 'none' : 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-end'
         },
         drawer: {
             position: 'absolute',
@@ -135,28 +153,54 @@ const RootLayout = () => {
             justifyContent: 'center',
             alignItems: 'flex-start',
             overflow: 'hidden',
-            paddingVertical: 5
+            paddingVertical: 20,
+            paddingHorizontal: 20
         },
-        navLink: {
-            color: Assets.colors.logo.brightOrange,
-            paddingHorizontal: screenWidth >= 768 ? 50 : 20,
+        drawerItem: {
+            color: Assets.colors.jz2025ThemeColors.darkBrown,
+            paddingHorizontal: screenWidth > 768 ? 50 : 20,
             marginVertical: 3,
-            fontSize: screenWidth >= 768 ? 18 : 16,
-        }
+            fontSize: screenWidth > 768 ? 18 : 16,
+            fontFamily: 'PlayfairDisplay_400Regular',
+        },
+        navBar: {
+            display: screenWidth > 768 ? 'flex' : 'none',
+            flexDirection: 'row',
+            flexGrow: 1,
+            maxWidth: '75%',
+            justifyContent: 'space-evenly',
+        },
+        navItem: {
+            fontFamily: 'PlayfairDisplay_400Regular',
+            color: Assets.colors.jz2025ThemeColors.darkBrown,
+            textDecorationLine: 'underline',
+            marginHorizontal: 5,
+            marginVertical: 5,
+            fontSize: 18,
+        },
     });
 
     const screenOptions = {
         headerShown: true,
         headerTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
         headerTitle: () => (
-            <Pressable onPress={() => router.replace(`/${lang}`)}>
-                <View style={{flexDirection: 'row', width: '100%', alignItems: 'center'}}>
-                    <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{marginHorizontal: 10}} />
-                    <Text style={styles.headerTitle}>
-                        JavaZone 2025
-                    </Text>
+            <View style={styles.header}>
+                <Pressable onPress={() => router.replace(`/${lang}`)}>
+                    <View style={styles.headerLogoTitle}>
+                        <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{marginHorizontal: 10}} />
+                        <Text style={styles.headerTitle}>
+                            JavaZone 2025
+                        </Text>
+                    </View>
+                </Pressable>
+
+                <View style={styles.navBar}>
+                    <Link href={`${lang}/program`} style={styles.navItem}>Program</Link>
+                    <Link href={`${lang}/partner`} style={styles.navItem}>Partner</Link>
+                    <Link href={`${lang}/speaker`} style={styles.navItem}>Speaker</Link>
+                    <Link href={`${lang}/info`} style={styles.navItem}>Info</Link>
                 </View>
-            </Pressable>
+            </View>
         ),
     }
 
@@ -182,7 +226,7 @@ const RootLayout = () => {
         ),
         headerLeft: () => null, // this is to disable "<-" back button on web-app
         headerRight: () => (
-            <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={{marginHorizontal: 10, display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-end'}}>
+            <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={styles.hamburger}>
                 <SvgImage SVG={toggleMenu ? Assets.icons.MenuRoundedActive : Assets.icons.MenuRoundedInactive} height={24} width={24} style={{width: 'auto'}} />
             </Pressable>
         ),
@@ -193,10 +237,10 @@ const RootLayout = () => {
             <SafeAreaProvider>
                 <I18nContextProvider>
                     <BlurView tint="light" intensity={90} style={styles.drawer}>
-                        <Link href={{pathname: `${lang}/program`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Program</Link>
-                        <Link href={{pathname: `${lang}/partner`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Partner</Link>
-                        <Link href={{pathname: `${lang}/speaker`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Speaker</Link>
-                        <Link href={{pathname: `${lang}/info`}} style={styles.navLink} onPress={() => setToggleMenu(false)}>Info</Link>
+                        <Link href={{pathname: `${lang}/program`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Program</Link>
+                        <Link href={{pathname: `${lang}/partner`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Partner</Link>
+                        <Link href={{pathname: `${lang}/speaker`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Speaker</Link>
+                        <Link href={{pathname: `${lang}/info`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Info</Link>
                     </BlurView>
                     <Stack initialRouteName="[lang]/index" screenOptions={{...screenOptions, ...webScreenOptions}}>
                         <Stack.Screen name="[lang]/index" options={{title: ""}}/>

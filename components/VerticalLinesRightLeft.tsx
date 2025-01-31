@@ -3,7 +3,7 @@ import React from 'react';
 import { Assets } from '@/Assets';
 
 const { width: screenWidth } = Dimensions.get('window');
-const isMobile = screenWidth < 768; // Define your mobile breakpoint
+const isMobile = screenWidth <= 768; // Define your mobile breakpoint
 
 const VerticalLinesRightLeft = () => {
   return (
