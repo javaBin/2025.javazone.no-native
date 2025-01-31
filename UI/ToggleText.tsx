@@ -1,6 +1,6 @@
-import {Dimensions, Pressable, StyleSheet, Text, View} from "react-native";
-import {SvgImage} from "@/UI";
-import {Assets} from "@/Assets";
+import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
+import { SvgImage } from "@/UI";
+import { Assets } from "@/Assets";
 import React from "react";
 
 type ToggleTextProps = {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     toggleTitle: {
         color: Assets.colors.jz2025ThemeColors.vividOrange,
-        fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
+        fontSize: Dimensions.get('window').width > 768 ? 20 : 16,
         fontFamily: 'Cinzel_500Medium',
     },
 });

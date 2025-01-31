@@ -1,7 +1,7 @@
 import { Animated, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
 import { ScreenTemplate } from '@/components';
-import {CircleImage, LinkText, SvgImage, ToggleText} from '@/UI';
+import { CircleImage, LinkText, SvgImage, ToggleText } from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import ScrollView = Animated.ScrollView;
@@ -21,6 +21,7 @@ const Info = () => {
             setTogglePrinciples(true);
         }
     }, []);
+
     const handleToggle = (title: string, toggle: boolean) => {
         switch (title) {
             case t('javaBin.read_more'): {
@@ -44,6 +45,8 @@ const Info = () => {
                         contentContainerStyle={Assets.styles.scrollContentContainer}
                         alwaysBounceVertical={false}
                         showsVerticalScrollIndicator={false}>
+
+                {/* About javaBin */}
                 <View style={Assets.styles.section}>
                     <Text style={Assets.styles.sectionTitle}>{t('javaBin.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
@@ -63,6 +66,7 @@ const Info = () => {
                     </View>
                 </View>
 
+                {/* About JavaZone */}
                 <View style={Assets.styles.section}>
                     <Text style={Assets.styles.sectionTitle}>{t('javaZone.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
@@ -116,6 +120,7 @@ const Info = () => {
                     </View>
                 </View>
 
+                {/* Principles */}
                 <View style={Assets.styles.section}>
                     <Text style={Assets.styles.sectionTitle}>{t('principles.principles')}</Text>
                     <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
@@ -138,6 +143,7 @@ const Info = () => {
                     </View>
                 </View>
 
+                {/* Food */}
                 <View style={[Assets.styles.section, screenWidth <= 768 ? {width: '90%'} : {width: '100%'}]}>
                     <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
                     <View style={styles.paragraphImageContainer}>
@@ -153,6 +159,9 @@ const Info = () => {
                     <Text style={[Assets.styles.text, {display: screenWidth <= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                 </View>
 
+                {/* Volunteers */}
+                {/* More sections... */}
+                {/* Waste */}
                 <View style={[Assets.styles.section, {marginBottom: 50}]}>
                     <Text style={Assets.styles.sectionTitle}>♻️ Sustainable waste management and recycling at JavaZone</Text>
                     <Text style={Assets.styles.text}>More information to come</Text>
@@ -171,10 +180,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     image: {
-        width: Dimensions.get('window').width >= 768 ? '50%' : '80%',
+        width: Dimensions.get('window').width > 768 ? '50%' : '80%',
         objectFit: 'scale-down',
         resizeMode: 'contain',
-        marginBottom: Dimensions.get('window').width >= 768 ? 20 : 0,
+        marginBottom: Dimensions.get('window').width > 768 ? 20 : 0,
     },
     listItemContainer: {
         display: 'flex',
@@ -184,7 +193,7 @@ const styles = StyleSheet.create({
     listItem: {
         display: "flex",
         flexWrap: "wrap",
-        fontSize: Dimensions.get('window').width >= 768 ? 18 : 14,
+        fontSize: Dimensions.get('window').width > 768 ? 18 : 14,
         fontFamily: 'PlayfairDisplay_400Regular',
     },
     listItemRole: {
@@ -194,9 +203,9 @@ const styles = StyleSheet.create({
         color: Assets.colors.jz2025ThemeColors.vividOrange,
     },
     listItemName: {
-        color: Dimensions.get('window').width >= 768 ? Assets.colors.jz2025ThemeColors.darkBrown : Assets.colors.gradient.brown,
+        color: Dimensions.get('window').width > 768 ? Assets.colors.jz2025ThemeColors.darkBrown : Assets.colors.gradient.brown,
         marginBottom: 5,
-        marginTop: Dimensions.get('window').width >= 768 ? 10 : 0
+        marginTop: Dimensions.get('window').width > 768 ? 10 : 0
     },
     paragraphImageContainer: {
         display: 'flex',

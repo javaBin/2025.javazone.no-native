@@ -22,7 +22,7 @@ const SvgImage: React.FC<SvgImageProps> = ({ SVG, height, width, style, title })
         }
       }
     >
-        <SVG height={height} width={width !== undefined ? width : '100%'} title={title ? title : ''} />
+        <SVG height={height} width={width && width ? width : '100%'} title={title ? title : ''} />
     </View>
   );
 };

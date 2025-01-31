@@ -1,7 +1,7 @@
-import {Link} from "expo-router";
+import { Dimensions, StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { Link } from "expo-router";
+import { Assets } from "@/Assets";
 import React from "react";
-import {Dimensions, StyleProp, StyleSheet, ViewStyle} from "react-native";
-import {Assets} from "@/Assets";
 
 type LinkTextProps = {
     title: string;
@@ -12,7 +12,8 @@ type LinkTextProps = {
 const LinkText: React.FC<LinkTextProps> = ({title, href, style}) => {
     return (
         <Link href={href}
-              rel="noopener norefferer"
+              rel="noopener noreferrer"
+              target="_blank"
               style={{...styles.listItemMail, ...{style}}}
         >
             {title}

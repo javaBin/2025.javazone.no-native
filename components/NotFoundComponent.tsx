@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 // @ts-ignore
 import { Assets } from '@/Assets';
-import {LinkText} from "@/UI";
+import { LinkText } from "@/UI";
 
 const NotFoundComponent = () => {
     const { t } = useTranslation();

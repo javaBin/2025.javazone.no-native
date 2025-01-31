@@ -38,7 +38,7 @@ const Flag: React.FC<FlagProps> = ({ flagLocale, countryCode, flagStyle, flagSiz
     <View>
       <Pressable onPress={onPress} style={{ margin: 5 }}>
         {showFallback || !flagSource ? (
-          <Text style={{ color: flagLocale === locale ? Assets.colors.brand.cream : Assets.colors.brand.tertiary }}>
+          <Text style={flagLocale === locale ? Assets.styles.text: Assets.styles.disclaimerText }>
             {t(`language_name.${flagLocale}`, { lng: flagLocale })}
           </Text>
         ) : (

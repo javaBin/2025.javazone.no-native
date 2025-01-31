@@ -1,19 +1,18 @@
 import React from 'react';
 import { ImageBackground, Platform, SafeAreaView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useHeaderHeight } from '@react-navigation/elements';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
-import { Flag } from '@/components/index';
+import { Flag } from '@/components';
 import { Assets } from '@/Assets';
-import { useMediaQuery } from 'react-responsive';
 import { VerticalLinesRightLeft } from '@/components';
 import { // todo: refactor font loading into assets?
   useFonts,
   Cinzel_400Regular,
+  Cinzel_500Medium,
+  Cinzel_600SemiBold,
   Cinzel_700Bold,
   Cinzel_800ExtraBold,
-  Cinzel_600SemiBold, Cinzel_500Medium
 } from '@expo-google-fonts/cinzel';
 import {
   PlayfairDisplay_400Regular,
@@ -27,14 +26,13 @@ type ScreenTemplateProps = {
   headerPadding?: number;
 };
 
-const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
-  const headerHeight = useHeaderHeight();
+const ScreenTemplate = ({ children }: ScreenTemplateProps) => {
   // @ts-ignore
   const { setLocale } = useI18nContext();
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-  let [fontsLoaded] = useFonts({
+
+  useFonts({
     Cinzel_400Regular,
     Cinzel_500Medium,
     Cinzel_600SemiBold,
