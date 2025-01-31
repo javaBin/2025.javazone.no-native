@@ -135,9 +135,9 @@ export const Assets = {
         },
         sectionTitle: {
             color: '#403532', // dark-brown
-            fontSize: screenWidth > 768 ? 24 : 20,
+            fontSize: screenWidth > 768 ? 26 : 20,
             fontWeight: 'bold',
-            marginTop: 5,
+            marginTop: 10,
             fontFamily: 'Cinzel_700Bold',
         },
         sectionSubTitle: {
@@ -145,7 +145,7 @@ export const Assets = {
             fontSize: screenWidth > 768 ? 20 : 18,
             fontWeight: 'semibold',
             fontStyle: 'italic',
-            marginTop: 5,
+            marginTop: 7.5,
             fontFamily: 'Cinzel_600SemiBold',
         },
         section: {

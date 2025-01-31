@@ -26,7 +26,7 @@ type ScreenTemplateProps = {
   headerPadding?: number;
 };
 
-const ScreenTemplate = ({ children }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
   // @ts-ignore
   const { setLocale } = useI18nContext();
   const { top } = useSafeAreaInsets();
