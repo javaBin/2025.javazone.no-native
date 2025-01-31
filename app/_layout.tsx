@@ -7,13 +7,15 @@ import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import {AppState, Dimensions, ImageBackground, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import { Stack } from 'expo-router/stack';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from "@/UI";
+import Svg, {SvgProps} from "react-native-svg";
+import {opacity} from "react-native-reanimated/lib/typescript/Colors";
 
 const RootLayout = () => {
     const resources = { en, nb };
@@ -147,20 +149,29 @@ const RootLayout = () => {
             position: 'absolute',
             zIndex: 1,
             right: 0,
-            top: 62, // default header height 64, using 62 to not have a gap - do not change!
+            top: 63.5, // default header height 64 - do not change!
             display: toggleMenu ? 'flex' : 'none',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
             overflow: 'hidden',
-            paddingVertical: 20,
-            paddingHorizontal: 20
+        },
+        drawerContent: {
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            height: 180,
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
         },
         drawerItem: {
             color: Assets.colors.jz2025ThemeColors.darkBrown,
-            paddingHorizontal: screenWidth > 768 ? 50 : 20,
-            marginVertical: 3,
-            fontSize: screenWidth > 768 ? 18 : 16,
+            paddingHorizontal: 20,
+            marginVertical: 5,
+            fontSize: 16,
             fontFamily: 'PlayfairDisplay_400Regular',
+            textShadowColor: Assets.colors.brand.beige,
+            textShadowOffset: {width: 0, height: 0.2},
+            textShadowRadius: 3
         },
         navBar: {
             display: screenWidth > 768 ? 'flex' : 'none',
@@ -174,12 +185,12 @@ const RootLayout = () => {
             color: Assets.colors.jz2025ThemeColors.darkBrown,
             fontSize: 18,
             margin: 5,
+            textShadowColor: Assets.colors.jz2025ThemeColors.darkBrown
         },
     });
 
     const screenOptions = {
         headerShown: true,
-        headerTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
         headerTitle: () => (
             <View style={styles.header}>
                 <Pressable onPress={() => router.replace(`/${lang}`)}>
@@ -214,12 +225,16 @@ const RootLayout = () => {
 
     const webScreenOptions = {
         headerTransparent: true,
+        /*headerStyle: {
+            backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
+            borderBottomColor: '#403431',
+            borderBottomWidth: 0.0,
+        },*/
         headerBackground: () => (
             <BlurView
                 tint="light"
                 intensity={90}
-                style={StyleSheet.absoluteFill}
-            />
+                style={[StyleSheet.absoluteFill, ]}/>
         ),
         headerLeft: () => null, // this is to disable "<-" back button on web-app
         headerRight: () => (
@@ -233,12 +248,17 @@ const RootLayout = () => {
         return (
             <SafeAreaProvider>
                 <I18nContextProvider>
-                    <BlurView tint="light" intensity={90} style={styles.drawer}>
-                        <Link href={{pathname: `${lang}/program`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Program</Link>
-                        <Link href={{pathname: `${lang}/partner`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Partner</Link>
-                        <Link href={{pathname: `${lang}/speaker`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Speaker</Link>
-                        <Link href={{pathname: `${lang}/info`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Info</Link>
+                    <BlurView tint="light" intensity={10} style={styles.drawer}>
+                        <SvgImage SVG={Assets.UI.PapyrusSheet} height={180} style={{opacity: 0.9}}/>
+                        <View style={styles.drawerContent}>
+                            <Link href={{pathname: `${lang}/program`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Program</Link>
+                            <Link href={{pathname: `${lang}/partner`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Partner</Link>
+                            <Link href={{pathname: `${lang}/speaker`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Speaker</Link>
+                            <Link href={{pathname: `${lang}/info`}} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>Info</Link>
+                        </View>
+                        <SvgImage SVG={Assets.UI.PapyrusRoll} height={25}/>
                     </BlurView>
+
                     <Stack initialRouteName="[lang]/index" screenOptions={{...screenOptions, ...webScreenOptions}}>
                         <Stack.Screen name="[lang]/index" options={{title: ""}}/>
                         <Stack.Screen name="[lang]/program" options={{title: "Program"}}/>

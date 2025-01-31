@@ -1,6 +1,5 @@
 import React from 'react';
 import Flag from '@/components/Flag';
-import Header from '@/components/Header';
 import NotFoundComponent from '@/components/NotFoundComponent';
 
 const HoldTheDate = React.lazy(() => import('@/components/HoldTheDate'));
@@ -10,7 +9,6 @@ const VerticalLinesRightLeft = React.lazy(() => import('@/components/VerticalLin
 
 export {
     Flag,
-    Header,
     HoldTheDate,
     ScreenTemplate,
     VideoPlayer,

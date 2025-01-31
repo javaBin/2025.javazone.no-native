@@ -1,10 +1,12 @@
 import { Platform, StyleSheet, Dimensions } from "react-native";
 // @ts-ignore
-import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
-// @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 // @ts-ignore
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
+// @ts-ignore
 import TextureMarble from '@/assets/images/background/texture-marble.png';
+import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
+import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
 
 // Icons
 import TriangleRight from '@/assets/icons/triangle-right.svg';
@@ -43,6 +45,10 @@ export const Assets = {
         Doughnut,
     },
     background: TextureMarble,
+    UI: {
+        PapyrusRoll,
+        PapyrusSheet,
+    },
     icons: {
         TriangleRight,
         TriangleDown,
@@ -86,6 +92,8 @@ export const Assets = {
             darkBrown: '#403532',
             lightBrown: '#6c605c',
             linen: '#F9F6F5',
+            sheet: '#e8dacf',
+            sheetShadow: '#d3c5bb',
             cyberYellow: '#FFD400',
             cyberYellowOpacity: 'rgba(255, 212, 0, 0.7)',
             orangeYellow: '#FCAF17',
@@ -164,6 +172,13 @@ export const Assets = {
         disclaimerText: {
             color: '#6c605c', // light-brown
             fontSize: screenWidth > 768 ? 16 : 14,
+        },
+        shadow: {
+            elevation: 2, // Shadow effect for Android
+            shadowColor: '#403532', // dark-brown, iOS shadow
+            shadowOpacity: 0.1,
+            shadowRadius: 3,
+            shadowOffset: {width: 0, height: 2},
         }
     }),
 }
