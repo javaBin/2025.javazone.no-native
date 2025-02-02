@@ -1,16 +1,28 @@
 // @ts-ignore
-import JavaBinLogo from '@/assets/images/logo/javaBin-logo.png';
-// @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
+import TextureMarble from '@/assets/images/background/texture-marble.png';
+import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
+import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
+import DividerWide from '@/assets/UI/divider-wide.svg';
+
+// Icons
 import TriangleRight from '@/assets/icons/triangle-right.svg';
 import TriangleDown from '@/assets/icons/triangle-down.svg';
-import Logo from '@/assets/images/logo/javaZone-logo.svg';
 import HeroDivider from '@/assets/images/hero/hero-divider.svg';
 import HeroDuke from '@/assets/images/hero/hero-duke.svg';
 import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
 import HeroYear from '@/assets/images/hero/hero-year.svg';
 import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
+import Logo from '@/assets/images/logo/javaZone-logo.svg';
+
+// Tab icons
+import Home from '@/assets/icons/home.svg';
+import Info from '@/assets/icons/info.svg';
+import Partner from '@/assets/icons/partner.svg';
+import Program from '@/assets/icons/program.svg';
+import Speaker from '@/assets/icons/speaker.svg';
 import { Platform, StyleSheet, Dimensions } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
@@ -28,23 +40,36 @@ export const Assets = {
     program22: 'https://2022.javazone.no/#/program',
     program19: 'https://2019.javazone.no/program',
     program18: 'https://2018.javazone.no/program',
+    partnerRegistration: 'https://event.checkin.no/101610/javazone-2025-partnership',
+    partnerVideo: 'https://player.vimeo.com/video/1038270530',
   },
   images: {
     Logo,
     JavaBinLogo,
     Doughnut,
-    hero: {
-      divider: HeroDivider,
-      duke: HeroDuke,
-      javaZone: HeroJavaZone,
-      year: HeroYear,
-    },
+  },
+  hero: {
+    divider: HeroDivider,
+    duke: HeroDuke,
+    javaZone: HeroJavaZone,
+    year: HeroYear,
+  },
+  background: TextureMarble,
+  UI: {
+    PapyrusRoll,
+    PapyrusSheet,
+    DividerWide,
   },
   icons: {
     TriangleRight,
     TriangleDown,
     MenuRoundedInactive,
     MenuRoundedActive,
+    Home,
+    Info,
+    Partner,
+    Program,
+    Speaker,
   },
   colors: {
     transparent: 'transparent',
@@ -74,10 +99,16 @@ export const Assets = {
     },
     jz2025ThemeColors: {
       crimsonRed: '#B10A32',
+      darkRed: '#780722',
       darkBrown: '#403532',
+      lightBrown: '#6c605c',
       linen: '#F9F6F5',
+      sheet: '#e8dacf',
+      sheetShadow: '#d3c5bb',
       cyberYellow: '#FFD400',
+      cyberYellowOpacity: 'rgba(255, 212, 0, 0.7)',
       orangeYellow: '#FCAF17',
+      orangeYellowOpacity: 'rgba(252, 175, 23, 0.7)',
       vividOrange: '#F7941D',
     },
   },
@@ -89,13 +120,16 @@ export const Assets = {
       zIndex: 1,
     },
     container: {
-      padding: 40,
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
     },
     scrollContainer: {
+      width: screenWidth <= 768 ? '90%' : '80%',
+      marginTop: Platform.OS === 'web' ? 50 : 0,
+    },
+    scrollContentContainer: {
       display: 'flex',
       width: '100%',
       alignItems: 'flex-start',
@@ -104,37 +138,58 @@ export const Assets = {
     },
     pageTitle: {},
     text: {
+      color: '#403532', // dark-brown
       marginVertical: 5,
-      fontSize: screenWidth >= 768 ? 18 : 14,
+      fontSize: screenWidth > 768 ? 18 : 16,
+      fontFamily: 'PlayfairDisplay_400Regular',
+      textAlign: 'justify',
     },
     sectionTitle: {
-      fontSize: screenWidth >= 768 ? 24 : 20,
+      color: '#403532', // dark-brown
+      fontSize: screenWidth > 768 ? 26 : 20,
       fontWeight: 'bold',
-      marginTop: 5,
+      marginTop: 10,
+      fontFamily: 'Cinzel_700Bold',
     },
     sectionSubTitle: {
-      fontSize: screenWidth >= 768 ? 20 : 16,
+      color: '#403532', // dark-brown
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontWeight: 'semibold',
       fontStyle: 'italic',
-      marginTop: 5,
+      marginTop: 7.5,
+      fontFamily: 'Cinzel_600SemiBold',
     },
     section: {
       marginHorizontal: 20,
       marginVertical: 5,
     },
-    callout: {
-      fontStyle: 'italic',
-      marginBottom: 5,
-      fontSize: screenWidth >= 768 ? 18 : 14,
-    },
     intro: {
-      color: '#ED6F24', // bright-orange
-      fontStyle: 'italic',
-      fontSize: screenWidth >= 768 ? 20 : 16,
+      color: '#403532', // dark-brown
+      marginVertical: 5,
+      fontSize: screenWidth > 768 ? 18 : 16,
+      fontFamily: 'Cinzel_400Regular',
+    },
+    callout: {
+      color: '#B10A32', // crimson-red
+      fontSize: screenWidth > 768 ? 20 : 18,
+      fontFamily: 'PlayfairDisplay_400Regular_Italic',
     },
     listText: {
+      color: '#1e1616', // gradient.brown
       marginVertical: 5,
-      fontSize: screenWidth >= 768 ? 18 : 14,
+      fontSize: screenWidth > 768 ? 18 : 16,
+      fontFamily: 'PlayfairDisplay_400Regular',
+    },
+    disclaimerText: {
+      color: '#6c605c', // light-brown
+      fontSize: screenWidth > 768 ? 16 : 14,
+    },
+    shadow: {
+      elevation: 2, // Shadow effect for Android
+      shadowColor: '#403532', // dark-brown, iOS shadow
+      shadowOpacity: 0.1,
+      shadowRadius: 3,
+      shadowOffset: { width: 0, height: 2 },
     },
   }),
 };

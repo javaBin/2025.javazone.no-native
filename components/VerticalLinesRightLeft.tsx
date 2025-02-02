@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import { Assets } from '@/Assets';
 
 const { width: screenWidth } = Dimensions.get('window');
-const isMobile = screenWidth < 768; // Define your mobile breakpoint
+const isMobile = screenWidth <= 768;
 
 const VerticalLinesRightLeft = () => {
   const [containerStyle, setContainerStyle] = useState(styles.container);
@@ -156,6 +156,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: -1,
   },
+  shadow: {
+    shadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
+    shadowOpacity: 0.1,
+    shadowOffset: { width: -1, height: 1 },
+    shadowRadius: 10,
+  },
   verticalLineLeft: {
     position: 'absolute',
     left: 0,
@@ -183,6 +189,14 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
+  },
+  verticalLineLeftDarkRed: {
+    position: 'absolute',
+    left: 30,
+    top: 0,
+    bottom: 0,
+    width: 15,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
   verticalLineRight: {
     position: 'absolute',
@@ -212,6 +226,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
   },
+  verticalLineRightDarkRed: {
+    position: 'absolute',
+    right: 30,
+    top: 0,
+    bottom: 0,
+    width: 15,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
+  },
 });
 
 const mobileStyles = StyleSheet.create({
@@ -220,6 +242,7 @@ const mobileStyles = StyleSheet.create({
     left: 0,
     top: 0,
     bottom: 0,
+    width: 20,
     backgroundColor: Assets.colors.jz2025ThemeColors.crimsonRed,
   },
   verticalLineLeftVividOrange: {
@@ -227,27 +250,39 @@ const mobileStyles = StyleSheet.create({
     left: 0,
     top: 0,
     bottom: 0,
+    width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.vividOrange,
   },
   verticalLineLeftOrangeYellow: {
     position: 'absolute',
-    left: 5,
+    left: 2.5,
     top: 0,
     bottom: 0,
+    width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.orangeYellow,
   },
   verticalLineLeftCyberYellow: {
     position: 'absolute',
-    left: 10,
+    left: 5,
     top: 0,
     bottom: 0,
+    width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
+  },
+  verticalLineLeftDarkRed: {
+    position: 'absolute',
+    left: 7.5,
+    top: 0,
+    bottom: 0,
+    width: 5,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
   verticalLineRight: {
     position: 'absolute',
     right: 0,
     top: 0,
     bottom: 0,
+    width: 20,
     backgroundColor: Assets.colors.jz2025ThemeColors.crimsonRed,
   },
   verticalLineRightVividOrange: {
@@ -255,21 +290,32 @@ const mobileStyles = StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
+    width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.vividOrange,
   },
   verticalLineRightOrangeYellow: {
     position: 'absolute',
-    right: 5,
+    right: 2.5,
     top: 0,
     bottom: 0,
+    width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.orangeYellow,
   },
   verticalLineRightCyberYellow: {
     position: 'absolute',
-    right: 10,
+    right: 5,
     top: 0,
     bottom: 0,
+    width: 2.5,
     backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
+  },
+  verticalLineRightDarkRed: {
+    position: 'absolute',
+    right: 7.5,
+    top: 0,
+    bottom: 0,
+    width: 5,
+    backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
 });
 
