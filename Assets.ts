@@ -7,6 +7,7 @@ import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
 import TextureMarble from '@/assets/images/background/texture-marble.png';
 import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
 import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
+import DividerWide from '@/assets/UI/divider-wide.svg';
 
 // Icons
 import TriangleRight from '@/assets/icons/triangle-right.svg';
@@ -49,6 +50,7 @@ export const Assets = {
     UI: {
         PapyrusRoll,
         PapyrusSheet,
+        DividerWide,
     },
     icons: {
         TriangleRight,

@@ -25,7 +25,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     <View style={styles.content}>
       <SvgImage SVG={Assets.images.Logo} height={50} />
 
-      <PageTitle title={t('javaZone_2025')} style={{marginTop: 20}} />
+      <PageTitle title={t('javaZone_2025')} />
       {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}
       <Text style={styles.subHeading}>{t('in_progress')}</Text>
 
