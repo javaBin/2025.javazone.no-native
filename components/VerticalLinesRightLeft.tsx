@@ -1,5 +1,6 @@
 import { View, StyleSheet, Dimensions, Animated, Easing } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
+import { useRoute } from '@react-navigation/native';
 import { Assets } from '@/Assets';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -7,6 +8,7 @@ const isMobile = screenWidth < 768; // Define your mobile breakpoint
 
 const VerticalLinesRightLeft = () => {
   const [containerStyle, setContainerStyle] = useState(styles.container);
+  const route = useRoute();
 
   const leftLineWidth = useRef(new Animated.Value(isMobile ? 250 : 1000)).current;
   const leftVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
@@ -70,18 +72,24 @@ const VerticalLinesRightLeft = () => {
         }),
       ]).start(() => {
         setContainerStyle(styles.containerAfterAnimation);
-        localStorage.setItem('animationPlayed', 'true');
       });
     };
 
-    const animationPlayed = localStorage.getItem('animationPlayed');
-    if (!animationPlayed) {
+    if (route.name === `[lang]/index`) {
       const timeoutId = setTimeout(animateLines, 1000);
       return () => clearTimeout(timeoutId);
     } else {
       setContainerStyle(styles.containerAfterAnimation);
+      rightLineWidth.setValue(isMobile ? 30 : 100);
+      rightVividOrangeWidth.setValue(isMobile ? 5 : 10);
+      rightOrangeYellowWidth.setValue(isMobile ? 5 : 10);
+      rightCyberYellowWidth.setValue(isMobile ? 5 : 10);
+      leftLineWidth.setValue(isMobile ? 30 : 100);
+      leftVividOrangeWidth.setValue(isMobile ? 5 : 10);
+      leftOrangeYellowWidth.setValue(isMobile ? 5 : 10);
+      leftCyberYellowWidth.setValue(isMobile ? 5 : 10);
     }
-  }, [isMobile]);
+  }, [route, isMobile]);
 
   return (
     <View style={containerStyle}>
