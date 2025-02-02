@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     color: Assets.colors.brand.charcoal,
     fontWeight: '500',
     //width: Platform.OS === 'web' ? '50%' : '30%',
-    marginLeft: Dimensions.get('window').width > 768 ? 0 : 5,
+    marginLeft: Dimensions.get('window').width > 768 ? 0 : 15,
     fontFamily: 'PlayfairDisplay_700Bold',
     width: '30%',
   },
