@@ -4,6 +4,7 @@ import { Assets } from '@/Assets';
 import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import PageTitle from "@/UI/PageTitle";
 
 type HoldTheDateProps = {
   subPageHeader?: string;
@@ -24,7 +25,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     <View style={styles.content}>
       <SvgImage SVG={Assets.images.Logo} height={50} />
 
-      <Text style={[styles.heading, {marginTop: 20}]}>{t('javaZone_2025')}</Text>
+      <PageTitle title={t('javaZone_2025')} style={{marginTop: 20}} />
       {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}
       <Text style={styles.subHeading}>{t('in_progress')}</Text>
 
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
     justifyContent: 'space-between',
-    //width: Dimensions.get('window').width > 768 ? '50%' : '80%',
     width: Dimensions.get('window').width > 768 ? 400 : 380,
   },
   title: {
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     color: Assets.colors.brand.charcoal,
     fontWeight: '500',
-    //width: Platform.OS === 'web' ? '50%' : '30%',
     marginLeft: Dimensions.get('window').width > 768 ? 0 : 15,
     fontFamily: 'PlayfairDisplay_700Bold',
     width: '30%',
@@ -124,7 +123,6 @@ const styles = StyleSheet.create({
   },
   listItem: {
     padding: 5,
-    //backgroundColor: Assets.colors.gradient.dark, // Normal state color
     marginHorizontal: 5,
     borderRadius: 5,
     justifyContent: 'center',

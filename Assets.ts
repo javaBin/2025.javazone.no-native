@@ -38,6 +38,7 @@ export const Assets = {
         program19: 'https://2019.javazone.no/program',
         program18: 'https://2018.javazone.no/program',
         partnerRegistration: 'https://event.checkin.no/101610/javazone-2025-partnership',
+        partnerVideo: 'https://player.vimeo.com/video/1038270530',
     },
     images: {
         Logo,

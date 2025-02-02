@@ -28,7 +28,7 @@ const Partner = () => {
             marginBottom: isMobile ? 10 : 20}]}>
             {t('partner.watch_partner_meeting')}
           </Text>
-          <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+          <VideoPlayer videoUrl={Assets.links.partnerVideo} />
         </View>
     ) : (<View style={{marginBottom: 50}}></View>)
   }
