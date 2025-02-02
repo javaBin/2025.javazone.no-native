@@ -118,7 +118,7 @@ export const Assets = {
             flexDirection: 'column',
         },
         scrollContainer: {
-            width: screenWidth <= 768 ? '90%' : '80%',
+            width: screenWidth > 768 ? '70%' : '90%',
             marginTop: Platform.OS === 'web' ? 50 : 0
         },
         scrollContentContainer: {
@@ -150,6 +150,7 @@ export const Assets = {
             fontStyle: 'italic',
             marginTop: 7.5,
             fontFamily: 'Cinzel_600SemiBold',
+            textAlign: 'center',
         },
         section: {
             marginHorizontal: 20,

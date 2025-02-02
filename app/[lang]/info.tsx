@@ -5,6 +5,7 @@ import { CircleImage, LinkText, SvgImage, ToggleText } from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import ScrollView = Animated.ScrollView;
+import PageTitle from "@/UI/PageTitle";
 
 const Info = () => {
     // @ts-ignore
@@ -46,6 +47,7 @@ const Info = () => {
                         alwaysBounceVertical={false}
                         showsVerticalScrollIndicator={false}>
 
+                <PageTitle title={t('pageTitles.info')}/>
                 {/* About javaBin */}
                 <View style={Assets.styles.section}>
                     <Text style={Assets.styles.sectionTitle}>{t('javaBin.about')}</Text>

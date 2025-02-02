@@ -13,6 +13,7 @@ import { Assets } from '@/Assets';
 import React from 'react';
 import { LinkButton, LinkText } from "@/UI";
 import { BlurView } from "expo-blur";
+import PageTitle from "@/UI/PageTitle";
 
 const Partner = () => {
   const { t } = useTranslation();
@@ -40,17 +41,14 @@ const Partner = () => {
                   alwaysBounceVertical={false}
                   showsVerticalScrollIndicator={false}>
 
-        <View style={Assets.styles.section}>
-          <Text style={Assets.styles.sectionTitle}>{t('partner.partner_info.javaZone_2025_partner')}</Text>
-          <Text style={Assets.styles.sectionSubTitle}>
-            {t('partner.partner_info.partner_registration_opens')}
-          </Text>
+        <PageTitle title={t('pageTitles.partner')} />
 
-          <Text style={[Assets.styles.text, {marginBottom: 20}]}>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%'}}>
+          <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_registration_opens')}</Text>
+          <Text style={[Assets.styles.text, {marginBottom: 20, marginHorizontal: 10}]}>
             {t('partner.partner_info.questions_email')}{' '}
             <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail}/>
           </Text>
-
           <LinkButton href={Assets.links.partnerRegistration} title={t('partner.partner_info.register_cta')} targetBlank={true}/>
         </View>
 

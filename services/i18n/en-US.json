@@ -21,6 +21,11 @@
     "javaZone_kids_information": "JavaZone Kids information",
     "javaBin_information": "javaBin information",
 
+    "pageTitles": {
+      "info": "Information",
+      "partner": "Partners"
+    },
+
     "javaBin": {
       "intro": "Become part of something great",
       "about": "About javaBin",
