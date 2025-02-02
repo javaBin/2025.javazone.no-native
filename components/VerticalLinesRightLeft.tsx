@@ -14,58 +14,72 @@ const VerticalLinesRightLeft = () => {
   const leftVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
   const leftOrangeYellowWidth = useRef(new Animated.Value(isMobile ? 80 : 300)).current;
   const leftCyberYellowWidth = useRef(new Animated.Value(isMobile ? 70 : 200)).current;
+  const leftDarkRedWidth = useRef(new Animated.Value(isMobile ? 60 : 100)).current;
   const rightLineWidth = useRef(new Animated.Value(isMobile ? 250 : 1000)).current;
   const rightVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
   const rightOrangeYellowWidth = useRef(new Animated.Value(isMobile ? 80 : 300)).current;
   const rightCyberYellowWidth = useRef(new Animated.Value(isMobile ? 70 : 200)).current;
+  const rightDarkRedWidth = useRef(new Animated.Value(isMobile ? 60 : 100)).current;
 
   useEffect(() => {
     const animateLines = () => {
       Animated.stagger(1, [
         Animated.timing(leftLineWidth, {
-          toValue: isMobile ? 30 : 100,
+          toValue: isMobile ? 20 : 100,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
         }),
         Animated.timing(leftVividOrangeWidth, {
-          toValue: isMobile ? 5 : 10,
+          toValue: isMobile ? 2.5 : 10,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
         }),
         Animated.timing(leftOrangeYellowWidth, {
-          toValue: isMobile ? 5 : 10,
+          toValue: isMobile ? 2.5 : 10,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
         }),
         Animated.timing(leftCyberYellowWidth, {
-          toValue: isMobile ? 5 : 10,
+          toValue: isMobile ? 2.5 : 10,
+          duration: 1000,
+          easing: Easing.linear,
+          useNativeDriver: false,
+        }),
+        Animated.timing(leftDarkRedWidth, {
+          toValue: isMobile ? 5 : 15,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
         }),
         Animated.timing(rightLineWidth, {
-          toValue: isMobile ? 30 : 100,
+          toValue: isMobile ? 20 : 100,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
         }),
         Animated.timing(rightVividOrangeWidth, {
-          toValue: isMobile ? 5 : 10,
+          toValue: isMobile ? 2.5 : 10,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
         }),
         Animated.timing(rightOrangeYellowWidth, {
-          toValue: isMobile ? 5 : 10,
+          toValue: isMobile ? 2.5 : 10,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
         }),
         Animated.timing(rightCyberYellowWidth, {
-          toValue: isMobile ? 5 : 10,
+          toValue: isMobile ? 2.5 : 10,
+          duration: 1000,
+          easing: Easing.linear,
+          useNativeDriver: false,
+        }),
+        Animated.timing(rightDarkRedWidth, {
+          toValue: isMobile ? 5 : 15,
           duration: 1000,
           easing: Easing.linear,
           useNativeDriver: false,
@@ -80,14 +94,16 @@ const VerticalLinesRightLeft = () => {
       return () => clearTimeout(timeoutId);
     } else {
       setContainerStyle(styles.containerAfterAnimation);
-      rightLineWidth.setValue(isMobile ? 30 : 100);
-      rightVividOrangeWidth.setValue(isMobile ? 5 : 10);
-      rightOrangeYellowWidth.setValue(isMobile ? 5 : 10);
-      rightCyberYellowWidth.setValue(isMobile ? 5 : 10);
-      leftLineWidth.setValue(isMobile ? 30 : 100);
-      leftVividOrangeWidth.setValue(isMobile ? 5 : 10);
-      leftOrangeYellowWidth.setValue(isMobile ? 5 : 10);
-      leftCyberYellowWidth.setValue(isMobile ? 5 : 10);
+      rightLineWidth.setValue(isMobile ? 20 : 100);
+      rightVividOrangeWidth.setValue(isMobile ? 2.5 : 10);
+      rightOrangeYellowWidth.setValue(isMobile ? 2.5 : 10);
+      rightCyberYellowWidth.setValue(isMobile ? 2.5 : 10);
+      rightDarkRedWidth.setValue(isMobile ? 5 : 15);
+      leftLineWidth.setValue(isMobile ? 20 : 100);
+      leftVividOrangeWidth.setValue(isMobile ? 2.5 : 10);
+      leftOrangeYellowWidth.setValue(isMobile ? 2.5 : 10);
+      leftCyberYellowWidth.setValue(isMobile ? 2.5 : 10);
+      leftDarkRedWidth.setValue(isMobile ? 5 : 15);
     }
   }, [route, isMobile]);
 
@@ -115,6 +131,13 @@ const VerticalLinesRightLeft = () => {
         ]}
       />
       <Animated.View
+        style={[
+          isMobile ? mobileStyles.verticalLineLeftDarkRed : styles.verticalLineLeftDarkRed,
+          { width: leftDarkRedWidth },
+        ]}
+      />
+
+      <Animated.View
         style={[isMobile ? mobileStyles.verticalLineRight : styles.verticalLineRight, { width: rightLineWidth }]}
       />
       <Animated.View
@@ -133,6 +156,12 @@ const VerticalLinesRightLeft = () => {
         style={[
           isMobile ? mobileStyles.verticalLineRightCyberYellow : styles.verticalLineRightCyberYellow,
           { width: rightCyberYellowWidth },
+        ]}
+      />
+      <Animated.View
+        style={[
+          isMobile ? mobileStyles.verticalLineRightDarkRed : styles.verticalLineRightDarkRed,
+          { width: rightDarkRedWidth },
         ]}
       />
     </View>
@@ -195,7 +224,6 @@ const styles = StyleSheet.create({
     left: 30,
     top: 0,
     bottom: 0,
-    width: 15,
     backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
   verticalLineRight: {
@@ -231,7 +259,6 @@ const styles = StyleSheet.create({
     right: 30,
     top: 0,
     bottom: 0,
-    width: 15,
     backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
 });
@@ -274,7 +301,6 @@ const mobileStyles = StyleSheet.create({
     left: 7.5,
     top: 0,
     bottom: 0,
-    width: 5,
     backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
   verticalLineRight: {
@@ -314,7 +340,6 @@ const mobileStyles = StyleSheet.create({
     right: 7.5,
     top: 0,
     bottom: 0,
-    width: 5,
     backgroundColor: Assets.colors.jz2025ThemeColors.darkRed,
   },
 });

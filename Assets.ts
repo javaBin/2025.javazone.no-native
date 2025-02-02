@@ -1,7 +1,8 @@
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
-import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
+// @ts-ignore
 import TextureMarble from '@/assets/images/background/texture-marble.png';
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
 import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
 import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
 import DividerWide from '@/assets/UI/divider-wide.svg';
@@ -47,12 +48,12 @@ export const Assets = {
     Logo,
     JavaBinLogo,
     Doughnut,
-  },
-  hero: {
-    divider: HeroDivider,
-    duke: HeroDuke,
-    javaZone: HeroJavaZone,
-    year: HeroYear,
+    hero: {
+      divider: HeroDivider,
+      duke: HeroDuke,
+      javaZone: HeroJavaZone,
+      year: HeroYear,
+    },
   },
   background: TextureMarble,
   UI: {
