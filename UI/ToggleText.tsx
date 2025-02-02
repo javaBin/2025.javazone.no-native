@@ -28,9 +28,9 @@ const styles = StyleSheet.create({
     toggleButton: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: "flex-start",
-        marginVertical: 5,
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        margin: 5,
     },
     toggleTitle: {
         color: Assets.colors.jz2025ThemeColors.vividOrange,

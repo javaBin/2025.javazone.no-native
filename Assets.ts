@@ -8,6 +8,7 @@ import TextureMarble from '@/assets/images/background/texture-marble.png';
 import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
 import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
 import DividerWide from '@/assets/UI/divider-wide.svg';
+import DividerDot from '@/assets/UI/divider-dot.svg';
 
 // Icons
 import TriangleRight from '@/assets/icons/triangle-right.svg';
@@ -51,6 +52,7 @@ export const Assets = {
         PapyrusRoll,
         PapyrusSheet,
         DividerWide,
+        DividerDot,
     },
     icons: {
         TriangleRight,
@@ -124,9 +126,10 @@ export const Assets = {
         scrollContentContainer: {
             display: "flex",
             width: '100%',
-            alignItems: "flex-start",
+            alignItems: 'center', //"flex-start",
             justifyContent: "center",
             marginTop: 30,
+            padding: 10,
         },
         pageTitle: {},
         text: {
@@ -139,9 +142,9 @@ export const Assets = {
         sectionTitle: {
             color: '#403532', // dark-brown
             fontSize: screenWidth > 768 ? 26 : 20,
-            fontWeight: 'bold',
             marginTop: 10,
             fontFamily: 'Cinzel_700Bold',
+            textAlign: 'center',
         },
         sectionSubTitle: {
             color: '#403532', // dark-brown
@@ -153,8 +156,12 @@ export const Assets = {
             textAlign: 'center',
         },
         section: {
+            width: '100%',
             marginHorizontal: 20,
             marginVertical: 5,
+            borderRadius: 5,
+            paddingVertical: 20,
+            paddingHorizontal: 30,
         },
         intro: {
             color: '#403532', // dark-brown

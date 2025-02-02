@@ -2,11 +2,11 @@ import { ScreenTemplate, VideoPlayer } from '@/components';
 import { useTranslation } from 'react-i18next';
 import {
   Platform,
+  Dimensions,
   StyleSheet,
+  ScrollView,
   Text,
   View,
-  ScrollView,
-  Dimensions,
 } from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
@@ -23,7 +23,7 @@ const Partner = () => {
     return Platform.OS === 'web' ?
      (
         <View style={[styles.content, {marginBottom: 50}]}>
-          <Text style={[Assets.styles.sectionTitle, {
+          <Text style={[Assets.styles.sectionSubTitle, {
             marginHorizontal: 15,
             textAlign: 'center',
             marginBottom: isMobile ? 10 : 20}]}>
@@ -44,7 +44,7 @@ const Partner = () => {
         <PageTitle title={t('pageTitles.partner')} />
 
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%'}}>
-          <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_registration_opens')}</Text>
+          <Text style={[Assets.styles.sectionSubTitle, {textAlign: 'center'}]}>{t('partner.partner_info.partner_registration_opens')}</Text>
           <Text style={[Assets.styles.text, {marginBottom: 20, marginHorizontal: 10}]}>
             {t('partner.partner_info.questions_email')}{' '}
             <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail}/>
@@ -58,9 +58,8 @@ const Partner = () => {
 
             <BlurView tint="light" intensity={20} style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
               <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.standard_package')}</Text>
-              <View>
-                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
-              </View>
+              <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
+
               <View>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_1')}</Text>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_2')}</Text>
@@ -74,9 +73,8 @@ const Partner = () => {
 
             <BlurView tint="light" intensity={20} style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
               <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.restaurant_stand')}</Text>
-              <View>
-                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
-              </View>
+              <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
+
               <View>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_1')}</Text>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_2')}</Text>
@@ -87,9 +85,8 @@ const Partner = () => {
 
             <BlurView tint="light" intensity={20} style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
               <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.concept_stand')}</Text>
-              <View>
-                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
-              </View>
+              <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
+
               <View>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_1')}</Text>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_2')}</Text>
@@ -99,12 +96,9 @@ const Partner = () => {
 
             <BlurView tint="light" intensity={20} style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
               <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_tickets')}</Text>
-              <Text style={Assets.styles.intro}>
-                {t('partner.partner_info.price')}: 9 220,- NOK ex VAT incl ticket fee
-              </Text>
-              <Text style={[Assets.styles.text]}>
-                {t('partner.partner_info.partner_tickets_detail_1')}
-              </Text>
+              <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 9 220,- NOK ex VAT incl ticket fee</Text>
+              <Text style={[Assets.styles.text]}>{t('partner.partner_info.partner_tickets_detail_1')}</Text>
+
               <View>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.round_robin_distribution')}</Text>
                 <Text style={Assets.styles.listText}>- {t('partner.partner_info.first_come_first_served')}</Text>
@@ -113,9 +107,7 @@ const Partner = () => {
 
             <BlurView tint="light" intensity={20} style={[{...styles.partnerContentItem, ...styles.partnerContentItemUniversal}, isMobile && styles.partnerContentItemMobile]}>
               <Text style={[Assets.styles.sectionSubTitle, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
-              <View>
-                <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
-              </View>
+              <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
               <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
             </BlurView>
 
@@ -129,16 +121,11 @@ const Partner = () => {
 };
 
 const styles = StyleSheet.create({
-  partnerHeadingInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
   partnerContentInfo: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     width: '100%',
   },
   partnerContentInfoMobile: {
@@ -146,18 +133,19 @@ const styles = StyleSheet.create({
   },
   partnerContentItemUniversal: {
     marginVertical: 10,
-    marginRight: Platform.OS === 'web' && Dimensions.get('window').width > 768 ? 'auto' : 0,
     borderRadius: 5,
     shadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
+    marginRight: Platform.OS === 'web' && Dimensions.get('window').width > 768 ? 'auto' : 0,
     shadowOpacity: 0.1,
-    shadowOffset: {width: -1, height: 1},
+    shadowOffset: { width: -1, height: 1 },
     shadowRadius: 10,
   },
   partnerContentItem: {
     alignItems: 'flex-start',
     flexBasis: 'auto',
-    padding: 30,
-    width: Dimensions.get('window').width >= 768 ? '45%' : '100%',
+    padding: 25,
+    marginHorizontal: 5,
+    width: Dimensions.get('window').width > 768 ? '45%' : '100%',
   },
   partnerContentItemMobile: {
     flexBasis: 'auto',
@@ -166,13 +154,6 @@ const styles = StyleSheet.create({
   content: {
     marginTop: 10,
     width: '100%',
-  },
-  partnerVideoHeading: {
-    textAlign: 'center',
-    marginBottom: 20,
-    fontSize: Platform.OS == 'web' ? 20 : 18,
-    fontWeight: 'bold',
-    color: Assets.colors.brand.cream,
   },
 });
 

@@ -5,7 +5,8 @@ import { CircleImage, LinkText, SvgImage, ToggleText } from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import ScrollView = Animated.ScrollView;
-import PageTitle from "@/UI/PageTitle";
+import PageTitle from '@/UI/PageTitle';
+import {BlurView} from 'expo-blur';
 
 const Info = () => {
     // @ts-ignore
@@ -49,69 +50,79 @@ const Info = () => {
 
                 <PageTitle title={t('pageTitles.info')}/>
                 {/* About javaBin */}
-                <View style={Assets.styles.section}>
+                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
                     <Text style={Assets.styles.sectionTitle}>{t('javaBin.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
+                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
                     <ToggleText title={t('javaBin.read_more')} toggle={toggleJavaBin} handleToggle={() => handleToggle(t('javaBin.read_more'), toggleJavaBin)}/>
 
                     <View style={{display: toggleJavaBin ? "flex" : "none"}}>
                         <Text style={Assets.styles.text}>{t('javaBin.about_JavaZone')}</Text>
                         <Text style={Assets.styles.text}>{t('javaBin.about_meetups')}</Text>
+                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+
                         <Text style={Assets.styles.sectionSubTitle}>{t('javaBin.become_active')}</Text>
                         <Text style={Assets.styles.text}>{t('javaBin.about_becoming_active')}</Text>
 
                         <View style={styles.imageContainer}>
                             <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image}/>
-                            <Text style={Assets.styles.callout}>{t('javaBin.intro')}</Text>
+                            {/*<Text style={Assets.styles.callout}>{t('javaBin.intro')}</Text>*/}
                         </View>
                     </View>
-                </View>
+                </BlurView>
+
 
                 {/* About JavaZone */}
-                <View style={Assets.styles.section}>
+                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
                     <Text style={Assets.styles.sectionTitle}>{t('javaZone.about')}</Text>
                     <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
+                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
                     <ToggleText title={t('javaZone.read_more')} toggle={toggleJavaZone} handleToggle={() => handleToggle(t('javaZone.read_more'), toggleJavaZone)}/>
 
                     <View style={{display: toggleJavaZone ? "flex" : "none"}}>
                         <Text style={Assets.styles.text}>{t('javaZone.goal')}</Text>
                         <Text style={Assets.styles.text}>{t('javaZone.last_year')}</Text>
+                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+
                         <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.who_is_behind')}</Text>
                         <Text style={Assets.styles.text}>{t('javaZone.about_organizers')}</Text>
+                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+
                         <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
-
-                        <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
-                            <View style={styles.listItemContainer}>
-                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
-                                <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
+                        <View style={{alignSelf: 'center', marginLeft: 30}}>
+                            <View style={{display: 'flex', flexDirection: screenWidth > 768 ? 'row' : 'column'}}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
+                                    <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
+                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
                             </View>
-                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
-                        </View>
 
-                        <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
-                            <View style={styles.listItemContainer}>
-                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
-                                <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} style={styles.listItem}/>
+                            <View style={{display: 'flex', flexDirection: screenWidth > 768 ? 'row' : 'column'}}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
+                                    <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} style={styles.listItem}/>
+                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
                             </View>
-                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
-                        </View>
 
-                        <View style={{display: 'flex', flexDirection:screenWidth >= 768 ? 'row' : 'column'}}>
-                            <View style={styles.listItemContainer}>
-                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
-                                <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} style={styles.listItem}/>
+                            <View style={{display: 'flex', flexDirection:screenWidth > 768 ? 'row' : 'column'}}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
+                                    <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} style={styles.listItem}/>
+                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
                             </View>
-                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
-                        </View>
 
-                        <View style={{display: 'flex', flexDirection: screenWidth >= 768 ? 'row' : 'column'}}>
-                            <View style={styles.listItemContainer}>
-                                <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
-                                <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} style={styles.listItem}/>
+                            <View style={{display: 'flex', flexDirection: screenWidth > 768 ? 'row' : 'column'}}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
+                                    <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} style={styles.listItem}/>
+                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
                             </View>
-                            <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
                         </View>
 
                         <Text style={Assets.styles.text}>{t('javaZone.thank_you')}</Text>
@@ -119,11 +130,13 @@ const Info = () => {
                             {t('javaZone.reach_core_team')}
                             <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
                         </Text>
+                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
                     </View>
-                </View>
+                </BlurView>
+
 
                 {/* Principles */}
-                <View style={Assets.styles.section}>
+                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
                     <Text style={Assets.styles.sectionTitle}>{t('principles.principles')}</Text>
                     <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
 
@@ -143,10 +156,12 @@ const Info = () => {
                         <Text style={Assets.styles.sectionSubTitle}>{t('principles.during_conference')}</Text>
                         <Text style={Assets.styles.text}>{t('principles.contact_stand')}</Text>
                     </View>
-                </View>
+                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+                </BlurView>
+
 
                 {/* Food */}
-                <View style={[Assets.styles.section, screenWidth <= 768 ? {width: '90%'} : {width: '100%'}]}>
+                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
                     <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
                     <View style={styles.paragraphImageContainer}>
                         <View style={{display: 'flex', width: screenWidth > 768 ? '75%' : screenWidth-200}}>
@@ -159,15 +174,17 @@ const Info = () => {
                         />
                     </View>
                     <Text style={[Assets.styles.text, {display: screenWidth <= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
-                </View>
+                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+                </BlurView>
+
 
                 {/* Volunteers */}
                 {/* More sections... */}
                 {/* Waste */}
-                <View style={[Assets.styles.section, {marginBottom: 50}]}>
+                <BlurView tint="light" intensity={20} style={[Assets.styles.section, Assets.styles.shadow, {marginBottom: 50}]}>
                     <Text style={Assets.styles.sectionTitle}>♻️ Sustainable waste management and recycling at JavaZone</Text>
                     <Text style={Assets.styles.text}>More information to come</Text>
-                </View>
+                </BlurView>
             </ScrollView>
         </ScreenTemplate>
     )
@@ -183,9 +200,9 @@ const styles = StyleSheet.create({
     },
     image: {
         width: Dimensions.get('window').width > 768 ? '50%' : '80%',
+        marginBottom: Dimensions.get('window').width > 768 ? 20 : 0,
         objectFit: 'scale-down',
         resizeMode: 'contain',
-        marginBottom: Dimensions.get('window').width > 768 ? 20 : 0,
     },
     listItemContainer: {
         display: 'flex',
@@ -195,8 +212,8 @@ const styles = StyleSheet.create({
     listItem: {
         display: "flex",
         flexWrap: "wrap",
-        fontSize: Dimensions.get('window').width > 768 ? 18 : 14,
         fontFamily: 'PlayfairDisplay_400Regular',
+        fontSize: Dimensions.get('window').width > 768 ? 18 : 14,
     },
     listItemRole: {
         color: Assets.colors.gradient.brown,
