@@ -120,7 +120,7 @@ export const Assets = {
             flexDirection: 'column',
         },
         scrollContainer: {
-            width: screenWidth > 768 ? '70%' : '90%',
+            width: screenWidth > 768 ? '60%' : '90%',
             marginTop: Platform.OS === 'web' ? 50 : 0
         },
         scrollContentContainer: {

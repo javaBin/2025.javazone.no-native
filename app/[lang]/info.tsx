@@ -67,7 +67,6 @@ const Info = () => {
 
                         <View style={styles.imageContainer}>
                             <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image}/>
-                            {/*<Text style={Assets.styles.callout}>{t('javaBin.intro')}</Text>*/}
                         </View>
                     </View>
                 </BlurView>
@@ -91,37 +90,42 @@ const Info = () => {
                         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
                         <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
-                        <View style={{alignSelf: 'center', marginLeft: 30}}>
-                            <View style={{display: 'flex', flexDirection: screenWidth > 768 ? 'row' : 'column'}}>
-                                <View style={styles.listItemContainer}>
-                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
-                                    <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
+                        <View style={{alignSelf: 'center', width: '100%', marginBottom: 20}}>
+
+                            <View style={screenWidth > 834 ? styles.listItemWrapperDesktop : styles.listItemWrapperMobile}>
+                                <View style={[styles.listItemGroup, styles.listItemGroupLeft]}>
+                                    <View style={styles.listItemContainer}>
+                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
+                                        <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
+                                    </View>
+                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
                                 </View>
-                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
+
+                                <View style={[styles.listItemGroup, styles.listItemGroupRight]}>
+                                    <View style={styles.listItemContainer}>
+                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
+                                        <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} style={styles.listItem}/>
+                                    </View>
+                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
+                                </View>
                             </View>
 
-                            <View style={{display: 'flex', flexDirection: screenWidth > 768 ? 'row' : 'column'}}>
-                                <View style={styles.listItemContainer}>
-                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
-                                    <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} style={styles.listItem}/>
+                            <View style={screenWidth > 834 ? styles.listItemWrapperDesktop : styles.listItemWrapperMobile}>
+                                <View style={[styles.listItemGroup, styles.listItemGroupLeft]}>
+                                    <View style={styles.listItemContainer}>
+                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
+                                        <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} style={styles.listItem}/>
+                                    </View>
+                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
                                 </View>
-                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
-                            </View>
 
-                            <View style={{display: 'flex', flexDirection:screenWidth > 768 ? 'row' : 'column'}}>
-                                <View style={styles.listItemContainer}>
-                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
-                                    <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} style={styles.listItem}/>
+                                <View style={[styles.listItemGroup, styles.listItemGroupRight]}>
+                                    <View style={styles.listItemContainer}>
+                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
+                                        <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} style={styles.listItem}/>
+                                    </View>
+                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
                                 </View>
-                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
-                            </View>
-
-                            <View style={{display: 'flex', flexDirection: screenWidth > 768 ? 'row' : 'column'}}>
-                                <View style={styles.listItemContainer}>
-                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
-                                    <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} style={styles.listItem}/>
-                                </View>
-                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
                             </View>
                         </View>
 
@@ -204,16 +208,41 @@ const styles = StyleSheet.create({
         objectFit: 'scale-down',
         resizeMode: 'contain',
     },
+    listItemWrapperDesktop: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: '100%',
+        flexWrap: 'wrap',
+        alignSelf: 'center',
+    },
+    listItemWrapperMobile: {
+        flexDirection: 'column',
+        width: '100%',
+        alignItems: 'center',
+    },
+    listItemGroup: {
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: Dimensions.get('window').width > 834 ? 'row' : 'column',
+    },
+    listItemGroupLeft:{
+        width: Dimensions.get('window').width > 834 ? 360: 240,
+        marginLeft: Dimensions.get('window').width > 834 ? 60 : 0,
+    },
+    listItemGroupRight: {
+        width: Dimensions.get('window').width > 834 ? 425: 240,
+    },
     listItemContainer: {
         display: 'flex',
         flexDirection: 'row',
         marginTop: 10,
     },
     listItem: {
-        display: "flex",
-        flexWrap: "wrap",
+        display: 'flex',
+        flexWrap: 'wrap',
+        textAlign: 'left',
         fontFamily: 'PlayfairDisplay_400Regular',
-        fontSize: Dimensions.get('window').width > 768 ? 18 : 14,
+        fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
     },
     listItemRole: {
         color: Assets.colors.gradient.brown,
@@ -223,7 +252,6 @@ const styles = StyleSheet.create({
     },
     listItemName: {
         color: Dimensions.get('window').width > 768 ? Assets.colors.jz2025ThemeColors.darkBrown : Assets.colors.gradient.brown,
-        marginBottom: 5,
         marginTop: Dimensions.get('window').width > 768 ? 10 : 0
     },
     paragraphImageContainer: {
