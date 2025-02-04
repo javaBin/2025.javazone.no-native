@@ -7,7 +7,7 @@ import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppState, Dimensions, ImageBackground, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Stack } from 'expo-router/stack';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';

@@ -4,11 +4,11 @@ import {Text} from "react-native";
 import React from "react";
 
 type SectionBoxProps = {
+    children: React.ReactNode;
     sectionTitle: string;
-    children?: React.ReactNode;
 }
 
-const SectionBox: React.FC<SectionBoxProps> = ({sectionTitle, children}) => {
+const SectionBox: React.FC<SectionBoxProps> = ({children, sectionTitle}) => {
     return (
         <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
             <Text style={Assets.styles.sectionTitle}>{sectionTitle}</Text>

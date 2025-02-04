@@ -1,10 +1,9 @@
 import React from 'react';
-import { SvgImage } from '@/UI';
+import { SvgImage, PageTitle } from '@/UI';
 import { Assets } from '@/Assets';
 import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import PageTitle from '@/UI/PageTitle';
 
 type HoldTheDateProps = {
   subPageHeader?: string;

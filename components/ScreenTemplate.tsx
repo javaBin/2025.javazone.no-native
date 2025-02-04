@@ -1,12 +1,10 @@
 import React from 'react';
-import { ImageBackground, Platform, SafeAreaView, StyleSheet, View } from 'react-native';
+import {ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useHeaderHeight } from '@react-navigation/elements';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
 import { Flag } from '@/components';
 import { Assets } from '@/Assets';
-import { useMediaQuery } from 'react-responsive';
 import { VerticalLinesRightLeft } from '@/components';
 import {
   // todo: refactor font loading into assets?
@@ -23,13 +21,15 @@ import {
   PlayfairDisplay_700Bold,
   PlayfairDisplay_800ExtraBold,
 } from '@expo-google-fonts/playfair-display';
+import Footer from "@/components/Footer";
+import {PageTitle} from "@/UI";
 
 type ScreenTemplateProps = {
   children: React.ReactNode;
-  headerPadding?: number;
+  pageTitle?: string;
 };
 
-const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, pageTitle }: ScreenTemplateProps) => {
   // @ts-ignore
   const { setLocale } = useI18nContext();
   const { top } = useSafeAreaInsets();
@@ -50,8 +50,10 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
   return (
     <ImageBackground source={Assets.background} style={{ flex: 1, width: '100%', height: '100%' }}>
       <View style={styles.overlay} />
+
       <SafeAreaView style={Assets.styles.safeArea}>
         <VerticalLinesRightLeft />
+
         <View style={[Assets.styles.container, { marginTop: newTop }]}>
           <View style={styles.languagePickers}>
             <Flag
@@ -69,7 +71,17 @@ const ScreenTemplate = ({ children, headerPadding }: ScreenTemplateProps) => {
               onPress={async () => await setLocale('en-US')}
             />
           </View>
-          {children}
+
+          <ScrollView style={Assets.styles.scrollContainer}
+                      contentContainerStyle={Assets.styles.scrollContentContainer}
+                      alwaysBounceVertical={false}
+                      showsVerticalScrollIndicator={false}>
+            {pageTitle && <PageTitle title={pageTitle}/>}
+
+            {children}
+
+            {Platform.OS === 'web' ? <Footer/> : null}
+          </ScrollView>
         </View>
       </SafeAreaView>
     </ImageBackground>

@@ -1,10 +1,9 @@
-import { Animated, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
 import { ScreenTemplate } from '@/components';
-import {CircleImage, LinkText, SvgImage, ToggleText, PageTitle, SectionBox} from '@/UI';
+import {CircleImage, LinkText, SvgImage, ToggleText, SectionBox} from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
-import ScrollView = Animated.ScrollView;
 
 const Info = () => {
     // @ts-ignore
@@ -40,150 +39,142 @@ const Info = () => {
     }
 
     return (
-        <ScreenTemplate>
-            <ScrollView style={Assets.styles.scrollContainer}
-                        contentContainerStyle={Assets.styles.scrollContentContainer}
-                        alwaysBounceVertical={false}
-                        showsVerticalScrollIndicator={false}>
+        <ScreenTemplate pageTitle={t('pageTitles.info')}>
+            {/* About javaBin */}
+            <SectionBox sectionTitle={t('javaBin.about')}>
+                <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
+                <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
-                <PageTitle title={t('pageTitles.info')}/>
-                {/* About javaBin */}
+                <ToggleText title={t('javaBin.read_more')} toggle={toggleJavaBin} handleToggle={() => handleToggle(t('javaBin.read_more'), toggleJavaBin)}/>
 
-                <SectionBox sectionTitle={t('javaBin.about')}>
-                    <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
+                <View style={{display: toggleJavaBin ? "flex" : "none"}}>
+                    <Text style={Assets.styles.text}>{t('javaBin.about_JavaZone')}</Text>
+                    <Text style={Assets.styles.text}>{t('javaBin.about_meetups')}</Text>
                     <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
-                    <ToggleText title={t('javaBin.read_more')} toggle={toggleJavaBin} handleToggle={() => handleToggle(t('javaBin.read_more'), toggleJavaBin)}/>
+                    <Text style={Assets.styles.sectionSubTitle}>{t('javaBin.become_active')}</Text>
+                    <Text style={Assets.styles.text}>{t('javaBin.about_becoming_active')}</Text>
 
-                    <View style={{display: toggleJavaBin ? "flex" : "none"}}>
-                        <Text style={Assets.styles.text}>{t('javaBin.about_JavaZone')}</Text>
-                        <Text style={Assets.styles.text}>{t('javaBin.about_meetups')}</Text>
-                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-
-                        <Text style={Assets.styles.sectionSubTitle}>{t('javaBin.become_active')}</Text>
-                        <Text style={Assets.styles.text}>{t('javaBin.about_becoming_active')}</Text>
-
-                        <View style={styles.imageContainer}>
-                            <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image}/>
-                        </View>
+                    <View style={styles.imageContainer}>
+                        <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image}/>
                     </View>
+                </View>
 
-                </SectionBox>
+            </SectionBox>
 
-                {/* About JavaZone */}
-                <SectionBox sectionTitle={t('javaZone.about')}>
-                    <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
+            {/* About JavaZone */}
+            <SectionBox sectionTitle={t('javaZone.about')}>
+                <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
+                <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+
+                <ToggleText title={t('javaZone.read_more')} toggle={toggleJavaZone} handleToggle={() => handleToggle(t('javaZone.read_more'), toggleJavaZone)}/>
+
+                <View style={{display: toggleJavaZone ? "flex" : "none"}}>
+                    <Text style={Assets.styles.text}>{t('javaZone.goal')}</Text>
+                    <Text style={Assets.styles.text}>{t('javaZone.last_year')}</Text>
                     <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
-                    <ToggleText title={t('javaZone.read_more')} toggle={toggleJavaZone} handleToggle={() => handleToggle(t('javaZone.read_more'), toggleJavaZone)}/>
+                    <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.who_is_behind')}</Text>
+                    <Text style={Assets.styles.text}>{t('javaZone.about_organizers')}</Text>
+                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
-                    <View style={{display: toggleJavaZone ? "flex" : "none"}}>
-                        <Text style={Assets.styles.text}>{t('javaZone.goal')}</Text>
-                        <Text style={Assets.styles.text}>{t('javaZone.last_year')}</Text>
-                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+                    <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
+                    <View style={{alignSelf: 'center', width: '100%', marginBottom: 20}}>
 
-                        <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.who_is_behind')}</Text>
-                        <Text style={Assets.styles.text}>{t('javaZone.about_organizers')}</Text>
-                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-
-                        <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
-                        <View style={{alignSelf: 'center', width: '100%', marginBottom: 20}}>
-
-                            <View style={screenWidth > 834 ? styles.listItemWrapperDesktop : styles.listItemWrapperMobile}>
-                                <View style={[styles.listItemGroup, styles.listItemGroupLeft]}>
-                                    <View style={styles.listItemContainer}>
-                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
-                                        <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
-                                    </View>
-                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
+                        <View style={screenWidth > 834 ? styles.listItemWrapperDesktop : styles.listItemWrapperMobile}>
+                            <View style={[styles.listItemGroup, styles.listItemGroupLeft]}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.leader')}</Text>
+                                    <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
                                 </View>
-
-                                <View style={[styles.listItemGroup, styles.listItemGroupRight]}>
-                                    <View style={styles.listItemContainer}>
-                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
-                                        <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} style={styles.listItem}/>
-                                    </View>
-                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
-                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.leader_name')}</Text>
                             </View>
 
-                            <View style={screenWidth > 834 ? styles.listItemWrapperDesktop : styles.listItemWrapperMobile}>
-                                <View style={[styles.listItemGroup, styles.listItemGroupLeft]}>
-                                    <View style={styles.listItemContainer}>
-                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
-                                        <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} style={styles.listItem}/>
-                                    </View>
-                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
+                            <View style={[styles.listItemGroup, styles.listItemGroupRight]}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.program')}</Text>
+                                    <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} style={styles.listItem}/>
                                 </View>
-
-                                <View style={[styles.listItemGroup, styles.listItemGroupRight]}>
-                                    <View style={styles.listItemContainer}>
-                                        <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
-                                        <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} style={styles.listItem}/>
-                                    </View>
-                                    <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
-                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.program_name')}</Text>
                             </View>
                         </View>
 
-                        <Text style={Assets.styles.text}>{t('javaZone.thank_you')}</Text>
-                        <Text style={Assets.styles.text}>
-                            {t('javaZone.reach_core_team')}
-                            <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
-                        </Text>
-                        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-                    </View>
-                </SectionBox>
+                        <View style={screenWidth > 834 ? styles.listItemWrapperDesktop : styles.listItemWrapperMobile}>
+                            <View style={[styles.listItemGroup, styles.listItemGroupLeft]}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.partners')}</Text>
+                                    <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} style={styles.listItem}/>
+                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.partners_name')}</Text>
+                            </View>
 
-                {/* Principles */}
-                <SectionBox sectionTitle={t('principles.principles')}>
-                    <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
-
-                    <ToggleText title={t('principles.read_more')} toggle={togglePrinciples} handleToggle={() => handleToggle(t('principles.read_more'), togglePrinciples)}/>
-
-                    <View style={{display: togglePrinciples ? "flex" : "none"}}>
-                        <Text style={Assets.styles.text}>{t('principles.about')}</Text>
-                        <Text style={Assets.styles.intro}>{t('principles.notify')}</Text>
-                        <Text style={Assets.styles.sectionSubTitle}>{t('principles.before_conference')}</Text>
-                        <Text style={Assets.styles.text}>
-                            {t('principles.contact_us_start')}
-                            <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
-                            {t('principles.contact_us_middle')}
-                            <LinkText title={t('principles.java_board_mail')} href={Assets.links.javaBoardMail} style={styles.listItem}/>
-                            {t('principles.contact_us_end')}
-                        </Text>
-                        <Text style={Assets.styles.sectionSubTitle}>{t('principles.during_conference')}</Text>
-                        <Text style={Assets.styles.text}>{t('principles.contact_stand')}</Text>
-                    </View>
-                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-                </SectionBox>
-
-                {/* Food */}
-                <SectionBox sectionTitle={t('food.food')}>
-                    <View style={styles.paragraphImageContainer}>
-                        <View style={{display: 'flex', width: screenWidth > 834 ? '75%' : '100%'}}>
-                            <Text style={[Assets.styles.text]}>{t('food.about')}</Text>
-                            <Text style={[Assets.styles.text, {display: screenWidth > 834 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                            <View style={[styles.listItemGroup, styles.listItemGroupRight]}>
+                                <View style={styles.listItemContainer}>
+                                    <Text style={[styles.listItemRole, styles.listItem]}>{t('javaZone.volunteers')}</Text>
+                                    <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} style={styles.listItem}/>
+                                </View>
+                                <Text style={[styles.listItemName, styles.listItem]}>{t('javaZone.volunteers_name')}</Text>
+                            </View>
                         </View>
-                        <CircleImage source={Assets.images.Doughnut}
-                                     size={screenWidth > 834 ? 200 : 150}
-                                     style={{
-                                         marginHorizontal: screenWidth > 834 ? 'auto' : 20,
-                                         marginVertical: screenWidth > 834 ? 0 : 10,
-                        }}
-                        />
                     </View>
-                    <Text style={[Assets.styles.text, {display: screenWidth <= 834 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
-                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-                </SectionBox>
 
-                {/* Volunteers */}
-                {/* More sections... */}
-                {/* Waste */}
-                <SectionBox sectionTitle={"♻️ Sustainable waste management and recycling at JavaZone"}>
-                    <Text style={Assets.styles.text}>More information to come</Text>
-                </SectionBox>
-            </ScrollView>
+                    <Text style={Assets.styles.text}>{t('javaZone.thank_you')}</Text>
+                    <Text style={Assets.styles.text}>
+                        {t('javaZone.reach_core_team')}
+                        <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
+                    </Text>
+                    <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+                </View>
+            </SectionBox>
+
+            {/* Principles */}
+            <SectionBox sectionTitle={t('principles.principles')}>
+                <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
+
+                <ToggleText title={t('principles.read_more')} toggle={togglePrinciples} handleToggle={() => handleToggle(t('principles.read_more'), togglePrinciples)}/>
+
+                <View style={{display: togglePrinciples ? "flex" : "none"}}>
+                    <Text style={Assets.styles.text}>{t('principles.about')}</Text>
+                    <Text style={Assets.styles.intro}>{t('principles.notify')}</Text>
+                    <Text style={Assets.styles.sectionSubTitle}>{t('principles.before_conference')}</Text>
+                    <Text style={Assets.styles.text}>
+                        {t('principles.contact_us_start')}
+                        <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem}/>
+                        {t('principles.contact_us_middle')}
+                        <LinkText title={t('principles.java_board_mail')} href={Assets.links.javaBoardMail} style={styles.listItem}/>
+                        {t('principles.contact_us_end')}
+                    </Text>
+                    <Text style={Assets.styles.sectionSubTitle}>{t('principles.during_conference')}</Text>
+                    <Text style={Assets.styles.text}>{t('principles.contact_stand')}</Text>
+                </View>
+                <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+            </SectionBox>
+
+            {/* Food */}
+            <SectionBox sectionTitle={t('food.food')}>
+                <View style={styles.paragraphImageContainer}>
+                    <View style={{display: 'flex', width: screenWidth > 834 ? '75%' : '100%'}}>
+                        <Text style={[Assets.styles.text]}>{t('food.about')}</Text>
+                        <Text style={[Assets.styles.text, {display: screenWidth > 834 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                    </View>
+                    <CircleImage source={Assets.images.Doughnut}
+                                 size={screenWidth > 834 ? 200 : 150}
+                                 style={{
+                                     marginHorizontal: screenWidth > 834 ? 'auto' : 20,
+                                     marginVertical: screenWidth > 834 ? 0 : 10
+                                }}
+                    />
+                </View>
+                <Text style={[Assets.styles.text, {display: screenWidth <= 834 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
+            </SectionBox>
+
+            {/* Volunteers */}
+            {/* More sections... */}
+            {/* Waste */}
+            <SectionBox sectionTitle={"♻️ Sustainable waste management and recycling at JavaZone"}>
+                <Text style={Assets.styles.text}>More information to come</Text>
+            </SectionBox>
         </ScreenTemplate>
     )
 }
