@@ -3,9 +3,9 @@ import {ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View} f
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
-import { Flag } from '@/components';
 import { Assets } from '@/Assets';
-import { VerticalLinesRightLeft } from '@/components';
+import { PageTitle } from "@/UI";
+import { VerticalLinesRightLeft, Footer, Flag } from '@/components';
 import {
   // todo: refactor font loading into assets?
   useFonts,
@@ -21,8 +21,6 @@ import {
   PlayfairDisplay_700Bold,
   PlayfairDisplay_800ExtraBold,
 } from '@expo-google-fonts/playfair-display';
-import Footer from "@/components/Footer";
-import {PageTitle} from "@/UI";
 
 type ScreenTemplateProps = {
   children: React.ReactNode;

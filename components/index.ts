@@ -19,4 +19,5 @@ export {
   Hero,
   WelcomeSection,
   NotFoundComponent,
+  Footer
 };
