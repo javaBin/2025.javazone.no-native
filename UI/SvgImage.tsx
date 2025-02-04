@@ -1,10 +1,10 @@
 import { SvgProps } from 'react-native-svg';
-import React, { useCallback, useEffect, useState } from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import React, { useCallback, useState, FunctionComponent } from 'react';
 import { useFocusEffect } from 'expo-router';
 
 type SvgImageProps = {
-  SVG: React.FC<SvgProps>;
+  SVG: FunctionComponent<SvgProps>;
   height: number;
   width?: number;
   style?: StyleProp<ViewStyle>;
