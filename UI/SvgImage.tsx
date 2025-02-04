@@ -7,9 +7,10 @@ type SvgImageProps = {
   height: number;
   width?: number;
   style?: StyleProp<ViewStyle>;
+  title?: string;
 };
 
-const SvgImage: React.FC<SvgImageProps> = ({ SVG, height, width, style }) => {
+const SvgImage: React.FC<SvgImageProps> = ({ SVG, height, width, style, title }) => {
   return (
     <View
       style={style ? style :
@@ -21,7 +22,7 @@ const SvgImage: React.FC<SvgImageProps> = ({ SVG, height, width, style }) => {
         }
       }
     >
-        <SVG height={height} width={width !== undefined ? width : '100%'} />
+        <SVG height={height} width={width && width ? width : '100%'} title={title ? title : ''} />
     </View>
   );
 };

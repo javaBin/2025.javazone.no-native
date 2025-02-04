@@ -7,7 +7,7 @@
     "workshop_title": "Workshop: ",
     "workshop_date": "September, 2025",
     "location_title": "Sted: ",
-    "location": "Nova Spektrum - Lillestrøm",
+    "location": "Nova Spektrum, Lillestrøm",
     "hold_the_date": "Hold av datoen!",
 
     "partner_information": "Partner informasjon",
@@ -20,6 +20,11 @@
     "aweZone_information": "AweZone informasjon",
     "javaZone_kids_information": "JavaZone Kids informasjon",
     "javaBin_information": "javaBin informasjon",
+
+    "pageTitles": {
+      "info": "Informasjon",
+      "partner": "Partnere"
+    },
 
     "javaBin": {
       "intro": "Bli en del av noe stort",
