@@ -1,13 +1,13 @@
 import SvgImage from '@/UI/SvgImage';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
-import Assets from '@/Assets';
+import {Assets} from '@/Assets';
 
 const Footer = () => {
   return (
     <View style={styles.footer}>
       <View style={styles.footerDivider}>
-        <SvgImage SVG={Assets.icons.HeroDivider} height={8} />
+        <SvgImage SVG={Assets.UI.DividerWide} height={8} />
       </View>
       <View style={styles.menu}>
         <TouchableOpacity>

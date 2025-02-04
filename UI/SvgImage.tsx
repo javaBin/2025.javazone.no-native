@@ -1,9 +1,9 @@
 import { SvgProps } from 'react-native-svg';
-import React from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import React, {FunctionComponent} from 'react';
+import {StyleProp, View, ViewStyle} from 'react-native';
 
 type SvgImageProps = {
-  SVG: React.FC<SvgProps>;
+  SVG: FunctionComponent<SvgProps>;
   height: number;
   width?: number;
   style?: StyleProp<ViewStyle>;
@@ -11,22 +11,24 @@ type SvgImageProps = {
 };
 
 const SvgImage: React.FC<SvgImageProps> = ({ SVG, height, width, style, title }) => {
-  return (
-    <View
-      style={
-        style
-          ? style
-          : {
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-            }
-      }
-    >
-      <SVG height={height} width={width && width ? width : '100%'} title={title ? title : ''} />
-    </View>
-  );
+    // todo: fix issue with svg images not rendering after navigation, thought: onNavigate() something ... render()
+
+    return (
+        <View
+          style={
+            style
+              ? style
+              : {
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '100%',
+                }
+          }
+        >
+            <SVG height={height} width={width && width ? width : '100%'} title={title ? title : ''} />
+        </View>
+    );
 };
 
 export default SvgImage;

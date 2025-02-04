@@ -10,16 +10,19 @@ import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
 import DividerWide from '@/assets/UI/divider-wide.svg';
 import DividerDot from '@/assets/UI/divider-dot.svg';
 
-// Icons
-import TriangleRight from '@/assets/icons/triangle-right.svg';
-import TriangleDown from '@/assets/icons/triangle-down.svg';
-import HeroDivider from '@/assets/images/hero/hero-divider.svg';
 import HeroDuke from '@/assets/images/hero/hero-duke.svg';
 import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
 import HeroYear from '@/assets/images/hero/hero-year.svg';
+import Logo from '@/assets/images/logo/javaZone-logo.svg';
+
+// Icons
+import TriangleRight from '@/assets/icons/triangle-right.svg';
+import TriangleDown from '@/assets/icons/triangle-down.svg';
 import MenuRoundedInactive from '@/assets/icons/menu-rounded-inactive.svg';
 import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
-import Logo from '@/assets/images/logo/javaZone-logo.svg';
+import TwitterFrame from '@/assets/icons/twitter-frame.svg';
+import FacebookFrame from '@/assets/icons/facebook-frame.svg';
+import LinkedInFrame from '@/assets/icons/linkedin-frame.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -51,10 +54,9 @@ export const Assets = {
         JavaBinLogo,
         Doughnut,
         hero: {
-            divider: HeroDivider,
-            duke: HeroDuke,
-            javaZone: HeroJavaZone,
-            year: HeroYear,
+            HeroDuke,
+            HeroJavaZone,
+            HeroYear,
         },
     },
     background: TextureMarble,
@@ -74,6 +76,9 @@ export const Assets = {
         Partner,
         Program,
         Speaker,
+        TwitterFrame,
+        FacebookFrame,
+        LinkedInFrame,
     },
     colors: {
         transparent: 'transparent',

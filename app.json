@@ -13,7 +13,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#232526"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "JavaBin",
@@ -36,7 +38,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "091cabe3-44ce-4d6d-a9d6-eb0e771edc64"
+        "projectId": "091cabe3-44ce-4d6d-a9d6-eb0e771edc64",
       }
     },
     "newArchEnabled": true,

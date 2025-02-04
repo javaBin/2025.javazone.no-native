@@ -191,7 +191,7 @@ const RootLayout = () => {
     headerShown: true,
     headerTitle: () => (
       <View style={styles.header}>
-        <Pressable onPress={() => router.replace(`/${lang}`)}>
+        <Pressable onPress={() => router.navigate(`/${lang}`)}>
           <View style={styles.headerLogoTitle}>
             <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
