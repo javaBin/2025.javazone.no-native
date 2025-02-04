@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   toggleButton: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'flex-start',
     marginVertical: 5,
   },
