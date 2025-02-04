@@ -161,13 +161,16 @@ const Info = () => {
                 {/* Food */}
                 <SectionBox sectionTitle={t('food.food')}>
                     <View style={styles.paragraphImageContainer}>
-                        <View style={{display: 'flex', width: screenWidth > 768 ? '75%' : screenWidth-200}}>
+                        <View style={{display: 'flex', width: screenWidth > 768 ? '75%' : '100%'}}>
                             <Text style={[Assets.styles.text]}>{t('food.about')}</Text>
                             <Text style={[Assets.styles.text, {display: screenWidth > 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                         </View>
                         <CircleImage source={Assets.images.Doughnut}
-                                     size={screenWidth <= 768 ? 100 : 200}
-                                     style={{marginHorizontal: screenWidth > 768 ? 'auto' : 20}}
+                                     size={screenWidth > 768 ? 200 : 150}
+                                     style={{
+                                         marginHorizontal: screenWidth > 768 ? 'auto' : 20,
+                                         marginVertical: screenWidth > 768 ? 0 : 10,
+                        }}
                         />
                     </View>
                     <Text style={[Assets.styles.text, {display: screenWidth <= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
@@ -247,8 +250,9 @@ const styles = StyleSheet.create({
     },
     paragraphImageContainer: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: Dimensions.get('window').width > 768 ? 'row' : 'column',
         width: '100%',
+        alignItems: Dimensions.get('window').width > 768 ? 'flex-start' : 'center',
     }
 });
 
