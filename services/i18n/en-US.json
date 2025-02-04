@@ -9,6 +9,7 @@
     "location_title": "Location: ",
     "location": "Nova Spektrum, Lillestrøm",
     "hold_the_date": "Hold the date!",
+
     "partner_information": "Partner information",
     "speaker_information": "Speaker information",
     "program_information": "Program information",
@@ -19,6 +20,12 @@
     "aweZone_information": "AweZone information",
     "javaZone_kids_information": "JavaZone Kids information",
     "javaBin_information": "javaBin information",
+
+    "pageTitles": {
+      "info": "Information",
+      "partner": "Partners"
+    },
+
     "javaBin": {
       "intro": "Become part of something great",
       "about": "About javaBin",
@@ -74,6 +81,7 @@
       "about": "JavaZone promises to tantalize your taste buds and satisfy your cravings throughout the conference. For attendees with allergies or dietary restrictions, rest assured that each restaurant is committed to providing a safe and enjoyable dining experience. ",
       "our_chefs": "Our chefs are well-versed in accommodating gluten, nut, dairy, and other common allergies. Simply inform the restaurant staff of your dietary needs, and they will guide you through the menu or offer personalized suggestions."
     },
+
     "partner": {
       "watch_partner_meeting": "Watch this recording of the first partner meeting held on December 11th.",
       "partner_info": {
@@ -108,6 +116,7 @@
         "first_come_first_served": "First come first served if tickets are still available after May 15th"
       }
     },
+
     "404": {
       "error_code": "Void 0",
       "error_title": "Well, this is embarrassing...",

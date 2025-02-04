@@ -21,6 +21,11 @@
     "javaZone_kids_information": "JavaZone Kids informasjon",
     "javaBin_information": "javaBin informasjon",
 
+    "pageTitles": {
+      "info": "Informasjon",
+      "partner": "Partnere"
+    },
+
     "javaBin": {
       "intro": "Bli en del av noe stort",
       "about": "Om javaBin",
