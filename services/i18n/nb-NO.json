@@ -7,7 +7,7 @@
     "workshop_title": "Workshop: ",
     "workshop_date": "September, 2025",
     "location_title": "Sted: ",
-    "location": "Nova Spektrum - Lillestrøm",
+    "location": "Nova Spektrum, Lillestrøm",
     "hold_the_date": "Hold av datoen!",
 
     "partner_information": "Partner informasjon",
@@ -20,6 +20,11 @@
     "aweZone_information": "AweZone informasjon",
     "javaZone_kids_information": "JavaZone Kids informasjon",
     "javaBin_information": "javaBin informasjon",
+
+    "pageTitles": {
+      "info": "Informasjon",
+      "partner": "Partnere"
+    },
 
     "javaBin": {
       "intro": "Bli en del av noe stort",
@@ -54,7 +59,8 @@
       "partners_mail": "partner@java.no",
       "volunteers_mail": "student@java.no",
       "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen!",
-      "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via "
+      "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via ",
+      "welcome_to_NOVA": "Velkommen til NOVA Spektrum, Lillestrøm"
     },
     "principles": {
       "principles": "Noen få svært viktige prinsipper",
