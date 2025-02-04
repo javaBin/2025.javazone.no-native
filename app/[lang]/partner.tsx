@@ -11,9 +11,8 @@ import {
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 import React from 'react';
-import { LinkButton, LinkText } from "@/UI";
+import { LinkButton, LinkText, PageTitle } from "@/UI";
 import { BlurView } from "expo-blur";
-import PageTitle from "@/UI/PageTitle";
 
 const Partner = () => {
   const { t } = useTranslation();

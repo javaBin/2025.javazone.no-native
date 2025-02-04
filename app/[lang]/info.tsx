@@ -1,12 +1,10 @@
 import { Animated, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
 import { ScreenTemplate } from '@/components';
-import { CircleImage, LinkText, SvgImage, ToggleText } from '@/UI';
+import {CircleImage, LinkText, SvgImage, ToggleText, PageTitle, SectionBox} from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import ScrollView = Animated.ScrollView;
-import PageTitle from '@/UI/PageTitle';
-import {BlurView} from 'expo-blur';
 
 const Info = () => {
     // @ts-ignore
@@ -50,8 +48,8 @@ const Info = () => {
 
                 <PageTitle title={t('pageTitles.info')}/>
                 {/* About javaBin */}
-                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
-                    <Text style={Assets.styles.sectionTitle}>{t('javaBin.about')}</Text>
+
+                <SectionBox sectionTitle={t('javaBin.about')}>
                     <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
                     <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
@@ -69,12 +67,11 @@ const Info = () => {
                             <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image}/>
                         </View>
                     </View>
-                </BlurView>
 
+                </SectionBox>
 
                 {/* About JavaZone */}
-                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
-                    <Text style={Assets.styles.sectionTitle}>{t('javaZone.about')}</Text>
+                <SectionBox sectionTitle={t('javaZone.about')}>
                     <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
                     <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
 
@@ -136,12 +133,10 @@ const Info = () => {
                         </Text>
                         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
                     </View>
-                </BlurView>
-
+                </SectionBox>
 
                 {/* Principles */}
-                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
-                    <Text style={Assets.styles.sectionTitle}>{t('principles.principles')}</Text>
+                <SectionBox sectionTitle={t('principles.principles')}>
                     <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
 
                     <ToggleText title={t('principles.read_more')} toggle={togglePrinciples} handleToggle={() => handleToggle(t('principles.read_more'), togglePrinciples)}/>
@@ -161,12 +156,10 @@ const Info = () => {
                         <Text style={Assets.styles.text}>{t('principles.contact_stand')}</Text>
                     </View>
                     <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-                </BlurView>
-
+                </SectionBox>
 
                 {/* Food */}
-                <BlurView tint="light" intensity={20} style={{...Assets.styles.section, ...Assets.styles.shadow}}>
-                    <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
+                <SectionBox sectionTitle={t('food.food')}>
                     <View style={styles.paragraphImageContainer}>
                         <View style={{display: 'flex', width: screenWidth > 768 ? '75%' : screenWidth-200}}>
                             <Text style={[Assets.styles.text]}>{t('food.about')}</Text>
@@ -179,16 +172,14 @@ const Info = () => {
                     </View>
                     <Text style={[Assets.styles.text, {display: screenWidth <= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                     <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-                </BlurView>
-
+                </SectionBox>
 
                 {/* Volunteers */}
                 {/* More sections... */}
                 {/* Waste */}
-                <BlurView tint="light" intensity={20} style={[Assets.styles.section, Assets.styles.shadow, {marginBottom: 50}]}>
-                    <Text style={Assets.styles.sectionTitle}>♻️ Sustainable waste management and recycling at JavaZone</Text>
+                <SectionBox sectionTitle={"♻️ Sustainable waste management and recycling at JavaZone"}>
                     <Text style={Assets.styles.text}>More information to come</Text>
-                </BlurView>
+                </SectionBox>
             </ScrollView>
         </ScreenTemplate>
     )
