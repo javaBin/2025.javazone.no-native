@@ -13,7 +13,6 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
       justifyContent: 'center',
       alignItems: 'center',
       width: '100%',
-      height: 'auto',
     },
     video: {
       position: 'relative',
