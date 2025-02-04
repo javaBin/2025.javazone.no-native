@@ -161,19 +161,19 @@ const Info = () => {
                 {/* Food */}
                 <SectionBox sectionTitle={t('food.food')}>
                     <View style={styles.paragraphImageContainer}>
-                        <View style={{display: 'flex', width: screenWidth > 768 ? '75%' : '100%'}}>
+                        <View style={{display: 'flex', width: screenWidth > 834 ? '75%' : '100%'}}>
                             <Text style={[Assets.styles.text]}>{t('food.about')}</Text>
-                            <Text style={[Assets.styles.text, {display: screenWidth > 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                            <Text style={[Assets.styles.text, {display: screenWidth > 834 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                         </View>
                         <CircleImage source={Assets.images.Doughnut}
-                                     size={screenWidth > 768 ? 200 : 150}
+                                     size={screenWidth > 834 ? 200 : 150}
                                      style={{
-                                         marginHorizontal: screenWidth > 768 ? 'auto' : 20,
-                                         marginVertical: screenWidth > 768 ? 0 : 10,
+                                         marginHorizontal: screenWidth > 834 ? 'auto' : 20,
+                                         marginVertical: screenWidth > 834 ? 0 : 10,
                         }}
                         />
                     </View>
-                    <Text style={[Assets.styles.text, {display: screenWidth <= 768 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
+                    <Text style={[Assets.styles.text, {display: screenWidth <= 834 ? 'flex' : 'none'}]}>{t('food.our_chefs')}</Text>
                     <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
                 </SectionBox>
 
@@ -250,9 +250,9 @@ const styles = StyleSheet.create({
     },
     paragraphImageContainer: {
         display: 'flex',
-        flexDirection: Dimensions.get('window').width > 768 ? 'row' : 'column',
+        flexDirection: Dimensions.get('window').width > 834 ? 'row' : 'column',
         width: '100%',
-        alignItems: Dimensions.get('window').width > 768 ? 'flex-start' : 'center',
+        alignItems: Dimensions.get('window').width > 834 ? 'flex-start' : 'center',
     }
 });
 
