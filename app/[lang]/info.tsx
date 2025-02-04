@@ -170,9 +170,10 @@ const Info = () => {
         </View>
 
         <View style={[Assets.styles.section, screenWidth < 768 ? { width: '90%' } : { width: '100%' }]}>
-          <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
+
           <View style={styles.paragraphImageContainer}>
-            <View style={{ display: 'flex', width: screenWidth >= 768 ? '90%' : '100%' }}>
+            <View style={{ display: 'flex', width: screenWidth >= 768 ? '90%' : '100%', justifyContent:'center' }}>
+              <Text style={Assets.styles.sectionTitle}>{t('food.food')}</Text>
               <Text style={Assets.styles.text}>{t('food.about')}</Text>
               <Text style={[Assets.styles.text, { display: screenWidth >= 768 ? 'flex' : 'none' }]}>
                 {t('food.our_chefs')}
@@ -191,7 +192,43 @@ const Info = () => {
 
         <View style={[Assets.styles.section, { marginBottom: 50 }]}>
           <Text style={Assets.styles.sectionTitle}>♻️ Sustainable waste management and recycling at JavaZone</Text>
-          <Text style={Assets.styles.text}>More information to come</Text>
+          <View style={styles.paragraphImageContainer}>
+            <View style={{ display: 'flex', width: screenWidth >= 768 ? '90%' : '100%' }}>
+              <Text style={Assets.styles.text}>
+                In an era where environmental consciousness is at the forefront, responsible waste management practices
+                have become imperative. At Oslo Spektrum, an innovative partnership with Oslo Municipality and
+                Franzefoss ensures that waste is not just disposed of, but actively sorted and recycled, promoting a
+                greener future.
+              </Text>
+              <Text style={Assets.styles.text}>
+                Upon entering JavaZone, attendees may not be immediately aware of the meticulous waste management system
+                that operates behind the scenes. Once waste is discarded, the process of responsible disposal begins. A
+                comprehensive sorting mechanism is in place, designed to separate recyclables from non-recyclable
+                materials.
+              </Text>
+              <Text style={Assets.styles.text}>
+                One notable aspect of this waste management initiative is the sorting and collection of beverage
+                containers for deposit refund, known as "pant" in Norway. The bottles and cans are systematically
+                collected, sorted, and sent for recycling, embodying the ethos of resource efficiency.
+              </Text>
+              <Text style={Assets.styles.text}>
+                Considerable portions of waste generated during JavaZone are earmarked for recycling. Through a blend of
+                advanced waste separation technology and dedicated staff, materials like paper, plastic, glass, and
+                metal are carefully segregated. The residual waste is further sorted at the Franzefoss plant in
+                Haraldsrud and the remaining 70% is ground up and converted into FOB (refined waste fuel). Franzefoss
+                has an agreement with Norcem for the delivery of FOB and this is used by Norcem as a high-value fuel for
+                cement production. The food waste/wet organic waste delivered is used for biogas and fertilizer on grain
+                fields. This not only reduces the environmental impact of JavaZone but also sets an example for
+                attendees and the wider community.
+              </Text>
+
+            </View>
+            <CircleImage
+              source={Assets.images.Doughnut}
+              size={screenWidth < 768 ? 100 : 200}
+              style={{ marginHorizontal: 5 }}
+            />
+          </View>
         </View>
       </ScrollView>
     </ScreenTemplate>
