@@ -59,3 +59,6 @@ xcuserdata
 **/ios/.xcode.env.local
 */ios/Pods
 */ios/build
+
+ios
+android

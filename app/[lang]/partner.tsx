@@ -12,17 +12,6 @@ const Partner = () => {
   const isMobile = useMediaQuery({ maxWidth: 614 });
   const screenWidth = Dimensions.get('window').width;
 
-  const temporaryVideoFix = () => {
-    return Platform.OS === 'web' ? (
-      <View style={[styles.content, { marginBottom: 50 }]}>
-        <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15 }]}>{t('partner.watch_partner_meeting')}</Text>
-        <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
-      </View>
-    ) : (
-      <View style={{ marginBottom: 50 }}></View>
-    );
-  };
-
   return (
     <ScreenTemplate>
       <ScrollView
@@ -130,7 +119,10 @@ const Partner = () => {
           </View>
         </View>
 
-        {temporaryVideoFix()}
+        <View style={[styles.content, { marginBottom: 50 }]}>
+        <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15, marginBottom: 20 }]}>{t('partner.watch_partner_meeting')}</Text>
+        <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+      </View>
       </ScrollView>
     </ScreenTemplate>
   );

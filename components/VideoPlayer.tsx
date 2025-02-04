@@ -1,4 +1,5 @@
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, Platform, StyleSheet, View } from 'react-native';
+import WebView from 'react-native-webview';
 
 type VideoPlayerProps = {
   videoUrl: string;
@@ -8,8 +9,8 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
   const screenWidth = Dimensions.get('window').width;
   const videoHeight = screenWidth / 1.9;
 
-  return (
-    <View style={styles.container}>
+  return Platform.OS === 'web' ? (
+    <View>
       <iframe
         src={`${videoUrl}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`}
         frameBorder="0"
@@ -18,6 +19,12 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
         title="JavaZone 2025 Partner meeting #1"
       ></iframe>
       <script src="https://player.vimeo.com/api/player.js"></script>
+    </View>
+  ) : (
+    <View style={{ width: screenWidth, display: 'flex', justifyContent: 'center', flexDirection: 'row' }}>
+      <View style={{ height: 185, width: 335 }}>
+        <WebView source={{ uri: `${videoUrl}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479` }} />
+      </View>
     </View>
   );
 };
