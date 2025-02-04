@@ -1,5 +1,4 @@
-import { View, Text, StyleSheet, Platform } from 'react-native';
-import { Assets } from '@/Assets';
+import { View, Text, StyleSheet, Platform, Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 const WelcomeSection = () => {
@@ -7,8 +6,8 @@ const WelcomeSection = () => {
 
   return (
     <View style={[styles.titleContainer, { marginTop: 20, flexDirection: 'column' }]}>
-      <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 30 }}>{t('javaZone.welcome_to_NOVA')}</Text>
-      <Text style={{ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 30 }}>September 3-4</Text>
+      <Text style={styles.welcomeText}>{t('javaZone.welcome_to_NOVA')}</Text>
+      <Text style={styles.welcomeText}>September 3-4</Text>
     </View>
   );
 };
@@ -25,6 +24,11 @@ const styles = StyleSheet.create({
     width: 'auto',
   },
   title: {
-    fontSize: Platform.OS == 'web' ? 20 : 18,
+    fontSize: Dimensions.get('window').width > 768 ? 20 : 18,
   },
+  welcomeText: {
+    fontFamily: 'PlayfairDisplay_400Regular',
+    fontSize: Dimensions.get('window').width > 768 ? 30 : 25,
+    textAlign: 'center',
+  }
 });
