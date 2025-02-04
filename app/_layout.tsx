@@ -14,8 +14,6 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
-import Svg, { SvgProps } from 'react-native-svg';
-import { opacity } from 'react-native-reanimated/lib/typescript/Colors';
 
 const RootLayout = () => {
   const resources = { en, nb };
@@ -141,7 +139,7 @@ const RootLayout = () => {
     },
     hamburger: {
       marginHorizontal: 20,
-      display: screenWidth > 768 ? 'none' : 'flex',
+      display: screenWidth > 834 ? 'none' : 'flex',
       justifyContent: 'flex-start',
       alignItems: 'flex-end',
     },
@@ -174,7 +172,7 @@ const RootLayout = () => {
       textShadowRadius: 3,
     },
     navBar: {
-      display: screenWidth > 768 ? 'flex' : 'none',
+      display: screenWidth > 834 ? 'flex' : 'none',
       flexDirection: 'row',
       flexGrow: 1,
       maxWidth: '75%',
