@@ -173,6 +173,7 @@ export const Assets = {
       marginTop: 7.5,
       fontFamily: 'Cinzel_600SemiBold',
       textAlign: 'center',
+      width: '100%',
     },
     section: {
       width: '100%',
@@ -188,6 +189,7 @@ export const Assets = {
       fontSize: screenWidth > 768 ? 18 : 16,
       fontFamily: 'Cinzel_400Regular',
       textAlign: 'center',
+      width: '100%',
     },
     callout: {
       color: '#B10A32', // crimson-red

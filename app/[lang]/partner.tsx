@@ -10,7 +10,7 @@ import {
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 import React from 'react';
-import {LinkButton, LinkText, SvgImage} from "@/UI";
+import { LinkButton, LinkText, SvgImage } from "@/UI";
 import { BlurView } from "expo-blur";
 
 const Partner = () => {
@@ -22,8 +22,7 @@ const Partner = () => {
      (
         <View style={{width: '100%'}}>
           <Text style={[Assets.styles.sectionSubTitle, {
-            marginHorizontal: 15,
-            textAlign: 'center',
+            paddingHorizontal: isMobile ? 5 : 0,
             marginBottom: isMobile ? 15 : 20}]}>
             {t('partner.watch_partner_meeting')}
           </Text>
@@ -87,7 +86,7 @@ const Partner = () => {
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_tickets')}</Text>
-          <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 9 220,- NOK ex VAT incl ticket fee</Text>
+          <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 9 220,- NOK ex VAT {'\n'}incl ticket fee</Text>
           <Text style={[Assets.styles.text]}>{t('partner.partner_info.partner_tickets_detail_1')}</Text>
 
           <View>
@@ -97,7 +96,7 @@ const Partner = () => {
         </BlurView>
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
-          <Text style={[Assets.styles.sectionSubTitle, {maxWidth: '100%'}]}>{t('partner.partner_info.extended_package')}</Text>
+          <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.extended_package')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
           <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
         </BlurView>

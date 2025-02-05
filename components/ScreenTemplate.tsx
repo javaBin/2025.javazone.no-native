@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
+import { ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
