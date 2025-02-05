@@ -1,15 +1,26 @@
 import { SvgImage } from '@/UI';
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Linking, Dimensions} from 'react-native';
+import React, { Fragment } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
-const Footer = () => {
+type FooterProps = {
+  displayToTopArrow?: boolean;
+  handleScrollToTop?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({displayToTopArrow, handleScrollToTop}) => {
   const { t } = useTranslation();
   const iconSize = Dimensions.get('window').width > 768 ? 35 : 26;
 
   return (
     <View style={styles.footer}>
+      {displayToTopArrow && displayToTopArrow ? (
+        <TouchableOpacity style={{marginTop: 10}} onPress={handleScrollToTop}>
+          <SvgImage SVG={Assets.icons.ToTopArrow} height={20} />
+        </TouchableOpacity>
+      ) : <Fragment/>}
+
       <SvgImage SVG={Assets.UI.DividerWide} height={10} style={{paddingVertical: 20}} />
 
       <View style={styles.menu}>

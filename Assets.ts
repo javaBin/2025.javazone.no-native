@@ -23,6 +23,7 @@ import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import TwitterFrame from '@/assets/icons/twitter-frame.svg';
 import FacebookFrame from '@/assets/icons/facebook-frame.svg';
 import LinkedInFrame from '@/assets/icons/linkedin-frame.svg';
+import ToTopArrow from '@/assets/icons/to-top-arrow.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -79,6 +80,7 @@ export const Assets = {
     TwitterFrame,
     FacebookFrame,
     LinkedInFrame,
+    ToTopArrow
   },
   colors: {
     transparent: 'transparent',

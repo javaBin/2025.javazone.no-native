@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
@@ -25,13 +25,21 @@ import {
 type ScreenTemplateProps = {
   children: React.ReactNode;
   pageTitle?: string;
+  shouldScrollToTop?: boolean;
 };
 
-const ScreenTemplate = ({ children, pageTitle }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTemplateProps) => {
   // @ts-ignore
   const { setLocale } = useI18nContext();
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
+  const scrollViewRef = useRef<ScrollView>(null);
+
+  const handleScrollToTop = () => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ y: 0, animated: true });
+    }
+  }
 
   useFonts({
     Cinzel_400Regular,
@@ -70,7 +78,8 @@ const ScreenTemplate = ({ children, pageTitle }: ScreenTemplateProps) => {
             />
           </View>
 
-          <ScrollView style={Assets.styles.scrollContainer}
+          <ScrollView ref={scrollViewRef}
+                      style={Assets.styles.scrollContainer}
                       contentContainerStyle={Assets.styles.scrollContentContainer}
                       alwaysBounceVertical={false}
                       showsVerticalScrollIndicator={false}>
@@ -78,7 +87,7 @@ const ScreenTemplate = ({ children, pageTitle }: ScreenTemplateProps) => {
 
             {children}
 
-            {Platform.OS === 'web' ? <Footer/> : null}
+            {Platform.OS === 'web' ? <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop}/> : null}
           </ScrollView>
         </View>
       </SafeAreaView>

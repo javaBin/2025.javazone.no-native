@@ -32,7 +32,7 @@ const Partner = () => {
   }
 
   return (
-    <ScreenTemplate pageTitle={t('pageTitles.partner')}>
+    <ScreenTemplate pageTitle={t('pageTitles.partner')} shouldScrollToTop={true}>
       <Text style={[Assets.styles.sectionSubTitle, {textAlign: 'center'}]}>
         {t('partner.partner_info.partner_registration_opens')}
       </Text>
