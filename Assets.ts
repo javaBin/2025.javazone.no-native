@@ -9,6 +9,9 @@ import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
 import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
 import DividerWide from '@/assets/UI/divider-wide.svg';
 import DividerDot from '@/assets/UI/divider-dot.svg';
+import PillarTop from '@/assets/UI/pillar-top.svg';
+import VineLeft from '@/assets/UI/vine-left.svg';
+import VineRight from '@/assets/UI/vine-right.svg';
 
 import HeroDuke from '@/assets/images/hero/hero-duke.svg';
 import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
@@ -66,6 +69,9 @@ export const Assets = {
     PapyrusSheet,
     DividerWide,
     DividerDot,
+    PillarTop,
+    VineLeft,
+    VineRight,
   },
   icons: {
     TriangleRight,
