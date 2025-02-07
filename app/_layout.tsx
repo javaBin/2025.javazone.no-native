@@ -332,7 +332,6 @@ const RootLayout = () => {
                 tabBarIcon: () => <SvgImage SVG={Assets.icons.Info} height={24} />,
               }}
             />
-
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
         </I18nContextProvider>

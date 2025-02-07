@@ -1,9 +1,8 @@
-import { Platform, StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
-// @ts-ignore
-import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
-// @ts-ignore
+
+// @ts-ignore UI
 import TextureMarble from '@/assets/images/background/texture-marble.png';
 import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
 import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
@@ -17,6 +16,7 @@ import HeroDuke from '@/assets/images/hero/hero-duke.svg';
 import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
 import HeroYear from '@/assets/images/hero/hero-year.svg';
 import Logo from '@/assets/images/logo/javaZone-logo.svg';
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
 
 // Icons
 import TriangleRight from '@/assets/icons/triangle-right.svg';
