@@ -39,7 +39,7 @@ const Info = () => {
     }
 
     return (
-        <ScreenTemplate pageTitle={t('pageTitles.info')} shouldScrollToTop={true}>
+        <ScreenTemplate pageTitle={t('pageTitles.info')} shouldScrollToTop={true} infoPage={true}>
             {/* About javaBin */}
             <SectionBox sectionTitle={t('javaBin.about')}>
                 <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>

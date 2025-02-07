@@ -66,22 +66,24 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
+    margin: 'auto'
   },
   heading: {
-    fontSize: Platform.OS == 'web' ? 38 : 36,
+    fontSize: Dimensions.get('window').width > 768 ? 38 : 36,
     fontWeight: 'bold',
     color: Assets.colors.brand.charcoal,
     fontFamily: 'Cinzel_400Regular',
   },
   subHeading: {
-    fontSize: Platform.OS == 'web' ? 32 : 28,
+    fontSize: Dimensions.get('window').width > 768 ? 32 : 28,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    color: Assets.colors.brand.charcoal,
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
     fontFamily: 'Cinzel_700Bold',
+    textAlign: 'center'
   },
   subPageHeading: {
-    fontSize: Platform.OS == 'web' ? 28 : 26,
+    fontSize: Dimensions.get('window').width > 768 ? 28 : 26,
     fontWeight: '500',
     color: Assets.colors.brand.charcoal,
     fontFamily: 'Cinzel_600SemiBold',

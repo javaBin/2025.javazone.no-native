@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import { ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { Dimensions, ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
@@ -7,7 +7,6 @@ import { Assets } from '@/Assets';
 import { PageTitle } from "@/UI";
 import { VerticalLinesRightLeft, Footer, Flag } from '@/components';
 import {
-  // todo: refactor font loading into assets?
   useFonts,
   Cinzel_400Regular,
   Cinzel_500Medium,
@@ -26,9 +25,10 @@ type ScreenTemplateProps = {
   children: React.ReactNode;
   pageTitle?: string;
   shouldScrollToTop?: boolean;
+  infoPage?: boolean;
 };
 
-const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop, infoPage }: ScreenTemplateProps) => {
   // @ts-ignore
   const { setLocale } = useI18nContext();
   const { top } = useSafeAreaInsets();
@@ -53,6 +53,23 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTempla
     PlayfairDisplay_800ExtraBold,
   });
 
+  const styles = StyleSheet.create({
+    languagePickers: {
+      display: infoPage && infoPage ? 'flex' : 'none',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      position: 'absolute',
+      top: Dimensions.get('window').width > 768 ? 70 : 0,
+      right: Dimensions.get('window').width > 768 ? 110 : 20,
+      zIndex: 50
+    },
+    overlay: {
+      ...StyleSheet.absoluteFillObject,
+      backgroundColor: 'rgba(254,211,195,0.6)',
+      opacity: 0.3,
+    },
+  });
+
   return (
     <ImageBackground source={Assets.background} style={{ flex: 1, width: '100%', height: '100%' }}>
       <View style={styles.overlay} />
@@ -61,7 +78,7 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTempla
         <VerticalLinesRightLeft />
 
         <View style={[Assets.styles.container, { marginTop: newTop }]}>
-          <View style={styles.languagePickers}>
+          <View style={styles.languagePickers} id={"languagePickers"}>
             <Flag
               flagLocale={'nb-NO'}
               countryCode={CountryCode.Norwegian}
@@ -94,21 +111,5 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTempla
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  languagePickers: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    position: 'absolute',
-    top: 0,
-    right: 40,
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(254,211,195,0.6)',
-    opacity: 0.3,
-  },
-});
 
 export default ScreenTemplate;

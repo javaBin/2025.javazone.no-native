@@ -3,7 +3,7 @@
     "javaZone_2025": "JavaZone 2025",
     "in_progress": "in progress...",
     "conference_title": "Conference: ",
-    "conference_date": "September 3-4, 2025",
+    "conference_date": "September 3 - 4, 2025",
     "workshop_title": "Workshop: ",
     "workshop_date": "September, 2025",
     "location_title": "Location: ",
@@ -115,6 +115,9 @@
         "round_robin_distribution": "Round robin distribution on tickets ordered by May 15\u1d57\u02b0",
         "first_come_first_served": "First come first served if tickets are still available after May 15\u1d57\u02b0"
       }
+    },
+    "ticket": {
+      "announcement": "Ticket sales will start March 3\u02B3\u1D48"
     },
 
     "404": {

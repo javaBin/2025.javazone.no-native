@@ -121,6 +121,7 @@ export const Assets = {
       lightBrown: '#6c605c',
       linen: '#F9F6F5',
       sheet: '#e8dacf',
+      sheetOpacity: 'rgba(232, 218, 207, 0.9)',
       sheetShadow: '#d3c5bb',
       cyberYellow: '#FFD400',
       cyberYellowOpacity: 'rgba(255, 212, 0, 0.7)',
@@ -133,9 +134,8 @@ export const Assets = {
   styles: StyleSheet.create({
     safeArea: {
       flex: 1,
-      //position: 'relative',
+      position: 'relative',
       margin: 0,
-      //zIndex: 1,
       overflow: 'hidden'
     },
     container: {
@@ -146,7 +146,6 @@ export const Assets = {
     },
     scrollContainer: {
       width: '100%',
-      marginTop: Platform.OS === 'web' ? 50 : 0,
     },
     scrollContentContainer: {
       flex: 1,
@@ -154,7 +153,7 @@ export const Assets = {
       alignItems: 'center',
       justifyContent: 'space-between',
       alignSelf: 'center',
-      marginTop: 30,
+      marginTop: 50,
       padding: 10,
     },
     pageTitle: {},

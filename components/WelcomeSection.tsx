@@ -6,12 +6,12 @@ const WelcomeSection = () => {
   const { t } = useTranslation();
 
   return (
-    <View style={[styles.titleContainer, { marginTop: 20, flexDirection: 'column' }]}>
+    <View style={[styles.titleContainer, { marginTop: 20, flexDirection: 'column', marginBottom: 'auto' }]}>
       <Text style={styles.welcomeText}>{t('javaZone.welcome_to_NOVA')}</Text>
-      <Text style={styles.welcomeText}>September 3 - 4</Text>
+      <Text style={styles.welcomeText}>{t('conference_date')}</Text>
 
       <View style={styles.ticketContainer}>
-        <Text style={styles.ticketText}>Ticket sales will start March 3rd</Text>
+        <Text style={styles.ticketText}>{t('ticket.announcement')}</Text>
       </View>
     </View>
   );
