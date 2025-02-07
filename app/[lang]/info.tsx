@@ -225,9 +225,9 @@ const styles = StyleSheet.create({
     listItem: {
         display: 'flex',
         flexWrap: 'wrap',
-        textAlign: 'left',
         fontFamily: 'PlayfairDisplay_400Regular',
         fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
+        textAlign: Dimensions.get('window').width > 768 ? 'left' : 'center',
     },
     listItemRole: {
         color: Assets.colors.gradient.brown,

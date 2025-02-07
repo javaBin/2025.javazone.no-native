@@ -133,9 +133,10 @@ export const Assets = {
   styles: StyleSheet.create({
     safeArea: {
       flex: 1,
-      position: 'relative',
-      marginHorizontal: 0,
-      zIndex: 1,
+      //position: 'relative',
+      margin: 0,
+      //zIndex: 1,
+      overflow: 'hidden'
     },
     container: {
       flex: 1,
@@ -146,12 +147,10 @@ export const Assets = {
     scrollContainer: {
       width: '100%',
       marginTop: Platform.OS === 'web' ? 50 : 0,
-      //minHeight: Dimensions.get('window').height -64,
     },
     scrollContentContainer: {
       flex: 1,
       width: screenWidth > 768 ? '60%' : '90%',
-      minHeight: Dimensions.get('window').height -64,
       alignItems: 'center',
       justifyContent: 'space-between',
       alignSelf: 'center',

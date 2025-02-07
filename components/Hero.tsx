@@ -7,7 +7,7 @@ const isMobile = screenWidth <= 768;
 
 const Hero = () => {
   return (
-    <View style={{ flexDirection: 'column', gap: 15, marginTop: 50 }}>
+    <View style={{ flexDirection: 'column', gap: 15, marginTop:  10 }}>
       <SvgImage SVG={Assets.images.hero.HeroDuke} height={200} />
       <SvgImage SVG={Assets.images.hero.HeroJavaZone} height={isMobile ? 60 : 100} />
       <SvgImage SVG={Assets.UI.DividerWide} height={isMobile ? 15 : 20} style={{ marginTop: 5, marginBottom: 20 }} />

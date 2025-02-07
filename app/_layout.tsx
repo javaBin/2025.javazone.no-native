@@ -123,7 +123,7 @@ const RootLayout = () => {
     header: {
       display: 'flex',
       flexDirection: 'row',
-      width: screenWidth,
+      width: screenWidth - 20,
     },
     headerLogoTitle: {
       flexDirection: 'row',
