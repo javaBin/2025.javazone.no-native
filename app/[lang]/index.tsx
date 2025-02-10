@@ -1,13 +1,10 @@
-import { Hero, HoldTheDate, ScreenTemplate, WelcomeSection } from '@/components';
-import { Dimensions } from 'react-native';
+import { Hero, ScreenTemplate, WelcomeSection } from '@/components';
 
 const Index = () => {
-  const screenWidth = Dimensions.get('window').width;
-
   return (
     <ScreenTemplate>
-      <Hero />
-      <WelcomeSection />
+        <Hero />
+        <WelcomeSection />
     </ScreenTemplate>
   );
 };

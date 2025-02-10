@@ -3,7 +3,7 @@
     "javaZone_2025": "JavaZone 2025",
     "in_progress": "in progress...",
     "conference_title": "Conference: ",
-    "conference_date": "September 3-4, 2025",
+    "conference_date": "September 3 - 4, 2025",
     "workshop_title": "Workshop: ",
     "workshop_date": "September, 2025",
     "location_title": "Location: ",
@@ -83,10 +83,10 @@
     },
 
     "partner": {
-      "watch_partner_meeting": "Watch this recording of the first partner meeting held on December 11th.",
+      "watch_partner_meeting": "Watch this recording of the first partner meeting held on December 11\u1d57\u02b0",
       "partner_info": {
         "javaZone_2025_partner": "JavaZone 2025 Partner",
-        "partner_registration_opens": "Partner registration opens January 15th 2025 at 10:00",
+        "partner_registration_opens": "Partner registration opens January 15\u1d57\u02b0 2025 at 10:00",
         "register_cta": "Register here",
         "questions_email": "If you have any questions, please send us an email at",
         "partner_packages": "Partner packages",
@@ -112,9 +112,12 @@
         "same_as_standard": "Same as Standard upgraded to 12 square meters",
         "partner_tickets": "Partner tickets",
         "partner_tickets_detail_1": "You have four flexible stand tickets included in your partnership package. These are intended for stand personnel, and do not give access to the talks. You must order tickets for all your employees that want to attend a talk (or if you have more than four who need to be on the stand at once).",
-        "round_robin_distribution": "Round robin distribution on tickets ordered by May 15th",
-        "first_come_first_served": "First come first served if tickets are still available after May 15th"
+        "round_robin_distribution": "Round robin distribution on tickets ordered by May 15\u1d57\u02b0",
+        "first_come_first_served": "First come first served if tickets are still available after May 15\u1d57\u02b0"
       }
+    },
+    "ticket": {
+      "announcement": "Ticket sales will start March 3\u02B3\u1D48"
     },
 
     "404": {

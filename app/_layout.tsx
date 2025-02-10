@@ -7,7 +7,7 @@ import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppState, Dimensions, ImageBackground, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Stack } from 'expo-router/stack';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
@@ -123,7 +123,7 @@ const RootLayout = () => {
     header: {
       display: 'flex',
       flexDirection: 'row',
-      width: screenWidth,
+      width: screenWidth - 20,
     },
     headerLogoTitle: {
       flexDirection: 'row',
@@ -226,13 +226,14 @@ const RootLayout = () => {
   };
 
   const webScreenOptions = {
-    headerTransparent: true,
-    /*headerStyle: {
-            backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
-            borderBottomColor: '#403431',
-            borderBottomWidth: 0.0,
-        },*/
-    headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
+    headerTransparent: screenWidth > 768,
+    headerBackground: () => screenWidth > 768 ?
+        <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} /> :
+        <View style={[StyleSheet.absoluteFill, {
+          backgroundColor: Assets.colors.jz2025ThemeColors.sheetOpacity,
+          borderBottomColor: '#403431',
+          borderBottomWidth: 0.1,
+        }]} />,
     headerLeft: () => null, // this is to disable "<-" back button on web-app
     headerRight: () => (
       <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={styles.hamburger}>
@@ -331,7 +332,6 @@ const RootLayout = () => {
                 tabBarIcon: () => <SvgImage SVG={Assets.icons.Info} height={24} />,
               }}
             />
-
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
         </I18nContextProvider>

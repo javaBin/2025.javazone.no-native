@@ -3,7 +3,7 @@
     "javaZone_2025": "JavaZone 2025",
     "in_progress": "under utvikling...",
     "conference_title": "Konferanse: ",
-    "conference_date": "September 3-4, 2025",
+    "conference_date": "3 - 4 september, 2025",
     "workshop_title": "Workshop: ",
     "workshop_date": "September, 2025",
     "location_title": "Sted: ",
@@ -83,7 +83,7 @@
     },
 
     "partner": {
-      "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember.",
+      "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember",
       "partner_info": {
         "javaZone_2025_partner": "JavaZone 2025 Partner",
         "partner_registration_opens": "Partnerregistrering åpner 15. januar 2025 kl. 10:00",
@@ -115,6 +115,9 @@
         "round_robin_distribution": "Round robin-fordeling på billetter bestilt innen 15. mai",
         "first_come_first_served": "Førstemann til mølla hvis billetter fortsatt er tilgjengelige etter 15. mai"
       }
+    },
+    "ticket": {
+      "announcement": "Billettsalget starter 3. mars"
     },
 
     "404": {

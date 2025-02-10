@@ -1,9 +1,8 @@
-import { Platform, StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
-// @ts-ignore
-import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
-// @ts-ignore
+
+// @ts-ignore UI
 import TextureMarble from '@/assets/images/background/texture-marble.png';
 import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
 import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
@@ -17,6 +16,7 @@ import HeroDuke from '@/assets/images/hero/hero-duke.svg';
 import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
 import HeroYear from '@/assets/images/hero/hero-year.svg';
 import Logo from '@/assets/images/logo/javaZone-logo.svg';
+import JavaBinLogo from '@/assets/images/logo/javaBin-logo.svg';
 
 // Icons
 import TriangleRight from '@/assets/icons/triangle-right.svg';
@@ -26,6 +26,7 @@ import MenuRoundedActive from '@/assets/icons/menu-rounded-active.svg';
 import TwitterFrame from '@/assets/icons/twitter-frame.svg';
 import FacebookFrame from '@/assets/icons/facebook-frame.svg';
 import LinkedInFrame from '@/assets/icons/linkedin-frame.svg';
+import ToTopArrow from '@/assets/icons/to-top-arrow.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -85,6 +86,7 @@ export const Assets = {
     TwitterFrame,
     FacebookFrame,
     LinkedInFrame,
+    ToTopArrow
   },
   colors: {
     transparent: 'transparent',
@@ -119,20 +121,22 @@ export const Assets = {
       lightBrown: '#6c605c',
       linen: '#F9F6F5',
       sheet: '#e8dacf',
+      sheetOpacity: 'rgba(232, 218, 207, 0.9)',
       sheetShadow: '#d3c5bb',
       cyberYellow: '#FFD400',
       cyberYellowOpacity: 'rgba(255, 212, 0, 0.7)',
       orangeYellow: '#FCAF17',
       orangeYellowOpacity: 'rgba(252, 175, 23, 0.7)',
       vividOrange: '#F7941D',
+      footerGrey: '#666',
     },
   },
   styles: StyleSheet.create({
     safeArea: {
       flex: 1,
       position: 'relative',
-      marginHorizontal: 0,
-      zIndex: 1,
+      margin: 0,
+      overflow: 'hidden'
     },
     container: {
       flex: 1,
@@ -141,15 +145,15 @@ export const Assets = {
       flexDirection: 'column',
     },
     scrollContainer: {
-      width: screenWidth > 768 ? '60%' : '90%',
-      marginTop: Platform.OS === 'web' ? 50 : 0,
+      width: '100%',
     },
     scrollContentContainer: {
-      display: 'flex',
-      width: '100%',
-      alignItems: 'center', //"flex-start",
-      justifyContent: 'center',
-      marginTop: 30,
+      flex: 1,
+      width: screenWidth > 768 ? '60%' : '90%',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      alignSelf: 'center',
+      marginTop: 50,
       padding: 10,
     },
     pageTitle: {},
@@ -175,6 +179,7 @@ export const Assets = {
       marginTop: 7.5,
       fontFamily: 'Cinzel_600SemiBold',
       textAlign: 'center',
+      width: '100%',
     },
     section: {
       width: '100%',
@@ -190,6 +195,7 @@ export const Assets = {
       fontSize: screenWidth > 768 ? 18 : 16,
       fontFamily: 'Cinzel_400Regular',
       textAlign: 'center',
+      width: '100%',
     },
     callout: {
       color: '#B10A32', // crimson-red
