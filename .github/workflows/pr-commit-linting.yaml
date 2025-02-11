@@ -18,11 +18,9 @@ jobs:
           node-version: lts/*
 
       - name: Install dependencies
-        working-directory: ./web
         run: npm install
 
       - name: Generate ESLint report
-        working-directory: ./web
         run: yarn run lint:report
 
       - name: Annotate Code Linting Results
