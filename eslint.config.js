@@ -1,9 +1,9 @@
-import react from 'eslint-plugin-react';
-import typescript from '@typescript-eslint/eslint-plugin';
-import parser from '@typescript-eslint/parser';
-import prettier from 'eslint-plugin-prettier';
+const react = require('eslint-plugin-react');
+const typescript = require('@typescript-eslint/eslint-plugin');
+const parser = require('@typescript-eslint/parser');
+const prettier = require('eslint-plugin-prettier');
 
-export default [
+module.exports = [
   {
     files: ['./**/*.{ts,tsx,js,jsx}'],
     languageOptions: {

@@ -29,5 +29,5 @@ jobs:
         if: always()
         uses: ataylorme/eslint-annotate-action@v3
         with:
-          report-json: ./web/eslint-report.json
+          report-json: app/web/eslint-report.json
           only-pr-files: true
