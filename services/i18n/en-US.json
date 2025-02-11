@@ -124,8 +124,8 @@
     },
     "kids": {
       "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
-      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8-17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone.",
-      "event_date_location": "The event will be on 31st of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, apply to us by 1st April 2025.",
+      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8 - 17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone. ",
+      "event_date_location": "The event will be on 31\u02E2\u1D57 of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, apply to us by April 1\u02E2\u1D57 2025.",
       "workshop_description_intro": "Your description of the workshop needs to have:",
       "workshop_title": "Title",
       "workshop_abstract": "Abstract, this will be featured on our website",
@@ -134,10 +134,11 @@
       "workshop_max_participants": "Maximum participants",
       "workshop_language": "English or Norwegian",
       "workshop_experience": "Do you have experience working with kids before",
-      "speakers_benefits": "Speakers for JavaZone Kids will be invited to Speakers Dinner on Tuesday 2nd September, free tickets to the JavaZone conference on 3rd-4th September, and you can apply to join our tour for speakers, JourneyZone."
+      "speakers_benefits": "Speakers for JavaZone Kids will be invited to Speakers Dinner on Tuesday September 2\u207F\u1D48, free tickets to the JavaZone conference on 3ʳᵈ - 4ᵗʰ September, and you can apply to join our tour for speakers, JourneyZone."
     },
     "speakers": {
-      "conference_intro": "JavaZone 2025 will be the 23rd physical JavaZone conference and will consist of a day of pre-conference workshop, followed by two days of lightning talks and presentations in September.",
+      "pageTitle": "Call for Speakers",
+      "conference_intro": "JavaZone 2025 will be the 23ʳᵈ physical JavaZone conference and will consist of a day of pre-conference workshop, followed by two days of lightning talks and presentations in September.",
       "conference_attendance": "JavaZone is typically sold out, with more than 3200 attendees enjoying well over 100 sessions.",
       "international_speakers": "JavaZone hosts both international and Norwegian speakers. We'd love to have you join us the coming September!",
 
@@ -153,7 +154,7 @@
       "presentations": "Presentations (45 or 60 minutes)",
       "presentations_desc": "Presentations at JavaZone can be either 45 or 60 minutes long. This gives you room to elaborate on an idea. When submitting your talk, please indicate clearly in the outline how much time is reserved for questions.",
       "workshops": "Workshop (2 hours, 4 hours, 8 hours)",
-      "workshops_desc": "We will continue the popular workshop concept with a range of sessions on Tuesday, September 3rd. The format for the workshops is in-depth, hands-on and interactive.",
+      "workshops_desc": "We will continue the popular workshop concept with a range of sessions on Tuesday, September 3ʳᵈ. The format for the workshops is in-depth, hands-on and interactive.",
       "javazone_kids": "JavaZone Kids",
       "javazone_kids_desc": "For those interested in bringing the magic of software development to kids, we have a mini conference for kids the weekend before JavaZone. Please see their separate call for speakers for more information.",
 

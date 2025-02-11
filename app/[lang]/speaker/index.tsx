@@ -11,10 +11,8 @@ const Speaker = () => {
   const { lang } = useGlobalSearchParams();
 
   return (
-    <ScreenTemplate pageTitle={t('pageTitles.speaker')} shouldScrollToTop={true}>
-        <View style={{marginHorizontal: 20}}>
-            <Text style={Assets.styles.text}>{t('speakers.conference_intro')} {t('speakers.conference_attendance')} {t('speakers.international_speakers')}</Text>
-        </View>
+    <ScreenTemplate pageTitle={t('speakers.pageTitle')} shouldScrollToTop={true}>
+        <Text style={[Assets.styles.text, {marginHorizontal: 20}]}>{t('speakers.conference_intro')} {t('speakers.conference_attendance')} {t('speakers.international_speakers')}</Text>
 
         <SectionBox sectionTitle={t('speakers.speaking_experience')}>
             <Text style={Assets.styles.text}>{t('speakers.speaking_experience_desc')}</Text>
