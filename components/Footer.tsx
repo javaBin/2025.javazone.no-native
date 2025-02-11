@@ -24,23 +24,23 @@ const Footer: React.FC<FooterProps> = ({displayToTopArrow, handleScrollToTop}) =
       <SvgImage SVG={Assets.UI.DividerWide} height={10} style={{paddingVertical: 20}} />
 
       <View style={styles.menu}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => Linking.openURL(Assets.links.javaBinHomePage)}>
           <Text style={styles.menuItem}>{t('javaBin.about')}</Text>
         </TouchableOpacity>
 
         <View style={styles.icons}>
-          <TouchableOpacity onPress={() => Linking.openURL('https://www.facebook.com/javazoneconference')}>
+          <TouchableOpacity onPress={() => Linking.openURL(Assets.links.javaZoneFacebook)}>
             <SvgImage SVG={Assets.icons.FacebookFrame} height={iconSize} width={iconSize} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL('https://x.com/javazone')}>
+          <TouchableOpacity onPress={() => Linking.openURL(Assets.links.javaZoneTwitter)}>
             <SvgImage SVG={Assets.icons.TwitterFrame} height={iconSize} width={iconSize} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/company/javazone/')}>
+          <TouchableOpacity onPress={() => Linking.openURL(Assets.links.javaZoneLinkedIn)}>
             <SvgImage SVG={Assets.icons.LinkedInFrame} height={iconSize} width={iconSize} />
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => Linking.openURL(Assets.links.codeOfConduct)}>
           <Text style={styles.menuItem}>Code of Conduct</Text>
         </TouchableOpacity>
       </View>
