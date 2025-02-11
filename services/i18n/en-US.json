@@ -22,9 +22,11 @@
     "javaBin_information": "javaBin information",
 
     "pageTitles": {
-      "info": "Information",
+      "home": "Home",
+      "program": "Program",
       "partner": "Partners",
-      "speaker": "Speakers"
+      "speaker": "Speakers",
+      "info": "Information"
     },
 
     "javaBin": {
