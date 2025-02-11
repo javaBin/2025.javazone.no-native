@@ -4,12 +4,12 @@
     "slug": "javazone2025",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/javaZone-logo.png",
+    "icon": "./assets/images/logo/javaZone-logo.png",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#232526",
     "scheme": "javazone2025",
     "splash": {
-      "image": "./assets/images/javaZone-logo.png",
+      "image": "./assets/images/logo/javaZone-logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#232526"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/javaZone-logo.png",
+        "foregroundImage": "./assets/images/logo/javaZone-logo.png",
         "backgroundColor": "#232526"
       },
       "splash": {
@@ -30,7 +30,7 @@
       "package": "com.JavaBin"
     },
     "web": {
-      "favicon": "./assets/images/javaZone-logo.png",
+      "favicon": "./assets/images/logo/javaZone2025-favIcon.png",
       "bundler": "metro",
       "backgroundColor": "#232526"
     },
@@ -41,6 +41,6 @@
     },
     "newArchEnabled": true,
     "owner": "carolinekristin",
-    "plugins": ["expo-localization", "expo-router"]
+    "plugins": ["expo-localization", "expo-router", "expo-font"]
   }
 }
