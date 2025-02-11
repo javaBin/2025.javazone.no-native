@@ -1,18 +1,19 @@
 import {BulletListItem, ScreenTemplate} from '@/components';
 import { useTranslation } from 'react-i18next';
-import { SectionBox, SvgImage } from '@/UI';
+import {LinkText, SectionBox, SvgImage} from '@/UI';
 import {Text, View} from 'react-native';
 import { Assets } from '@/Assets';
 import React from 'react';
+import {useGlobalSearchParams} from "expo-router";
 
 const Speaker = () => {
   const { t } = useTranslation();
+  const { lang } = useGlobalSearchParams();
 
   return (
     <ScreenTemplate pageTitle={t('pageTitles.speaker')} shouldScrollToTop={true}>
         <View style={{marginHorizontal: 20}}>
-            <Text style={Assets.styles.intro}>{t('speakers.conference_intro')}</Text>
-            <Text style={Assets.styles.intro}>{t('speakers.conference_attendance')} {t('speakers.international_speakers')}</Text>
+            <Text style={Assets.styles.text}>{t('speakers.conference_intro')} {t('speakers.conference_attendance')} {t('speakers.international_speakers')}</Text>
         </View>
 
         <SectionBox sectionTitle={t('speakers.speaking_experience')}>
@@ -58,7 +59,6 @@ const Speaker = () => {
 
         <SectionBox sectionTitle={t('speakers.location')}>
             <Text style={Assets.styles.text}>{t('speakers.location_desc')}</Text>
-            <Text style={Assets.styles.text}>{t('speakers.location_desc')}</Text>
             <Text style={Assets.styles.text}>{t('speakers.traveling_to_lillestrom')}</Text>
             <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
         </SectionBox>
@@ -67,13 +67,19 @@ const Speaker = () => {
             <Text style={Assets.styles.sectionSubTitle}>{t('speakers.accepted_presentations')}</Text>
             <Text style={Assets.styles.text}>{t('speakers.accepted_presentations_desc')}</Text>
             <Text style={Assets.styles.text}>{t('speakers.journeyzone')}</Text>
+
             <Text style={Assets.styles.sectionSubTitle}>{t('speakers.coverage_of_expenses')}</Text>
             <Text style={Assets.styles.text}>{t('speakers.coverage_of_expenses_desc')}</Text>
             <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
         </SectionBox>
 
         <SectionBox sectionTitle={t('speakers.important_principles')}>
-            <Text style={Assets.styles.text}>{t('speakers.important_principles_desc')}</Text>
+            <Text style={Assets.styles.text}>
+                {t('speakers.important_principles_desc_start')}
+                {t('speakers.important_principles_desc_read_more_1')}
+                <LinkText title={t('speakers.important_principles_desc_read_more_2')} href={`/${lang}/info`} targetSelf={true}/>
+                {t('speakers.important_principles_desc_end')}
+            </Text>
 
             <BulletListItem text={t('speakers.no_speaker_slots')}/>
             <BulletListItem text={t('speakers.no_sales_pitches')}/>
@@ -81,7 +87,7 @@ const Speaker = () => {
 
             <Text style={Assets.styles.text}>{t('speakers.adherence_to_principles')}</Text>
             <Text style={Assets.styles.text}>{t('speakers.closing_statement')}</Text>
-            <Text style={Assets.styles.text}>{t('speakers.program_committee')}</Text>
+            <Text style={[Assets.styles.callout, {marginTop: 10}]}>{t('speakers.program_committee')}</Text>
             <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
         </SectionBox>
     </ScreenTemplate>

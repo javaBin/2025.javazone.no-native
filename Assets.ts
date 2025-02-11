@@ -204,7 +204,7 @@ export const Assets = {
     },
     callout: {
       color: '#B10A32', // crimson-red
-      fontSize: screenWidth > 768 ? 20 : 18,
+      fontSize: screenWidth > 768 ? 18 : 16,
       fontFamily: 'PlayfairDisplay_400Regular_Italic',
     },
     listText: {
@@ -216,6 +216,7 @@ export const Assets = {
     disclaimerText: {
       color: '#6c605c', // light-brown
       fontSize: screenWidth > 768 ? 16 : 14,
+      fontFamily: 'PlayfairDisplay_400Regular',
     },
     shadow: {
       elevation: 2, // Shadow effect for Android
