@@ -122,6 +122,7 @@
     "ticket": {
       "announcement": "Ticket sales will start March 3\u02B3\u1D48"
     },
+
     "kids": {
       "title": "JavaZone Kids",
       "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
@@ -263,6 +264,7 @@
       "unlucky": "You were unlucky",
       "unlucky_desc": "We often receive multiple good proposals covering exactly the same topic. The program committee then has to decide between these multiple excellent submissions. In 2016 we received many great proposals covering 'how we do DevOps in the cloud'. Limited space in the program meant that many of these ended up being rejected."
     },
+
     "404": {
       "error_code": "Void 0",
       "error_title": "Well, this is embarrassing...",
