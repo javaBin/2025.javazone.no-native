@@ -39,7 +39,7 @@ const screenWidth = Dimensions.get('window').width;
 
 export const Assets = {
   links: {
-    javaBinMail: 'mailto:javazone@java.no', // todo: is this correct?
+    javaBinMail: 'mailto:javazone@java.no',
     javaZoneMail: 'mailto:javazone@java.no',
     programMail: 'mailto:program@java.no',
     partnerMail: 'mailto:partner@java.no',
@@ -50,6 +50,11 @@ export const Assets = {
     program22: 'https://2022.javazone.no/#/program',
     program19: 'https://2019.javazone.no/program',
     program18: 'https://2018.javazone.no/program',
+    javaBinHomePage: 'https://www.java.no/',
+    codeOfConduct: 'https://www.java.no/principles',
+    javaZoneFacebook: 'https://www.facebook.com/javazoneconference',
+    javaZoneTwitter: 'https://x.com/javazone',
+    javaZoneLinkedIn: 'https://www.linkedin.com/company/javazone/',
     partnerRegistration: 'https://event.checkin.no/101610/javazone-2025-partnership',
     partnerVideo: 'https://player.vimeo.com/video/1038270530',
   },
