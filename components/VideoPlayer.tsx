@@ -13,7 +13,7 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      width: '100%',
+      flexDirection: 'row'
     },
     video: {
       position: 'relative',
@@ -21,12 +21,12 @@ const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
   });
 
   return Platform.OS === 'web' ? (
-    <View>
+    <View style={styles.container}>
       <iframe
         src={`${videoUrl}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`}
         frameBorder="0"
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-        style={{ ...styles.video, width: screenWidth / 1.3, height: 'auto' }}
+        style={{ ...styles.video, width: screenWidth / 1.3, height: '350px' }}
         title="JavaZone 2025 Partner meeting #1"
       ></iframe>
       <script src="https://player.vimeo.com/api/player.js"></script>

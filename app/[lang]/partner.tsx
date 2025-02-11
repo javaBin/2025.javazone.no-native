@@ -17,20 +17,6 @@ const Partner = () => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
-  const temporaryVideoFix = () => {
-    return Platform.OS === 'web' ?
-     (
-        <View style={{width: '100%'}}>
-          <Text style={[Assets.styles.sectionSubTitle, {
-            paddingHorizontal: isMobile ? 5 : 0,
-            marginBottom: isMobile ? 15 : 20}]}>
-            {t('partner.watch_partner_meeting')}
-          </Text>
-          <VideoPlayer videoUrl={Assets.links.partnerVideo} />
-        </View>
-    ) : (<View></View>)
-  }
-
   return (
     <ScreenTemplate pageTitle={t('pageTitles.partner')} shouldScrollToTop={true}>
       <Text style={[Assets.styles.sectionSubTitle, {textAlign: 'center'}]}>
@@ -103,13 +89,18 @@ const Partner = () => {
       </View>
 
       <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 20}}/>
-
-      {temporaryVideoFix()}
+      <View style={[styles.videoContainer, { marginBottom: 50 }]}>
+        <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15, marginBottom: 20 }]}>{t('partner.watch_partner_meeting')}</Text>
+        <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+      </View>
     </ScreenTemplate>
   );
 };
 
 const styles = StyleSheet.create({
+  videoContainer: {
+    marginTop: 10,
+  },
   partnerContentInfo: {
     display: 'flex',
     flexDirection: 'row',
