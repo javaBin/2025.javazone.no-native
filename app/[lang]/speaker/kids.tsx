@@ -1,6 +1,6 @@
 import {BulletListItem, ScreenTemplate} from "@/components";
 import {useTranslation} from "react-i18next";
-import {SectionBox, SvgImage} from "@/UI";
+import {LinkText, SectionBox, SvgImage} from "@/UI";
 import {Text, View} from "react-native";
 import {Assets} from "@/Assets";
 import React from "react";
@@ -11,9 +11,11 @@ const SpeakerKids = () => {
     return (
         <ScreenTemplate pageTitle={t('kids.title')}>
             <SectionBox sectionTitle={t('kids.call_for_speakers_title')}>
-                <Text style={[Assets.styles.text, {marginHorizontal: 20}]}>
+                <Text style={Assets.styles.text}>
                     {t('kids.javazone_kids_intro')}
-                    {t('kids.event_date_location')}
+                    {t('kids.event_date_location_start')}
+                    <LinkText title={t('kids.event_date_location_link_title')} href={Assets.links.kidsMail}/>
+                    {t('kids.event_date_location_end')}
                 </Text>
                 <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 

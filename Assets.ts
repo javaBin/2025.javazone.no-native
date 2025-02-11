@@ -45,6 +45,7 @@ export const Assets = {
     partnerMail: 'mailto:partner@java.no',
     volunteerMail: 'mailto:student@java.no',
     javaBoardMail: 'mailto:styret@java.no',
+    kidsMail: 'mailto:kids@java.no',
     program24: 'https://2024.javazone.no/program',
     program23: 'https://2023.javazone.no/#/program',
     program22: 'https://2022.javazone.no/#/program',
