@@ -1,4 +1,4 @@
-import { ScreenTemplate, VideoPlayer } from '@/components';
+import {BulletListItem, ScreenTemplate, VideoPlayer} from '@/components';
 import { useTranslation } from 'react-i18next';
 import {
   Platform,
@@ -33,7 +33,7 @@ const Partner = () => {
 
   return (
     <ScreenTemplate pageTitle={t('pageTitles.partner')} shouldScrollToTop={true}>
-      <Text style={[Assets.styles.sectionSubTitle, {textAlign: 'center'}]}>
+      <Text style={[Assets.styles.sectionSubTitle, {textAlign: 'center', marginTop: 15}]}>
         {t('partner.partner_info.partner_registration_opens')}
       </Text>
       <Text style={[Assets.styles.text, {marginBottom: 20, marginHorizontal: 10}]}>
@@ -42,46 +42,38 @@ const Partner = () => {
       </Text>
       <LinkButton href={Assets.links.partnerRegistration} title={t('partner.partner_info.register_cta')} targetBlank={true}/>
 
-      <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 20}}/>
-
-      <Text style={[Assets.styles.sectionTitle, {marginBottom: 10, marginTop: isMobile ? 2.5 : 0}]}>{t('partner.partner_info.partner_packages')}</Text>
+      <Text style={[Assets.styles.sectionTitle, {marginBottom: 20, marginTop: isMobile ? 20 : 40}]}>{t('partner.partner_info.partner_packages')}</Text>
       <View style={styles.partnerContentInfo}>
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.standard_package')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
 
-          <View>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_1')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_2')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_3')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_4')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_5')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_6')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.standard_package_detail_7')}</Text>
-          </View>
+          <BulletListItem text={t('partner.partner_info.standard_package_detail_1')}/>
+          <BulletListItem text={t('partner.partner_info.standard_package_detail_2')}/>
+          <BulletListItem text={t('partner.partner_info.standard_package_detail_3')}/>
+          <BulletListItem text={t('partner.partner_info.standard_package_detail_4')}/>
+          <BulletListItem text={t('partner.partner_info.standard_package_detail_5')}/>
+          <BulletListItem text={t('partner.partner_info.standard_package_detail_6')}/>
+          <BulletListItem text={t('partner.partner_info.standard_package_detail_7')}/>
         </BlurView>
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.restaurant_stand')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
 
-          <View>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_1')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_2')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_3')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.restaurant_stand_detail_4')}</Text>
-          </View>
+          <BulletListItem text={t('partner.partner_info.restaurant_stand_detail_1')}/>
+          <BulletListItem text={t('partner.partner_info.restaurant_stand_detail_2')}/>
+          <BulletListItem text={t('partner.partner_info.restaurant_stand_detail_3')}/>
+          <BulletListItem text={t('partner.partner_info.restaurant_stand_detail_4')}/>
         </BlurView>
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.concept_stand')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
 
-          <View>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_1')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_2')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.concept_stand_detail_3')}</Text>
-          </View>
+          <BulletListItem text={t('partner.partner_info.concept_stand_detail_1')}/>
+          <BulletListItem text={t('partner.partner_info.concept_stand_detail_2')}/>
+          <BulletListItem text={t('partner.partner_info.concept_stand_detail_3')}/>
         </BlurView>
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
@@ -89,10 +81,8 @@ const Partner = () => {
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 9 220,- NOK ex VAT {'\n'}incl ticket fee</Text>
           <Text style={[Assets.styles.text]}>{t('partner.partner_info.partner_tickets_detail_1')}</Text>
 
-          <View>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.round_robin_distribution')}</Text>
-            <Text style={Assets.styles.listText}>- {t('partner.partner_info.first_come_first_served')}</Text>
-          </View>
+          <BulletListItem text={t('partner.partner_info.round_robin_distribution')}/>
+          <BulletListItem text={t('partner.partner_info.first_come_first_served')}/>
         </BlurView>
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
