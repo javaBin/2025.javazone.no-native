@@ -123,6 +123,7 @@
       "announcement": "Ticket sales will start March 3\u02B3\u1D48"
     },
     "kids": {
+      "title": "JavaZone Kids",
       "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
       "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8 - 17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone. ",
       "event_date_location": "The event will be on 31\u02E2\u1D57 of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, apply to us by April 1\u02E2\u1D57 2025.",
@@ -156,7 +157,9 @@
       "workshops": "Workshop (2 hours, 4 hours, 8 hours)",
       "workshops_desc": "We will continue the popular workshop concept with a range of sessions on Tuesday, September 3ʳᵈ. The format for the workshops is in-depth, hands-on and interactive.",
       "javazone_kids": "JavaZone Kids",
-      "javazone_kids_desc": "For those interested in bringing the magic of software development to kids, we have a mini conference for kids the weekend before JavaZone. Please see their separate call for speakers for more information.",
+      "javazone_kids_desc_start": "For those interested in bringing the magic of software development to kids, we have a mini conference for kids the weekend before JavaZone. Please see their ",
+      "javazone_kids_desc_link_title": "separate call for speakers",
+      "javazone_kids_desc_end": " for more information.",
 
       "audience_and_topics": "Audience and topics",
       "audience_and_topics_desc": "JavaZone is a conference for developers and technical architects, with an emphasis on technical talks. However, we are open to talks about other areas, including methodology, project management, and other topics related to programming.",

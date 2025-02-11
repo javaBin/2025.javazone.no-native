@@ -34,7 +34,11 @@ const Speaker = () => {
             <Text style={Assets.styles.text}>{t('speakers.workshops_desc')}</Text>
 
             <Text style={[Assets.styles.sectionSubTitle, {marginTop: 20}]}>{t('speakers.javazone_kids')}</Text>
-            <Text style={Assets.styles.text}>{t('speakers.javazone_kids_desc')}</Text>
+            <Text style={Assets.styles.text}>
+                {t('speakers.javazone_kids_desc_start')}
+                <LinkText title={t('speakers.javazone_kids_desc_link_title')} href={`/${lang}/speaker/kids`} targetSelf={true}/>
+                {t('speakers.javazone_kids_desc_end')}
+            </Text>
             <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
         </SectionBox>
 

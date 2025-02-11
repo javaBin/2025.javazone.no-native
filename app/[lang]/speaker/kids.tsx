@@ -9,14 +9,15 @@ const SpeakerKids = () => {
     const { t } = useTranslation();
 
     return (
-        <ScreenTemplate pageTitle={t('kids.call_for_speakers_title')}>
-            <Text style={[Assets.styles.text, {marginHorizontal: 20}]}>
-                {t('kids.javazone_kids_intro')}
-                {t('kids.event_date_location')}
-            </Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+        <ScreenTemplate pageTitle={t('kids.title')}>
+            <SectionBox sectionTitle={t('kids.call_for_speakers_title')}>
+                <Text style={[Assets.styles.text, {marginHorizontal: 20}]}>
+                    {t('kids.javazone_kids_intro')}
+                    {t('kids.event_date_location')}
+                </Text>
+                <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-            <SectionBox sectionTitle={t('kids.workshop_description_intro')}>
+                <Text style={Assets.styles.sectionSubTitle}>{t('kids.workshop_description_intro')}</Text>
                 <BulletListItem text={t('kids.workshop_title')}/>
                 <BulletListItem text={t('kids.workshop_abstract')}/>
                 <BulletListItem text={t('kids.workshop_outline')}/>
