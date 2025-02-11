@@ -23,7 +23,8 @@
 
     "pageTitles": {
       "info": "Information",
-      "partner": "Partners"
+      "partner": "Partners",
+      "speaker": "Speakers"
     },
 
     "javaBin": {
