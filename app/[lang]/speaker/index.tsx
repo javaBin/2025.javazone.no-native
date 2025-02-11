@@ -1,6 +1,6 @@
 import {BulletListItem, ScreenTemplate} from '@/components';
 import { useTranslation } from 'react-i18next';
-import {LinkText, SectionBox, SvgImage} from '@/UI';
+import {LinkButton, LinkText, SectionBox, SvgImage} from '@/UI';
 import {Text, View} from 'react-native';
 import { Assets } from '@/Assets';
 import React from 'react';
@@ -53,7 +53,11 @@ const Speaker = () => {
         </SectionBox>
 
         <SectionBox sectionTitle={t('speakers.submission_tips')}>
-            <Text style={Assets.styles.text}>{t('speakers.submission_tips_desc')}</Text>
+            <Text style={Assets.styles.text}>
+                {t('speakers.submission_tips_desc_start')}
+                <LinkText title={t('speakers.submission_tips_desc_link_title')} href={`/${lang}/speaker/tips`} targetSelf={true}/>
+                {t('speakers.submission_tips_desc_end')}
+            </Text>
             <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
         </SectionBox>
 

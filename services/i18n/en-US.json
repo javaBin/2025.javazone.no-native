@@ -166,7 +166,10 @@
       "submit_early": "Our advice to you is simple. Submit early! The earlier you submit, the more likely you are to be noticed. Avoid drowning in the end-of-Call-for-Speakers tsunami!",
 
       "submission_tips": "Submission tips",
-      "submission_tips_desc": "Over the years, we have gathered some submission tips, which may be useful to both new and experienced speakers.",
+      "submission_tips_desc_start": "Over the years, we have gathered some",
+      "submission_tips_desc_link_title": "submission tips",
+      "submission_tips_desc_end": ", which may be useful to both new and experienced speakers.",
+      "submission_tips_learn_more": "Learn more",
 
       "location": "Location",
       "location_desc": "Our usual venue, Oslo Spektrum, is closed for rehabilitation and expansion so we have moved JavaZone to NOVA Spektrum, a huge arena in Lillestrøm, a city just outside Oslo. We are working hard to make the new venue just as magical as our usual venue.",

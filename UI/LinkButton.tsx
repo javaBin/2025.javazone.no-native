@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     width: 200,
     margin: 5,
     borderRadius: 5,
+    alignSelf: 'center',
     elevation: 2, // Shadow effect for Android
     shadowColor: Assets.colors.jz2025ThemeColors.darkBrown, // iOS shadow
     shadowOpacity: 0.1,

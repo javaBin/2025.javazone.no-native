@@ -1,6 +1,6 @@
 import {ScreenTemplate} from "@/components";
 import {useTranslation} from "react-i18next";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text} from "react-native";
 import {Assets} from "@/Assets";
 import {SectionBox, SvgImage} from "@/UI";
 import React from "react";
