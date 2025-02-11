@@ -1,21 +1,19 @@
-import { SvgImage } from '@/components/index';
+import React from 'react';
+import { SvgImage, PageTitle } from '@/UI';
 import { Assets } from '@/Assets';
-import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Link, useGlobalSearchParams } from 'expo-router';
+import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
+import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
 
 type HoldTheDateProps = {
   subPageHeader?: string;
 };
 
 const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
-  const [pressedIndex, setPressedIndex] = useState<number | null>(null); // Track which button is pressed
   const { t } = useTranslation();
-  const { lang } = useGlobalSearchParams();
 
-  const years = [ // todo: use t, not array
+  const years = [
+    // todo: use t, not array
     { label: '2024', link: Assets.links.program24 },
     { label: '2023', link: Assets.links.program23 },
     { label: '2022', link: Assets.links.program22 },
@@ -25,9 +23,9 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 
   return (
     <View style={styles.content}>
-      <SvgImage SVG={Assets.images.Logo} height={50} style={{ marginBottom: 20 }} />
+      <SvgImage SVG={Assets.images.hero.HeroDuke} height={150} />
 
-      <Text style={styles.heading}>{t('javaZone_2025')}</Text>
+      <PageTitle title={t('javaZone_2025')} />
       {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}
       <Text style={styles.subHeading}>{t('in_progress')}</Text>
 
@@ -43,22 +41,20 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 
       <View style={styles.listContainer}>
         {years.map((year, index) => (
-          <TouchableOpacity
+          <Link
             key={index}
-            style={[styles.listItem, pressedIndex === index && styles.pressed]} // Highlight only the pressed button
-            onPressIn={() => setPressedIndex(index)} // Set the pressed index
-            onPressOut={() => setPressedIndex(null)} // Reset when the press is released
+            href={year.link}
+            rel="noopener norefferer"
+            style={{
+              color: Assets.colors.jz2025ThemeColors.vividOrange,
+              fontFamily: 'Cinzel_400Regular',
+              fontSize: Dimensions.get('window').width >= 768 ? 20 : 16,
+              textDecorationLine: 'underline',
+              marginHorizontal: 5,
+            }}
           >
-            <LinearGradient
-              start={{ x: 0.1, y: 0.4 }}
-              style={{ padding: 3, borderRadius: 3, opacity: 20 }}
-              colors={[Assets.colors.gradient.brown, Assets.colors.gradient.dark]}
-            >
-              <Link style={styles.text} href={year.link}>
-                {year.label}
-              </Link>
-            </LinearGradient>
-          </TouchableOpacity>
+            {year.label}
+          </Link>
         ))}
       </View>
     </View>
@@ -70,44 +66,54 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
+    margin: 'auto'
   },
   heading: {
-    fontSize: Platform.OS == 'web' ? 38 : 36,
+    fontSize: Dimensions.get('window').width > 768 ? 38 : 36,
     fontWeight: 'bold',
-    color: Assets.colors.brand.cream,
+    color: Assets.colors.brand.charcoal,
+    fontFamily: 'Cinzel_400Regular',
   },
   subHeading: {
-    fontSize: Platform.OS == 'web' ? 32 : 28,
+    fontSize: Dimensions.get('window').width > 768 ? 32 : 28,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    color: Assets.colors.logo.brightOrange,
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    fontFamily: 'Cinzel_700Bold',
+    textAlign: 'center'
   },
   subPageHeading: {
-    fontSize: Platform.OS == 'web' ? 28 : 26,
+    fontSize: Dimensions.get('window').width > 768 ? 28 : 26,
     fontWeight: '500',
-    color: Assets.colors.brand.beige,
+    color: Assets.colors.brand.charcoal,
+    fontFamily: 'Cinzel_600SemiBold',
   },
   titleContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    width: 390,
+    justifyContent: 'space-between',
+    width: Dimensions.get('window').width > 768 ? 400 : 380,
   },
   title: {
-    fontSize: Platform.OS == 'web' ? 20 : 18,
+    fontSize: Dimensions.get('window').width > 768 ? 20 : 18,
+    textAlign: 'left',
   },
   titleLeft: {
     alignSelf: 'flex-start',
-    color: Assets.colors.brand.beige,
+    color: Assets.colors.brand.charcoal,
     fontWeight: '500',
-    width: Platform.OS === 'web' ? '50%' : '40%',
+    marginLeft: Dimensions.get('window').width > 768 ? 0 : 15,
+    fontFamily: 'PlayfairDisplay_700Bold',
+    width: '30%',
   },
   titleRight: {
     alignSelf: 'flex-end',
-    color: Assets.colors.brand.dutchWhite,
-    marginLeft: Platform.OS == 'web' ? 5 : 1,
-    width: '100%',
+    color: Assets.colors.brand.charcoal,
+    marginLeft: Dimensions.get('window').width > 768 ? 10 : 5,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    width: '70%',
   },
   callout: {
     color: Assets.colors.logo.brightYellow,
@@ -125,7 +131,6 @@ const styles = StyleSheet.create({
   },
   listItem: {
     padding: 5,
-    //backgroundColor: Assets.colors.gradient.dark, // Normal state color
     marginHorizontal: 5,
     borderRadius: 5,
     justifyContent: 'center',

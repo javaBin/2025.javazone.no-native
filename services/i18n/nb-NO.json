@@ -3,11 +3,11 @@
     "javaZone_2025": "JavaZone 2025",
     "in_progress": "under utvikling...",
     "conference_title": "Konferanse: ",
-    "conference_date": "September 3-4, 2025",
+    "conference_date": "3 - 4 september, 2025",
     "workshop_title": "Workshop: ",
     "workshop_date": "September, 2025",
     "location_title": "Sted: ",
-    "location": "Nova Spektrum - Lillestrøm",
+    "location": "Nova Spektrum, Lillestrøm",
     "hold_the_date": "Hold av datoen!",
 
     "partner_information": "Partner informasjon",
@@ -20,6 +20,11 @@
     "aweZone_information": "AweZone informasjon",
     "javaZone_kids_information": "JavaZone Kids informasjon",
     "javaBin_information": "javaBin informasjon",
+
+    "pageTitles": {
+      "info": "Informasjon",
+      "partner": "Partnere"
+    },
 
     "javaBin": {
       "intro": "Bli en del av noe stort",
@@ -54,7 +59,8 @@
       "partners_mail": "partner@java.no",
       "volunteers_mail": "student@java.no",
       "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen!",
-      "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via "
+      "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via ",
+      "welcome_to_NOVA": "Velkommen til NOVA Spektrum, Lillestrøm"
     },
     "principles": {
       "principles": "Noen få svært viktige prinsipper",
@@ -77,7 +83,7 @@
     },
 
     "partner": {
-      "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember.",
+      "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember",
       "partner_info": {
         "javaZone_2025_partner": "JavaZone 2025 Partner",
         "partner_registration_opens": "Partnerregistrering åpner 15. januar 2025 kl. 10:00",
@@ -109,6 +115,9 @@
         "round_robin_distribution": "Round robin-fordeling på billetter bestilt innen 15. mai",
         "first_come_first_served": "Førstemann til mølla hvis billetter fortsatt er tilgjengelige etter 15. mai"
       }
+    },
+    "ticket": {
+      "announcement": "Billettsalget starter 3. mars"
     },
 
     "404": {

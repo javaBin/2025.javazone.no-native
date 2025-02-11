@@ -1,9 +1,10 @@
-import { HoldTheDate, ScreenTemplate } from '@/components';
+import { Hero, ScreenTemplate, WelcomeSection } from '@/components';
 
 const Index = () => {
   return (
     <ScreenTemplate>
-      <HoldTheDate />
+        <Hero />
+        <WelcomeSection />
     </ScreenTemplate>
   );
 };
