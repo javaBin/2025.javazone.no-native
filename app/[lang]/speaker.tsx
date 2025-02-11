@@ -1,4 +1,4 @@
-import { ScreenTemplate } from '@/components';
+import {BulletListItem, ScreenTemplate} from '@/components';
 import { useTranslation } from 'react-i18next';
 import { SectionBox, SvgImage } from '@/UI';
 import {Text, View} from 'react-native';
@@ -75,9 +75,10 @@ const Speaker = () => {
         <SectionBox sectionTitle={t('speakers.important_principles')}>
             <Text style={Assets.styles.text}>{t('speakers.important_principles_desc')}</Text>
 
-            <Text style={Assets.styles.listText}>- {t('speakers.no_speaker_slots')}</Text>
-            <Text style={Assets.styles.listText}>- {t('speakers.no_sales_pitches')}</Text>
-            <Text style={Assets.styles.listText}>- {t('speakers.no_differentiation')}</Text>
+            <BulletListItem text={t('speakers.no_speaker_slots')}/>
+            <BulletListItem text={t('speakers.no_sales_pitches')}/>
+            <BulletListItem text={t('speakers.no_differentiation')}/>
+
             <Text style={Assets.styles.text}>{t('speakers.adherence_to_principles')}</Text>
             <Text style={Assets.styles.text}>{t('speakers.closing_statement')}</Text>
             <Text style={Assets.styles.text}>{t('speakers.program_committee')}</Text>
