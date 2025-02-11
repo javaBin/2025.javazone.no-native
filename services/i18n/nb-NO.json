@@ -22,8 +22,11 @@
     "javaBin_information": "javaBin informasjon",
 
     "pageTitles": {
-      "info": "Informasjon",
-      "partner": "Partnere"
+      "home": "Hjem",
+      "program": "Program",
+      "partner": "Partnere",
+      "speaker": "Talere",
+      "info": "Informasjon"
     },
 
     "javaBin": {
