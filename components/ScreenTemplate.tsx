@@ -1,10 +1,10 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import { Dimensions, ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
 import { useI18nContext } from '@/contexts/I18nContext';
 import { Assets } from '@/Assets';
-import { PageTitle } from "@/UI";
+import { PageTitle } from '@/UI';
 import { VerticalLinesRightLeft, Footer, Flag } from '@/components';
 import {
   useFonts,
@@ -39,7 +39,7 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop, infoPage }: Sc
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollTo({ y: 0, animated: true });
     }
-  }
+  };
 
   useFonts({
     Cinzel_400Regular,
@@ -61,7 +61,7 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop, infoPage }: Sc
       position: 'absolute',
       top: Dimensions.get('window').width > 768 ? 70 : 0,
       right: Dimensions.get('window').width > 768 ? 110 : 20,
-      zIndex: 50
+      zIndex: 50,
     },
     overlay: {
       ...StyleSheet.absoluteFillObject,
@@ -78,7 +78,7 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop, infoPage }: Sc
         <VerticalLinesRightLeft />
 
         <View style={[Assets.styles.container, { marginTop: newTop }]}>
-          <View style={styles.languagePickers} id={"languagePickers"}>
+          <View style={styles.languagePickers} id={'languagePickers'}>
             <Flag
               flagLocale={'nb-NO'}
               countryCode={CountryCode.Norwegian}
@@ -95,16 +95,20 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop, infoPage }: Sc
             />
           </View>
 
-          <ScrollView ref={scrollViewRef}
-                      style={Assets.styles.scrollContainer}
-                      contentContainerStyle={Assets.styles.scrollContentContainer}
-                      alwaysBounceVertical={false}
-                      showsVerticalScrollIndicator={false}>
-            {pageTitle && <PageTitle title={pageTitle}/>}
+          <ScrollView
+            ref={scrollViewRef}
+            style={Assets.styles.scrollContainer}
+            contentContainerStyle={Assets.styles.scrollContentContainer}
+            alwaysBounceVertical={false}
+            showsVerticalScrollIndicator={false}
+          >
+            {pageTitle && <PageTitle title={pageTitle} />}
 
             {children}
 
-            {Platform.OS === 'web' ? <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop}/> : null}
+            {Platform.OS === 'web' ? (
+              <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop} />
+            ) : null}
           </ScrollView>
         </View>
       </SafeAreaView>

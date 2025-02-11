@@ -227,13 +227,21 @@ const RootLayout = () => {
 
   const webScreenOptions = {
     headerTransparent: screenWidth > 768,
-    headerBackground: () => screenWidth > 768 ?
-        <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} /> :
-        <View style={[StyleSheet.absoluteFill, {
-          backgroundColor: Assets.colors.jz2025ThemeColors.sheetOpacity,
-          borderBottomColor: '#403431',
-          borderBottomWidth: 0.1,
-        }]} />,
+    headerBackground: () =>
+      screenWidth > 768 ? (
+        <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />
+      ) : (
+        <View
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              backgroundColor: Assets.colors.jz2025ThemeColors.sheetOpacity,
+              borderBottomColor: '#403431',
+              borderBottomWidth: 0.1,
+            },
+          ]}
+        />
+      ),
     headerLeft: () => null, // this is to disable "<-" back button on web-app
     headerRight: () => (
       <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={styles.hamburger}>

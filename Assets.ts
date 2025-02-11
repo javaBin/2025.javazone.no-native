@@ -91,7 +91,7 @@ export const Assets = {
     TwitterFrame,
     FacebookFrame,
     LinkedInFrame,
-    ToTopArrow
+    ToTopArrow,
   },
   colors: {
     transparent: 'transparent',
@@ -141,7 +141,7 @@ export const Assets = {
       flex: 1,
       position: 'relative',
       margin: 0,
-      overflow: 'hidden'
+      overflow: 'hidden',
     },
     container: {
       flex: 1,

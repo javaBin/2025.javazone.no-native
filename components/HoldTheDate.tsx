@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
-    margin: 'auto'
+    margin: 'auto',
   },
   heading: {
     fontSize: Dimensions.get('window').width > 768 ? 38 : 36,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: Assets.colors.jz2025ThemeColors.darkBrown,
     fontFamily: 'Cinzel_700Bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   subPageHeading: {
     fontSize: Dimensions.get('window').width > 768 ? 28 : 26,
