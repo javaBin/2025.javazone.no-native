@@ -1,57 +1,80 @@
 import { ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
-import {SectionBox, SvgImage} from "@/UI";
-import {Text} from "react-native";
-import {Assets} from "@/Assets";
-import React from "react";
+import { SectionBox, SvgImage } from '@/UI';
+import { Text } from 'react-native';
+import { Assets } from '@/Assets';
+import React from 'react';
 
 const Speaker = () => {
   const { t } = useTranslation();
 
   return (
     <ScreenTemplate pageTitle={t('pageTitles.speaker')} shouldScrollToTop={true}>
-        <SectionBox sectionTitle={"What is it like speaking at JavaZone?"}>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
+      <Text style={Assets.styles.text}>{t('speakers.conference_intro')}</Text>
+      <Text style={Assets.styles.text}>{t('speakers.conference_attendance')}</Text>
+      <Text style={Assets.styles.text}>{t('speakers.international_speakers')}</Text>
+      <SectionBox sectionTitle={'What is it like speaking at JavaZone?'}>
+        <Text style={Assets.styles.text}>{t('speakers.speaking_experience_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.importance_of_speakers')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.commitment_to_diversity')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
 
-        <SectionBox sectionTitle={"Formats and durations"}>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
+      <SectionBox sectionTitle={'Formats and durations'}>
+        <Text style={Assets.styles.text}>{t('speakers.formats_and_durations_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.lightning_talks')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.lightning_talks_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.presentations')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.presentations_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.workshops')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.workshops_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.javazone_kids')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.javazone_kids_desc')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
 
-        <SectionBox sectionTitle={"Audience and topics"}>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
+      <SectionBox sectionTitle={t('speakers.audience_and_topics')}>
+        <Text style={Assets.styles.text}>{t('speakers.audience_and_topics_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.content_scope')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
 
-        <SectionBox sectionTitle={"Ongoing evaluation of talks"}>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
+      <SectionBox sectionTitle={t('speakers.evaluation_of_talks')}>
+        <Text style={Assets.styles.text}>{t('speakers.evaluation_of_talks_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.submit_early')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
 
-        <SectionBox sectionTitle={"Submission tips"}>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
+      <SectionBox sectionTitle={t('speakers.submission_tips')}>
+        <Text style={Assets.styles.text}>{t('speakers.submission_tips_desc')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
 
-        <SectionBox sectionTitle={"Location"}>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
+      <SectionBox sectionTitle={t('speakers.location')}>
+        <Text style={Assets.styles.text}>{t('speakers.location_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.location_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.traveling_to_lillestrom')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
 
-        <SectionBox sectionTitle={"What's in it for me?"}>
-            <Text style={Assets.styles.sectionSubTitle}>Accepted presentations, lightning talks, and workshops</Text>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <Text style={Assets.styles.sectionSubTitle}>Coverage of expenses</Text>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
-
-        <SectionBox sectionTitle={"Important principles"}>
-            <Text style={Assets.styles.text}>lorem ipsum</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{margin: 10}}/>
-        </SectionBox>
+      <SectionBox sectionTitle={t('speakers.whats_in_it_for_me')}>
+        <Text style={Assets.styles.sectionSubTitle}>{t('speakers.accepted_presentations')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.accepted_presentations_desc')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.journeyzone')}</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('speakers.coverage_of_expenses')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.coverage_of_expenses_desc')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
+      <SectionBox sectionTitle={t('speakers.important_principles')}>
+        <Text style={Assets.styles.text}>{t('speakers.important_principles_desc')}</Text>
+        <Text style={Assets.styles.listText}>- {t('speakers.no_speaker_slots')}</Text>
+        <Text style={Assets.styles.listText}>- {t('speakers.no_sales_pitches')}</Text>
+        <Text style={Assets.styles.listText}>- {t('speakers.no_differentiation')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.adherence_to_principles')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.closing_stetement')}</Text>
+        <Text style={Assets.styles.text}>{t('speakers.program_committee')}</Text>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+      </SectionBox>
     </ScreenTemplate>
   );
 };
