@@ -84,7 +84,6 @@
       "about": "JavaZone lover å friste smaksløkene dine og tilfredsstille dine cravings gjennom hele konferansen. For deltakere med allergier eller kostholdsrestriksjoner, kan du være trygg på at hver restaurant er forpliktet til å tilby en trygg og hyggelig matopplevelse. ",
       "our_chefs": "Kokkene våre er godt kjent med å imøtekomme gluten, nøtter, meieriprodukter og andre vanlige allergier. Bare informer restaurantpersonalet om dine kostholdsbehov, så vil de veilede deg gjennom menyen eller gi personlige forslag."
     },
-
     "partner": {
       "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember",
       "partner_info": {
@@ -122,14 +121,13 @@
     "ticket": {
       "announcement": "Billettsalget starter 3. mars"
     },
-
     "kids": {
       "title": "JavaZone Kids",
       "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
-      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8 - 17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone. ",
-      "event_date_location_start": "The event will be on 31\u02E2\u1D57 of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, send us an email to",
+      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8-17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone.",
+      "event_date_location_start": "The event will be on 31st of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, send us an email to",
       "event_date_location_link_title": "kids@java.no",
-      "event_date_location_end": "by April 1\u02E2\u1D57 2025.",
+      "event_date_location_end": "by 1st April 2025.",
       "workshop_description_intro": "Your description of the workshop needs to have:",
       "workshop_title": "Title",
       "workshop_abstract": "Abstract, this will be featured on our website",
@@ -138,12 +136,12 @@
       "workshop_max_participants": "Maximum participants",
       "workshop_language": "English or Norwegian",
       "workshop_experience": "Do you have experience working with kids before",
-      "speakers_benefits": "Speakers for JavaZone Kids will be invited to Speakers Dinner on Tuesday September 2\u207F\u1D48, free tickets to the JavaZone conference on 3ʳᵈ - 4ᵗʰ September, and you can apply to join our tour for speakers, JourneyZone."
+      "speakers_benefits": "Speakers for JavaZone Kids will be invited to Speakers’ Dinner on Tuesday 2nd September, free tickets to the JavaZone conference on 3rd-4th September, and you can apply to join our tour for speakers, JourneyZone."
     },
     "speakers": {
       "pageTitle": "Call for Speakers",
-      "conference_intro": "JavaZone 2025 will be the 23ʳᵈ physical JavaZone conference and will consist of a day of pre-conference workshop, followed by two days of lightning talks and presentations in September.",
-      "conference_attendance": "JavaZone is typically sold out, with more than 3200 attendees enjoying well over 100 sessions.",
+      "conference_intro": "JavaZone 2025 will be the 23rd physical JavaZone conference and will consist of a day of pre-conference workshops, followed by two days of lightning talks and presentations in September.",
+      "conference_attendance": "The conference is usually sold out, with more than 3200 attendees enjoying well over 100 sessions from both Norwegian and international speakers. We'd love to have you join us this coming September!",
       "international_speakers": "JavaZone hosts both international and Norwegian speakers. We'd love to have you join us the coming September!",
 
       "speaking_experience": "What is it like speaking at JavaZone?",
@@ -158,18 +156,18 @@
       "presentations": "Presentations (45 or 60 minutes)",
       "presentations_desc": "Presentations at JavaZone can be either 45 or 60 minutes long. This gives you room to elaborate on an idea. When submitting your talk, please indicate clearly in the outline how much time is reserved for questions.",
       "workshops": "Workshops (2 hours, 4 hours, 8 hours)",
-      "workshops_desc": "We will continue the popular workshop concept with a range of sessions on Tuesday, September 3ʳᵈ. The format for the workshops is in-depth, hands-on and interactive.",
+      "workshops_desc": "We will continue the popular workshop concept with a range of sessions on Tuesday, September 3rd. The format for the workshops is in-depth, hands-on and interactive.",
       "javazone_kids": "JavaZone Kids",
       "javazone_kids_desc_start": "For those interested in bringing the magic of software development to kids, we have a mini conference for kids the weekend before JavaZone. Please see their ",
       "javazone_kids_desc_link_title": "separate call for speakers",
       "javazone_kids_desc_end": " for more information.",
 
       "audience_and_topics": "Audience and topics",
-      "audience_and_topics_desc": "JavaZone is a conference for developers and technical architects, with an emphasis on technical talks. However, we are open to talks about other areas, including methodology, project management, and other topics related to programming.",
-      "content_scope": "Despite our conference name, we do not limit our content to Java technology. We will consider all talks based on their relevance to developers and technical architects. We do, however, set a focus on technology surrounding the JVM when selecting talks.",
+      "audience_and_topics_desc": "JavaZone is a conference for developers and technical architects, with an emphasis on technical talks. However, we are open to talks about other topics related to programming as well, like methodology or project management.",
+      "content_scope": "Despite our conference name, we do not limit our content to Java technology. We will consider all talks based on their relevance to developers and technical architects. We do, however, focus on technology surrounding the JVM when selecting talks.",
 
       "evaluation_of_talks": "Ongoing evaluation of talks",
-      "evaluation_of_talks_desc": "Each year we receive hundreds of submissions, and we consider each submission as it arrives. Due to a large number of submissions, we can not guarantee that you will hear from us immediately. We do, however, answer all submissions and will do so no later than end of June.",
+      "evaluation_of_talks_desc": "Each year we receive hundreds of submissions, and we consider each submission as it arrives. We answer all submissions and will do so no later than end of June.",
       "submit_early": "Our advice to you is simple. Submit early! The earlier you submit, the more likely you are to be noticed. Avoid drowning in the end-of-Call-for-Speakers tsunami!",
 
       "submission_tips": "Submission tips",
@@ -179,15 +177,17 @@
       "submission_tips_learn_more": "Learn more",
 
       "location": "Location",
-      "location_desc": "Our usual venue, Oslo Spektrum, is closed for rehabilitation and expansion so we have moved JavaZone to NOVA Spektrum, a huge arena in Lillestrøm, a city just outside Oslo. We are working hard to make the new venue just as magical as our usual venue.",
-      "traveling_to_lillestrom": "Traveling to Lillestrøm is just as easy as traveling to Oslo, because both the Airport Express train and regular trains stop here on their way from Oslo airport to Oslo city center.",
+      "location_desc": "Our usual venue, Oslo Spektrum, is closed for renovation and expansion so we have moved JavaZone to NOVA Spektrum, a huge arena in Lillestrøm, a town just outside Oslo. We are working hard to make the new venue just as magical as our usual venue.",
+      "traveling_to_lillestrom": "Traveling to Lillestrøm is just as easy as traveling to Oslo, because both the Airport Express train and regular trains stop here on their way from Oslo airport to Oslo city center. For those based in Oslo, Lillestrøm is just 10 minutes away, with very frequent train departures.",
+      "workshops_location": "Workshops are located at our regular community center, Rebel, in Oslo city center close to Nationaltheateret station, allowing attendees to have close access from their offices.",
 
       "whats_in_it_for_me": "What's in it for me?",
       "accepted_presentations": "Accepted presentations, lightning talks, and workshops",
-      "accepted_presentations_desc": "As a JavaZone speaker, you get free admission to the conference. Additionally, you are also invited to the speakers' dinner, held on September 3\u02B3\u1D48.",
+      "accepted_presentations_desc": "As a JavaZone speaker, you get free admission to the conference. Additionally, you are also invited to the speakers' dinner, held on September 3rd.",
       "journeyzone": "All accepted speakers can apply to join us at JourneyZone, our famous speakers' tour into the Norwegian wilderness. More details will be available soon.",
-      "coverage_of_expenses": "Coverage of expenses",
-      "coverage_of_expenses_desc": "Please see our reimbursement policy if you have any questions regarding coverage of other expenses.",
+      "coverage_of_expenses_start": "Please see our",
+      "coverage_of_expenses_link": "reimbursement policy",
+      "coverage_of_expenses_end": "if you have any questions regarding coverage of other expenses.",
 
       "important_principles": "Important principles",
       "important_principles_desc_start": "JavaZone is proud to be an independent and community-driven conference. It is organized by volunteers from javaBin (the Norwegian Java User Group) and is run as a non-profit organization.",
@@ -220,7 +220,7 @@
       "be_concise_desc": "With an exciting theme, it's easy to find many things one wants to present. Don't get carried away. Your proposal outline should explain how you will cover everything in a clear and structured manner.",
 
       "supporting_materials": "Include supporting materials",
-      "supporting_materials_desc": "If you've held the talk before, then please include links to any supporting material that you can show us. This could be video recordings, slide decks, blogs posts, GitHub repositories, photos, etc.",
+      "supporting_materials_desc": "If you've held the talk before, then please include links to any supporting material that you can show us. This could be video recordings, slide decks, blogs posts, GitHub repositories, photos, etc. Video recordings of any less related talks of yours may also give us an impression of how you are as a speaker.",
 
       "fill_mandatory_fields": "Fill out all mandatory fields properly",
       "fill_mandatory_fields_desc": "Nothing says you haven't put much effort into your proposals like a submission form filled with 'TODO' or 'TBD' in the required fields. This is fine for the initial submission, but please make sure the required information is filled out properly by the submission deadline.",
@@ -244,7 +244,7 @@
       "rejection_reasons_intro": "Even though we are rooting for your talk to be accepted, the fact is that some talks must be rejected. Read through these tips to understand why this might happen. Even better, if you are reading this before the Call for Speakers deadline, you can go through your proposal and make sure you do your best to avoid these common pitfalls.",
 
       "not_enough_info": "Not Enough information",
-      "not_enough_info_desc": "The program committee was not sure what you're going to present, or there was not enough information about the technology/things you want to talk about to decide how awesome the presentation will be.",
+      "not_enough_info_desc": "The program committee was not sure what you're going to present, or there was not enough information about the technology/things you want to talk about to decide how great the presentation will be.",
 
       "proposal_too_thin": "The proposal is too thin",
       "proposal_too_thin_desc": "The abstract doesn't convey the feeling that you have put a lot of work into it, or that you have thought through your presentation.",
@@ -256,13 +256,29 @@
       "abstract_not_catchy_desc": "If the committee ends up with 600 or so proposals to go through, time becomes a factor. This is especially true in the first pass, and in the early stages. If your abstract catches the fancy of just one or more of the committee members, your proposal is likely to be thumbs-upped to the next phase. If not, it tends to drop out.",
 
       "theme_not_fit": "The theme did not fit in with what we want to include in the program this year",
-      "theme_not_fit_desc": "Even though JavaZone has a place for many themes, there are some proposals that do not fit. Some proposals are rejected because we feel the presentation would be better served at a different conference.",
+      "theme_not_fit_desc": "Even though JavaZone has a place for many topics, there are some proposals that do not fit. Some proposals are rejected because we feel the presentation would be better served at a different conference.",
 
       "co_presenter_accepted": "Your co-presenter had a different proposal accepted",
-      "co_presenter_accepted_desc": "If you intend to present with a co-presenter, and she happens to have had a separate proposal already accepted, then we may have to reject your joint proposal.",
+      "co_presenter_accepted_desc": "If you intend to present with a co-presenter, and they happen to have had a separate proposal already accepted, then we may have to reject your joint proposal.",
 
       "unlucky": "You were unlucky",
       "unlucky_desc": "We often receive multiple good proposals covering exactly the same topic. The program committee then has to decide between these multiple excellent submissions. In 2016 we received many great proposals covering 'how we do DevOps in the cloud'. Limited space in the program meant that many of these ended up being rejected."
+    },
+    "reimbursement": {
+      "pageTitle": "Reimbursement policy",
+      "what_how": "What & How",
+      "eligibility": "If your presentation or a workshop is accepted, you may apply for a refund for travel and accommodation. Read below to find out if you are eligible.",
+      "application_deadline": "Applications for speaker reimbursements must be submitted before August 1st, 2024.",
+
+      "how_to_apply": "How to apply",
+      "apply_note": "The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require financial support, please reach out to refund@java.no after your session or workshop is accepted.",
+      "apply_details": "In this mail, provide an estimate of your travel expenses and the days you will be visiting Oslo during the conference.",
+      "hotel_deal": "We have a deal with a hotel, so if you need accommodation, we will reserve a room for you. Please state in your application which days you are planning to stay. We do not refund travel costs above the cost of a reasonably priced economy ticket.",
+      "lightning_talks": "Please also note that we do not refund travel expenses for those holding lightning talks. However, speakers (including the ones holding lightning talks) will receive a free conference ticket.",
+
+      "confirmation_reimbursement": "Confirmation & Reimbursement",
+      "confirmation_note": "Applications must be confirmed explicitly via refund@java.no and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers living in proximity to Oslo are not eligible.",
+      "reimbursement_process": "Reimbursements are processed and paid after the conference. We will reach out to speakers who applied for reimbursement and process the payments once payment details are provided."
     },
 
     "404": {

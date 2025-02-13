@@ -92,7 +92,7 @@ export const Assets = {
     TwitterFrame,
     FacebookFrame,
     LinkedInFrame,
-    ToTopArrow
+    ToTopArrow,
   },
   colors: {
     transparent: 'transparent',
@@ -142,7 +142,7 @@ export const Assets = {
       flex: 1,
       position: 'relative',
       margin: 0,
-      overflow: 'hidden'
+      overflow: 'hidden',
     },
     container: {
       flex: 1,
@@ -163,23 +163,31 @@ export const Assets = {
       padding: 10,
     },
     pageTitle: {},
+    preface: {
+      color: '#403532', // dark-brown
+      marginVertical: 5,
+      fontSize: screenWidth > 768 ? 22 : 20,
+      fontFamily: 'PlayfairDisplay_400Regular',
+      textAlign: 'justify',
+      fontWeight: '500',
+    },
     text: {
       color: '#403532', // dark-brown
       marginVertical: 5,
-      fontSize: screenWidth > 768 ? 18 : 16,
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontFamily: 'PlayfairDisplay_400Regular',
       textAlign: 'justify',
     },
     sectionTitle: {
       color: '#403532', // dark-brown
-      fontSize: screenWidth > 768 ? 26 : 20,
+      fontSize: screenWidth > 768 ? 28 : 22,
       marginTop: 10,
       fontFamily: 'Cinzel_700Bold',
       textAlign: 'center',
     },
     sectionSubTitle: {
       color: '#403532', // dark-brown
-      fontSize: screenWidth > 768 ? 20 : 18,
+      fontSize: screenWidth > 768 ? 22 : 20,
       fontWeight: 'semibold',
       fontStyle: 'italic',
       marginTop: 7.5,
@@ -190,7 +198,7 @@ export const Assets = {
     section: {
       width: '100%',
       marginHorizontal: 20,
-      marginVertical: 5,
+      marginVertical: 8,
       borderRadius: 5,
       paddingVertical: 20,
       paddingHorizontal: 30,
@@ -198,20 +206,20 @@ export const Assets = {
     intro: {
       color: '#403532', // dark-brown
       marginVertical: 10,
-      fontSize: screenWidth > 768 ? 18 : 16,
+      fontSize: screenWidth > 768 ? 22 : 18,
       fontFamily: 'Cinzel_400Regular',
       textAlign: 'center',
       width: '100%',
     },
     callout: {
       color: '#B10A32', // crimson-red
-      fontSize: screenWidth > 768 ? 18 : 16,
+      fontSize: screenWidth > 768 ? 22 : 18,
       fontFamily: 'PlayfairDisplay_400Regular_Italic',
     },
     listText: {
       color: '#1e1616', // gradient.brown
       marginVertical: 5,
-      fontSize: screenWidth > 768 ? 18 : 16,
+      fontSize: screenWidth > 768 ? 22 : 18,
       fontFamily: 'PlayfairDisplay_400Regular',
     },
     disclaimerText: {
