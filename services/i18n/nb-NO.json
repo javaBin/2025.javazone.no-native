@@ -61,7 +61,7 @@
       "program_mail": "program@java.no",
       "partners_mail": "partner@java.no",
       "volunteers_mail": "student@java.no",
-      "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen!",
+      "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen! ❤\uFE0F",
       "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via ",
       "welcome_to_NOVA": "Velkommen til NOVA Spektrum, Lillestrøm"
     },
@@ -91,7 +91,6 @@
       "paragraph_3": "Et bemerkelsesverdig aspekt ved dette avfallshåndteringsinitiativet er sorteringen og innsamlingen av drikkebeholdere for panteordning, kjent som \"pant\" i Norge. Flasker og bokser samles systematisk, sorteres og sendes til resirkulering, og legemliggjør etoset om ressurseffektivitet.",
       "paragraph_4": "Betydelige mengder avfall generert under JavaZone er øremerket for resirkulering. Gjennom en kombinasjon av avansert avfallssorteringsteknologi og dedikert personale, blir materialer som papir, plast, glass og metall nøye sortert. Restavfallet blir videre sortert på Franzefoss-anlegget i Haraldsrud, og de resterende 70% blir malt opp og omgjort til FOB (raffinert avfallsbrensel). Franzefoss har en avtale med Norcem om levering av FOB, som brukes av Norcem som et høyverdig brensel for sementproduksjon. Matavfall/vått organisk avfall som leveres, brukes til biogass og gjødsel på kornåkre. Dette reduserer ikke bare miljøpåvirkningen fra JavaZone, men setter også et eksempel for deltakerne og samfunnet for øvrig."
     },
-
     "partner": {
       "watch_partner_meeting": "Se dette opptaket av det første partnermøtet som ble holdt 11. desember",
       "partner_info": {
@@ -128,6 +127,165 @@
     },
     "ticket": {
       "announcement": "Billettsalget starter 3. mars"
+    },
+    "kids": {
+      "title": "JavaZone Kids",
+      "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
+      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8-17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone.",
+      "event_date_location_start": "The event will be on 31st of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, send us an email to",
+      "event_date_location_link_title": "kids@java.no",
+      "event_date_location_end": "by 1st April 2025.",
+      "workshop_description_intro": "Your description of the workshop needs to have:",
+      "workshop_title": "Title",
+      "workshop_abstract": "Abstract, this will be featured on our website",
+      "workshop_outline": "Detailed outline, pitch on what the workshop is about and answers to these questions:",
+      "workshop_age_range": "Age range",
+      "workshop_max_participants": "Maximum participants",
+      "workshop_language": "English or Norwegian",
+      "workshop_experience": "Do you have experience working with kids before",
+      "speakers_benefits": "Speakers for JavaZone Kids will be invited to Speakers’ Dinner on Tuesday 2nd September, free tickets to the JavaZone conference on 3rd-4th September, and you can apply to join our tour for speakers, JourneyZone."
+    },
+    "speakers": {
+      "pageTitle": "Call for Speakers",
+      "conference_intro": "JavaZone 2025 will be the 23rd physical JavaZone conference and will consist of a day of pre-conference workshops, followed by two days of lightning talks and presentations in September.",
+      "conference_attendance": "The conference is usually sold out, with more than 3200 attendees enjoying well over 100 sessions from both Norwegian and international speakers. We'd love to have you join us this coming September!",
+      "international_speakers": "JavaZone hosts both international and Norwegian speakers. We'd love to have you join us the coming September!",
+
+      "speaking_experience": "What is it like speaking at JavaZone?",
+      "speaking_experience_desc": "Over the last decade JavaZone has grown to become one of the most important Java events in Europe! You can see for yourself – over 1500 videos from previous years' talks are available for free at Vimeo, and the full program from JavaZone 2024 is also available.",
+      "importance_of_speakers": "We can brag as much as we want, but JavaZone would be nothing without all the great speakers! That's why we need your help to make sure that JavaZone 2025 will be at least as awesome as the earlier events. If you think you have something interesting to share, please submit your talk or workshop.",
+      "commitment_to_diversity": "JavaZone is committed to diversity, and we are especially interested in quality submissions from groups that are under-represented in tech. This year we also invite speakers to our JavaZone Kids.",
+
+      "formats_and_durations": "Formats and durations",
+      "formats_and_durations_desc": "You should think about which format your talk will work best in. Are you presenting a new idea, or do you require more time to elaborate on your subject? How hands-on do you want to be? We have three formats you can present your material in.",
+      "lightning_talks": "Lightning talks (10 or 20 minutes)",
+      "lightning_talks_desc": "Are you presenting a great new idea, or want to give the audience a teaser for a cool topic? Then you should strongly consider the lightning talk format. Note that the 10-20 minute time limit is strictly enforced!",
+      "presentations": "Presentations (45 or 60 minutes)",
+      "presentations_desc": "Presentations at JavaZone can be either 45 or 60 minutes long. This gives you room to elaborate on an idea. When submitting your talk, please indicate clearly in the outline how much time is reserved for questions.",
+      "workshops": "Workshops (2 hours, 4 hours, 8 hours)",
+      "workshops_desc": "We will continue the popular workshop concept with a range of sessions on Tuesday, September 3rd. The format for the workshops is in-depth, hands-on and interactive.",
+      "javazone_kids": "JavaZone Kids",
+      "javazone_kids_desc_start": "For those interested in bringing the magic of software development to kids, we have a mini conference for kids the weekend before JavaZone. Please see their ",
+      "javazone_kids_desc_link_title": "separate call for speakers",
+      "javazone_kids_desc_end": " for more information.",
+
+      "audience_and_topics": "Audience and topics",
+      "audience_and_topics_desc": "JavaZone is a conference for developers and technical architects, with an emphasis on technical talks. However, we are open to talks about other topics related to programming as well, like methodology or project management.",
+      "content_scope": "Despite our conference name, we do not limit our content to Java technology. We will consider all talks based on their relevance to developers and technical architects. We do, however, focus on technology surrounding the JVM when selecting talks.",
+
+      "evaluation_of_talks": "Ongoing evaluation of talks",
+      "evaluation_of_talks_desc": "Each year we receive hundreds of submissions, and we consider each submission as it arrives. We answer all submissions and will do so no later than end of June.",
+      "submit_early": "Our advice to you is simple. Submit early! The earlier you submit, the more likely you are to be noticed. Avoid drowning in the end-of-Call-for-Speakers tsunami!",
+
+      "submission_tips": "Submission tips",
+      "submission_tips_desc_start": "Over the years, we have gathered some",
+      "submission_tips_desc_link_title": "submission tips",
+      "submission_tips_desc_end": ", which may be useful to both new and experienced speakers.",
+      "submission_tips_learn_more": "Learn more",
+
+      "location": "Location",
+      "location_desc": "Our usual venue, Oslo Spektrum, is closed for renovation and expansion so we have moved JavaZone to NOVA Spektrum, a huge arena in Lillestrøm, a town just outside Oslo. We are working hard to make the new venue just as magical as our usual venue.",
+      "traveling_to_lillestrom": "Traveling to Lillestrøm is just as easy as traveling to Oslo, because both the Airport Express train and regular trains stop here on their way from Oslo airport to Oslo city center. For those based in Oslo, Lillestrøm is just 10 minutes away, with very frequent train departures.",
+      "workshops_location": "Workshops are located at our regular community center, Rebel, in Oslo city center close to Nationaltheateret station, allowing attendees to have close access from their offices.",
+
+      "whats_in_it_for_me": "What's in it for me?",
+      "accepted_presentations": "Accepted presentations, lightning talks, and workshops",
+      "accepted_presentations_desc": "As a JavaZone speaker, you get free admission to the conference. Additionally, you are also invited to the speakers' dinner, held on September 3rd.",
+      "journeyzone": "All accepted speakers can apply to join us at JourneyZone, our famous speakers' tour into the Norwegian wilderness. More details will be available soon.",
+      "coverage_of_expenses_start": "Please see our",
+      "coverage_of_expenses_link": "reimbursement policy",
+      "coverage_of_expenses_end": "if you have any questions regarding coverage of other expenses.",
+
+      "important_principles": "Important principles",
+      "important_principles_desc_start": "JavaZone is proud to be an independent and community-driven conference. It is organized by volunteers from javaBin (the Norwegian Java User Group) and is run as a non-profit organization.",
+      "important_principles_desc_read_more_1": " You can read more about us",
+      "important_principles_desc_read_more_2": "here",
+      "important_principles_desc_end": ". This means that we have three important principles for selecting talks:",
+      "no_speaker_slots": "We do not sell speaker slots.",
+      "no_sales_pitches": "We do not accept sales pitches masked as presentations.",
+      "no_differentiation": "We do not differentiate between speakers from partners and independent speakers.",
+      "adherence_to_principles": "If your talk adheres to these very important principles, you are more than welcome to submit it to our Call for Speakers!",
+      "closing_statement": "We hope to see you at JavaZone 2025 - please feel free to spread the word to your local community!",
+      "program_committee": "Best regards, the JavaZone Program Committee"
+    },
+    "submissionTips": {
+      "submission_tips_title": "Submission tips",
+      "increase_chance": "Increase the chance of your talk being accepted",
+      "proposal_correlation": "There is generally a very high correlation between how much work one puts into the creation of a proposal and the chance that the proposal is accepted. Even a proposal with an extremely cool theme, entertaining title, and an experienced speaker may be excluded if the description is lacking.",
+      "tips_intro": "We have gathered some tips that should be considered when writing a JavaZone proposal, and a few reasons why proposals may be rejected.",
+
+      "good_title": "Create a good title",
+      "good_title_desc": "The title is the first thing people will see. A poorly worded title may be the only thing many will see of your proposal. A good title is catchy and concise, and should describe what you will talk about.",
+
+      "catchy_abstract": "Write a catchy abstract",
+      "catchy_abstract_desc": "The abstract is what will be featured in the JavaZone program for the public to read. If the program committee doesn't believe that the abstract is good enough to convince people to come to your presentation, then the proposal won't be accepted.",
+
+      "detailed_outline": "Provide a detailed outline",
+      "detailed_outline_desc": "The outline is your chance to pitch the proposal to the program committee. This section will not be published, but if your outline is thin or just a copy of your abstract, then you're not selling yourself well.",
+
+      "be_concise": "Be concise",
+      "be_concise_desc": "With an exciting theme, it's easy to find many things one wants to present. Don't get carried away. Your proposal outline should explain how you will cover everything in a clear and structured manner.",
+
+      "supporting_materials": "Include supporting materials",
+      "supporting_materials_desc": "If you've held the talk before, then please include links to any supporting material that you can show us. This could be video recordings, slide decks, blogs posts, GitHub repositories, photos, etc. Video recordings of any less related talks of yours may also give us an impression of how you are as a speaker.",
+
+      "fill_mandatory_fields": "Fill out all mandatory fields properly",
+      "fill_mandatory_fields_desc": "Nothing says you haven't put much effort into your proposals like a submission form filled with 'TODO' or 'TBD' in the required fields. This is fine for the initial submission, but please make sure the required information is filled out properly by the submission deadline.",
+
+      "review_proposal": "Ask someone to review your proposal",
+      "review_proposal_desc": "If your proposal is full of typos, it will be noticed (especially in key fields such as the title). This isn't a point that will necessarily mean the proposal will be rejected, but it doesn't help your case.",
+
+      "live_coding": "Do you plan on doing live coding? Be sure to describe your plan to us",
+      "live_coding_desc": "Live coding can make a presentation more entertaining, but it also increases the chances of something going wrong. If the program committee doesn't get the feeling that you have a solid plan for the demonstration, then it might hurt your chances to be accepted.",
+
+      "multiple_proposals": "Send in multiple proposals",
+      "multiple_proposals_desc": "If you have multiple things you can talk about, then submitting 2 or 3 different proposals will increase your chances of finding a place in the schedule.",
+
+      "no_spam": "... but please don't spam us",
+      "no_spam_desc": "The program committee reviews hundreds of proposals each year. A few well-written proposals are much more valuable than a bucket full of half-prepared ideas.",
+
+      "no_shouting": "Do not shout",
+      "no_shouting_desc": "You will definitely be noticed IF YOUR TITLE IS ENTIRELY UPPERCASE (!!!!!!!!), but not necessarily in a positive way.",
+
+      "rejection_reasons_title": "Why was my talk rejected?",
+      "rejection_reasons_intro": "Even though we are rooting for your talk to be accepted, the fact is that some talks must be rejected. Read through these tips to understand why this might happen. Even better, if you are reading this before the Call for Speakers deadline, you can go through your proposal and make sure you do your best to avoid these common pitfalls.",
+
+      "not_enough_info": "Not Enough information",
+      "not_enough_info_desc": "The program committee was not sure what you're going to present, or there was not enough information about the technology/things you want to talk about to decide how great the presentation will be.",
+
+      "proposal_too_thin": "The proposal is too thin",
+      "proposal_too_thin_desc": "The abstract doesn't convey the feeling that you have put a lot of work into it, or that you have thought through your presentation.",
+
+      "too_much_content": "You want to talk about more than we think you will have time to cover",
+      "too_much_content_desc": "10-minute lightning talk proposals that appear to require double that time will be discounted. The same applies to proposals that try to cover everything possible instead of focusing on a specific area. If you want to cover a breadth of material, then be sure to convey to us that you have thought through the timeline for your talk. We must feel that you believe that it will work, something that can be achieved with a clear and detailed outline.",
+
+      "abstract_not_catchy": "The abstract was not catchy enough",
+      "abstract_not_catchy_desc": "If the committee ends up with 600 or so proposals to go through, time becomes a factor. This is especially true in the first pass, and in the early stages. If your abstract catches the fancy of just one or more of the committee members, your proposal is likely to be thumbs-upped to the next phase. If not, it tends to drop out.",
+
+      "theme_not_fit": "The theme did not fit in with what we want to include in the program this year",
+      "theme_not_fit_desc": "Even though JavaZone has a place for many topics, there are some proposals that do not fit. Some proposals are rejected because we feel the presentation would be better served at a different conference.",
+
+      "co_presenter_accepted": "Your co-presenter had a different proposal accepted",
+      "co_presenter_accepted_desc": "If you intend to present with a co-presenter, and they happen to have had a separate proposal already accepted, then we may have to reject your joint proposal.",
+
+      "unlucky": "You were unlucky",
+      "unlucky_desc": "We often receive multiple good proposals covering exactly the same topic. The program committee then has to decide between these multiple excellent submissions. In 2016 we received many great proposals covering 'how we do DevOps in the cloud'. Limited space in the program meant that many of these ended up being rejected."
+    },
+    "reimbursement": {
+      "pageTitle": "Reimbursement policy",
+      "what_how": "What & How",
+      "eligibility": "If your presentation or a workshop is accepted, you may apply for a refund for travel and accommodation. Read below to find out if you are eligible.",
+      "application_deadline": "Applications for speaker reimbursements must be submitted before August 1st, 2025.",
+
+      "how_to_apply": "How to apply",
+      "apply_note": "The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require financial support, please reach out to refund@java.no after your session or workshop is accepted.",
+      "apply_details": "In this mail, provide an estimate of your travel expenses and the days you will be visiting Oslo during the conference.",
+      "hotel_deal": "We have a deal with a hotel, so if you need accommodation, we will reserve a room for you. Please state in your application which days you are planning to stay. We do not refund travel costs above the cost of a reasonably priced economy ticket.",
+      "lightning_talks": "Please also note that we do not refund travel expenses for those holding lightning talks. However, speakers (including the ones holding lightning talks) will receive a free conference ticket.",
+
+      "confirmation_reimbursement": "Confirmation & Reimbursement",
+      "confirmation_note": "Applications must be confirmed explicitly via refund@java.no and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers living in proximity to Oslo are not eligible.",
+      "reimbursement_process": "Reimbursements are processed and paid after the conference. We will reach out to speakers who applied for reimbursement and process the payments once payment details are provided."
     },
 
     "404": {

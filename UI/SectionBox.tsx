@@ -10,7 +10,8 @@ type SectionBoxProps = {
 
 const SectionBox: React.FC<SectionBoxProps> = ({ children, sectionTitle }) => {
   return (
-    <BlurView tint="light" intensity={20} style={{ ...Assets.styles.section, ...Assets.styles.shadow }}>
+    <BlurView tint="light" intensity={40} style={{ ...Assets.styles.section, ...Assets.styles.shadow }}>
+
       <Text style={Assets.styles.sectionTitle}>{sectionTitle}</Text>
       {children}
     </BlurView>
