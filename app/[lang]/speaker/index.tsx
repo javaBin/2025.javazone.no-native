@@ -13,8 +13,16 @@ const Speaker = () => {
   return (
     <ScreenTemplate pageTitle={t('speakers.pageTitle')} shouldScrollToTop={true}>
       <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
-        {t('speakers.conference_intro')} {t('speakers.conference_attendance')} {t('speakers.international_speakers')}
+        {t('speakers.conference_intro')} 
       </Text>
+      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
+        {t('speakers.conference_attendance')} {t('speakers.international_speakers')}
+      </Text>
+      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
+       Submission of proposals is open until April 28th, 2025. 
+       <LinkText title="Submit your proposal today!" href='https://talks.javazone.no/' targetSelf={true} />
+      </Text>
+
 
       <SectionBox sectionTitle={t('speakers.speaking_experience')}>
         <Text style={Assets.styles.text}>{t('speakers.speaking_experience_desc')}</Text>
