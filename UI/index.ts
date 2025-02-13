@@ -6,12 +6,4 @@ import LinkButton from '@/UI/LinkButton';
 import PageTitle from '@/UI/PageTitle';
 import SectionBox from '@/UI/SectionBox';
 
-export {
-    SvgImage,
-    CircleImage,
-    ToggleText,
-    LinkText,
-    LinkButton,
-    PageTitle,
-    SectionBox
-}
+export { SvgImage, CircleImage, ToggleText, LinkText, LinkButton, PageTitle, SectionBox };
