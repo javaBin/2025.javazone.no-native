@@ -1,28 +1,29 @@
 import { BulletListItem, ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { LinkText, SectionBox, SvgImage } from '@/UI';
+import { LinkText, LinkButton, SectionBox, SvgImage } from '@/UI';
 import { Text } from 'react-native';
 import { Assets } from '@/Assets';
 import React from 'react';
 import { useGlobalSearchParams } from 'expo-router';
+import { useMediaQuery } from 'react-responsive';
 
 const Speaker = () => {
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
     <ScreenTemplate pageTitle={t('speakers.pageTitle')} shouldScrollToTop={true}>
-      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
-        {t('speakers.conference_intro')} 
-      </Text>
+      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>{t('speakers.conference_intro')}</Text>
       <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
         {t('speakers.conference_attendance')} {t('speakers.international_speakers')}
       </Text>
-      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
-       Submission of proposals is open until April 28th, 2025. 
-       <LinkText title="Submit your proposal today!" href='https://talks.javazone.no/' targetSelf={true} />
-      </Text>
-
+      <LinkButton
+        href="https://talks.javazone.no/"
+        title={t('speakers.submit_proposal')}
+        targetBlank={true}
+        margin={isMobile ? 20 : 40}
+      />
 
       <SectionBox sectionTitle={t('speakers.speaking_experience')}>
         <Text style={Assets.styles.text}>{t('speakers.speaking_experience_desc')}</Text>

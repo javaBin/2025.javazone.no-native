@@ -8,11 +8,12 @@ type LinkButtonProps = {
   href: string;
   title: string;
   targetBlank?: boolean;
+  margin?: number;
 };
 
-const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank }) => {
+const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin }) => {
   return (
-    <TouchableOpacity style={styles.buttonContainer}>
+    <TouchableOpacity style={[styles.buttonContainer, { margin: margin ? margin : 0 }]}>
       <ImageBackground source={Assets.background} style={styles.imageBackground}>
         <LinearGradient
           start={{ x: 0.1, y: 0.4 }}
