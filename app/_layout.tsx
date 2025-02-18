@@ -222,7 +222,10 @@ const RootLayout = () => {
     tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
     tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
     tabBarBackground: () => <BlurView tint="light" intensity={80} style={styles.tabBarBlurContainer} />,
-    headerShown: false, // todo: debating what to do with a possible header for native, BlurView doesn't work for some reason
+    headerShown: true, // todo: debating what to do with a possible header for native, BlurView doesn't work for some reason,
+    headerStyle: {
+
+    }
   };
 
   const webScreenOptions = {
@@ -327,7 +330,7 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-              name="[lang]/speaker"
+              name="[lang]/speaker/index"
               options={{
                 title: 'Speaker',
                 tabBarIcon: () => <SvgImage SVG={Assets.icons.Speaker} height={24} />,
@@ -340,6 +343,9 @@ const RootLayout = () => {
                 tabBarIcon: () => <SvgImage SVG={Assets.icons.Info} height={24} />,
               }}
             />
+            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
         </I18nContextProvider>
@@ -347,5 +353,5 @@ const RootLayout = () => {
     );
   }
 };
-
+// kids page doesnt show footer
 export default RootLayout;
