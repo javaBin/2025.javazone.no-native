@@ -154,7 +154,6 @@ export const Assets = {
       width: '100%',
     },
     scrollContentContainer: {
-      flex: 1,
       width: screenWidth > 768 ? '60%' : '90%',
       alignItems: 'center',
       justifyContent: 'space-between',
