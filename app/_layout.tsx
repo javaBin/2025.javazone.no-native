@@ -2,18 +2,19 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { Stack } from 'expo-router/stack';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
+import { LanguagePicker } from '@/components/LanguagePicker';
 
 const RootLayout = () => {
   const resources = { en, nb };
@@ -123,7 +124,8 @@ const RootLayout = () => {
     header: {
       display: 'flex',
       flexDirection: 'row',
-      width: screenWidth - 20,
+      justifyContent:'space-between',
+      width: screenWidth - 20
     },
     headerLogoTitle: {
       flexDirection: 'row',
@@ -197,7 +199,6 @@ const RootLayout = () => {
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
-
         <View style={styles.navBar}>
           <Link href={`${lang}/program`} style={styles.navItem}>
             Program
@@ -211,6 +212,9 @@ const RootLayout = () => {
           <Link href={`${lang}/info`} style={styles.navItem}>
             Info
           </Link>
+        </View>
+        <View>
+          {languageLoaded && <LanguagePicker /> }
         </View>
       </View>
     ),
@@ -286,6 +290,10 @@ const RootLayout = () => {
               <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
                 Info
               </Link>
+
+              <View style={styles.drawerItem}>
+                <LanguagePicker/>
+              </View>
             </View>
             <SvgImage SVG={Assets.UI.PapyrusRoll} height={25} />
           </BlurView>
