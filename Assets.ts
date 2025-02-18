@@ -30,10 +30,15 @@ import ToTopArrow from '@/assets/icons/to-top-arrow.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
+import HomeInactive from '@/assets/icons/home-inactive.svg';
 import Info from '@/assets/icons/info.svg';
+import InfoInactive from '@/assets/icons/info-inactive.svg';
 import Partner from '@/assets/icons/partner.svg';
+import PartnerInactive from '@/assets/icons/partner-inactive.svg';
 import Program from '@/assets/icons/program.svg';
+import ProgramInactive from '@/assets/icons/program-inactive.svg';
 import Speaker from '@/assets/icons/speaker.svg';
+import SpeakerInactive from '@/assets/icons/speaker-inactive.svg';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -85,10 +90,15 @@ export const Assets = {
     MenuRoundedInactive,
     MenuRoundedActive,
     Home,
+    HomeInactive,
     Info,
+    InfoInactive,
     Partner,
+    PartnerInactive,
     Program,
+    ProgramInactive,
     Speaker,
+    SpeakerInactive,
     TwitterFrame,
     FacebookFrame,
     LinkedInFrame,
