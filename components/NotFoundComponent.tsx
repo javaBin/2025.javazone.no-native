@@ -14,7 +14,7 @@ const NotFoundComponent = () => {
       justifyContent: 'center',
       alignItems: 'center',
       width: screenWidth > 768 ? '50%' : '80%',
-      height: '100%'
+      height: '100%',
     },
     errorCode: {
       color: Assets.colors.jz2025ThemeColors.cyberYellow,

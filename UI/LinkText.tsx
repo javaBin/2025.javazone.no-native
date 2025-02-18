@@ -12,7 +12,12 @@ type LinkTextProps = {
 
 const LinkText: React.FC<LinkTextProps> = ({ title, href, style, targetSelf }) => {
   return (
-    <Link href={href} rel="noopener noreferrer" target={targetSelf && targetSelf ? "_self" : "_blank"} style={{ ...styles.listItemMail, ...{ style } }}>
+    <Link
+      href={href}
+      rel="noopener noreferrer"
+      target={targetSelf && targetSelf ? '_self' : '_blank'}
+      style={{ ...styles.listItemMail, ...{ style } }}
+    >
       {title}
     </Link>
   );

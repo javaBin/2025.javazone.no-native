@@ -153,7 +153,7 @@ export const Assets = {
     scrollContainer: {
       width: '100%',
     },
-    scrollContentContainer: {      
+    scrollContentContainer: {
       width: screenWidth > 768 ? '60%' : '90%',
       alignItems: 'center',
       justifyContent: 'space-between',
