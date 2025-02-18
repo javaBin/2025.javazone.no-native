@@ -29,6 +29,12 @@ const Speaker = () => {
         <Text style={Assets.styles.text}>{t('speakers.speaking_experience_desc')}</Text>
         <Text style={Assets.styles.text}>{t('speakers.importance_of_speakers')}</Text>
         <Text style={Assets.styles.text}>{t('speakers.commitment_to_diversity')}</Text>
+        <LinkButton
+          href="https://vimeo.com/javazone"
+          title={t('speakers.vimeo')}
+          targetBlank={true}
+          margin={isMobile ? 10 : 20}
+        />
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>
 
