@@ -206,20 +206,18 @@ const Info = () => {
 
       {/* Sustainable waste management */}
       <SectionBox sectionTitle={t('sustainable_waste.sustainable_waste')}>
-        <View style={[Assets.styles.section, screenWidth < 768 ? { width: '90%' } : { width: '100%' }]}>
-          <View style={styles.paragraphImageContainer}>
-            <View style={{ display: 'flex', width: '100%' }}>
-              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_1')}</Text>
-              <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+        <View style={styles.paragraphImageContainer}>
+          <View style={{ display: 'flex', width: '100%' }}>
+            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_1')}</Text>
+            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_2')}</Text>
-              <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_2')}</Text>
+            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_3')}</Text>
-              <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_3')}</Text>
+            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_4')}</Text>
-            </View>
+            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_4')}</Text>
           </View>
         </View>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
