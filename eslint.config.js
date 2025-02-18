@@ -1,18 +1,27 @@
+const react = require('eslint-plugin-react');
+const typescript = require('@typescript-eslint/eslint-plugin');
+const parser = require('@typescript-eslint/parser');
 const prettier = require('eslint-plugin-prettier');
 
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
+module.exports = [
+  {
+    files: ['./**/*.{ts,tsx,js,jsx}'],
+    languageOptions: {
+      parser: parser,
+      globals: {
+        window: true,
+        document: true,
+      },
+    },
+    plugins: {
+      react,
+      '@typescript-eslint': typescript,
+      prettier,
+    },
+    rules: {
+      'prettier/prettier': ['error'],
+      semi: ['warn', 'always'],
+      quotes: ['error', 'single'],
+    },
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
-  },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
-  rules: {
-    'prettier/prettier': 'error',
-    semi: ['warn', 'always'],
-  },
-};
+];
