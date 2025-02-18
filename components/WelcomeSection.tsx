@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { Assets } from "@/Assets";
+import { Assets } from '@/Assets';
 
 const WelcomeSection = () => {
   const { t } = useTranslation();
@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
   ticketText: {
     fontFamily: 'PlayfairDisplay_400Regular',
     fontSize: Dimensions.get('window').width > 768 ? 24 : 20,
-    color: Assets.colors.jz2025ThemeColors.darkBrown
-  }
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
 });

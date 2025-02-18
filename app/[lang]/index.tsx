@@ -3,8 +3,8 @@ import { Hero, ScreenTemplate, WelcomeSection } from '@/components';
 const Index = () => {
   return (
     <ScreenTemplate>
-        <Hero />
-        <WelcomeSection />
+      <Hero />
+      <WelcomeSection />
     </ScreenTemplate>
   );
 };

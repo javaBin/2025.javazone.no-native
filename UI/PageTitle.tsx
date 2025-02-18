@@ -19,14 +19,15 @@ const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
 
 const styles = StyleSheet.create({
   container: {
-      marginVertical: 20,
-      width: '100%',
+    marginVertical: 20,
+    width: '100%',
   },
   title: {
-      fontSize: Dimensions.get('window').width > 768 ? 38 : 36,
-      color: Assets.colors.brand.charcoal,
-      fontFamily: 'Cinzel_400Regular',
-      textAlign: 'center'
+    fontSize: Dimensions.get('window').width > 768 ? 42 : 36,
+
+    color: Assets.colors.brand.charcoal,
+    fontFamily: 'Cinzel_400Regular',
+    textAlign: 'center',
   },
 });
 

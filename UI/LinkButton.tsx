@@ -8,11 +8,12 @@ type LinkButtonProps = {
   href: string;
   title: string;
   targetBlank?: boolean;
+  margin?: number;
 };
 
-const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank }) => {
+const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin }) => {
   return (
-    <TouchableOpacity style={styles.buttonContainer}>
+    <TouchableOpacity style={[styles.buttonContainer, { margin: margin ? margin : 0 }]}>
       <ImageBackground source={Assets.background} style={styles.imageBackground}>
         <LinearGradient
           start={{ x: 0.1, y: 0.4 }}
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
     width: 200,
     margin: 5,
     borderRadius: 5,
+    alignSelf: 'center',
     elevation: 2, // Shadow effect for Android
     shadowColor: Assets.colors.jz2025ThemeColors.darkBrown, // iOS shadow
     shadowOpacity: 0.1,
