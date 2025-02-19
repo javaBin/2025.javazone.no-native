@@ -122,7 +122,8 @@
         "partner_tickets": "Partnerbilletter",
         "partner_tickets_detail_1": "Du har fire fleksible standbilletter inkludert i din partnerpakke. Disse er ment for standpersonell, og gir ikke tilgang til foredragene. Du må bestille billetter for alle dine ansatte som ønsker å delta på et foredrag (eller hvis du har mer enn fire som må være på standen samtidig).",
         "round_robin_distribution": "Round robin-fordeling på billetter bestilt innen 15. mai",
-        "first_come_first_served": "Førstemann til mølla hvis billetter fortsatt er tilgjengelige etter 15. mai"
+        "first_come_first_served": "Førstemann til mølla hvis billetter fortsatt er tilgjengelige etter 15. mai",
+        "order_tickets": "Bestill billetter"
       }
     },
     "ticket": {
@@ -156,7 +157,7 @@
       "speaking_experience_desc": "I løpet av det siste tiåret har JavaZone vokst til å bli en av de viktigste Java-hendelsene i Europa! Du kan se selv - over 1500 videoer fra tidligere års foredrag er tilgjengelige gratis på Vimeo, og hele programmet fra JavaZone 2024 er også tilgjengelig.",
       "importance_of_speakers": "Vi kan skryte så mye vi vil, men JavaZone ville vært ingenting uten alle de flotte foredragsholderne! Derfor trenger vi din hjelp for å sikre at JavaZone 2025 blir minst like fantastisk som de tidligere arrangementene. Hvis du tror du har noe interessant å dele, vennligst send inn ditt foredrag eller workshop.",
       "commitment_to_diversity": "JavaZone er forpliktet til mangfold, og vi er spesielt interessert i kvalitetsinnsendelser fra grupper som er underrepresentert i teknologibransjen. I år inviterer vi også foredragsholdere til vår JavaZone Kids.",
-      "vimeo": "Javazone Vimeo",
+      "vimeo": "Se videoer",
       "formats_and_durations": "Formater og varigheter",
       "formats_and_durations_desc": "Du bør tenke på hvilket format ditt foredrag vil fungere best i. Presenterer du en ny idé, eller trenger du mer tid til å utdype emnet ditt? Hvor hands-on vil du være? Vi har tre formater du kan presentere materialet ditt i.",
       "lightning_talks": "Lynforedrag (10 eller 20 minutter)",

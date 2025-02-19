@@ -123,7 +123,8 @@
         "partner_tickets": "Partner tickets",
         "partner_tickets_detail_1": "You have four flexible stand tickets included in your partnership package. These are intended for stand personnel, and do not give access to the talks. You must order tickets for all your employees that want to attend a talk (or if you have more than four who need to be on the stand at once).",
         "round_robin_distribution": "Round robin distribution on tickets ordered by May 15\u1d57\u02b0",
-        "first_come_first_served": "First come first served if tickets are still available after May 15\u1d57\u02b0"
+        "first_come_first_served": "First come first served if tickets are still available after May 15\u1d57\u02b0",
+        "order_tickets": "Order your tickets"
       }
     },
     "ticket": {
@@ -158,7 +159,7 @@
       "speaking_experience_desc": "Over the last decade JavaZone has grown to become one of the most important Java events in Europe! You can see for yourself - over 1500 videos from previous years' talks are available for free at Vimeo, and the full program from JavaZone 2024 is also available.",
       "importance_of_speakers": "We can brag as much as we want, but JavaZone would be nothing without all the great speakers! That's why we need your help to make sure that JavaZone 2025 will be at least as awesome as the earlier events. If you think you have something interesting to share, please submit your talk or workshop.",
       "commitment_to_diversity": "JavaZone is committed to diversity, and we are especially interested in quality submissions from groups that are under-represented in tech. This year we also invite speakers to our JavaZone Kids.",
-      "vimeo": "Javazone Vimeo",
+      "vimeo": "Watch videos",
       "formats_and_durations": "Formats and durations",
       "formats_and_durations_desc": "You should think about which format your talk will work best in. Are you presenting a new idea, or do you require more time to elaborate on your subject? How hands-on do you want to be? We have three formats you can present your material in.",
       "lightning_talks": "Lightning talks (10 or 20 minutes)",

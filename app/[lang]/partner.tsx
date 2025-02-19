@@ -71,6 +71,12 @@ const Partner = () => {
 
           <BulletListItem text={t('partner.partner_info.round_robin_distribution')} />
           <BulletListItem text={t('partner.partner_info.first_come_first_served')} />
+          <LinkButton
+            href={Assets.links.partnerRegistration}
+            title={t('partner.partner_info.order_tickets')}
+            targetBlank={true}
+            margin={isMobile ? 10 : 20}
+          />
         </BlurView>
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>

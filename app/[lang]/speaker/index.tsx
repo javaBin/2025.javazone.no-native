@@ -35,7 +35,6 @@ const Speaker = () => {
           targetBlank={true}
           margin={isMobile ? 10 : 20}
         />
-        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>
 
       <SectionBox sectionTitle={t('speakers.formats_and_durations')}>
