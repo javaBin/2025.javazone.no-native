@@ -58,6 +58,7 @@ export const Assets = {
     javaZoneLinkedIn: 'https://www.linkedin.com/company/javazone/',
     partnerRegistration: 'https://event.checkin.no/101610/javazone-2025-partnership',
     partnerVideo: 'https://player.vimeo.com/video/1038270530',
+    partnerTickets: 'https://event.checkin.no/108603/javazone-2025-partner-tickets',
   },
   images: {
     Logo,
