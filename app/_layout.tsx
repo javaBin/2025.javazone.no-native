@@ -2,7 +2,7 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
@@ -14,6 +14,7 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
+import { SvgProps } from 'react-native-svg';
 
 const RootLayout = () => {
   const resources = { en, nb };
@@ -255,6 +256,12 @@ const RootLayout = () => {
     ),
   };
 
+  const renderIcon = (
+    focused: Boolean,
+    ActiveIcon: FunctionComponent<SvgProps>,
+    InactiveIcon: FunctionComponent<SvgProps>
+  ) => (focused ? <ActiveIcon height={24} width={'100%'} /> : <InactiveIcon height={24} width={'100%'} />);
+
   if (Platform.OS === 'web') {
     return (
       <SafeAreaProvider>
@@ -309,35 +316,35 @@ const RootLayout = () => {
               name="[lang]/index"
               options={{
                 title: 'Home',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Home} height={24} title={'game-icons:greek-temple'} />,
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Home, Assets.icons.HomeInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/program"
               options={{
-                title: 'Program',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Program} height={24} />,
+                title: 'Program',                
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/partner"
               options={{
-                title: 'Partner',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Partner} height={24} />,
+                title: 'Partner',                
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Partner, Assets.icons.PartnerInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/speaker"
               options={{
-                title: 'Speaker',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Speaker} height={24} />,
+                title: 'Speaker',                
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/info"
               options={{
-                title: 'Info',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Info} height={24} />,
+                title: 'Info',                
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
               }}
             />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
