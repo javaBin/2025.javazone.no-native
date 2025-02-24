@@ -87,8 +87,6 @@ const Partner = () => {
       </View>
 
       <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 20 }} />
-
-      <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 20 }} />
       <View style={[styles.videoContainer, { marginBottom: 50 }]}>
         <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15, marginBottom: 20 }]}>
           {t('partner.watch_partner_meeting')}
