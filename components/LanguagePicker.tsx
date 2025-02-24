@@ -5,13 +5,13 @@ import React from 'react';
 import { useI18nContext } from "@/contexts/I18nContext";
 
 export const LanguagePicker: React.FC = () => {
+  //@ts-ignore
   const { setLocale } = useI18nContext();
   const styles = StyleSheet.create({
     languagePickers: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginRight:40
+      justifyContent: 'space-between'
     }
   });
 

@@ -186,7 +186,7 @@ const RootLayout = () => {
       fontSize: 18,
       margin: 5,
       textShadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
-    },
+    }
   });
 
   const screenOptions = {
@@ -214,7 +214,7 @@ const RootLayout = () => {
           </Link>
         </View>
         <View>
-          {languageLoaded && <LanguagePicker /> }
+          {screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null }
         </View>
       </View>
     ),
@@ -290,10 +290,7 @@ const RootLayout = () => {
               <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
                 Info
               </Link>
-
-              <View style={styles.drawerItem}>
-                <LanguagePicker/>
-              </View>
+                {languageLoaded && < LanguagePicker  />}
             </View>
             <SvgImage SVG={Assets.UI.PapyrusRoll} height={25} />
           </BlurView>

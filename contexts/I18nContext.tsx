@@ -4,12 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from 'i18next';
 import { useRouter } from 'expo-router';
 
-type I18nContextType = {
-  locale: string | null | undefined;
-  setLocale: (locale: string) => Promise<void>
-} | null;
-
-const I18nContext = createContext<I18nContextType>(null);
+const I18nContext = createContext({ });
 
 export const useI18nContext = () => {
   const context = useContext(I18nContext);
