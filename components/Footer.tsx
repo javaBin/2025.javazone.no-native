@@ -1,6 +1,6 @@
 import { SvgImage } from '@/UI';
 import React, { Fragment } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking, Dimensions } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Linking, Dimensions, Platform} from 'react-native';
 import { Assets } from '@/Assets';
 import { useTranslation } from 'react-i18next';
 
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     alignItems: 'center',
     width: '100%',
+    marginBottom: Platform.OS === 'web' ? 0 : 50,
   },
   menu: {
     flexDirection: 'row',
