@@ -6,7 +6,6 @@ import { Assets } from '@/Assets';
 import React from 'react';
 import { useGlobalSearchParams } from 'expo-router';
 import { useMediaQuery } from 'react-responsive';
-import {Stack} from "expo-router/stack";
 
 const Speaker = () => {
   const { t } = useTranslation();
