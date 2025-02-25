@@ -6,6 +6,7 @@ import { Assets } from '@/Assets';
 import React from 'react';
 import { useGlobalSearchParams } from 'expo-router';
 import { useMediaQuery } from 'react-responsive';
+import {Stack} from "expo-router/stack";
 
 const Speaker = () => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ const Speaker = () => {
 
   return (
     <ScreenTemplate pageTitle={t('speakers.pageTitle')} shouldScrollToTop={true}>
-      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>{t('speakers.conference_intro')}</Text>
+      <Text style={[Assets.styles.preface, { marginHorizontal: 20}]}>{t('speakers.conference_intro')}</Text>
       <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
         {t('speakers.conference_attendance')} {t('speakers.international_speakers')}
       </Text>

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    width: '100%',
+    maxWidth: '100%',
   },
   bullet: {
     marginTop: 15,
