@@ -2,35 +2,57 @@ import React from 'react';
 import { Assets } from '@/Assets';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from 'expo-router';
-import { Dimensions, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, ImageBackground, Linking, Platform, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 type LinkButtonProps = {
   href: string;
   title: string;
   targetBlank?: boolean;
   margin?: number;
+  disabled?: boolean;
 };
 
-const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin }) => {
+const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin, disabled }) => {
+  const handlePress = () => {
+    if (!disabled && href) {
+      Linking.openURL(href);
+    }
+  };
   return (
-    <TouchableOpacity style={[styles.buttonContainer, { margin: margin ? margin : 0 }]}>
+    <TouchableOpacity
+      style={[styles.buttonContainer, { margin: margin ? margin : 0 }]}
+      disabled={disabled}
+      onPress={Platform.OS === 'web' ? undefined : handlePress}
+    >
       <ImageBackground source={Assets.background} style={styles.imageBackground}>
         <LinearGradient
           start={{ x: 0.1, y: 0.4 }}
           style={styles.gradient}
-          colors={[
-            Assets.colors.jz2025ThemeColors.cyberYellowOpacity,
-            Assets.colors.jz2025ThemeColors.orangeYellowOpacity,
-          ]}
+          colors={
+            disabled
+              ? ['#ccc', '#aaa']
+              : [
+                  Assets.colors.jz2025ThemeColors.cyberYellowOpacity,
+                  Assets.colors.jz2025ThemeColors.orangeYellowOpacity,
+                ]
+          }
         >
-          <Link
-            style={styles.title}
-            href={href}
-            target={targetBlank && targetBlank ? '_blank' : '_self'}
-            rel="noopener"
-          >
-            {title}
-          </Link>
+          {Platform.OS === 'web' ? (
+            <Link
+              href={href}
+              target={targetBlank ? '_blank' : '_self'}
+              rel={targetBlank ? 'noopener noreferrer' : undefined}
+              style={[
+                styles.title,
+                { pointerEvents: disabled ? 'none' : 'auto', color: disabled ? '#777' : 'black' }, // Hindrer interaksjon på web
+              ]}
+              disabled={disabled}
+            >
+              {title}
+            </Link>
+          ) : (
+            <Text style={styles.title}>{title}</Text>
+          )}
         </LinearGradient>
       </ImageBackground>
     </TouchableOpacity>
