@@ -16,12 +16,7 @@ const WelcomeSection = () => {
       </View>
 
       <View style={styles.eventCheckinContainer}>
-        <LinkButton
-          href={Assets.links.eventCheckin}
-          title={t('javaZone.event_check_in')}
-          targetBlank={true}
-          disabled={true}
-        />
+        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.event_check_in')} targetBlank={true} />
       </View>
     </View>
   );
