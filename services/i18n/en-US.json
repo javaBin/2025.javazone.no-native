@@ -63,7 +63,8 @@
       "volunteers_mail": "student@java.no",
       "thank_you": "Being the biggest community-driven conference would not have been easy without all the partners, event coordinators, and subcontractors, so we would like to thank them as well! Thank you, all! ❤\uFE0F",
       "reach_core_team": "If you have any questions or comments, you can always reach the Core Team at ",
-      "welcome_to_NOVA": "Welcome to NOVA Spektrum, Lillestrøm"
+      "welcome_to_NOVA": "Welcome to NOVA Spektrum, Lillestrøm",
+      "event_check_in": "Click here to check in for the event"
     },
     "principles": {
       "principles": "A few very important principles",
@@ -128,7 +129,7 @@
       }
     },
     "ticket": {
-      "announcement": "Ticket sales will start March 3\u02B3\u1D48"
+      "announcement": "Ticket sales will start from 10:00 AM at March 3\u02B3\u1D48"
     },
 
     "kids": {

@@ -9,11 +9,15 @@ type LinkButtonProps = {
   title: string;
   targetBlank?: boolean;
   margin?: number;
+  disabled?: boolean;
 };
 
-const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin }) => {
+const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin, disabled }) => {
   return (
-    <TouchableOpacity style={[styles.buttonContainer, { margin: margin ? margin : 0 }]}>
+    <TouchableOpacity
+      style={[styles.buttonContainer, { margin: margin ? margin : 0 }, disabled && styles.disabledButton]}
+      disabled={disabled}
+    >
       <ImageBackground source={Assets.background} style={styles.imageBackground}>
         <LinearGradient
           start={{ x: 0.1, y: 0.4 }}
@@ -24,8 +28,8 @@ const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margi
           ]}
         >
           <Link
-            style={styles.title}
-            href={href}
+            style={[styles.title, disabled && styles.disabledTitle]}
+            href={disabled ? '#' : href}
             target={targetBlank && targetBlank ? '_blank' : '_self'}
             rel="noopener"
           >
@@ -67,5 +71,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%',
     padding: 6,
+  },
+  disabledButton: {
+    opacity: 0.5,
+  },
+  disabledTitle: {
+    color: 'gray',
   },
 });

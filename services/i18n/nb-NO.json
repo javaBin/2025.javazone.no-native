@@ -63,7 +63,8 @@
       "volunteers_mail": "student@java.no",
       "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen! ❤\uFE0F",
       "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via ",
-      "welcome_to_NOVA": "Velkommen til NOVA Spektrum, Lillestrøm"
+      "welcome_to_NOVA": "Velkommen til NOVA Spektrum, Lillestrøm",
+      "event_check_in": "Klikk her for å sjekke inn på arrangementet"
     },
     "principles": {
       "principles": "Noen få svært viktige prinsipper",
@@ -127,7 +128,7 @@
       }
     },
     "ticket": {
-      "announcement": "Billettsalget starter 3. mars"
+      "announcement": "Billettsalget starter 3. mars fra klokken 10:00"
     },
     "kids": {
       "title": "JavaZone Kids",
