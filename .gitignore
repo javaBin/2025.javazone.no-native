@@ -61,3 +61,6 @@ xcuserdata
 */ios/build
 /ios/
 /android/
+
+# Linting
+eslint-report.json
