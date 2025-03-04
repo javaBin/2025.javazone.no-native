@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Assets } from '@/Assets';
+import { LinkButton } from '@/UI';
 
 const WelcomeSection = () => {
   const { t } = useTranslation();
@@ -12,6 +13,10 @@ const WelcomeSection = () => {
 
       <View style={styles.ticketContainer}>
         <Text style={styles.ticketText}>{t('ticket.announcement')}</Text>
+      </View>
+
+      <View style={styles.eventCheckinContainer}>
+        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.event_check_in')} targetBlank={true} />
       </View>
     </View>
   );
@@ -48,5 +53,11 @@ const styles = StyleSheet.create({
     fontFamily: 'PlayfairDisplay_400Regular',
     fontSize: Dimensions.get('window').width > 768 ? 24 : 20,
     color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  eventCheckinContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: 20,
   },
 });

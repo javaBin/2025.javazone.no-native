@@ -11,27 +11,6 @@ const Partner = () => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
-  const temporaryVideoFix = () => {
-    return Platform.OS === 'web' ? (
-      <View style={{ width: '100%' }}>
-        <Text
-          style={[
-            Assets.styles.sectionSubTitle,
-            {
-              paddingHorizontal: isMobile ? 5 : 0,
-              marginBottom: isMobile ? 15 : 20,
-            },
-          ]}
-        >
-          {t('partner.watch_partner_meeting')}
-        </Text>
-        <VideoPlayer videoUrl={Assets.links.partnerVideo} />
-      </View>
-    ) : (
-      <View></View>
-    );
-  };
-
   return (
     <ScreenTemplate pageTitle={t('pageTitles.partner')} shouldScrollToTop={true}>
       <Text style={[Assets.styles.sectionSubTitle, { textAlign: 'center', marginTop: 15 }]}>
@@ -92,6 +71,12 @@ const Partner = () => {
 
           <BulletListItem text={t('partner.partner_info.round_robin_distribution')} />
           <BulletListItem text={t('partner.partner_info.first_come_first_served')} />
+          <LinkButton
+            href={Assets.links.partnerTickets}
+            title={t('partner.partner_info.order_tickets')}
+            targetBlank={true}
+            margin={isMobile ? 10 : 20}
+          />
         </BlurView>
 
         <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
@@ -101,9 +86,6 @@ const Partner = () => {
         </BlurView>
       </View>
 
-      <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 20 }} />
-
-      {temporaryVideoFix()}
       <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 20 }} />
       <View style={[styles.videoContainer, { marginBottom: 50 }]}>
         <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15, marginBottom: 20 }]}>
