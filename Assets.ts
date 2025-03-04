@@ -190,7 +190,6 @@ export const Assets = {
       color: '#403532', // dark-brown
       fontSize: screenWidth > 768 ? 22 : 20,
       fontWeight: 'semibold',
-      fontStyle: 'italic',
       marginTop: 7.5,
       fontFamily: 'Cinzel_600SemiBold',
       textAlign: 'center',

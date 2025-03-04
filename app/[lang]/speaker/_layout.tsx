@@ -14,7 +14,6 @@ const nativeScreenOptions = {
 const webScreenOptions = {
     headerShown: false,
 }
-
 const SpeakerLayout = () => {
     return (
         <Stack initialRouteName="index" screenOptions={Platform.OS === 'web' ? webScreenOptions : nativeScreenOptions}>
