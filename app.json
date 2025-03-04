@@ -6,23 +6,23 @@
     "orientation": "portrait",
     "icon": "./assets/images/logo/javaZone-logo.png",
     "userInterfaceStyle": "automatic",
-    "backgroundColor": "#232526",
+    "backgroundColor": "#e8dacfe6",
     "scheme": "javazone2025",
     "splash": {
       "image": "./assets/images/logo/javaZone-logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#232526"
+      "backgroundColor": "#e8dacfe6"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "JavaBin",
-      "backgroundColor": "#232526"
+      "backgroundColor": "#e8dacfe6"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo/javaZone-logo.png",
-        "backgroundColor": "#232526"
+        "backgroundColor": "#e8dacfe6"
       },
       "splash": {
         "resizeMode": "native"
@@ -32,7 +32,7 @@
     "web": {
       "favicon": "./assets/images/logo/javaZone2025-favIcon.png",
       "bundler": "metro",
-      "backgroundColor": "#232526"
+      "backgroundColor": "#e8dacfe6"
     },
     "extra": {
       "eas": {

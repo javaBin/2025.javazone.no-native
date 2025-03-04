@@ -1,4 +1,5 @@
 import * as Localization from 'expo-localization';
+import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
 import { FunctionComponent, useEffect, useState } from 'react';
@@ -24,6 +25,11 @@ const RootLayout = () => {
   const { lang } = useGlobalSearchParams();
   const router = useRouter();
   const screenWidth = Dimensions.get('window').width;
+
+  useEffect(() => {
+    // Set background color
+    SystemUI.setBackgroundColorAsync(Assets.colors.jz2025ThemeColors.sheetOpacity);
+  }, []);
 
   useEffect(() => {
     // we either don't have a language, or we've already initialized
