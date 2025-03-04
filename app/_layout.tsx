@@ -1,5 +1,4 @@
 import * as Localization from 'expo-localization';
-import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
 import { FunctionComponent, useEffect, useState } from 'react';
@@ -27,11 +26,6 @@ const RootLayout = () => {
   const screenWidth = Dimensions.get('window').width;
 
   useEffect(() => {
-    // Set background color
-    SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
-  }, []);
-
-  useEffect(() => {
     // we either don't have a language, or we've already initialized
     if (!language || languageLoaded) return;
 
@@ -40,9 +34,8 @@ const RootLayout = () => {
       resources,
       lng: language,
       fallbackLng: 'en',
-    });
+    }).then(() => setLanguageLoaded(true));
 
-    setLanguageLoaded(true);
   }, [language, languageLoaded]);
 
   useEffect(() => {
@@ -194,24 +187,24 @@ const RootLayout = () => {
       <View style={styles.header}>
         <Pressable onPress={() => router.navigate(`/${lang}`)}>
           <View style={styles.headerLogoTitle}>
-            <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
+              <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
 
         <View style={styles.navBar}>
-          <Link href={`${lang}/program`} style={styles.navItem}>
-            Program
-          </Link>
-          <Link href={`${lang}/partner`} style={styles.navItem}>
-            Partner
-          </Link>
-          <Link href={`${lang}/speaker`} style={styles.navItem}>
-            Speaker
-          </Link>
-          <Link href={`${lang}/info`} style={styles.navItem}>
-            Info
-          </Link>
+          <Pressable onPress={() => router.replace(`${lang}/program`)}>
+            <Text style={styles.navItem}>Program</Text>
+          </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/partner`)}>
+            <Text style={styles.navItem}>Partner</Text>
+          </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/speaker`)}>
+            <Text style={styles.navItem}>Speaker</Text>
+          </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/info`)}>
+            <Text style={styles.navItem}>Info</Text>
+          </Pressable>
         </View>
       </View>
     ),
@@ -223,7 +216,11 @@ const RootLayout = () => {
     tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
     tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
     tabBarBackground: () => <BlurView tint="light" intensity={80} style={styles.tabBarBlurContainer} />,
-    headerShown: false, // todo: debating what to do with a possible header for native, BlurView doesn't work for some reason
+    headerShown: true,
+    headerTransparent: true,
+    headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
+    headerTitle: '',
+    headerBackButtonMenuEnabled: true,
   };
 
   const webScreenOptions = {
@@ -322,31 +319,36 @@ const RootLayout = () => {
             <Tabs.Screen
               name="[lang]/program"
               options={{
-                title: 'Program',                
+                title: 'Program',
                 tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/partner"
               options={{
-                title: 'Partner',                
+                title: 'Partner',
                 tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Partner, Assets.icons.PartnerInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/speaker"
               options={{
-                title: 'Speaker',                
+                title: 'Speaker',
                 tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),
+                headerShown: false,
               }}
             />
             <Tabs.Screen
               name="[lang]/info"
               options={{
-                title: 'Info',                
+                title: 'Info',
                 tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
               }}
             />
+
+            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
         </I18nContextProvider>
