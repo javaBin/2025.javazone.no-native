@@ -63,12 +63,11 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Assets.colors.jz2025ThemeColors.orangeYellow,
-    fontSize: Dimensions.get('window').width > 768 ? 30 : 16,
+    fontSize: Dimensions.get('window').width > 768 ? 20 : 18,
     fontFamily: 'Cinzel_500Medium',
     textAlign: 'center',
     width: '100%',
-    paddingHorizontal: 9,
-    paddingVertical: 10,
+    padding: 10,
   },
   disabledButton: {
     opacity: 0.5,
