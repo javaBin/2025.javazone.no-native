@@ -1,6 +1,6 @@
 import { SvgImage } from '@/UI';
 import React, { Fragment } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Linking, Dimensions, Platform} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Dimensions, Platform } from 'react-native';
 import { Assets } from '@/Assets';
 import { useTranslation } from 'react-i18next';
 
@@ -52,6 +52,7 @@ const Footer: React.FC<FooterProps> = ({ displayToTopArrow, handleScrollToTop })
 
 const styles = StyleSheet.create({
   footer: {
+    marginTop: 50,
     paddingVertical: 20,
     alignItems: 'center',
     width: '100%',
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   menuItem: {
+    fontFamily: 'PlayfairDisplay_400Regular',
     fontSize: 14,
     color: Assets.colors.jz2025ThemeColors.footerGrey,
     marginHorizontal: Dimensions.get('window').width > 768 ? 10 : 5,
