@@ -22,10 +22,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margi
         <LinearGradient
           start={{ x: 0.1, y: 0.4 }}
           style={styles.gradient}
-          colors={[
-            Assets.colors.jz2025ThemeColors.cyberYellowOpacity,
-            Assets.colors.jz2025ThemeColors.orangeYellowOpacity,
-          ]}
+          colors={[Assets.colors.jz2025ThemeColors.crimsonRed, Assets.colors.jz2025ThemeColors.crimsonRed]}
         >
           <Link
             style={[styles.title, disabled && styles.disabledTitle]}
@@ -45,7 +42,7 @@ export default LinkButton;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: 200,
+    width: 300,
     margin: 5,
     borderRadius: 5,
     alignSelf: 'center',
@@ -62,15 +59,15 @@ const styles = StyleSheet.create({
   },
   gradient: {
     borderRadius: 5,
-    width: 200,
+    width: 300,
   },
   title: {
-    color: Assets.colors.jz2025ThemeColors.lightBrown,
-    fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
+    color: Assets.colors.jz2025ThemeColors.orangeYellow,
+    fontSize: Dimensions.get('window').width > 768 ? 30 : 16,
     fontFamily: 'Cinzel_500Medium',
     textAlign: 'center',
     width: '100%',
-    padding: 6,
+    paddingHorizontal: 9,
   },
   disabledButton: {
     opacity: 0.5,

@@ -13,9 +13,6 @@ const Partner = () => {
 
   return (
     <ScreenTemplate pageTitle={t('pageTitles.partner')} shouldScrollToTop={true}>
-      <Text style={[Assets.styles.sectionSubTitle, { textAlign: 'center', marginTop: 15 }]}>
-        {t('partner.partner_info.partner_registration_opens')}
-      </Text>
       <Text style={[Assets.styles.text, { marginBottom: 20, marginHorizontal: 10 }]}>
         {t('partner.partner_info.questions_email')}{' '}
         <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} />
@@ -91,7 +88,9 @@ const Partner = () => {
         <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15, marginBottom: 20 }]}>
           {t('partner.watch_partner_meeting')}
         </Text>
-        <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+        <View style={{ borderStyle: 'solid', borderColor: 'black', borderWidth: 4 }}>
+          <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
+        </View>
       </View>
     </ScreenTemplate>
   );

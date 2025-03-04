@@ -7,13 +7,9 @@ const WelcomeSection = () => {
   const { t } = useTranslation();
 
   return (
-    <View style={[styles.titleContainer, { marginTop: 20, flexDirection: 'column', marginBottom: 'auto' }]}>
+    <View style={[styles.titleContainer, { marginTop: 50, flexDirection: 'column', marginBottom: 'auto' }]}>
       <Text style={styles.welcomeText}>{t('javaZone.welcome_to_NOVA')}</Text>
       <Text style={styles.welcomeText}>{t('conference_date')}</Text>
-
-      <View style={styles.ticketContainer}>
-        <Text style={styles.ticketText}>{t('ticket.announcement')}</Text>
-      </View>
 
       <View style={styles.eventCheckinContainer}>
         <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.event_check_in')} targetBlank={true} />
@@ -34,7 +30,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontFamily: 'PlayfairDisplay_400Regular',
-    fontSize: Dimensions.get('window').width > 768 ? 30 : 25,
+    fontSize: Dimensions.get('window').width > 768 ? 40 : 25,
     textAlign: 'center',
   },
   ticketContainer: {
