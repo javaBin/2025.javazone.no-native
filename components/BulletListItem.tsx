@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   bullet: {
     marginTop: 15,
     marginRight: Dimensions.get('window').width > 768 ? 15 : 10,
+    maxWidth: 10
   },
 });
 
