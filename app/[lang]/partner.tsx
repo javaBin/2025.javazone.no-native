@@ -83,11 +83,10 @@ const Partner = () => {
         </BlurView>
       </View>
 
-      <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 20 }} />
-      <View style={[styles.videoContainer, { marginBottom: 50 }]}>
-        <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15, marginBottom: 20 }]}>
-          {t('partner.watch_partner_meeting')}
-        </Text>
+      <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ marginBottom: 10, marginTop: 20 }} />
+      <View style={styles.videoContainer}>
+        <Text style={[Assets.styles.sectionTitle, ]}>{t('partner.watch_title')}</Text>
+        <Text style={[Assets.styles.sectionSubTitle, { marginBottom: 20 }]}>{t('partner.watch_partner_meeting')}</Text>
         <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
       </View>
     </ScreenTemplate>
@@ -97,6 +96,7 @@ const Partner = () => {
 const styles = StyleSheet.create({
   videoContainer: {
     marginTop: 10,
+    width: '100%'
   },
   partnerContentInfo: {
     display: 'flex',
