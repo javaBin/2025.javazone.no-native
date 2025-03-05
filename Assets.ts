@@ -216,7 +216,7 @@ export const Assets = {
     intro: {
       color: '#403532', // dark-brown
       marginVertical: 10,
-      fontSize: screenWidth > 768 ? 22 : 18,
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontFamily: 'Cinzel_400Regular',
       textAlign: 'center',
       width: '100%',

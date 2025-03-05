@@ -11,6 +11,7 @@ const Info = () => {
   const [toggleJavaBin, setToggleJavaBin] = useState<boolean>(false);
   const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
   const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
+  const [toggleWaste, setToggleWaste] = useState<boolean>(false);
   const screenWidth = Dimensions.get('window').width;
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const Info = () => {
       setToggleJavaBin(true);
       setToggleJavaZone(true);
       setTogglePrinciples(true);
+      setToggleWaste(true);
     }
   }, []);
 
@@ -35,6 +37,10 @@ const Info = () => {
         setTogglePrinciples(!toggle);
         break;
       }
+      case t('sustainable_waste.read_more'): {
+        setToggleWaste(!toggle);
+        break;
+      }
     }
   };
 
@@ -43,7 +49,6 @@ const Info = () => {
       {/* About javaBin */}
       <SectionBox sectionTitle={t('javaBin.about')}>
         <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
-        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
         <ToggleText
           title={t('javaBin.read_more')}
@@ -63,13 +68,13 @@ const Info = () => {
             <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image} />
           </View>
         </View>
+
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>
 
       {/* About JavaZone */}
       <SectionBox sectionTitle={t('javaZone.about')}>
         <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
-        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-
         <ToggleText
           title={t('javaZone.read_more')}
           toggle={toggleJavaZone}
@@ -145,8 +150,9 @@ const Info = () => {
             {t('javaZone.reach_core_team')}
             <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem} />
           </Text>
-          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
         </View>
+
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>
 
       {/* Principles */}
@@ -162,7 +168,10 @@ const Info = () => {
         <View style={{ display: togglePrinciples ? 'flex' : 'none' }}>
           <Text style={Assets.styles.text}>{t('principles.about')}</Text>
           <Text style={Assets.styles.intro}>{t('principles.notify')}</Text>
+
+          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
           <Text style={Assets.styles.sectionSubTitle}>{t('principles.before_conference')}</Text>
+
           <Text style={Assets.styles.text}>
             {t('principles.contact_us_start')}
             <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} style={styles.listItem} />
@@ -174,6 +183,8 @@ const Info = () => {
             />
             {t('principles.contact_us_end')}
           </Text>
+
+          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
           <Text style={Assets.styles.sectionSubTitle}>{t('principles.during_conference')}</Text>
           <Text style={Assets.styles.text}>{t('principles.contact_stand')}</Text>
         </View>
@@ -209,15 +220,21 @@ const Info = () => {
         <View style={styles.paragraphImageContainer}>
           <View style={{ display: 'flex', width: '100%' }}>
             <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_1')}</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_2')}</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+            <ToggleText
+                title={t('sustainable_waste.read_more')}
+                toggle={toggleWaste}
+                handleToggle={() => handleToggle(t('sustainable_waste.read_more'), toggleWaste)}
+            />
 
-            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_3')}</Text>
-            <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+            <View style={{ display: toggleWaste ? 'flex' : 'none' }}>
+              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_2')}</Text>
+              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_3')}</Text>
 
-            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_4')}</Text>
+              <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+              <Text style={Assets.styles.sectionSubTitle}>{t('sustainable_waste.final_destination')}</Text>
+              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_4')}</Text>
+            </View>
           </View>
         </View>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />

@@ -88,9 +88,7 @@ const Partner = () => {
         <Text style={[Assets.styles.sectionTitle, { marginHorizontal: 15, marginBottom: 20 }]}>
           {t('partner.watch_partner_meeting')}
         </Text>
-        <View style={{ borderStyle: 'solid', borderColor: 'black', borderWidth: 4 }}>
-          <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
-        </View>
+        <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
       </View>
     </ScreenTemplate>
   );
