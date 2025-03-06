@@ -2,7 +2,7 @@ import React from 'react';
 import { Assets } from '@/Assets';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from 'expo-router';
-import { Dimensions, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 
 type LinkButtonProps = {
   href: string;

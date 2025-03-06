@@ -136,11 +136,11 @@
     "kids": {
       "title": "JavaZone Kids",
       "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
-      "javazone_kids_intro": "JavaZone Kids er en dag med workshops for barn i alderen 8-17 år. Det er en dag for læring og moro, og foreldre oppfordres til å bli og delta i moroa. Workshopene er ment å være på forskjellige nivåer, så det er noe for alle.",
+      "javazone_kids_intro": "JavaZone Kids er en dag med workshops for barn i alderen 8-17 år. Det er en dag for læring og moro, og foreldre oppfordres til å bli og delta i moroa. Workshopene er ment å være på forskjellige nivåer, så det er noe for alle. ",
       "event_date_location_start": "Arrangementet vil finne sted 31. august 2025 på Rebel i Oslo. Vi ber om workshops på både norsk og engelsk. Varigheten av arrangementet er 4 timer, med en pause i mellom. Er du interessert, send oss en e-post til",
       "event_date_location_link_title": "kids@java.no",
       "event_date_location_end": "innen 1. april 2025.",
-      "workshop_description_intro": "Beskrivelsen av workshopen din må inneholde:",
+      "workshop_description_intro": "Beskrivelsen av din workshop må inneholde:",
       "workshop_title": "Tittel",
       "workshop_abstract": "Sammendrag, dette vil bli vist på vår nettside",
       "workshop_outline": "Detaljert oversikt, pitch om hva workshopen handler om og svar på disse spørsmålene:",
@@ -284,13 +284,17 @@
       "application_deadline": "Søknader om refusjon for foredragsholdere må sendes inn før 1. august 2025.",
 
       "how_to_apply": "Hvordan søke",
-      "apply_note": "Det første du må merke deg er at du må søke om refusjon av kostnader. Dette er nødvendig for vår budsjettplanlegging. Hvis du trenger økonomisk støtte, vennligst kontakt refund@java.no etter at din sesjon eller workshop er akseptert.",
+      "apply_note_start": "Det første du må merke deg er at du må søke om refusjon av kostnader. Dette er nødvendig for vår budsjettplanlegging. Hvis du trenger økonomisk støtte, vennligst kontakt ",
+      "apply_note_link": "refund@java.no",
+      "apply_note_end": " etter at din sesjon eller workshop er akseptert.",
       "apply_details": "I denne e-posten, oppgi et estimat av dine reiseutgifter og dagene du vil være i Oslo under konferansen.",
       "hotel_deal": "Vi har en avtale med et hotell, så hvis du trenger overnatting, vil vi reservere et rom for deg. Vennligst oppgi i søknaden hvilke dager du planlegger å bo. Vi refunderer ikke reiseutgifter over kostnaden av en rimelig priset økonomibillett.",
       "lightning_talks": "Vennligst merk at vi ikke refunderer reiseutgifter for de som holder lynforedrag. Imidlertid vil foredragsholdere (inkludert de som holder lynforedrag) motta en gratis konferansebillett.",
 
       "confirmation_reimbursement": "Bekreftelse & Refusjon",
-      "confirmation_note": "Søknader må bekreftes eksplisitt via refund@java.no og aksepteres kun før vår konferanse. Refusjoner gis etter konferansen. For dette krever vi at du sender oss kopier av alle kvitteringer, navnet på din bank og internasjonale kontonumre (IBAN, BIC/SWIFT, hvis tilgjengelig). Vi forbeholder oss retten til å avslå en refusjonssøknad. Foredragsholdere som bor i nærheten av Oslo er ikke kvalifisert.",
+      "confirmation_note_start": "Søknader må bekreftes eksplisitt via ",
+      "confirmation_note_link": "refund@java.no",
+      "confirmation_note_end": " og aksepteres kun før vår konferanse. Refusjoner gis etter konferansen. For dette krever vi at du sender oss kopier av alle kvitteringer, navnet på din bank og internasjonale kontonumre (IBAN, BIC/SWIFT, hvis tilgjengelig). Vi forbeholder oss retten til å avslå en refusjonssøknad. Foredragsholdere som bor i nærheten av Oslo er ikke kvalifisert.",
       "reimbursement_process": "Refusjoner behandles og utbetales etter konferansen. Vi vil kontakte foredragsholdere som har søkt om refusjon og behandle betalingene når betalingsdetaljene er mottatt."
     },
     "404": {
