@@ -7,7 +7,7 @@ type VideoPlayerProps = {
 
 const VideoPlayer = ({ videoUrl }: VideoPlayerProps) => {
   const screenWidth = Dimensions.get('window').width;
-    const videoWidth = screenWidth > 768 ? screenWidth * 0.6 : screenWidth * 0.85;
+    const videoWidth = screenWidth > 768 ? screenWidth * 0.55 : screenWidth * 0.85;
     const videoHeight = videoWidth * (9 / 16);
 
   const styles = StyleSheet.create({

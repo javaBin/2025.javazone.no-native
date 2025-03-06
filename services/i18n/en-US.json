@@ -138,7 +138,7 @@
     "kids": {
       "title": "JavaZone Kids",
       "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
-      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8-17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone.",
+      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8-17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone. ",
       "event_date_location_start": "The event will be on 31st of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, send us an email to",
       "event_date_location_link_title": "kids@java.no",
       "event_date_location_end": "by 1st April 2025.",
@@ -287,13 +287,17 @@
       "application_deadline": "Applications for speaker reimbursements must be submitted before August 1st, 2025.",
 
       "how_to_apply": "How to apply",
-      "apply_note": "The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require financial support, please reach out to refund@java.no after your session or workshop is accepted.",
+      "apply_note_start": "The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require financial support, please reach out to ",
+      "apply_note_link": "refund@java.no",
+      "apply_note_end": " after your session or workshop is accepted.",
       "apply_details": "In this mail, provide an estimate of your travel expenses and the days you will be visiting Oslo during the conference.",
       "hotel_deal": "We have a deal with a hotel, so if you need accommodation, we will reserve a room for you. Please state in your application which days you are planning to stay. We do not refund travel costs above the cost of a reasonably priced economy ticket.",
       "lightning_talks": "Please also note that we do not refund travel expenses for those holding lightning talks. However, speakers (including the ones holding lightning talks) will receive a free conference ticket.",
 
       "confirmation_reimbursement": "Confirmation & Reimbursement",
-      "confirmation_note": "Applications must be confirmed explicitly via refund@java.no and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers living in proximity to Oslo are not eligible.",
+      "confirmation_note_start": "Applications must be confirmed explicitly via ",
+      "confirmation_note_link": "refund@java.no",
+      "confirmation_note_end": " and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers living in proximity to Oslo are not eligible.",
       "reimbursement_process": "Reimbursements are processed and paid after the conference. We will reach out to speakers who applied for reimbursement and process the payments once payment details are provided."
     },
     "404": {

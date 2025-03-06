@@ -26,8 +26,9 @@ const Partner = () => {
       <Text style={[Assets.styles.sectionTitle, { marginBottom: 20, marginTop: isMobile ? 20 : 40 }]}>
         {t('partner.partner_info.partner_packages')}
       </Text>
+
       <View style={styles.partnerContentInfo}>
-        <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
+        <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemWidth]}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.standard_package')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
 
@@ -40,7 +41,7 @@ const Partner = () => {
           <BulletListItem text={t('partner.partner_info.standard_package_detail_7')} />
         </BlurView>
 
-        <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
+        <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemWidth]}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.restaurant_stand')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
 
@@ -50,16 +51,24 @@ const Partner = () => {
           <BulletListItem text={t('partner.partner_info.restaurant_stand_detail_4')} />
         </BlurView>
 
-        <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
-          <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.concept_stand')}</Text>
-          <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
+        <View style={[styles.partnerContentItemWidth, styles.partnerContentItemPairsContainer]}>
+          <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemPairs]}>
+            <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.concept_stand')}</Text>
+            <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
 
-          <BulletListItem text={t('partner.partner_info.concept_stand_detail_1')} />
-          <BulletListItem text={t('partner.partner_info.concept_stand_detail_2')} />
-          <BulletListItem text={t('partner.partner_info.concept_stand_detail_3')} />
-        </BlurView>
+            <BulletListItem text={t('partner.partner_info.concept_stand_detail_1')} />
+            <BulletListItem text={t('partner.partner_info.concept_stand_detail_2')} />
+            <BulletListItem text={t('partner.partner_info.concept_stand_detail_3')} />
+          </BlurView>
 
-        <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
+          <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemPairs]}>
+            <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.extended_package')}</Text>
+            <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
+            <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
+          </BlurView>
+        </View>
+
+        <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemWidth]}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_tickets')}</Text>
           <Text style={Assets.styles.intro}>
             {t('partner.partner_info.price')}: 9 220,- NOK ex VAT {'\n'}incl ticket fee
@@ -69,17 +78,11 @@ const Partner = () => {
           <BulletListItem text={t('partner.partner_info.round_robin_distribution')} />
           <BulletListItem text={t('partner.partner_info.first_come_first_served')} />
           <LinkButton
-            href={Assets.links.partnerTickets}
-            title={t('partner.partner_info.order_tickets')}
-            targetBlank={true}
-            margin={isMobile ? 10 : 20}
+              href={Assets.links.partnerTickets}
+              title={t('partner.partner_info.order_tickets')}
+              targetBlank={true}
+              margin={isMobile ? 10 : 20}
           />
-        </BlurView>
-
-        <BlurView tint="light" intensity={20} style={styles.partnerContentItem}>
-          <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.extended_package')}</Text>
-          <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
-          <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
         </BlurView>
       </View>
 
@@ -100,19 +103,15 @@ const styles = StyleSheet.create({
   },
   partnerContentInfo: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: Dimensions.get('window').width > 1200 ? 'row' : 'column',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     width: '100%',
-    gap: 10,
-  },
-  partnerContentInfoMobile: {
-    flexDirection: 'column',
+    rowGap: 10,
+    columnGap: 7.5,
   },
   partnerContentItem: {
     alignItems: 'flex-start',
-    width: Dimensions.get('window').width > 768 ? '45%' : '100%',
-    marginHorizontal: Dimensions.get('window').width > 768 ? 5 : 0,
     padding: 25,
     borderRadius: 5,
     shadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
@@ -121,6 +120,19 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     flexGrow: 1,
   },
+  partnerContentItemWidth: {
+    width: Dimensions.get('window').width > 1200 ? '49%' : '100%',
+    flexGrow: 1
+  },
+  partnerContentItemPairsContainer: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    rowGap: 10,
+  },
+  partnerContentItemPairs: {
+    width: '100%',
+  }
+
 });
 
 export default Partner;

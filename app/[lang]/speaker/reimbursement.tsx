@@ -2,7 +2,7 @@ import { ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text } from 'react-native';
 import { Assets } from '@/Assets';
-import { SectionBox, SvgImage } from '@/UI';
+import {LinkText, SectionBox, SvgImage} from '@/UI';
 import React from 'react';
 
 const Reimbursement = () => {
@@ -17,7 +17,11 @@ const Reimbursement = () => {
       </SectionBox>
 
       <SectionBox sectionTitle={t('reimbursement.how_to_apply')}>
-        <Text style={Assets.styles.text}>{t('reimbursement.apply_note')}</Text>
+        <Text style={Assets.styles.text}>
+            {t('reimbursement.apply_note_start')}
+            <LinkText title={t('reimbursement.apply_note_link')} href={Assets.links.refundMail}/>
+            {t('reimbursement.apply_note_end')}
+        </Text>
         <Text style={Assets.styles.text}>{t('reimbursement.apply_details')}</Text>
         <Text style={Assets.styles.text}>{t('reimbursement.hotel_deal')}</Text>
         <Text style={Assets.styles.text}>{t('reimbursement.lightning_talks')}</Text>
@@ -25,7 +29,11 @@ const Reimbursement = () => {
       </SectionBox>
 
       <SectionBox sectionTitle={t('reimbursement.confirmation_reimbursement')}>
-        <Text style={Assets.styles.text}>{t('reimbursement.confirmation_note')}</Text>
+        <Text style={Assets.styles.text}>
+            {t('reimbursement.confirmation_note_start')}
+            <LinkText title={t('reimbursement.confirmation_note_link')} href={Assets.links.refundMail}/>
+            {t('reimbursement.confirmation_note_end')}
+        </Text>
         <Text style={Assets.styles.text}>{t('reimbursement.reimbursement_process')}</Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={styles.dividerDot} />
       </SectionBox>
