@@ -134,6 +134,7 @@ export const Assets = {
     },
     jz2025ThemeColors: {
       crimsonRed: '#B10A32',
+      gradientRed: '#9f092d',
       darkRed: '#780722',
       darkBrown: '#403532',
       lightBrown: '#6c605c',
@@ -229,7 +230,7 @@ export const Assets = {
     listText: {
       color: '#1e1616', // gradient.brown
       marginVertical: 5,
-      fontSize: screenWidth > 768 ? 22 : 18,
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontFamily: 'PlayfairDisplay_400Regular',
     },
     disclaimerText: {

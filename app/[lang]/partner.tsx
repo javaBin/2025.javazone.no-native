@@ -100,18 +100,15 @@ const styles = StyleSheet.create({
   },
   partnerContentInfo: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: Dimensions.get('window').width > 1200 ? 'row' : 'column',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     width: '100%',
     gap: 10,
   },
-  partnerContentInfoMobile: {
-    flexDirection: 'column',
-  },
   partnerContentItem: {
     alignItems: 'flex-start',
-    width: Dimensions.get('window').width > 768 ? '45%' : '100%',
+    width: Dimensions.get('window').width > 1200 ? '45%' : '100%',
     marginHorizontal: Dimensions.get('window').width > 768 ? 5 : 0,
     padding: 25,
     borderRadius: 5,
