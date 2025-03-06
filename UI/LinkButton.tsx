@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
     shadowOffset: { width: 0, height: 2 },
+    minWidth: 300
   },
   gradient: {
     borderRadius: 5,
