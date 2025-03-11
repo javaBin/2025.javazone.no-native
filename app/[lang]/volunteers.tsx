@@ -66,6 +66,7 @@ const Volunteers: React.FC = () => {
         </Text>
       ))}
       <LinkButton
+        margin={20}
         title={t('volunteer.apply_now')}
         targetBlank={true}
         href={'https://docs.google.com/forms/d/19bdXhtH55KBcZy6JudOFnaN0_K67Q7ZozUUhCnuf49U/viewform'}

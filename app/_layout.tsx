@@ -2,7 +2,7 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import React,{ FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
@@ -36,13 +36,15 @@ const RootLayout = () => {
     // we either don't have a language, or we've already initialized
     if (!language || languageLoaded) return;
 
-    i18n.use(initReactI18next).init({
-      compatibilityJSON: 'v3',
-      resources,
-      lng: language,
-      fallbackLng: 'en',
-    }).then(() => setLanguageLoaded(true));
-
+    i18n
+      .use(initReactI18next)
+      .init({
+        compatibilityJSON: 'v3',
+        resources,
+        lng: language,
+        fallbackLng: 'en',
+      })
+      .then(() => setLanguageLoaded(true));
   }, [language, languageLoaded]);
 
   useEffect(() => {
@@ -194,7 +196,7 @@ const RootLayout = () => {
       <View style={styles.header}>
         <Pressable onPress={() => router.navigate(`/${lang}`)}>
           <View style={styles.headerLogoTitle}>
-              <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
+            <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
@@ -208,13 +210,14 @@ const RootLayout = () => {
           <Pressable onPress={() => router.replace(`${lang}/speaker`)}>
             <Text style={styles.navItem}>Speaker</Text>
           </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/volunteers`)}>
+            <Text style={styles.navItem}>Volunteers</Text>
+          </Pressable>
           <Pressable onPress={() => router.replace(`${lang}/info`)}>
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
         </View>
-        <View>
-          {screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null }
-        </View>
+        <View>{screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null}</View>
       </View>
     ),
   };
@@ -296,6 +299,13 @@ const RootLayout = () => {
               >
                 Speaker
               </Link>
+              <Link
+                href={{ pathname: `${lang}/volunteers` }}
+                style={styles.drawerItem}
+                onPress={() => setToggleMenu(false)}
+              >
+                Volunteers
+              </Link>
               <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
                 Info
               </Link>
@@ -308,6 +318,7 @@ const RootLayout = () => {
             <Stack.Screen name="[lang]/program" options={{ title: 'Program' }} />
             <Stack.Screen name="[lang]/partner" options={{ title: 'Partner' }} />
             <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
+            <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
             <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
           </Stack>
         </I18nContextProvider>
@@ -348,13 +359,13 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-              name="[lang]/info"
+              name="[lang]/volunteers"
               options={{
-                title: 'Info',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+                title: 'Volunteers',
+                tabBarIcon: ({ focused }) =>
+                  renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
               }}
             />
-
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
