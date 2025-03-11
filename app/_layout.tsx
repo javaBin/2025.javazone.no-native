@@ -2,7 +2,7 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import React,{ FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
@@ -36,13 +36,15 @@ const RootLayout = () => {
     // we either don't have a language, or we've already initialized
     if (!language || languageLoaded) return;
 
-    i18n.use(initReactI18next).init({
-      compatibilityJSON: 'v3',
-      resources,
-      lng: language,
-      fallbackLng: 'en',
-    }).then(() => setLanguageLoaded(true));
-
+    i18n
+      .use(initReactI18next)
+      .init({
+        compatibilityJSON: 'v3',
+        resources,
+        lng: language,
+        fallbackLng: 'en',
+      })
+      .then(() => setLanguageLoaded(true));
   }, [language, languageLoaded]);
 
   useEffect(() => {
@@ -194,7 +196,7 @@ const RootLayout = () => {
       <View style={styles.header}>
         <Pressable onPress={() => router.navigate(`/${lang}`)}>
           <View style={styles.headerLogoTitle}>
-              <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
+            <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
@@ -212,9 +214,7 @@ const RootLayout = () => {
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
         </View>
-        <View>
-          {screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null }
-        </View>
+        <View>{screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null}</View>
       </View>
     ),
   };
@@ -299,6 +299,7 @@ const RootLayout = () => {
               <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
                 Info
               </Link>
+              <View>{ languageLoaded && <LanguagePicker /> }</View>
             </View>
             <SvgImage SVG={Assets.UI.PapyrusRoll} height={25} />
           </BlurView>
@@ -314,6 +315,7 @@ const RootLayout = () => {
       </SafeAreaProvider>
     );
   } else {
+    // @ts-ignore
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
@@ -354,12 +356,12 @@ const RootLayout = () => {
                 tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
               }}
             />
-
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
+
         </I18nContextProvider>
       </SafeAreaProvider>
     );
