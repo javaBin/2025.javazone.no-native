@@ -63,7 +63,8 @@
       "volunteers_mail": "student@java.no",
       "thank_you": "Being the biggest community-driven conference would not have been easy without all the partners, event coordinators, and subcontractors, so we would like to thank them as well! Thank you, all! ❤\uFE0F",
       "reach_core_team": "If you have any questions or comments, you can always reach the Core Team at ",
-      "welcome_to_NOVA": "Welcome to NOVA Spektrum, Lillestrøm"
+      "welcome_to_NOVA": "Welcome to NOVA Spektrum, Lillestrøm",
+      "event_check_in": "Buy tickets"
     },
     "principles": {
       "principles": "A few very important principles",
@@ -86,6 +87,8 @@
     },
     "sustainable_waste": {
       "sustainable_waste": "Sustainable waste management and recycling at JavaZone \u267B\uFE0F",
+      "read_more": "Read more about recycling",
+      "final_destination": "Where does it all end up?",
       "paragraph_1": "In an era where environmental consciousness is at the forefront, responsible waste management practices have become imperative. At Oslo Spektrum, an innovative partnership with Oslo Municipality and Franzefoss ensures that waste is not just disposed of, but actively sorted and recycled, promoting a greener future.",
       "paragraph_2": "Upon entering JavaZone, attendees may not be immediately aware of the meticulous waste management system that operates behind the scenes. Once waste is discarded, the process of responsible disposal begins. A comprehensive sorting mechanism is in place, designed to separate recyclables from non-recyclable materials.",
       "paragraph_3": "One notable aspect of this waste management initiative is the sorting and collection of beverage containers for deposit refund, known as \"pant\" in Norway. The bottles and cans are systematically collected, sorted, and sent for recycling, embodying the ethos of resource efficiency.",
@@ -93,6 +96,7 @@
     },
 
     "partner": {
+      "watch_title": "First partner meeting",
       "watch_partner_meeting": "Watch this recording of the first partner meeting held on December 11\u1d57\u02b0",
       "partner_info": {
         "javaZone_2025_partner": "JavaZone 2025 Partner",
@@ -123,17 +127,18 @@
         "partner_tickets": "Partner tickets",
         "partner_tickets_detail_1": "You have four flexible stand tickets included in your partnership package. These are intended for stand personnel, and do not give access to the talks. You must order tickets for all your employees that want to attend a talk (or if you have more than four who need to be on the stand at once).",
         "round_robin_distribution": "Round robin distribution on tickets ordered by May 15\u1d57\u02b0",
-        "first_come_first_served": "First come first served if tickets are still available after May 15\u1d57\u02b0"
+        "first_come_first_served": "First come first served if tickets are still available after May 15\u1d57\u02b0",
+        "order_tickets": "Order your partner ticket"
       }
     },
     "ticket": {
-      "announcement": "Ticket sales will start March 3\u02B3\u1D48"
+      "announcement": "Ticket sales will start from 10:00 AM at March 3\u02B3\u1D48"
     },
 
     "kids": {
       "title": "JavaZone Kids",
       "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
-      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8-17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone.",
+      "javazone_kids_intro": "JavaZone Kids is a day with workshops for kids ages 8-17 years old. It is a day for learning and fun, and parents are urged to stay and hang out to join the fun. The workshops are intended to be on different levels, so it is something for everyone. ",
       "event_date_location_start": "The event will be on 31st of August 2025 at Rebel in Oslo. We are asking for workshops in both Norwegian and English. Duration of the event is 4 hours, with a break in between. Are you interested, send us an email to",
       "event_date_location_link_title": "kids@java.no",
       "event_date_location_end": "by 1st April 2025.",
@@ -155,10 +160,10 @@
       "submit_proposal": "Submit proposal",
 
       "speaking_experience": "What is it like speaking at JavaZone?",
-      "speaking_experience_desc": "Over the last decade JavaZone has grown to become one of the most important Java events in Europe! You can see for yourself – over 1500 videos from previous years' talks are available for free at Vimeo, and the full program from JavaZone 2024 is also available.",
+      "speaking_experience_desc": "Over the last decade JavaZone has grown to become one of the most important Java events in Europe! You can see for yourself - over 1500 videos from previous years' talks are available for free at Vimeo, and the full program from JavaZone 2024 is also available.",
       "importance_of_speakers": "We can brag as much as we want, but JavaZone would be nothing without all the great speakers! That's why we need your help to make sure that JavaZone 2025 will be at least as awesome as the earlier events. If you think you have something interesting to share, please submit your talk or workshop.",
       "commitment_to_diversity": "JavaZone is committed to diversity, and we are especially interested in quality submissions from groups that are under-represented in tech. This year we also invite speakers to our JavaZone Kids.",
-
+      "vimeo": "Watch videos",
       "formats_and_durations": "Formats and durations",
       "formats_and_durations_desc": "You should think about which format your talk will work best in. Are you presenting a new idea, or do you require more time to elaborate on your subject? How hands-on do you want to be? We have three formats you can present your material in.",
       "lightning_talks": "Lightning talks (10 or 20 minutes)",
@@ -282,13 +287,17 @@
       "application_deadline": "Applications for speaker reimbursements must be submitted before August 1st, 2025.",
 
       "how_to_apply": "How to apply",
-      "apply_note": "The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require financial support, please reach out to refund@java.no after your session or workshop is accepted.",
+      "apply_note_start": "The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require financial support, please reach out to ",
+      "apply_note_link": "refund@java.no",
+      "apply_note_end": " after your session or workshop is accepted.",
       "apply_details": "In this mail, provide an estimate of your travel expenses and the days you will be visiting Oslo during the conference.",
       "hotel_deal": "We have a deal with a hotel, so if you need accommodation, we will reserve a room for you. Please state in your application which days you are planning to stay. We do not refund travel costs above the cost of a reasonably priced economy ticket.",
       "lightning_talks": "Please also note that we do not refund travel expenses for those holding lightning talks. However, speakers (including the ones holding lightning talks) will receive a free conference ticket.",
 
       "confirmation_reimbursement": "Confirmation & Reimbursement",
-      "confirmation_note": "Applications must be confirmed explicitly via refund@java.no and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers living in proximity to Oslo are not eligible.",
+      "confirmation_note_start": "Applications must be confirmed explicitly via ",
+      "confirmation_note_link": "refund@java.no",
+      "confirmation_note_end": " and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers living in proximity to Oslo are not eligible.",
       "reimbursement_process": "Reimbursements are processed and paid after the conference. We will reach out to speakers who applied for reimbursement and process the payments once payment details are provided."
     },
     "404": {

@@ -76,9 +76,7 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTempla
 
             {children}
 
-            {Platform.OS === 'web' ? (
-              <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop} />
-            ) : null}
+            <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop} />
           </ScrollView>
         </View>
       </SafeAreaView>

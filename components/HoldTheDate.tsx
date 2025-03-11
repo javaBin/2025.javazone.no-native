@@ -1,5 +1,5 @@
 import React from 'react';
-import { SvgImage, PageTitle } from '@/UI';
+import { PageTitle, SvgCallbackImage} from '@/UI';
 import { Assets } from '@/Assets';
 import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
 import { Link } from 'expo-router';
@@ -22,8 +22,8 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   ];
 
   return (
-    <View style={styles.content}>
-      <SvgImage SVG={Assets.images.hero.HeroDuke} height={150} />
+    <View style={[styles.content, {marginTop: 50}]}>
+      <SvgCallbackImage SVG={Assets.images.hero.HeroDuke} height={150} />
 
       <PageTitle title={t('javaZone_2025')} />
       {subPageHeader && <Text style={styles.subPageHeading}>{subPageHeader}</Text>}

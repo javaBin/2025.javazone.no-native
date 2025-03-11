@@ -30,10 +30,15 @@ import ToTopArrow from '@/assets/icons/to-top-arrow.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
+import HomeInactive from '@/assets/icons/home-inactive.svg';
 import Info from '@/assets/icons/info.svg';
+import InfoInactive from '@/assets/icons/info-inactive.svg';
 import Partner from '@/assets/icons/partner.svg';
+import PartnerInactive from '@/assets/icons/partner-inactive.svg';
 import Program from '@/assets/icons/program.svg';
+import ProgramInactive from '@/assets/icons/program-inactive.svg';
 import Speaker from '@/assets/icons/speaker.svg';
+import SpeakerInactive from '@/assets/icons/speaker-inactive.svg';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -46,6 +51,7 @@ export const Assets = {
     volunteerMail: 'mailto:student@java.no',
     javaBoardMail: 'mailto:styret@java.no',
     kidsMail: 'mailto:kids@java.no',
+    refundMail: 'mailto:refund@java.no',
     program24: 'https://2024.javazone.no/program',
     program23: 'https://2023.javazone.no/#/program',
     program22: 'https://2022.javazone.no/#/program',
@@ -58,6 +64,8 @@ export const Assets = {
     javaZoneLinkedIn: 'https://www.linkedin.com/company/javazone/',
     partnerRegistration: 'https://event.checkin.no/101610/javazone-2025-partnership',
     partnerVideo: 'https://player.vimeo.com/video/1038270530',
+    partnerTickets: 'https://event.checkin.no/108603/javazone-2025-partner-tickets',
+    eventCheckin: 'https://event.checkin.no/109009/javazone-2025',
   },
   images: {
     Logo,
@@ -85,10 +93,15 @@ export const Assets = {
     MenuRoundedInactive,
     MenuRoundedActive,
     Home,
+    HomeInactive,
     Info,
+    InfoInactive,
     Partner,
+    PartnerInactive,
     Program,
+    ProgramInactive,
     Speaker,
+    SpeakerInactive,
     TwitterFrame,
     FacebookFrame,
     LinkedInFrame,
@@ -122,6 +135,7 @@ export const Assets = {
     },
     jz2025ThemeColors: {
       crimsonRed: '#B10A32',
+      gradientRed: '#9f092d',
       darkRed: '#780722',
       darkBrown: '#403532',
       lightBrown: '#6c605c',
@@ -188,7 +202,6 @@ export const Assets = {
       color: '#403532', // dark-brown
       fontSize: screenWidth > 768 ? 22 : 20,
       fontWeight: 'semibold',
-      fontStyle: 'italic',
       marginTop: 7.5,
       fontFamily: 'Cinzel_600SemiBold',
       textAlign: 'center',
@@ -205,7 +218,7 @@ export const Assets = {
     intro: {
       color: '#403532', // dark-brown
       marginVertical: 10,
-      fontSize: screenWidth > 768 ? 22 : 18,
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontFamily: 'Cinzel_400Regular',
       textAlign: 'center',
       width: '100%',
@@ -216,9 +229,9 @@ export const Assets = {
       fontFamily: 'PlayfairDisplay_400Regular_Italic',
     },
     listText: {
-      color: '#1e1616', // gradient.brown
+      color: '#403532', // dark-brown
       marginVertical: 5,
-      fontSize: screenWidth > 768 ? 22 : 18,
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontFamily: 'PlayfairDisplay_400Regular',
     },
     disclaimerText: {

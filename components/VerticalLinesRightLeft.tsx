@@ -1,10 +1,13 @@
 import { View, StyleSheet, Dimensions, Animated, Easing } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useRef, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { Assets } from '@/Assets';
 
 const { width: screenWidth } = Dimensions.get('window');
 const isMobile = screenWidth <= 768;
+
+const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 const VerticalLinesRightLeft = () => {
   const [containerStyle, setContainerStyle] = useState(styles.container);
@@ -109,7 +112,10 @@ const VerticalLinesRightLeft = () => {
 
   return (
     <View style={containerStyle}>
-      <Animated.View
+      <AnimatedLinearGradient
+        colors={[Assets.colors.jz2025ThemeColors.gradientRed, Assets.colors.jz2025ThemeColors.crimsonRed]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
         style={[isMobile ? mobileStyles.verticalLineLeft : styles.verticalLineLeft, { width: leftLineWidth }]}
       />
       <Animated.View
@@ -130,14 +136,20 @@ const VerticalLinesRightLeft = () => {
           { width: leftCyberYellowWidth },
         ]}
       />
-      <Animated.View
+      <AnimatedLinearGradient
+        colors={[Assets.colors.jz2025ThemeColors.darkRed, Assets.colors.jz2025ThemeColors.gradientRed]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
         style={[
           isMobile ? mobileStyles.verticalLineLeftDarkRed : styles.verticalLineLeftDarkRed,
           { width: leftDarkRedWidth },
         ]}
       />
 
-      <Animated.View
+      <AnimatedLinearGradient
+          colors={[Assets.colors.jz2025ThemeColors.crimsonRed, Assets.colors.jz2025ThemeColors.gradientRed]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
         style={[isMobile ? mobileStyles.verticalLineRight : styles.verticalLineRight, { width: rightLineWidth }]}
       />
       <Animated.View
@@ -158,7 +170,10 @@ const VerticalLinesRightLeft = () => {
           { width: rightCyberYellowWidth },
         ]}
       />
-      <Animated.View
+      <AnimatedLinearGradient
+          colors={[Assets.colors.jz2025ThemeColors.gradientRed, Assets.colors.jz2025ThemeColors.darkRed]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
         style={[
           isMobile ? mobileStyles.verticalLineRightDarkRed : styles.verticalLineRightDarkRed,
           { width: rightDarkRedWidth },
