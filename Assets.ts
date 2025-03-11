@@ -27,6 +27,8 @@ import TwitterFrame from '@/assets/icons/twitter-frame.svg';
 import FacebookFrame from '@/assets/icons/facebook-frame.svg';
 import LinkedInFrame from '@/assets/icons/linkedin-frame.svg';
 import ToTopArrow from '@/assets/icons/to-top-arrow.svg';
+import HandHeartInactive from '@/assets/icons/hand-heart-inactive.svg';
+import HandHeartActive from '@/assets/icons/hand-heart-active.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -106,6 +108,8 @@ export const Assets = {
     FacebookFrame,
     LinkedInFrame,
     ToTopArrow,
+    HandHeartInactive,
+    HandHeartActive,
   },
   colors: {
     transparent: 'transparent',

@@ -210,6 +210,9 @@ const RootLayout = () => {
           <Pressable onPress={() => router.replace(`${lang}/speaker`)}>
             <Text style={styles.navItem}>Speaker</Text>
           </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/volunteers`)}>
+            <Text style={styles.navItem}>Volunteers</Text>
+          </Pressable>
           <Pressable onPress={() => router.replace(`${lang}/info`)}>
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
@@ -273,7 +276,7 @@ const RootLayout = () => {
       <SafeAreaProvider>
         <I18nContextProvider>
           <BlurView tint="light" intensity={10} style={styles.drawer}>
-            <SvgImage SVG={Assets.UI.PapyrusSheet} height={180} style={{ opacity: 0.9 }} />
+            <SvgImage SVG={Assets.UI.PapyrusSheet} height={190} style={{ opacity: 0.9 }} />
             <View style={styles.drawerContent}>
               <Link
                 href={{ pathname: `${lang}/program` }}
@@ -296,12 +299,19 @@ const RootLayout = () => {
               >
                 Speaker
               </Link>
+              <Link
+                href={{ pathname: `${lang}/volunteers` }}
+                style={styles.drawerItem}
+                onPress={() => setToggleMenu(false)}
+              >
+                Volunteers
+              </Link>
               <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
                 Info
               </Link>
-              <View>{ languageLoaded && <LanguagePicker /> }</View>
+              <View>{languageLoaded && <LanguagePicker />}</View>
             </View>
-            <SvgImage SVG={Assets.UI.PapyrusRoll} height={25} />
+            <SvgImage SVG={Assets.UI.PapyrusRoll} height={26} />
           </BlurView>
 
           <Stack initialRouteName="[lang]/index" screenOptions={{ ...screenOptions, ...webScreenOptions }}>
@@ -309,6 +319,7 @@ const RootLayout = () => {
             <Stack.Screen name="[lang]/program" options={{ title: 'Program' }} />
             <Stack.Screen name="[lang]/partner" options={{ title: 'Partner' }} />
             <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
+            <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
             <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
           </Stack>
         </I18nContextProvider>
@@ -350,10 +361,11 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-              name="[lang]/info"
+              name="[lang]/volunteers"
               options={{
-                title: 'Info',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+                title: 'Volunteers',
+                tabBarIcon: ({ focused }) =>
+                  renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
               }}
             />
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
@@ -361,7 +373,6 @@ const RootLayout = () => {
             <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
-
         </I18nContextProvider>
       </SafeAreaProvider>
     );

@@ -277,6 +277,35 @@
       "unlucky": "Du var uheldig",
       "unlucky_desc": "Vi mottar ofte flere gode forslag som dekker nøyaktig samme tema. Programkomiteen må da bestemme mellom disse flere utmerkede innsendingene. I 2016 mottok vi mange flotte forslag som dekket 'hvordan vi gjør DevOps i skyen'. Begrenset plass i programmet betydde at mange av disse endte opp med å bli avvist."
     },
+    "volunteer": {
+      "title": "Bli frivillig på JavaZone",
+      "what_is_javazone": "Hva er JavaZone?",
+      "description": "JavaZone er verdens største community-drevne Java-konferanse. Hvert år strømmer over 3200 utviklere til Oslo for å delta.",
+      "who_are_we_looking_for": "Hvem leter vi etter?",
+      "who_can_apply": "Har du lyst til å bidra til at disse menneskene skal få en fantastisk opplevelse? Er du student høsten 2025?",
+      "apply_now": "Meld deg som frivillig!",
+      "faq_title": "Ofte stilte spørsmål",
+      "faq": {
+        "language_question": "I don't speak Norwegian, what about me?",
+        "language_answer": "Du må kunne kommunisere både på norsk og engelsk for å være frivillig på JavaZone.",
+        "who_can_volunteer": "Hvem kan bli frivillig på JavaZone?",
+        "who_can_volunteer_answer": "Alle studenter som behersker norsk og engelsk flytende kan bli frivillige på JavaZone.",
+        "tasks": "Hva skal jeg gjøre som frivillig?",
+        "tasks_answer": "Oppgavene inkluderer bl.a. salvakt, info-stand, utdeling av headset m.m.",
+        "how_many_volunteers": "Hvor mange frivillige bidrar på JavaZone?",
+        "how_many_volunteers_answer": "Over 50 frivillige deltar hvert år. Det er stor interesse, men det er verdt å søke!",
+        "learning_opportunities": "Får jeg med meg noe faglig som frivillig?",
+        "learning_opportunities_answer": "Du får ca. 50% fri til å gå på foredrag, spise god mat og møte folk i IT-bransjen.",
+        "travel": "Hva med reise hvis jeg ikke bor i Oslo?",
+        "travel_answer": "JavaZone dekker ikke reise eller overnatting, men sjekk med ditt studiested om reisestøtte.",
+        "awezone": "Får jeg bli med på AweZone?",
+        "awezone_answer": "Ja! Ingen jobbing på kvelden – bare fest og moro!",
+        "when_to_meet": "Når må jeg møte opp som frivillig?",
+        "when_to_meet_answer": "Oppmøte i Oslo Spektrum 2. september kl. 19:00. JavaZone avsluttes 4. september kl. 18:00.",
+        "application_deadline": "Når må jeg søke?",
+        "application_deadline_answer": "Søknadsfristen er mandag 8. juni."
+      }
+    },
     "reimbursement": {
       "pageTitle": "Refusjonspolicy",
       "what_how": "Hva & Hvordan",
