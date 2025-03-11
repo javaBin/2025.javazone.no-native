@@ -309,6 +309,7 @@ const RootLayout = () => {
               <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
                 Info
               </Link>
+              <View>{ languageLoaded && <LanguagePicker /> }</View>
             </View>
             <SvgImage SVG={Assets.UI.PapyrusRoll} height={25} />
           </BlurView>
@@ -325,6 +326,7 @@ const RootLayout = () => {
       </SafeAreaProvider>
     );
   } else {
+    // @ts-ignore
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
@@ -371,6 +373,7 @@ const RootLayout = () => {
             <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
+
         </I18nContextProvider>
       </SafeAreaProvider>
     );
