@@ -4,11 +4,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from 'i18next';
 import { useRouter } from 'expo-router';
 
-const I18nContext = createContext({});
+const I18nContext = createContext({ });
 
 export const useI18nContext = () => {
   const context = useContext(I18nContext);
-  if (context === undefined) {
+  if (context === undefined || context === null) {
     throw new Error('useI18nContext must be used within an I18nContextProvider');
   }
   return context;

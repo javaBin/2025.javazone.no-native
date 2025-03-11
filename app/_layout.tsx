@@ -2,7 +2,7 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import { useEffect, useState } from 'react';
+import React,{ FunctionComponent, useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
@@ -14,6 +14,8 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
+import { LanguagePicker } from '@/components/LanguagePicker';
+import { SvgProps } from 'react-native-svg';
 
 const RootLayout = () => {
   const resources = { en, nb };
@@ -39,9 +41,8 @@ const RootLayout = () => {
       resources,
       lng: language,
       fallbackLng: 'en',
-    });
+    }).then(() => setLanguageLoaded(true));
 
-    setLanguageLoaded(true);
   }, [language, languageLoaded]);
 
   useEffect(() => {
@@ -193,24 +194,26 @@ const RootLayout = () => {
       <View style={styles.header}>
         <Pressable onPress={() => router.navigate(`/${lang}`)}>
           <View style={styles.headerLogoTitle}>
-            <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
+              <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
-
         <View style={styles.navBar}>
-          <Link href={`${lang}/program`} style={styles.navItem}>
-            Program
-          </Link>
-          <Link href={`${lang}/partner`} style={styles.navItem}>
-            Partner
-          </Link>
-          <Link href={`${lang}/speaker`} style={styles.navItem}>
-            Speaker
-          </Link>
-          <Link href={`${lang}/info`} style={styles.navItem}>
-            Info
-          </Link>
+          <Pressable onPress={() => router.replace(`${lang}/program`)}>
+            <Text style={styles.navItem}>Program</Text>
+          </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/partner`)}>
+            <Text style={styles.navItem}>Partner</Text>
+          </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/speaker`)}>
+            <Text style={styles.navItem}>Speaker</Text>
+          </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/info`)}>
+            <Text style={styles.navItem}>Info</Text>
+          </Pressable>
+        </View>
+        <View>
+          {screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null }
         </View>
       </View>
     ),
@@ -222,7 +225,11 @@ const RootLayout = () => {
     tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
     tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
     tabBarBackground: () => <BlurView tint="light" intensity={80} style={styles.tabBarBlurContainer} />,
-    headerShown: false, // todo: debating what to do with a possible header for native, BlurView doesn't work for some reason
+    headerShown: true,
+    headerTransparent: true,
+    headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
+    headerTitle: '',
+    headerBackButtonMenuEnabled: true,
   };
 
   const webScreenOptions = {
@@ -254,6 +261,12 @@ const RootLayout = () => {
       </Pressable>
     ),
   };
+
+  const renderIcon = (
+    focused: Boolean,
+    ActiveIcon: FunctionComponent<SvgProps>,
+    InactiveIcon: FunctionComponent<SvgProps>
+  ) => (focused ? <ActiveIcon height={24} width={'100%'} /> : <InactiveIcon height={24} width={'100%'} />);
 
   if (Platform.OS === 'web') {
     return (
@@ -309,37 +322,42 @@ const RootLayout = () => {
               name="[lang]/index"
               options={{
                 title: 'Home',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Home} height={24} title={'game-icons:greek-temple'} />,
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Home, Assets.icons.HomeInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/program"
               options={{
                 title: 'Program',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Program} height={24} />,
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/partner"
               options={{
                 title: 'Partner',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Partner} height={24} />,
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Partner, Assets.icons.PartnerInactive),
               }}
             />
             <Tabs.Screen
               name="[lang]/speaker"
               options={{
                 title: 'Speaker',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Speaker} height={24} />,
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),
+                headerShown: false,
               }}
             />
             <Tabs.Screen
               name="[lang]/info"
               options={{
                 title: 'Info',
-                tabBarIcon: () => <SvgImage SVG={Assets.icons.Info} height={24} />,
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
               }}
             />
+
+            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
         </I18nContextProvider>

@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   listItemMail: {
     color: Assets.colors.jz2025ThemeColors.vividOrange,
     fontFamily: 'PlayfairDisplay_400Regular',
-    fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
+    fontSize: Dimensions.get('window').width > 768 ? 20 : 18,
     textDecorationLine: 'underline',
     marginHorizontal: 3,
   },
