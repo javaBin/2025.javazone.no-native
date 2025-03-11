@@ -230,6 +230,7 @@ const RootLayout = () => {
     headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
     headerTitle: '',
     headerBackButtonMenuEnabled: true,
+    headerRight: () => languageLoaded && <LanguagePicker />
   };
 
   const webScreenOptions = {
