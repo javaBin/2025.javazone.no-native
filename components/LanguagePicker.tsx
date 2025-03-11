@@ -1,8 +1,8 @@
 import { Flag } from '@/components/index';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
-import { useI18nContext } from "@/contexts/I18nContext";
+import { useI18nContext } from '@/contexts/I18nContext';
 
 export const LanguagePicker: React.FC = () => {
   //@ts-ignore
@@ -11,8 +11,8 @@ export const LanguagePicker: React.FC = () => {
     languagePickers: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between'
-    }
+      justifyContent: 'space-between',
+    },
   });
 
   return (

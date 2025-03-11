@@ -276,7 +276,7 @@ const RootLayout = () => {
       <SafeAreaProvider>
         <I18nContextProvider>
           <BlurView tint="light" intensity={10} style={styles.drawer}>
-            <SvgImage SVG={Assets.UI.PapyrusSheet} height={180} style={{ opacity: 0.9 }} />
+            <SvgImage SVG={Assets.UI.PapyrusSheet} height={190} style={{ opacity: 0.9 }} />
             <View style={styles.drawerContent}>
               <Link
                 href={{ pathname: `${lang}/program` }}
@@ -309,9 +309,9 @@ const RootLayout = () => {
               <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
                 Info
               </Link>
-              <View>{ languageLoaded && <LanguagePicker /> }</View>
+              <View>{languageLoaded && <LanguagePicker />}</View>
             </View>
-            <SvgImage SVG={Assets.UI.PapyrusRoll} height={25} />
+            <SvgImage SVG={Assets.UI.PapyrusRoll} height={26} />
           </BlurView>
 
           <Stack initialRouteName="[lang]/index" screenOptions={{ ...screenOptions, ...webScreenOptions }}>
@@ -373,7 +373,6 @@ const RootLayout = () => {
             <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
-
         </I18nContextProvider>
       </SafeAreaProvider>
     );
