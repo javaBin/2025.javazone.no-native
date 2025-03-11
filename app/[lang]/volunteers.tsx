@@ -65,7 +65,7 @@ const Volunteers: React.FC = () => {
           {t(`volunteer.${textKey}`)}
         </Text>
       ))}
-      <LinkButton href={'todo'} title={t('volunteer.apply_now')} targetBlank={true} />
+      <LinkButton href={'todo'} title={t('volunteer.application_coming_soon')} targetBlank={true} />
       <SectionBox sectionTitle={t('volunteer.faq_title')}>
         {faqItems.map(({ key, title, answer }) => (
           <View key={key}>
