@@ -14,9 +14,9 @@ interface FlagProps {
 }
 
 const Flag: React.FC<FlagProps> = ({ flagLocale, countryCode, flagStyle, flagSize, onPress }: FlagProps) => {
-  // @ts-ignore
+  //@ts-ignore
   const { t } = useTranslation();
-  // @ts-ignore
+  //@ts-ignore
   const { locale } = useI18nContext();
   const [flagSource, setFlagSource] = useState<string | null>(null);
   const [showFallback, setShowFallback] = useState(false);

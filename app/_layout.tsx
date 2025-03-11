@@ -2,7 +2,7 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import { FunctionComponent, useEffect, useState } from 'react';
+import React,{ FunctionComponent, useEffect, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
@@ -14,6 +14,7 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
+import { LanguagePicker } from '@/components/LanguagePicker';
 import { SvgProps } from 'react-native-svg';
 
 const RootLayout = () => {
@@ -28,7 +29,7 @@ const RootLayout = () => {
 
   useEffect(() => {
     // Set background color
-    SystemUI.setBackgroundColorAsync(Assets.colors.jz2025ThemeColors.sheetOpacity);
+    SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
   }, []);
 
   useEffect(() => {
@@ -197,7 +198,6 @@ const RootLayout = () => {
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
-
         <View style={styles.navBar}>
           <Pressable onPress={() => router.replace(`${lang}/program`)}>
             <Text style={styles.navItem}>Program</Text>
@@ -211,6 +211,9 @@ const RootLayout = () => {
           <Pressable onPress={() => router.replace(`${lang}/info`)}>
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
+        </View>
+        <View>
+          {screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null }
         </View>
       </View>
     ),
