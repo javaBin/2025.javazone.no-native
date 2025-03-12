@@ -4,7 +4,7 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 import React from 'react';
-import { LinkButton, LinkText, SvgImage } from '@/UI';
+import { LinkButton, LinkText } from '@/UI';
 import { BlurView } from 'expo-blur';
 
 const Partner = () => {
