@@ -107,11 +107,14 @@ const RootLayout = () => {
   const styles = StyleSheet.create({
     tabBar: {
       position: 'absolute',
-      bottom: 0,
+      bottom: Platform.OS === 'android' ? 15 : -5, // don't change!
     },
     tabBarLabel: {
       fontSize: 12,
       fontFamily: 'Cinzel_400Regular',
+      alignSelf: 'center',
+      display: 'flex',
+      width: "100%",
     },
     tabBarBlurContainer: {
       flex: 1,
@@ -121,7 +124,7 @@ const RootLayout = () => {
       overflow: 'hidden',
       position: 'absolute',
       width: '100%',
-      bottom: 0, // only moves blurContainer, not the actual tabs
+      bottom: Platform.OS === 'android' ? -15 : 10, // don't change!
     },
     header: {
       display: 'flex',
@@ -224,13 +227,13 @@ const RootLayout = () => {
     tabBarLabelStyle: styles.tabBarLabel,
     tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
     tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
-    tabBarBackground: () => <BlurView tint="light" intensity={80} style={styles.tabBarBlurContainer} />,
+    tabBarBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={styles.tabBarBlurContainer} />,
     headerShown: true,
     headerTransparent: true,
-    headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
+    headerBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={[StyleSheet.absoluteFill]} />,
     headerTitle: '',
     headerBackButtonMenuEnabled: true,
-    headerRight: () => languageLoaded && <LanguagePicker />
+    headerRight: () => languageLoaded && <LanguagePicker />,
   };
 
   const webScreenOptions = {

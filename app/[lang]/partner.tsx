@@ -86,7 +86,6 @@ const Partner = () => {
         </BlurView>
       </View>
 
-      <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ marginBottom: 10, marginTop: 20 }} />
       <View style={styles.videoContainer}>
         <Text style={[Assets.styles.sectionTitle, ]}>{t('partner.watch_title')}</Text>
         <Text style={[Assets.styles.sectionSubTitle, { marginBottom: 20 }]}>{t('partner.watch_partner_meeting')}</Text>
@@ -98,7 +97,7 @@ const Partner = () => {
 
 const styles = StyleSheet.create({
   videoContainer: {
-    marginTop: 10,
+    marginTop: 40,
     width: '100%'
   },
   partnerContentInfo: {

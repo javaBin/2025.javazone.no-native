@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import {StyleSheet, Dimensions, Platform} from 'react-native';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 
@@ -211,9 +211,11 @@ export const Assets = {
       width: '100%',
       marginHorizontal: 20,
       marginVertical: 8,
-      borderRadius: 5,
+      borderRadius: Platform.OS === 'android' ? 10 : 5,
       paddingVertical: 20,
       paddingHorizontal: 30,
+      overflow: "hidden",
+      backgroundColor: 'transparent',
     },
     intro: {
       color: '#403532', // dark-brown
@@ -240,11 +242,11 @@ export const Assets = {
       fontFamily: 'PlayfairDisplay_400Regular',
     },
     shadow: {
-      elevation: 2, // Shadow effect for Android
-      shadowColor: '#403532', // dark-brown, iOS shadow
-      shadowOpacity: 0.1,
-      shadowRadius: 3,
-      shadowOffset: { width: 0, height: 2 },
+      elevation: 1, // Shadow effect for Android   // denne var 2
+      shadowColor: Platform.OS === 'android' ? '#6c605c' : '#403532', // dark-brown, iOS shadow
+      shadowRadius: 7,
+      shadowOpacity: .5,
+      shadowOffset : { width: 0, height: 10 }
     },
   }),
 };

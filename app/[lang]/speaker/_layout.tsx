@@ -10,7 +10,7 @@ const SpeakerLayout = () => {
     const nativeScreenOptions = {
         headerShown: true,
         headerTransparent: true,
-        headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
+        headerBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={[StyleSheet.absoluteFill]} />,
         headerTitle: '',
         headerBackButtonMenuEnabled: true,
         headerTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
@@ -18,7 +18,7 @@ const SpeakerLayout = () => {
             <View style={{marginRight: -15, marginTop: 5}}>
                 <LanguagePicker />
             </View>
-        )
+        ),
     }
     const webScreenOptions = {
         headerShown: false,
