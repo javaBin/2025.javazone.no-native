@@ -107,7 +107,7 @@ const RootLayout = () => {
   const styles = StyleSheet.create({
     tabBar: {
       position: 'absolute',
-      bottom: 0,
+      bottom: 10,
     },
     tabBarLabel: {
       fontSize: 12,
@@ -115,13 +115,13 @@ const RootLayout = () => {
     },
     tabBarBlurContainer: {
       flex: 1,
-      padding: 42,
+      padding: Platform.OS === 'android' ? 30 : 42,
       textAlign: 'center',
       justifyContent: 'center',
       overflow: 'hidden',
       position: 'absolute',
       width: '100%',
-      bottom: 0, // only moves blurContainer, not the actual tabs
+      bottom: Platform.OS === 'android' ? -10 : 0, // only moves blurContainer, not the actual tabs
     },
     header: {
       display: 'flex',
@@ -322,6 +322,58 @@ const RootLayout = () => {
             <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
             <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
           </Stack>
+        </I18nContextProvider>
+      </SafeAreaProvider>
+    );
+  } else if (Platform.OS === 'android') {
+    // @ts-ignore
+    return (
+      <SafeAreaProvider>
+        <I18nContextProvider>
+          <Tabs initialRouteName="[lang]/index" screenOptions={{ ...nativeScreenOptions }}>
+            <Tabs.Screen
+              name="[lang]/index"
+              options={{
+                title: 'Home',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Home, Assets.icons.HomeInactive),
+              }}
+            />
+            <Tabs.Screen
+              name="[lang]/program"
+              options={{
+                title: 'Program',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
+              }}
+            />
+            <Tabs.Screen
+              name="[lang]/partner"
+              options={{
+                title: 'Partner',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Partner, Assets.icons.PartnerInactive),
+              }}
+            />
+            <Tabs.Screen
+              name="[lang]/speaker"
+              options={{
+                title: 'Speaker',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),
+                headerShown: false,
+              }}
+            />
+            <Tabs.Screen
+              name="[lang]/volunteers"
+              options={{
+                title: 'Volunteers',
+                tabBarIcon: ({ focused }) =>
+                  renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
+              }}
+            />
+            <Tabs.Screen name="[lang]/info" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
+          </Tabs>
         </I18nContextProvider>
       </SafeAreaProvider>
     );
