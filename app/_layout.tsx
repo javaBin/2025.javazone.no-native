@@ -2,7 +2,7 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
@@ -16,6 +16,11 @@ import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
 import { LanguagePicker } from '@/components/LanguagePicker';
 import { SvgProps } from 'react-native-svg';
+import { animationDuration, PapyrusMenu } from '@/components/papyrusMenu';
+
+interface PapyrusInterface {
+  closeAnimation: () => {};
+}
 
 const RootLayout = () => {
   const resources = { en, nb };
@@ -222,6 +227,8 @@ const RootLayout = () => {
     ),
   };
 
+  const papyrusMenuRef = useRef<PapyrusInterface>();
+
   const nativeScreenOptions = {
     tabBarStyle: styles.tabBar,
     tabBarLabelStyle: styles.tabBarLabel,
@@ -254,7 +261,19 @@ const RootLayout = () => {
       ),
     headerLeft: () => null, // this is to disable "<-" back button on web-app
     headerRight: () => (
-      <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={styles.hamburger}>
+      <Pressable
+        onPress={() => {
+          if (!toggleMenu) {
+            setToggleMenu(true);
+          } else {
+            papyrusMenuRef?.current?.closeAnimation();
+            setTimeout(() => {
+              setToggleMenu(false);
+            }, animationDuration);
+          }
+        }}
+        style={{ ...styles.hamburger }}
+      >
         <SvgImage
           SVG={toggleMenu ? Assets.icons.MenuRoundedActive : Assets.icons.MenuRoundedInactive}
           height={24}
@@ -275,44 +294,12 @@ const RootLayout = () => {
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
-          <BlurView tint="light" intensity={10} style={styles.drawer}>
-            <SvgImage SVG={Assets.UI.PapyrusSheet} height={190} style={{ opacity: 0.9 }} />
-            <View style={styles.drawerContent}>
-              <Link
-                href={{ pathname: `${lang}/program` }}
-                style={styles.drawerItem}
-                onPress={() => setToggleMenu(false)}
-              >
-                Program
-              </Link>
-              <Link
-                href={{ pathname: `${lang}/partner` }}
-                style={styles.drawerItem}
-                onPress={() => setToggleMenu(false)}
-              >
-                Partner
-              </Link>
-              <Link
-                href={{ pathname: `${lang}/speaker` }}
-                style={styles.drawerItem}
-                onPress={() => setToggleMenu(false)}
-              >
-                Speaker
-              </Link>
-              <Link
-                href={{ pathname: `${lang}/volunteers` }}
-                style={styles.drawerItem}
-                onPress={() => setToggleMenu(false)}
-              >
-                Volunteers
-              </Link>
-              <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
-                Info
-              </Link>
-              <View>{languageLoaded && <LanguagePicker />}</View>
-            </View>
-            <SvgImage SVG={Assets.UI.PapyrusRoll} height={26} />
-          </BlurView>
+          <PapyrusMenu
+            ref={papyrusMenuRef}
+            languageLoaded={languageLoaded}
+            setToggleMenu={setToggleMenu}
+            toggleMenu={toggleMenu}
+          />
 
           <Stack initialRouteName="[lang]/index" screenOptions={{ ...screenOptions, ...webScreenOptions }}>
             <Stack.Screen name="[lang]/index" options={{ title: '' }} />
