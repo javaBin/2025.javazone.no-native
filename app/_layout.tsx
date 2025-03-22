@@ -263,7 +263,7 @@ const RootLayout = () => {
     headerRight: () => (
       <Pressable
         onPress={() => {
-          if (toggleMenu === false) {
+          if (!toggleMenu) {
             setToggleMenu(true);
           } else {
             papyrusMenuRef?.current?.closeAnimation();

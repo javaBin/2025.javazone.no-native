@@ -56,7 +56,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
   const paperHeightAnim = useRef(new Animated.Value(paperHeightStart)).current;
 
   useEffect(() => {
-    if (toggleMenu === true) {
+    if (toggleMenu) {
       Animated.stagger(1, [
         Animated.timing(rollPositionAnim, {
           toValue: -0,
@@ -96,21 +96,19 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
   }));
 
   const onPressItem = () => {
-    closeAnimation();
     setTimeout(() => {
-      setToggleMenu(false);
-    }, animationDuration);
-  }
+      closeAnimation();
+      setTimeout(() => {
+        setToggleMenu(false);
+      }, animationDuration);
+    }, 300);
+  };
 
   return (
     <AnimatedBlurView tint="light" intensity={10} style={{ ...styles.drawer, height: paperHeightAnim }}>
       <SvgImage SVG={Assets.UI.PapyrusSheet} height={190} style={{ opacity: 0.9 }} />
       <View style={styles.drawerContent}>
-        <Link
-          href={{ pathname: `${lang}/program` }}
-          style={styles.drawerItem}
-          onPress={onPressItem}
-        >
+        <Link href={{ pathname: `${lang}/program` }} style={styles.drawerItem} onPress={onPressItem}>
           Program
         </Link>
         <Link href={{ pathname: `${lang}/partner` }} style={styles.drawerItem} onPress={onPressItem}>
@@ -128,8 +126,8 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
         <View>{languageLoaded && <LanguagePicker />}</View>
       </View>
       <Animated.View
-        style={{          
-          transform: [{translateY: rollPositionAnim}],
+        style={{
+          transform: [{ translateY: rollPositionAnim }],
         }}
       >
         <SvgImage SVG={Assets.UI.PapyrusRoll} height={26} />
