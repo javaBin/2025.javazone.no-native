@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 
@@ -176,7 +176,7 @@ export const Assets = {
       alignItems: 'center',
       justifyContent: 'space-between',
       alignSelf: 'center',
-      marginTop: 50,
+      marginTop: Platform.OS === 'android' ? 0 : 50,
       padding: 10,
     },
     pageTitle: {},
