@@ -53,7 +53,7 @@ export default function PartnerBanner() {
                 onPointerEnter={handleMouseEnter}
                 onPointerLeave={handleMouseLeave}
               >
-                <Link href={partner.homepageUrl} style={styles.link}>
+                <Link target={"_blank"} href={partner.homepageUrl} style={styles.link}>
                   <SvgImage SVG={partner.logoUrl} height={80} />
                 </Link>
               </Animated.View>
