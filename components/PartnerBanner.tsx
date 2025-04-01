@@ -20,7 +20,7 @@ const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth 
 export default function PartnerBanner() {
   return (
     <View style={styles.wrapper}>
-      <Text style={styles.title}>Partners in 2024</Text>
+      <Text style={styles.title}>Partners in 2025</Text>
       <View style={styles.partnerContainer}>
         {[...partners]
           .sort(() => Math.random() - 0.5)
