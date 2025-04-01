@@ -73,7 +73,7 @@ export const partners: Partner[] = [
   { name: 'Capra', homepageUrl: 'https://www.capraconsulting.no', logoUrl: Capra },
   { name: 'CGI', homepageUrl: 'https://www.cgi.com', logoUrl: CGI },
   { name: 'Cloudberries', homepageUrl: 'https://www.cloudberries.no', logoUrl: Cloudberries },
-  { name: 'Computas', homepageUrl: 'https://www.computas.com', logoUrl: Computas },
+  { name: 'Computas', homepageUrl: 'https://computas.com', logoUrl: Computas },
   { name: 'DNB', homepageUrl: 'https://www.dnb.no', logoUrl: DNB },
   { name: 'Elastic', homepageUrl: 'https://www.elastic.co', logoUrl: Elastic },
   { name: 'Embriq', homepageUrl: 'https://www.embriq.no', logoUrl: Embriq },
