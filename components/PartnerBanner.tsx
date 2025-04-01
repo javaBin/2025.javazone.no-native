@@ -13,7 +13,9 @@ interface Props {
   partners: Partner[];
 }
 
-const screenWidth = Dimensions.get('window').width - 200;
+const screenWidth = Dimensions.get('window').width;
+const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
+
 
 export default function PartnerBanner() {
   return (
@@ -64,7 +66,7 @@ export default function PartnerBanner() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: screenWidth,
+    width: adjustedScreenWidth,
     overflow: 'hidden',
     flexWrap: 'nowrap',
     position: 'relative',
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'black',
-    fontSize: 50,
+    fontSize: Dimensions.get('window').width >= 768 ? 50 : 35,
     lineHeight: 150,
     textAlign: 'center',
     textTransform: 'uppercase',
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     gap: '2.5rem',
-    width: screenWidth, // Use screen width directly
+    width: adjustedScreenWidth, // Use screen width directly
   },
   imageContainer: {
     width: 100,
