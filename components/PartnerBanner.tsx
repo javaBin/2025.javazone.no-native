@@ -16,7 +16,6 @@ interface Props {
 const screenWidth = Dimensions.get('window').width;
 const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
 
-
 export default function PartnerBanner() {
   return (
     <View style={styles.wrapper}>
@@ -53,7 +52,7 @@ export default function PartnerBanner() {
                 onPointerEnter={handleMouseEnter}
                 onPointerLeave={handleMouseLeave}
               >
-                <Link target={"_blank"} href={partner.homepageUrl} style={styles.link}>
+                <Link target={'_blank'} href={partner.homepageUrl} style={styles.link}>
                   <SvgImage SVG={partner.logoUrl} height={80} />
                 </Link>
               </Animated.View>
@@ -70,6 +69,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     flexWrap: 'nowrap',
     position: 'relative',
+    paddingBottom: 20,
     marginBottom: 40,
   },
   title: {
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
     width: adjustedScreenWidth, // Use screen width directly
   },
   imageContainer: {
-    width: 100,
+    padding: 20,
+    width: 220,
   },
   link: {
     width: '100%',
