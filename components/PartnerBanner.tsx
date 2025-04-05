@@ -3,12 +3,6 @@ import { View, StyleSheet, Dimensions, Animated, Platform} from 'react-native';
 import { Link } from 'expo-router';
 import { SvgImage } from '@/UI';
 
-interface Partner {
-  homepageUrl: string;
-  name: string;
-  logoUrl: string;
-}
-
 const screenWidth = Dimensions.get('window').width;
 const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
 
