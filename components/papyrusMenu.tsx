@@ -56,7 +56,6 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
   const paperHeightAnim = useRef(new Animated.Value(paperHeightStart)).current;
 
   useEffect(() => {
-    console.log(paperHeightAnim);
     if (toggleMenu) {
       Animated.stagger(1, [
         Animated.timing(rollPositionAnim, {
