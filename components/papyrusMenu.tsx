@@ -65,7 +65,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           useNativeDriver: false,
         }),
         Animated.timing(paperHeightAnim, {
-          toValue: 220,
+          toValue: 250,
           duration: animationDuration,
           easing: Easing.linear,
           useNativeDriver: false,
@@ -106,7 +106,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
 
   return (
     <AnimatedBlurView tint="light" intensity={10} style={{ ...styles.drawer, height: paperHeightAnim }}>
-      <SvgImage SVG={Assets.UI.PapyrusSheet} height={190} style={{ opacity: 0.9 }} />
+      <SvgImage SVG={Assets.UI.PapyrusSheet} height={220} style={{ opacity: 0.9 }} />
       <View style={styles.drawerContent}>
         <Link href={{ pathname: `${lang}/program` }} style={styles.drawerItem} onPress={onPressItem}>
           Program
@@ -116,6 +116,9 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
         </Link>
         <Link href={{ pathname: `${lang}/speaker` }} style={styles.drawerItem} onPress={onPressItem}>
           Speaker
+        </Link>
+        <Link href={{ pathname: `${lang}/speaker/kids` }} style={styles.drawerItem} onPress={onPressItem}>
+          JavaZone Kids
         </Link>
         <Link href={{ pathname: `${lang}/volunteers` }} style={styles.drawerItem} onPress={onPressItem}>
           Volunteers
@@ -130,7 +133,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           transform: [{ translateY: rollPositionAnim }],
         }}
       >
-        <SvgImage SVG={Assets.UI.PapyrusRoll} height={26} />
+        <SvgImage SVG={Assets.UI.PapyrusRoll} height={29.5} />
       </Animated.View>
     </AnimatedBlurView>
   );
