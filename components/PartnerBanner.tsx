@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     padding: 20,
-    width: 220,
+    width: Dimensions.get('window').width >= 768 ? 220 : 160,
   },
   link: {
     width: '100%',
