@@ -89,7 +89,7 @@ import Spirgroup from '@/assets/partners/spirgroup-cropped.svg';
 import SSB from '@/assets/partners/ssb.svg';
 import StatensVegvesen from '@/assets/partners/statensvegvesen.svg';
 import Statnett from '@/assets/partners/statnett.svg';
-import Storebrand from '@/assets/partners/storebrand2.svg';
+import Storebrand from '@/assets/partners/storebrand.svg';
 import Systek from '@/assets/partners/systek.svg';
 import Techpros from '@/assets/partners/techpros.svg';
 import Telenor from '@/assets/partners/telenor.svg';
@@ -106,7 +106,6 @@ import BankID from '@/assets/partners/BankIDBankaxept.svg';
 import Bronoy from '@/assets/partners/brreg.svg';
 import Crayon from '@/assets/partners/crayonconsulting.svg';
 import ElOgIt from '@/assets/partners/elogit.svg';
-import GE from '@/assets/partners/ge.svg';
 import JetBrains from '@/assets/partners/jetbrains.svg';
 import JPRO from '@/assets/partners/jpro.svg';
 import Mastercard from '@/assets/partners/mastercard.svg';
@@ -114,6 +113,7 @@ import Sonat from '@/assets/partners/sonat.svg';
 import Tomra from '@/assets/partners/tomra.svg';
 import Yne from '@/assets/partners/yne.svg';
 import Ambita from '@/assets/partners/ambita.svg';
+import GE from '@/assets/partners/GE.svg';
 
 const screenWidth = Dimensions.get('window').width;
 
