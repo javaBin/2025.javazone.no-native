@@ -6,6 +6,7 @@ import { Assets } from '@/Assets';
 import React from 'react';
 import { LinkButton, LinkText } from '@/UI';
 import { BlurView } from 'expo-blur';
+import PartnerBanner from '@/components/PartnerBanner';
 
 const Partner = () => {
   const { t } = useTranslation();
@@ -22,6 +23,8 @@ const Partner = () => {
         title={t('partner.partner_info.register_cta')}
         targetBlank={true}
       />
+
+      <PartnerBanner />
 
       <Text style={[Assets.styles.sectionTitle, { marginBottom: 20, marginTop: isMobile ? 20 : 40 }]}>
         {t('partner.partner_info.partner_packages')}
@@ -78,16 +81,16 @@ const Partner = () => {
           <BulletListItem text={t('partner.partner_info.round_robin_distribution')} />
           <BulletListItem text={t('partner.partner_info.first_come_first_served')} />
           <LinkButton
-              href={Assets.links.partnerTickets}
-              title={t('partner.partner_info.order_tickets')}
-              targetBlank={true}
-              margin={isMobile ? 10 : 20}
+            href={Assets.links.partnerTickets}
+            title={t('partner.partner_info.order_tickets')}
+            targetBlank={true}
+            margin={isMobile ? 10 : 20}
           />
         </BlurView>
       </View>
 
       <View style={styles.videoContainer}>
-        <Text style={[Assets.styles.sectionTitle, ]}>{t('partner.watch_title')}</Text>
+        <Text style={[Assets.styles.sectionTitle]}>{t('partner.watch_title')}</Text>
         <Text style={[Assets.styles.sectionSubTitle, { marginBottom: 20 }]}>{t('partner.watch_partner_meeting')}</Text>
         <VideoPlayer videoUrl={'https://player.vimeo.com/video/1038270530'} />
       </View>
@@ -97,8 +100,8 @@ const Partner = () => {
 
 const styles = StyleSheet.create({
   videoContainer: {
-    marginTop: 40,
-    width: '100%'
+    marginTop: 10,
+    width: '100%',
   },
   partnerContentInfo: {
     display: 'flex',
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
   },
   partnerContentItemWidth: {
     width: Dimensions.get('window').width > 1200 ? '49%' : '100%',
-    flexGrow: 1
+    flexGrow: 1,
   },
   partnerContentItemPairsContainer: {
     display: 'flex',
@@ -130,8 +133,7 @@ const styles = StyleSheet.create({
   },
   partnerContentItemPairs: {
     width: '100%',
-  }
-
+  },
 });
 
 export default Partner;
