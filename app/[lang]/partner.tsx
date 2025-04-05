@@ -1,4 +1,4 @@
-import { BulletListItem, ScreenTemplate, VideoPlayer } from '@/components';
+import { BulletListItem, ScreenTemplate, VideoPlayer, PartnerBanner } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { useMediaQuery } from 'react-responsive';
@@ -6,7 +6,6 @@ import { Assets } from '@/Assets';
 import React from 'react';
 import { LinkButton, LinkText } from '@/UI';
 import { BlurView } from 'expo-blur';
-import PartnerBanner from '@/components/PartnerBanner';
 
 const Partner = () => {
   const { t } = useTranslation();

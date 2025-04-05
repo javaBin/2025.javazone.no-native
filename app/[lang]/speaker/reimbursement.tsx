@@ -2,7 +2,7 @@ import { ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text } from 'react-native';
 import { Assets } from '@/Assets';
-import {LinkText, SectionBox, SvgImage} from '@/UI';
+import { LinkText, SectionBox, SvgImage } from '@/UI';
 import React from 'react';
 
 const Reimbursement = () => {
