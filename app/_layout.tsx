@@ -2,7 +2,7 @@ import * as Localization from 'expo-localization';
 import * as SystemUI from 'expo-system-ui';
 import en from '@/services/i18n/en-US.json';
 import nb from '@/services/i18n/nb-NO.json';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
@@ -16,6 +16,11 @@ import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
 import { LanguagePicker } from '@/components/LanguagePicker';
 import { SvgProps } from 'react-native-svg';
+import { animationDuration, PapyrusMenu } from '@/components/papyrusMenu';
+
+interface PapyrusInterface {
+  closeAnimation: () => {};
+}
 
 const RootLayout = () => {
   const resources = { en, nb };
@@ -213,6 +218,9 @@ const RootLayout = () => {
           <Pressable onPress={() => router.replace(`${lang}/speaker`)}>
             <Text style={styles.navItem}>Speaker</Text>
           </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/volunteers`)}>
+            <Text style={styles.navItem}>Volunteers</Text>
+          </Pressable>
           <Pressable onPress={() => router.replace(`${lang}/info`)}>
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
@@ -221,6 +229,8 @@ const RootLayout = () => {
       </View>
     ),
   };
+
+  const papyrusMenuRef = useRef<PapyrusInterface>();
 
   const nativeScreenOptions = {
     tabBarStyle: styles.tabBar,
@@ -255,7 +265,19 @@ const RootLayout = () => {
       ),
     headerLeft: () => null, // this is to disable "<-" back button on web-app
     headerRight: () => (
-      <Pressable onPress={() => setToggleMenu(!toggleMenu)} style={styles.hamburger}>
+      <Pressable
+        onPress={() => {
+          if (!toggleMenu) {
+            setToggleMenu(true);
+          } else {
+            papyrusMenuRef?.current?.closeAnimation();
+            setTimeout(() => {
+              setToggleMenu(false);
+            }, animationDuration);
+          }
+        }}
+        style={{ ...styles.hamburger }}
+      >
         <SvgImage
           SVG={toggleMenu ? Assets.icons.MenuRoundedActive : Assets.icons.MenuRoundedInactive}
           height={24}
@@ -276,43 +298,19 @@ const RootLayout = () => {
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
-          <BlurView tint="light" intensity={10} style={styles.drawer}>
-            <SvgImage SVG={Assets.UI.PapyrusSheet} height={180} style={{ opacity: 0.9 }} />
-            <View style={styles.drawerContent}>
-              <Link
-                href={{ pathname: `${lang}/program` }}
-                style={styles.drawerItem}
-                onPress={() => setToggleMenu(false)}
-              >
-                Program
-              </Link>
-              <Link
-                href={{ pathname: `${lang}/partner` }}
-                style={styles.drawerItem}
-                onPress={() => setToggleMenu(false)}
-              >
-                Partner
-              </Link>
-              <Link
-                href={{ pathname: `${lang}/speaker` }}
-                style={styles.drawerItem}
-                onPress={() => setToggleMenu(false)}
-              >
-                Speaker
-              </Link>
-              <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={() => setToggleMenu(false)}>
-                Info
-              </Link>
-              <View>{ languageLoaded && <LanguagePicker /> }</View>
-            </View>
-            <SvgImage SVG={Assets.UI.PapyrusRoll} height={25} />
-          </BlurView>
+          <PapyrusMenu
+            ref={papyrusMenuRef}
+            languageLoaded={languageLoaded}
+            setToggleMenu={setToggleMenu}
+            toggleMenu={toggleMenu}
+          />
 
           <Stack initialRouteName="[lang]/index" screenOptions={{ ...screenOptions, ...webScreenOptions }}>
             <Stack.Screen name="[lang]/index" options={{ title: '' }} />
             <Stack.Screen name="[lang]/program" options={{ title: 'Program' }} />
             <Stack.Screen name="[lang]/partner" options={{ title: 'Partner' }} />
             <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
+            <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
             <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
           </Stack>
         </I18nContextProvider>
@@ -354,10 +352,11 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-              name="[lang]/info"
+              name="[lang]/volunteers"
               options={{
-                title: 'Info',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+                title: 'Volunteers',
+                tabBarIcon: ({ focused }) =>
+                  renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
               }}
             />
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
@@ -365,7 +364,6 @@ const RootLayout = () => {
             <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
-
         </I18nContextProvider>
       </SafeAreaProvider>
     );

@@ -280,6 +280,35 @@
       "unlucky": "You were unlucky",
       "unlucky_desc": "We often receive multiple good proposals covering exactly the same topic. The program committee then has to decide between these multiple excellent submissions. In 2016 we received many great proposals covering 'how we do DevOps in the cloud'. Limited space in the program meant that many of these ended up being rejected."
     },
+    "volunteer": {
+      "title": "Become a volunteer at JavaZone",
+      "what_is_javazone": "What is JavaZone?",
+      "description": "JavaZone is the world's largest community-driven Java conference. Every year, over 3200 developers come to Oslo to participate.",
+      "who_are_we_looking_for": "Who are we looking for?",
+      "who_can_apply": "Would you like to contribute to making this event an amazing experience? Are you a student in the fall of 2025?",
+      "apply_now": "Sign up as a volunteer!",
+      "faq_title": "Frequently Asked Questions",
+      "faq": {
+        "language_question": "I don't speak Norwegian, what about me?",
+        "language_answer": "You need to be able to communicate in both Norwegian and English to be a volunteer at JavaZone.",
+        "who_can_volunteer": "Who can be a volunteer at JavaZone?",
+        "who_can_volunteer_answer": "All students who are fluent in both Norwegian and English can become volunteers at JavaZone.",
+        "tasks": "What will I do as a volunteer?",
+        "tasks_answer": "Tasks include hall monitoring, information desk duty, and handing out headsets, among others.",
+        "how_many_volunteers": "How many volunteers participate at JavaZone?",
+        "how_many_volunteers_answer": "Over 50 volunteers participate each year. Interest is high, but it's worth applying!",
+        "learning_opportunities": "Will I get to attend sessions as a volunteer?",
+        "learning_opportunities_answer": "You get about 50% free time to attend talks, eat great food, and network with IT professionals.",
+        "travel": "What about travel if I don’t live in Oslo?",
+        "travel_answer": "JavaZone does not cover travel or accommodation, but check with your university about travel support.",
+        "awezone": "Can I join AweZone?",
+        "awezone_answer": "Yes! No work in the evening – just party and fun!",
+        "when_to_meet": "When do I need to show up as a volunteer?",
+        "when_to_meet_answer": "Training and info will be given on the 2nd of September, and you need to show up both the 3rd and the 4th for the conference.",
+        "application_deadline": "When is the application deadline?",
+        "application_deadline_answer": "The application deadline is Sunday, June 8th."
+      }
+    },
     "reimbursement": {
       "pageTitle": "Reimbursement policy",
       "what_how": "What & How",
