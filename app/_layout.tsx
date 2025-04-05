@@ -123,7 +123,7 @@ const RootLayout = () => {
     },
     tabBarBlurContainer: {
       flex: 1,
-      padding: Platform.OS === 'android' ? 30 : 42,
+      padding: Platform.OS === 'android' ? 36 : 42,
       textAlign: 'center',
       justifyContent: 'center',
       overflow: 'hidden',
@@ -358,6 +358,13 @@ const RootLayout = () => {
                 tabBarIcon: ({ focused }) =>
                   renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
               }}
+            />
+            <Tabs.Screen
+                name="[lang]/info"
+                options={{
+                  title: 'Info',
+                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+                }}
             />
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />

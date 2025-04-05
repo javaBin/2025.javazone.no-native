@@ -1,5 +1,5 @@
 import { partners } from '@/assets/partners/partners';
-import { Text, View, StyleSheet, Dimensions, Animated } from 'react-native';
+import {Text, View, StyleSheet, Dimensions, Animated, Platform} from 'react-native';
 import { Link } from 'expo-router';
 import { SvgImage } from '@/UI';
 
@@ -19,8 +19,7 @@ const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth 
 
 export default function PartnerBanner() {
   return (
-    <View style={styles.wrapper}>
-      <Text style={styles.title}>Partners in 2025</Text>
+    <View style={Platform.OS === 'web' ? styles.wrapper : {}}>
       <View style={styles.partnerContainer}>
         {[...partners]
           .sort(() => Math.random() - 0.5)
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     position: 'relative',
     marginBottom: 40,
+    marginTop: 20,
   },
   title: {
     color: 'black',
@@ -82,11 +82,13 @@ const styles = StyleSheet.create({
   },
   partnerContainer: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: Platform.OS === 'web' ? 'row' : 'column',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    alignItems: 'center',
     gap: '2.5rem',
     width: adjustedScreenWidth, // Use screen width directly
+    height: '100%',
   },
   imageContainer: {
     width: 100,

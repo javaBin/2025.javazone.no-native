@@ -296,7 +296,7 @@ export const Assets = {
       alignItems: 'center',
       justifyContent: 'space-between',
       alignSelf: 'center',
-      marginTop: Platform.OS === 'android' ? 0 : 50,
+      marginTop: 50,
       padding: 10,
     },
     pageTitle: {},
@@ -366,11 +366,11 @@ export const Assets = {
       fontFamily: 'PlayfairDisplay_400Regular',
     },
     shadow: {
-      elevation: 1, // Shadow effect for Android   // denne var 2
       shadowColor: Platform.OS === 'android' ? '#6c605c' : '#403532', // dark-brown, iOS shadow
-      shadowRadius: 7,
-      shadowOpacity: .5,
-      shadowOffset : { width: 0, height: 10 }
+      elevation: 2, // Shadow effect for Android
+      shadowOpacity: Platform.OS === 'android' ? .5 : .1,
+      shadowRadius: Platform.OS === 'android' ? 7 : 3,
+      shadowOffset: Platform.OS === 'android' ? { width: 0, height: 10 } : { width: 0, height: 2 },
     },
   }),
 };
