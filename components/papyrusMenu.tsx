@@ -56,7 +56,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
   const paperHeightAnim = useRef(new Animated.Value(paperHeightStart)).current;
 
   useEffect(() => {
-    console.log(paperHeightAnim)
+    console.log(paperHeightAnim);
     if (toggleMenu) {
       Animated.stagger(1, [
         Animated.timing(rollPositionAnim, {
@@ -119,7 +119,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           Speaker
         </Link>
         <Link href={{ pathname: `${lang}/speaker/kids` }} style={styles.drawerItem} onPress={onPressItem}>
-           JavaZone Kids
+          JavaZone Kids
         </Link>
         <Link href={{ pathname: `${lang}/volunteers` }} style={styles.drawerItem} onPress={onPressItem}>
           Volunteers
@@ -134,7 +134,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           transform: [{ translateY: rollPositionAnim }],
         }}
       >
-        <SvgImage SVG={Assets.UI.PapyrusRoll} height={26} />
+        <SvgImage SVG={Assets.UI.PapyrusRoll} height={29.5} />
       </Animated.View>
     </AnimatedBlurView>
   );
