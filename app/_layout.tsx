@@ -123,7 +123,7 @@ const RootLayout = () => {
     },
     tabBarBlurContainer: {
       flex: 1,
-      padding: 42,
+      padding: Platform.OS === 'android' ? 30 : 42,
       textAlign: 'center',
       justifyContent: 'center',
       overflow: 'hidden',
