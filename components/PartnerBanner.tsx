@@ -6,7 +6,6 @@ import { SvgImage } from '@/UI';
 const screenWidth = Dimensions.get('window').width;
 const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
 
-
 export default function PartnerBanner() {
   return (
     <View style={Platform.OS === 'web' ? styles.wrapper : {}}>
