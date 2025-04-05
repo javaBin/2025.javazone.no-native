@@ -101,6 +101,19 @@ import Twoday from '@/assets/partners/twoday.svg';
 import Uptime from '@/assets/partners/uptime.svg';
 import Vaadin from '@/assets/partners/vaadin.svg';
 import Webstep from '@/assets/partners/webstep.svg';
+import Apotek1 from '@/assets/partners/apotek1.svg';
+import BankID from '@/assets/partners/BankIDBankaxept.svg';
+import Bronoy from '@/assets/partners/brreg.svg';
+import Crayon from '@/assets/partners/crayonconsulting.svg';
+import ElOgIt from '@/assets/partners/elogit.svg';
+import GE from '@/assets/partners/ge.svg';
+import JetBrains from '@/assets/partners/jetbrains.svg';
+import JPRO from '@/assets/partners/jpro.svg';
+import Mastercard from '@/assets/partners/mastercard.svg';
+import Sonat from '@/assets/partners/sonat.svg';
+import Tomra from '@/assets/partners/tomra.svg';
+import Yne from '@/assets/partners/yne.svg';
+import Ambita from '@/assets/partners/ambita.svg';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -230,6 +243,18 @@ export const Assets = {
     Uptime,
     Vaadin,
     Webstep,
+    Apotek1,
+    BankID,
+    Bornoy: Bronoy,
+    Crayon,
+    ElOgIt,
+    GE,
+    JetBrains,
+    JPRO,
+    Mastercard,
+    Sonat,
+    Tomra,
+    Ambita,
   },
   colors: {
     transparent: 'transparent',
@@ -431,4 +456,17 @@ export {
   Embriq,
   Kodemaker,
   Miles,
+  Apotek1,
+  BankID,
+  Bronoy,
+  Crayon,
+  ElOgIt,
+  GE,
+  JetBrains,
+  JPRO,
+  Mastercard,
+  Sonat,
+  Tomra,
+  Yne,
+  Ambita,
 };
