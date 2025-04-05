@@ -1,10 +1,8 @@
 import { Assets } from '@/Assets';
 import { ScreenTemplate } from '@/components';
-import { LinkButton, SectionBox, ToggleText } from '@/UI';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { LinkButton, SectionBox } from '@/UI';
 import { useTranslation } from 'react-i18next';
-import { Text, View, Dimensions } from 'react-native';
+import { Text, View } from 'react-native';
 
 interface FaqItem {
   key: string;
@@ -14,7 +12,6 @@ interface FaqItem {
 
 const Volunteers: React.FC = () => {
   const { t } = useTranslation();
-  const screenWidth = Dimensions.get('window').width;
 
   const faqItems: FaqItem[] = [
     { key: 'language', title: t('volunteer.faq.language_question'), answer: t('volunteer.faq.language_answer') },

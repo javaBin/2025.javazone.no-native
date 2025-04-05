@@ -5,7 +5,7 @@ import nb from '@/services/i18n/nb-NO.json';
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
+import { Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Stack } from 'expo-router/stack';

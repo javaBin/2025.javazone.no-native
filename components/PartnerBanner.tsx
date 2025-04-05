@@ -1,5 +1,5 @@
 import { partners } from '@/assets/partners/partners';
-import {Text, View, StyleSheet, Dimensions, Animated, Platform} from 'react-native';
+import { View, StyleSheet, Dimensions, Animated, Platform} from 'react-native';
 import { Link } from 'expo-router';
 import { SvgImage } from '@/UI';
 
@@ -7,10 +7,6 @@ interface Partner {
   homepageUrl: string;
   name: string;
   logoUrl: string;
-}
-
-interface Props {
-  partners: Partner[];
 }
 
 const screenWidth = Dimensions.get('window').width;
