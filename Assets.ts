@@ -48,7 +48,6 @@ import Accenture from '@/assets/partners/accenture.svg';
 import Arktekk from '@/assets/partners/arktekk.svg';
 import Bekk from '@/assets/partners/bekk.svg';
 import Bouvet from '@/assets/partners/bouvet.svg';
-import Buypass from '@/assets/partners/buypass.svg';
 import Capgemini from '@/assets/partners/capgemini.svg';
 import Capra from '@/assets/partners/capra.svg';
 import CGI from '@/assets/partners/cgi.svg';
@@ -58,13 +57,11 @@ import DNB from '@/assets/partners/dnb.svg';
 import Elastic from '@/assets/partners/elastic.svg';
 import Embriq from '@/assets/partners/embriq.svg';
 import Entur from '@/assets/partners/entur.svg';
-import Experis from '@/assets/partners/experis-cropped.svg';
 import Finn from '@/assets/partners/finn.svg';
 import Fremtind from '@/assets/partners/fremtind.svg';
 import Gjensidige from '@/assets/partners/gjensidige.svg';
 import Google from '@/assets/partners/google.svg';
 import Husbanken from '@/assets/partners/husbanken.svg';
-import Itera from '@/assets/partners/itera.svg';
 import Kantega from '@/assets/partners/kantega.svg';
 import Knowit from '@/assets/partners/knowit.svg';
 import Kodemaker from '@/assets/partners/kodemaker.svg';
@@ -73,31 +70,23 @@ import NAV from '@/assets/partners/nav.svg';
 import Netcompany from '@/assets/partners/netcompany-cropped.svg';
 import NorskTipping from '@/assets/partners/norsktipping.svg';
 import KSDigitaleFellestjenester from '@/assets/partners/ks-digitale-fellestjenester.svg';
-import NovariIKS from '@/assets/partners/novari.svg';
-import Oslo from '@/assets/partners/oslo.svg';
 import PolitietPIT from '@/assets/partners/politietpit.svg';
 import PostenBring from '@/assets/partners/postenbring.svg';
-import Protector from '@/assets/partners/protector.svg';
 import RedHat from '@/assets/partners/redhat.svg';
-import SafetyWing from '@/assets/partners/safetywing-cropped.svg';
 import Scelto from '@/assets/partners/scelto.svg';
 import Scienta from '@/assets/partners/scienta.svg';
 import Skatteetaten from '@/assets/partners/skatteetaten.svg';
 import SopraSteria from '@/assets/partners/soprasteria.svg';
 import Sparebank1 from '@/assets/partners/sparebank1.svg';
-import Spirgroup from '@/assets/partners/spirgroup-cropped.svg';
-import SSB from '@/assets/partners/ssb.svg';
 import StatensVegvesen from '@/assets/partners/statensvegvesen.svg';
 import Statnett from '@/assets/partners/statnett.svg';
 import Storebrand from '@/assets/partners/storebrand.svg';
 import Systek from '@/assets/partners/systek.svg';
-import Techpros from '@/assets/partners/techpros.svg';
 import Telenor from '@/assets/partners/telenor.svg';
 import TetDigital from '@/assets/partners/tetdigital.svg';
 import Tietoevry from '@/assets/partners/tietoevry.svg';
 import Tolletaten from '@/assets/partners/tolletaten.svg';
 import Tripletex from '@/assets/partners/tripletex.svg';
-import Twoday from '@/assets/partners/twoday.svg';
 import Uptime from '@/assets/partners/uptime.svg';
 import Vaadin from '@/assets/partners/vaadin.svg';
 import Webstep from '@/assets/partners/webstep.svg';
@@ -190,7 +179,6 @@ export const Assets = {
     Arktekk,
     Bekk,
     Bouvet,
-    Buypass,
     Capgemini,
     Capra,
     CGI,
@@ -200,13 +188,11 @@ export const Assets = {
     Elastic,
     Embriq,
     Entur,
-    Experis,
     Finn,
     Fremtind,
     Gjensidige,
     Google,
     Husbanken,
-    Itera,
     Kantega,
     Knowit,
     Kodemaker,
@@ -215,31 +201,23 @@ export const Assets = {
     Netcompany,
     NorskTipping,
     KSDigitaleFellestjenester,
-    NovariIKS,
-    Oslo,
     PolitietPIT,
     PostenBring,
-    Protector,
     RedHat,
-    SafetyWing,
     Scelto,
     Scienta,
     Skatteetaten,
     SopraSteria,
     Sparebank1,
-    Spirgroup,
-    SSB,
     StatensVegvesen,
     Statnett,
     Storebrand,
     Systek,
-    Techpros,
     Telenor,
     TetDigital,
     Tietoevry,
     Tolletaten,
     Tripletex,
-    Twoday,
     Uptime,
     Vaadin,
     Webstep,
@@ -402,43 +380,33 @@ export {
   Capra,
   CGI,
   DNB,
-  Itera,
   Kantega,
   Knowit,
   NAV,
   Netcompany,
   NorskTipping,
   KSDigitaleFellestjenester,
-  NovariIKS,
-  Oslo,
   PolitietPIT,
   PostenBring,
-  Protector,
   RedHat,
-  SafetyWing,
   Scelto,
   Scienta,
   Skatteetaten,
   SopraSteria,
   Sparebank1,
-  Spirgroup,
-  SSB,
   StatensVegvesen,
   Statnett,
   Storebrand,
   Systek,
-  Techpros,
   Telenor,
   TetDigital,
   Tietoevry,
   Tolletaten,
   Tripletex,
-  Twoday,
   Uptime,
   Vaadin,
   Webstep,
   Entur,
-  Experis,
   Finn,
   Fremtind,
   Gjensidige,
@@ -449,7 +417,6 @@ export {
   Arktekk,
   Bekk,
   Bouvet,
-  Buypass,
   Cloudberries,
   Computas,
   Elastic,
