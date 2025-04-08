@@ -1,6 +1,6 @@
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
-import {Platform, Text, View} from 'react-native';
+import {Platform, Text } from 'react-native';
 import React from 'react';
 
 type SectionBoxProps = {
