@@ -195,7 +195,7 @@ const RootLayout = () => {
       fontSize: 18,
       margin: 5,
       textShadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
-    },
+    }
   });
 
   const screenOptions = {
@@ -217,6 +217,9 @@ const RootLayout = () => {
           </Pressable>
           <Pressable onPress={() => router.replace(`${lang}/speaker`)}>
             <Text style={styles.navItem}>Speaker</Text>
+          </Pressable>
+          <Pressable onPress={() => router.replace(`${lang}/speaker/kids`)}>
+            <Text style={styles.navItem}>JavaZone Kids</Text>
           </Pressable>
           <Pressable onPress={() => router.replace(`${lang}/volunteers`)}>
             <Text style={styles.navItem}>Volunteers</Text>
@@ -304,7 +307,6 @@ const RootLayout = () => {
             setToggleMenu={setToggleMenu}
             toggleMenu={toggleMenu}
           />
-
           <Stack initialRouteName="[lang]/index" screenOptions={{ ...screenOptions, ...webScreenOptions }}>
             <Stack.Screen name="[lang]/index" options={{ title: '' }} />
             <Stack.Screen name="[lang]/program" options={{ title: 'Program' }} />
