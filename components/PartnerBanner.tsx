@@ -1,14 +1,15 @@
 import { partners } from '@/assets/partners/partners';
 import { View, StyleSheet, Dimensions, Animated, Platform} from 'react-native';
 import { Link } from 'expo-router';
-import { SvgImage } from '@/UI';
+import { SvgCallbackImage } from '@/UI';
 
 const screenWidth = Dimensions.get('window').width;
 const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
+const adjustedLogoSize = screenWidth > 768 ? 150 : 80;
 
 export const PartnerBanner = () => {
   return (
-    <View style={Platform.OS === 'web' ? styles.wrapper : {}}>
+    <View style={styles.wrapper}>
       <View style={styles.partnerContainer}>
         {[...partners]
           .sort(() => Math.random() - 0.5)
@@ -42,7 +43,7 @@ export const PartnerBanner = () => {
                 onPointerLeave={handleMouseLeave}
               >
                 <Link target={"_blank"} href={partner.homepageUrl} style={styles.link}>
-                  <SvgImage SVG={partner.logoUrl} height={80} />
+                  <SvgCallbackImage SVG={partner.logoUrl} height={adjustedLogoSize} width={adjustedLogoSize} />
                 </Link>
               </Animated.View>
             );
@@ -54,7 +55,7 @@ export const PartnerBanner = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: adjustedScreenWidth,
+    width: Platform.OS === "web" ? adjustedScreenWidth : '100%',
     overflow: 'hidden',
     flexWrap: 'nowrap',
     position: 'relative',
@@ -70,20 +71,19 @@ const styles = StyleSheet.create({
     fontFamily: 'Cinzel_400Regular',
   },
   partnerContainer: {
-    display: 'flex',
-    flexDirection: Platform.OS === 'web' ? 'row' : 'column',
+    flex: 1,
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
     gap: '2.5rem',
-    width: adjustedScreenWidth, // Use screen width directly
     height: '100%',
   },
   imageContainer: {
-    width: 100,
+    width: Dimensions.get('window').width > 768 ? 200 : 100,
+    objectFit: "contain"
   },
   link: {
-    width: '100%',
-    height: '100%',
+    width: Dimensions.get('window').width > 768 ? 200 : 100,
   },
 });
