@@ -1,7 +1,7 @@
 import { partners } from '@/assets/partners/partners';
 import { View, StyleSheet, Dimensions, Animated, Platform} from 'react-native';
 import { Link } from 'expo-router';
-import { SvgCallbackImage } from '@/UI';
+import {SvgCallbackImage, SvgImage} from '@/UI';
 
 const screenWidth = Dimensions.get('window').width;
 const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
@@ -43,7 +43,7 @@ export const PartnerBanner = () => {
                 onPointerLeave={handleMouseLeave}
               >
                 <Link target={"_blank"} href={partner.homepageUrl} style={styles.link}>
-                  <SvgCallbackImage SVG={partner.logoUrl} height={adjustedLogoSize} width={adjustedLogoSize} />
+                  <SvgImage SVG={partner.logoUrl} height={adjustedLogoSize} width={adjustedLogoSize} />
                 </Link>
               </Animated.View>
             );
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: Dimensions.get('window').width > 768 ? 200 : 100,
-    objectFit: "contain"
+    objectFit: "contain",
+    padding: 10
   },
   link: {
     width: Dimensions.get('window').width > 768 ? 200 : 100,

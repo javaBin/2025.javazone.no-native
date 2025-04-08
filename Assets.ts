@@ -43,9 +43,7 @@ import Speaker from '@/assets/icons/speaker.svg';
 import SpeakerInactive from '@/assets/icons/speaker-inactive.svg';
 
 // Partner logos
-import Aboveit from '@/assets/partners/aboveit.svg';
 import Accenture from '@/assets/partners/accenture.svg';
-import Arktekk from '@/assets/partners/arktekk.svg';
 import Bekk from '@/assets/partners/bekk.svg';
 import Bouvet from '@/assets/partners/bouvet.svg';
 import Capgemini from '@/assets/partners/capgemini.svg';
@@ -174,9 +172,7 @@ export const Assets = {
     HandHeartActive,
   },
   partnerLogos: {
-    Aboveit,
     Accenture,
-    Arktekk,
     Bekk,
     Bouvet,
     Capgemini,
@@ -414,9 +410,7 @@ export {
   Gjensidige,
   Google,
   Husbanken,
-  Aboveit,
   Accenture,
-  Arktekk,
   Bekk,
   Bouvet,
   Cloudberries,

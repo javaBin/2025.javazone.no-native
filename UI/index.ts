@@ -1,5 +1,4 @@
-import SvgImage from '@/UI/SvgImage';
-import {SvgCallbackImage} from "@/UI/SvgImage";
+import SvgImage, { SvgCallbackImage } from '@/UI/SvgImage';
 import CircleImage from '@/UI/CircleImage';
 import ToggleText from '@/UI/ToggleText';
 import LinkText from '@/UI/LinkText';

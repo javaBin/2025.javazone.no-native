@@ -56,8 +56,6 @@ import {
   Ambita,
   NAV,
   KSDigitaleFellestjenester,
-  Arktekk,
-  Aboveit,
 } from '../../Assets';
 import { FunctionComponent } from 'react';
 import { SvgProps } from 'react-native-svg';
@@ -126,6 +124,4 @@ export const partners: Partner[] = [
   { name: 'Ambita', homepageUrl: 'https://www.ambita.com', logoUrl: Ambita },
   { name: 'NAV', homepageUrl: 'https://www.nav.no', logoUrl: NAV },
   { name: 'KS Digitale Fellestjenester', homepageUrl: 'https://www.ks.no', logoUrl: KSDigitaleFellestjenester },
-  { name: 'Arktekk', homepageUrl: 'https://www.arktekk.no', logoUrl: Arktekk },
-  { name: 'Aboveit', homepageUrl: 'https://www.aboveit.no', logoUrl: Aboveit },
 ];
