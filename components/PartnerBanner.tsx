@@ -1,7 +1,7 @@
 import { partners } from '@/assets/partners/partners';
 import { View, StyleSheet, Dimensions, Animated, Platform } from 'react-native';
 import { Link } from 'expo-router';
-import { SvgImage} from '@/UI';
+import { SvgImage } from '@/UI';
 
 const screenWidth = Dimensions.get('window').width;
 const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
