@@ -1,7 +1,7 @@
 import { BulletListItem, ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { LinkText, LinkButton, SectionBox, SvgImage } from '@/UI';
-import { Text } from 'react-native';
+import {Platform, Text} from 'react-native';
 import { Assets } from '@/Assets';
 import React from 'react';
 import { useGlobalSearchParams } from 'expo-router';
@@ -30,10 +30,11 @@ const Speaker = () => {
         <Text style={Assets.styles.text}>{t('speakers.importance_of_speakers')}</Text>
         <Text style={Assets.styles.text}>{t('speakers.commitment_to_diversity')}</Text>
         <LinkButton
-          href="https://vimeo.com/javazone"
-          title={t('speakers.vimeo')}
-          targetBlank={true}
-          margin={isMobile ? 10 : 20}
+            href="https://vimeo.com/javazone"
+            title={t('speakers.vimeo')}
+            targetBlank={true}
+            margin={Platform.OS !== 'android' && isMobile ? 10 : 20}
+            androidBlurPatch={Platform.OS === 'android'}
         />
       </SectionBox>
 

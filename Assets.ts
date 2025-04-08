@@ -331,14 +331,15 @@ export const Assets = {
       width: '100%',
     },
     section: {
+      /** note: this cannot have overflow hidden, that will remove shadow on iOS,
+       * it cannot have borderRadius either, because that would require overflow hidden
+       * so let it have sharp edges on native, prioritize contrast over roundness */
       width: '100%',
       marginHorizontal: 20,
       marginVertical: 8,
-      borderRadius: Platform.OS === 'android' ? 10 : 5,
       paddingVertical: 20,
       paddingHorizontal: 30,
-      overflow: "hidden",
-      backgroundColor: 'transparent',
+      borderRadius: 5, // only for web
     },
     intro: {
       color: '#403532', // dark-brown
@@ -365,11 +366,12 @@ export const Assets = {
       fontFamily: 'PlayfairDisplay_400Regular',
     },
     shadow: {
-      shadowColor: Platform.OS === 'android' ? '#6c605c' : '#403532', // dark-brown, iOS shadow
-      elevation: 2, // Shadow effect for Android
-      shadowOpacity: Platform.OS === 'android' ? .5 : .1,
-      shadowRadius: Platform.OS === 'android' ? 7 : 3,
-      shadowOffset: Platform.OS === 'android' ? { width: 0, height: 10 } : { width: 0, height: 2 },
+      /** note: this will only work if overflow hidden is disabled, see comment under Assets.styles.section */
+      shadowColor: '#403532', // dark-brown
+      elevation: 7, // android
+      shadowRadius: Platform.OS === 'web' ? 3 : 7,
+      shadowOpacity: Platform.OS === 'web' ? .1 : .2,
+      shadowOffset: { width: 0, height: 3 },
     },
   }),
 };

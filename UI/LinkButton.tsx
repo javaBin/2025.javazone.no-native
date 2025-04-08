@@ -2,7 +2,7 @@ import React from 'react';
 import { Assets } from '@/Assets';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from 'expo-router';
-import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import {Dimensions, Platform, StyleSheet, TouchableOpacity} from 'react-native';
 
 type LinkButtonProps = {
   href: string;
@@ -10,16 +10,22 @@ type LinkButtonProps = {
   targetBlank?: boolean;
   margin?: number;
   disabled?: boolean;
+  androidBlurPatch?: boolean;
 };
 
-const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin, disabled }) => {
+const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margin, disabled, androidBlurPatch }) => {
   return (
     <TouchableOpacity
-      style={[styles.buttonContainer, { margin: margin ? margin : 0 }, disabled && styles.disabledButton]}
+      style={[
+        styles.buttonContainer,
+        disabled && styles.disabledButton,
+        androidBlurPatch && Platform.OS === 'android' ? styles.blurPatch : {},
+        { margin: margin ? margin : 5 }
+      ]}
       disabled={disabled}
     >
         <LinearGradient
-          style={styles.gradient}
+          style={[styles.gradient, Assets.styles.shadow]}
           colors={[Assets.colors.jz2025ThemeColors.crimsonRed, Assets.colors.jz2025ThemeColors.gradientRed]}
         >
           <Link
@@ -38,16 +44,22 @@ const LinkButton: React.FC<LinkButtonProps> = ({ href, title, targetBlank, margi
 export default LinkButton;
 
 const styles = StyleSheet.create({
+  blurPatch: {
+    //elevation: 25,
+    //shadowColor: '#f7f3f1',//'rgba(247, 243, 241, 0.5)',
+    //shadowRadius: 25,
+    boxShadow: '0 0 25 5 rgba(247, 243, 241, 0.9)',
+    //borderTopWidth: 20,
+    //borderBottomWidth: 20,
+    //borderWidth: 5,
+    //borderColor: 'rgba(247, 243, 241, 0.3)',
+    //shadowOpacity: .9,
+    //shadowOffset: { width: 0, height: 0 },
+  },
   buttonContainer: {
-    margin: 5,
     borderRadius: 5,
     alignSelf: 'center',
-    elevation: 2, // Shadow effect for Android
-    shadowColor: Assets.colors.jz2025ThemeColors.darkBrown, // iOS shadow
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    shadowOffset: { width: 0, height: 2 },
-    minWidth: 300
+    minWidth: 300,
   },
   gradient: {
     borderRadius: 5,
