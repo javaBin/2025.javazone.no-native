@@ -45,16 +45,8 @@ export default LinkButton;
 
 const styles = StyleSheet.create({
   blurPatch: {
-    //elevation: 25,
-    //shadowColor: '#f7f3f1',//'rgba(247, 243, 241, 0.5)',
-    //shadowRadius: 25,
+    /** Blur patch needed for buttons in a blurView (android only) - see PR 49 */
     boxShadow: '0 0 25 5 rgba(247, 243, 241, 0.9)',
-    //borderTopWidth: 20,
-    //borderBottomWidth: 20,
-    //borderWidth: 5,
-    //borderColor: 'rgba(247, 243, 241, 0.3)',
-    //shadowOpacity: .9,
-    //shadowOffset: { width: 0, height: 0 },
   },
   buttonContainer: {
     borderRadius: 5,

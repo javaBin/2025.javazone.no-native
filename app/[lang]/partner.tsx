@@ -84,6 +84,7 @@ const Partner = () => {
             title={t('partner.partner_info.order_tickets')}
             targetBlank={true}
             margin={isMobile ? 10 : 20}
+            androidBlurPatch={Platform.OS === 'android'}
           />
         </BlurView>
       </View>
