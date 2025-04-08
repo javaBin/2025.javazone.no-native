@@ -1,5 +1,5 @@
 import { partners } from '@/assets/partners/partners';
-import { View, StyleSheet, Dimensions, Animated, Platform} from 'react-native';
+import { View, StyleSheet, Dimensions, Animated, Platform } from 'react-native';
 import { Link } from 'expo-router';
 import { SvgImage} from '@/UI';
 
