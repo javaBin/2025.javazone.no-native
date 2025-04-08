@@ -1,6 +1,6 @@
 import { BulletListItem, ScreenTemplate, VideoPlayer, PartnerBanner } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import {Dimensions, Platform, StyleSheet, Text, View} from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 import React from 'react';
@@ -30,7 +30,7 @@ const Partner = () => {
       </Text>
 
       <View style={styles.partnerContentInfo}>
-        <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemWidth]}>
+        <BlurView tint="light" intensity={Platform.OS === 'android' ? 40 : 20} experimentalBlurMethod={'dimezisBlurView'} style={[styles.partnerContentItem, styles.partnerContentItemWidth, Assets.styles.shadow]}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.standard_package')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 100 000,- NOK ex VAT</Text>
 
@@ -43,7 +43,7 @@ const Partner = () => {
           <BulletListItem text={t('partner.partner_info.standard_package_detail_7')} />
         </BlurView>
 
-        <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemWidth]}>
+        <BlurView tint="light" intensity={Platform.OS === 'android' ? 40 : 20} experimentalBlurMethod={'dimezisBlurView'} style={[styles.partnerContentItem, styles.partnerContentItemWidth, Assets.styles.shadow]}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.restaurant_stand')}</Text>
           <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
 
@@ -54,7 +54,7 @@ const Partner = () => {
         </BlurView>
 
         <View style={[styles.partnerContentItemWidth, styles.partnerContentItemPairsContainer]}>
-          <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemPairs]}>
+          <BlurView tint="light" intensity={Platform.OS === 'android' ? 40 : 20} experimentalBlurMethod={'dimezisBlurView'} style={[styles.partnerContentItem, styles.partnerContentItemPairs, Assets.styles.shadow]}>
             <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.concept_stand')}</Text>
             <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 190 000,- NOK ex VAT</Text>
 
@@ -63,14 +63,14 @@ const Partner = () => {
             <BulletListItem text={t('partner.partner_info.concept_stand_detail_3')} />
           </BlurView>
 
-          <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemPairs]}>
+          <BlurView tint="light" intensity={Platform.OS === 'android' ? 40 : 20} experimentalBlurMethod={'dimezisBlurView'} style={[styles.partnerContentItem, styles.partnerContentItemPairs, Assets.styles.shadow]}>
             <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.extended_package')}</Text>
             <Text style={Assets.styles.intro}>{t('partner.partner_info.price')}: 160 000,- NOK ex VAT</Text>
             <Text style={Assets.styles.text}>{t('partner.partner_info.same_as_standard')}</Text>
           </BlurView>
         </View>
 
-        <BlurView tint="light" intensity={20} style={[styles.partnerContentItem, styles.partnerContentItemWidth]}>
+        <BlurView tint="light" intensity={Platform.OS === 'android' ? 40 : 20} experimentalBlurMethod={'dimezisBlurView'} style={[styles.partnerContentItem, styles.partnerContentItemWidth, Assets.styles.shadow]}>
           <Text style={Assets.styles.sectionSubTitle}>{t('partner.partner_info.partner_tickets')}</Text>
           <Text style={Assets.styles.intro}>
             {t('partner.partner_info.price')}: 9 220,- NOK ex VAT {'\n'}incl ticket fee
