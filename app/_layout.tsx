@@ -5,7 +5,7 @@ import nb from '@/services/i18n/nb-NO.json';
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { I18nContextProvider } from '@/contexts/I18nContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Link, Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
+import { Tabs, useGlobalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppState, Dimensions, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Stack } from 'expo-router/stack';
@@ -112,21 +112,24 @@ const RootLayout = () => {
   const styles = StyleSheet.create({
     tabBar: {
       position: 'absolute',
-      bottom: 0,
+      bottom: Platform.OS === 'android' ? 15 : -5, // don't change! 💅🏼
     },
     tabBarLabel: {
       fontSize: 12,
       fontFamily: 'Cinzel_400Regular',
+      alignSelf: 'center',
+      display: 'flex',
+      width: "100%",
     },
     tabBarBlurContainer: {
       flex: 1,
-      padding: 42,
+      padding: Platform.OS === 'android' ? 36 : 42,
       textAlign: 'center',
       justifyContent: 'center',
       overflow: 'hidden',
       position: 'absolute',
       width: '100%',
-      bottom: 0, // only moves blurContainer, not the actual tabs
+      bottom: Platform.OS === 'android' ? -15 : 10, // don't change! 💅🏼
     },
     header: {
       display: 'flex',
@@ -225,7 +228,9 @@ const RootLayout = () => {
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
         </View>
-        <View>{screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null}</View>
+        <View style={{display: screenWidth > 834 ? 'flex' : 'none'}}>
+          {languageLoaded && <LanguagePicker />}
+        </View>
       </View>
     ),
   };
@@ -237,31 +242,18 @@ const RootLayout = () => {
     tabBarLabelStyle: styles.tabBarLabel,
     tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
     tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
-    tabBarBackground: () => <BlurView tint="light" intensity={80} style={styles.tabBarBlurContainer} />,
+    tabBarBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={styles.tabBarBlurContainer} />,
     headerShown: true,
     headerTransparent: true,
-    headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
+    headerBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={[StyleSheet.absoluteFill]} />,
     headerTitle: '',
     headerBackButtonMenuEnabled: true,
+    headerRight: () => languageLoaded && <LanguagePicker />,
   };
 
   const webScreenOptions = {
-    headerTransparent: screenWidth > 768,
-    headerBackground: () =>
-      screenWidth > 768 ? (
-        <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />
-      ) : (
-        <View
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              backgroundColor: Assets.colors.jz2025ThemeColors.sheetOpacity,
-              borderBottomColor: '#403431',
-              borderBottomWidth: 0.1,
-            },
-          ]}
-        />
-      ),
+    headerTransparent: true,
+    headerBackground: () => <BlurView tint="light" intensity={100} style={[StyleSheet.absoluteFill]} />,
     headerLeft: () => null, // this is to disable "<-" back button on web-app
     headerRight: () => (
       <Pressable
@@ -356,6 +348,13 @@ const RootLayout = () => {
                 tabBarIcon: ({ focused }) =>
                   renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
               }}
+            />
+            <Tabs.Screen
+                name="[lang]/info"
+                options={{
+                  title: 'Info',
+                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+                }}
             />
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />

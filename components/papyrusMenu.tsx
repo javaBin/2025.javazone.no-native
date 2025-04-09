@@ -2,8 +2,8 @@ import { Assets } from '@/Assets';
 import { SvgImage } from '@/UI';
 import BlurView from 'expo-blur/build/BlurView';
 import { Link, useGlobalSearchParams } from 'expo-router';
-import { Dispatch, SetStateAction, useEffect, useRef, useState, useImperativeHandle, forwardRef } from 'react';
-import { View, StyleSheet, useAnimatedValue, Animated, Easing } from 'react-native';
+import { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
+import { View, StyleSheet, Animated, Easing } from 'react-native';
 import { LanguagePicker } from './LanguagePicker';
 
 interface Props {
@@ -18,6 +18,11 @@ const rollPositionStart = -215;
 const paperHeightStart = 0;
 export const animationDuration = 650;
 
+/** Be very careful if you really have to change this file 🥹
+ *  the animation positions, width, height, top and right attributes etc...
+ *  are very exact and perfectly aligned as is
+ */
+
 export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: Props, ref) => {
   const { lang } = useGlobalSearchParams();
 
@@ -25,11 +30,12 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
     drawer: {
       position: 'absolute',
       zIndex: 1,
-      right: 0,
-      top: 63.5, // default header height 64 - do not change!
+      right: -1,
+      top: 64, // default header height 64 - do not change! 💅🏼
       display: toggleMenu ? 'flex' : 'none',
       justifyContent: 'flex-start',
       overflow: 'hidden',
+      width: 260,
     },
     drawerContent: {
       position: 'absolute',
@@ -39,12 +45,13 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
       width: '100%',
       alignItems: 'center',
       justifyContent: 'space-evenly',
+      paddingVertical: 10
     },
     drawerItem: {
       color: Assets.colors.jz2025ThemeColors.darkBrown,
       paddingHorizontal: 20,
       marginVertical: 5,
-      fontSize: 16,
+      fontSize: 18,
       fontFamily: 'PlayfairDisplay_400Regular',
       textShadowColor: Assets.colors.brand.beige,
       textShadowOffset: { width: 0, height: 0.2 },
@@ -65,7 +72,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           useNativeDriver: false,
         }),
         Animated.timing(paperHeightAnim, {
-          toValue: 250,
+          toValue: 298.5,
           duration: animationDuration,
           easing: Easing.linear,
           useNativeDriver: false,
@@ -105,8 +112,8 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
   };
 
   return (
-    <AnimatedBlurView tint="light" intensity={10} style={{ ...styles.drawer, height: paperHeightAnim }}>
-      <SvgImage SVG={Assets.UI.PapyrusSheet} height={220} style={{ opacity: 0.9 }} />
+    <AnimatedBlurView tint="light" intensity={0} style={{ ...styles.drawer, height: paperHeightAnim }}>
+      <SvgImage SVG={Assets.UI.PapyrusSheet} height={315} width={250} style={{ opacity: 1, position: 'absolute', right: 5, top: -19 }} />
       <View style={styles.drawerContent}>
         <Link href={{ pathname: `${lang}/program` }} style={styles.drawerItem} onPress={onPressItem}>
           Program
@@ -133,7 +140,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           transform: [{ translateY: rollPositionAnim }],
         }}
       >
-        <SvgImage SVG={Assets.UI.PapyrusRoll} height={29.5} />
+        <SvgImage SVG={Assets.UI.PapyrusRoll} height={40} style={{marginTop: 260, position: 'absolute', right: -.5}} />
       </Animated.View>
     </AnimatedBlurView>
   );

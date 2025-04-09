@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 274.81 295.01"><defs><style>.cls-1{fill:#e8dacf;stroke:#403431;stroke-linecap:round;stroke-miterlimit:10;}</style></defs><g id="Layer_1-2"><polyline class="cls-1" points="273.79 294.51 273.79 201.97 269.44 197.63 274.31 193.8 274.31 141.3 265.62 137.83 274.31 134 274.31 63.77 263.18 59.6 274.31 51.61 274.31 .5 8 .5 .5 8.34 .5 59.76 9.04 66.9 .5 75.41 .5 119.38 9.19 126.35 .5 130.56 .5 174.53 7.63 180.49 .5 188.31 .5 241.15 9.19 244.91 .5 248.3 .5 294.51 273.79 294.51"/></g></svg>
+<svg width="275" height="329" viewBox="0 0 275 329" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M273.884 328.442V225.24L269.531 220.4L274.405 216.129V157.58L265.709 153.71L274.405 149.439V71.1174L263.267 66.4669L274.405 57.5563V0.557617H7.91058L0.405396 9.30091V66.6453L8.9513 74.608L0.405396 84.0985V133.135L9.1014 140.908L0.405396 145.603V194.639L7.54032 201.285L0.405396 210.006V268.934L9.1014 273.128L0.405396 276.908V328.442H273.884Z" fill="url(#paint0_linear_16_4)"/>
+    <defs>
+        <linearGradient id="paint0_linear_16_4" x1="137.405" y1="0.557617" x2="137.405" y2="328.442" gradientUnits="userSpaceOnUse">
+            <stop offset="0.501744" stop-color="#F7F3F1"/>
+            <stop offset="1" stop-color="#C8C0BB"/>
+        </linearGradient>
+    </defs>
+</svg>

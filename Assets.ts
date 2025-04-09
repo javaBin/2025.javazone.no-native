@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 // @ts-ignore
 import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 
@@ -43,9 +43,7 @@ import Speaker from '@/assets/icons/speaker.svg';
 import SpeakerInactive from '@/assets/icons/speaker-inactive.svg';
 
 // Partner logos
-import Aboveit from '@/assets/partners/aboveit.svg';
 import Accenture from '@/assets/partners/accenture.svg';
-import Arktekk from '@/assets/partners/arktekk.svg';
 import Bekk from '@/assets/partners/bekk.svg';
 import Bouvet from '@/assets/partners/bouvet.svg';
 import Capgemini from '@/assets/partners/capgemini.svg';
@@ -174,9 +172,7 @@ export const Assets = {
     HandHeartActive,
   },
   partnerLogos: {
-    Aboveit,
     Accenture,
-    Arktekk,
     Bekk,
     Bouvet,
     Capgemini,
@@ -335,12 +331,15 @@ export const Assets = {
       width: '100%',
     },
     section: {
+      /** note: this cannot have overflow hidden, that will remove shadow on iOS,
+       * it cannot have borderRadius either, because that would require overflow hidden
+       * so let it have sharp edges on native, prioritize contrast over roundness */
       width: '100%',
       marginHorizontal: 20,
       marginVertical: 8,
-      borderRadius: 5,
       paddingVertical: 20,
       paddingHorizontal: 30,
+      borderRadius: 5, // only for web
     },
     intro: {
       color: '#403532', // dark-brown
@@ -363,15 +362,19 @@ export const Assets = {
     },
     disclaimerText: {
       color: '#6c605c', // light-brown
-      fontSize: screenWidth > 768 ? 16 : 14,
+      marginVertical: 5,
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontFamily: 'PlayfairDisplay_400Regular',
+      textAlign: 'justify',
     },
     shadow: {
-      elevation: 2, // Shadow effect for Android
-      shadowColor: '#403532', // dark-brown, iOS shadow
-      shadowOpacity: 0.1,
-      shadowRadius: 3,
-      shadowOffset: { width: 0, height: 2 },
+      /** note: this will only work if overflow hidden is disabled, see comment under Assets.styles.section
+       *  don't touch! 💅🏼 */
+      shadowColor: '#403532', // dark-brown
+      elevation: 7, // android
+      shadowRadius: Platform.OS === 'web' ? 3 : 7,
+      shadowOpacity: Platform.OS === 'web' ? .1 : .2,
+      shadowOffset: { width: 0, height: 3 },
     },
   }),
 };
@@ -412,9 +415,7 @@ export {
   Gjensidige,
   Google,
   Husbanken,
-  Aboveit,
   Accenture,
-  Arktekk,
   Bekk,
   Bouvet,
   Cloudberries,

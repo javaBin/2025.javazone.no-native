@@ -1,10 +1,8 @@
 import { Assets } from '@/Assets';
 import { ScreenTemplate } from '@/components';
-import { LinkButton, SectionBox, ToggleText } from '@/UI';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { LinkButton, SectionBox } from '@/UI';
 import { useTranslation } from 'react-i18next';
-import { Text, View, Dimensions } from 'react-native';
+import { Text, View } from 'react-native';
 
 interface FaqItem {
   key: string;
@@ -14,7 +12,6 @@ interface FaqItem {
 
 const Volunteers: React.FC = () => {
   const { t } = useTranslation();
-  const screenWidth = Dimensions.get('window').width;
 
   const faqItems: FaqItem[] = [
     { key: 'language', title: t('volunteer.faq.language_question'), answer: t('volunteer.faq.language_answer') },
@@ -44,27 +41,14 @@ const Volunteers: React.FC = () => {
     },
   ];
 
-  const [toggles, setToggles] = useState<Record<string, boolean>>(
-    faqItems.reduce((acc, item) => ({ ...acc, [item.key]: false }), {})
-  );
-
-  useEffect(() => {
-    if (screenWidth > 768) {
-      setToggles(faqItems.reduce((acc, item) => ({ ...acc, [item.key]: true }), {}));
-    }
-  }, [screenWidth]);
-
-  const handleToggle = (key: string) => {
-    setToggles((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
-
   return (
     <ScreenTemplate pageTitle={t('volunteer.title')} shouldScrollToTop={true}>
-      {['what_is_javazone', 'description', 'who_are_we_looking_for', 'who_can_apply'].map((textKey) => (
-        <Text key={textKey} style={[Assets.styles.preface, { marginHorizontal: 20 }]}>
-          {t(`volunteer.${textKey}`)}
-        </Text>
-      ))}
+      <Text style={[Assets.styles.sectionSubTitle, { marginHorizontal: 20 }]}>{t('volunteer.what_is_javazone')}</Text>
+      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>{t('volunteer.description')}</Text>
+
+      <Text style={[Assets.styles.sectionSubTitle, { marginHorizontal: 20 }]}>{t('volunteer.who_are_we_looking_for')}</Text>
+      <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>{t('volunteer.who_can_apply')}</Text>
+
       <LinkButton
         margin={20}
         title={t('volunteer.apply_now')}
@@ -73,9 +57,9 @@ const Volunteers: React.FC = () => {
       />
       <SectionBox sectionTitle={t('volunteer.faq_title')}>
         {faqItems.map(({ key, title, answer }) => (
-          <View key={key}>
-            <ToggleText title={title} toggle={toggles[key]} handleToggle={() => handleToggle(key)} />
-            {toggles[key] && <Text style={Assets.styles.text}>{answer}</Text>}
+          <View key={key} style={{padding: 10}}>
+            <Text style={Assets.styles.sectionSubTitle}>{title}</Text>
+            <Text style={[Assets.styles.text, {textAlign: 'center'}]}>{answer}</Text>
           </View>
         ))}
       </SectionBox>

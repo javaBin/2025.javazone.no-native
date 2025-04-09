@@ -48,8 +48,8 @@ export const I18nContextProvider = ({ children }: { children: React.ReactNode })
   return (
     <I18nContext.Provider
       value={{
-        setLocale: setLocaleParam,
         locale,
+        setLocale: setLocaleParam,
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
-import { Text, View, Image, GestureResponderEvent, Pressable } from 'react-native';
+import {Text, Image, GestureResponderEvent, Pressable, StyleSheet, Dimensions} from 'react-native';
 import { useI18nContext } from '@/contexts/I18nContext';
 import { useTranslation } from 'react-i18next';
 import { Assets } from '@/Assets';
@@ -35,22 +35,35 @@ const Flag: React.FC<FlagProps> = ({ flagLocale, countryCode, flagStyle, flagSiz
   };
 
   return (
-    <View>
-      <Pressable onPress={onPress} style={{ margin: 5 }}>
+      <Pressable onPress={onPress} style={{ margin: 10 }}>
         {showFallback || !flagSource ? (
-          <Text style={flagLocale === locale ? Assets.styles.text : Assets.styles.disclaimerText}>
+          <Text style={[styles.text, flagLocale === locale ? styles.activeText : styles.inactiveText]}>
             {t(`language_name.${flagLocale}`, { lng: flagLocale })}
           </Text>
         ) : (
           <Image
             source={{ uri: flagSource }}
-            style={{ width: parseInt(flagSize), height: parseInt(flagSize) }}
+            style={{ width: parseInt(flagSize), height: parseInt(flagSize) * 0.6 }}
             onError={() => setShowFallback(true)} // show fallback on error
           />
         )}
       </Pressable>
-    </View>
   );
 };
 
 export default Flag;
+
+const styles = StyleSheet.create({
+  text: {
+    marginVertical: 5,
+    fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    textAlign: 'justify',
+  },
+  activeText: {
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  inactiveText: {
+    color: Assets.colors.jz2025ThemeColors.lightBrown,
+  },
+})

@@ -7,6 +7,7 @@ import Hero from '@/components/Hero';
 import WelcomeSection from '@/components/WelcomeSection';
 import Footer from '@/components/Footer';
 import BulletListItem from '@/components/BulletListItem';
+import { PartnerBanner } from "@/components/PartnerBanner";
 
 const HoldTheDate = React.lazy(() => import('@/components/HoldTheDate'));
 const ScreenTemplate = React.lazy(() => import('@/components/ScreenTemplate'));
@@ -22,4 +23,5 @@ export {
   NotFoundComponent,
   Footer,
   BulletListItem,
+  PartnerBanner,
 };
