@@ -228,7 +228,9 @@ const RootLayout = () => {
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
         </View>
-        <View>{screenWidth >= 768 ? languageLoaded && <LanguagePicker /> : null}</View>
+        <View style={{display: screenWidth > 834 ? 'flex' : 'none'}}>
+          {languageLoaded && <LanguagePicker />}
+        </View>
       </View>
     ),
   };
@@ -250,24 +252,8 @@ const RootLayout = () => {
   };
 
   const webScreenOptions = {
-    /*headerTransparent: screenWidth > 768,
-    headerBackground: () =>
-      screenWidth > 768 ? (
-        <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />
-      ) : (
-        <View
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              backgroundColor: Assets.colors.jz2025ThemeColors.sheetOpacity,
-              borderBottomColor: '#403431',
-              borderBottomWidth: 0.1,
-            },
-          ]}
-        />
-      ),*/
     headerTransparent: true,
-    headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
+    headerBackground: () => <BlurView tint="light" intensity={100} style={[StyleSheet.absoluteFill]} />,
     headerLeft: () => null, // this is to disable "<-" back button on web-app
     headerRight: () => (
       <Pressable

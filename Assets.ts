@@ -362,8 +362,10 @@ export const Assets = {
     },
     disclaimerText: {
       color: '#6c605c', // light-brown
-      fontSize: screenWidth > 768 ? 16 : 14,
+      marginVertical: 5,
+      fontSize: screenWidth > 768 ? 20 : 18,
       fontFamily: 'PlayfairDisplay_400Regular',
+      textAlign: 'justify',
     },
     shadow: {
       /** note: this will only work if overflow hidden is disabled, see comment under Assets.styles.section */

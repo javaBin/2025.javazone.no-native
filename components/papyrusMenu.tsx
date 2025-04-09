@@ -2,8 +2,8 @@ import { Assets } from '@/Assets';
 import { SvgImage } from '@/UI';
 import BlurView from 'expo-blur/build/BlurView';
 import { Link, useGlobalSearchParams } from 'expo-router';
-import { Dispatch, SetStateAction, useEffect, useRef, useState, useImperativeHandle, forwardRef } from 'react';
-import { View, StyleSheet, useAnimatedValue, Animated, Easing } from 'react-native';
+import { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
+import { View, StyleSheet, Animated, Easing } from 'react-native';
 import { LanguagePicker } from './LanguagePicker';
 
 interface Props {
@@ -67,7 +67,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           useNativeDriver: false,
         }),
         Animated.timing(paperHeightAnim, {
-          toValue: 300,
+          toValue: 298.5,
           duration: animationDuration,
           easing: Easing.linear,
           useNativeDriver: false,
@@ -135,7 +135,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           transform: [{ translateY: rollPositionAnim }],
         }}
       >
-        <SvgImage SVG={Assets.UI.PapyrusRoll} height={41} width={260} style={{marginTop: 260, position: 'absolute', right: -.5}} />
+        <SvgImage SVG={Assets.UI.PapyrusRoll} height={40} style={{marginTop: 260, position: 'absolute', right: -.5}} />
       </Animated.View>
     </AnimatedBlurView>
   );
