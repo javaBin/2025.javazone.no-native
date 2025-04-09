@@ -7,6 +7,7 @@ type SectionBoxProps = {
   children: React.ReactNode;
   sectionTitle: string;
 };
+
 /** 'dimezisBlurView' is a must for BlurView support on android */
 const SectionBox: React.FC<SectionBoxProps> = ({ children, sectionTitle }) => {
   return (

@@ -1,19 +1,12 @@
 import { Flag } from '@/components/index';
 import { CountryCode, FlagSize, FlagStyle } from '@/models';
-import { StyleSheet, View } from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import React from 'react';
 import { useI18nContext } from '@/contexts/I18nContext';
 
 export const LanguagePicker: React.FC = () => {
   //@ts-ignore
   const { setLocale } = useI18nContext();
-  const styles = StyleSheet.create({
-    languagePickers: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-  });
 
   return (
     <View style={styles.languagePickers} id={'languagePickers'}>
@@ -34,3 +27,11 @@ export const LanguagePicker: React.FC = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+    languagePickers: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+});

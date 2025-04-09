@@ -250,7 +250,7 @@ const RootLayout = () => {
   };
 
   const webScreenOptions = {
-    headerTransparent: screenWidth > 768,
+    /*headerTransparent: screenWidth > 768,
     headerBackground: () =>
       screenWidth > 768 ? (
         <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />
@@ -265,7 +265,9 @@ const RootLayout = () => {
             },
           ]}
         />
-      ),
+      ),*/
+    headerTransparent: true,
+    headerBackground: () => <BlurView tint="light" intensity={90} style={[StyleSheet.absoluteFill]} />,
     headerLeft: () => null, // this is to disable "<-" back button on web-app
     headerRight: () => (
       <Pressable

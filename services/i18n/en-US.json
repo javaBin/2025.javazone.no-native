@@ -128,7 +128,7 @@
         "partner_tickets_detail_1": "You have four flexible stand tickets included in your partnership package. These are intended for stand personnel, and do not give access to the talks. You must order tickets for all your employees that want to attend a talk (or if you have more than four who need to be on the stand at once).",
         "round_robin_distribution": "Round robin distribution on tickets ordered by May 15\u1d57\u02b0",
         "first_come_first_served": "First come first served if tickets are still available after May 15\u1d57\u02b0",
-        "order_tickets": "Order your partner ticket"
+        "order_tickets": "Order your \npartner ticket"
       }
     },
     "ticket": {
@@ -215,7 +215,7 @@
       "no_differentiation": "We do not differentiate between speakers from partners and independent speakers.",
       "adherence_to_principles": "If your talk adheres to these very important principles, you are more than welcome to submit it to our Call for Speakers!",
       "closing_statement": "We hope to see you at JavaZone 2025 - please feel free to spread the word to your local community!",
-      "program_committee": "Best regards, the JavaZone Program Committee"
+      "program_committee": "Best regards, \nthe JavaZone Program Committee"
     },
     "submissionTips": {
       "submission_tips_title": "Submission tips",

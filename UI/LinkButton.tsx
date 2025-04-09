@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Cinzel_500Medium',
     textAlign: 'center',
     paddingVertical: 10,
-    paddingHorizontal: Dimensions.get('window').width > 1200 ? 60 : 40,
+    paddingHorizontal: Dimensions.get('window').width > 1200 ? 60 : Platform.OS !== 'web' ? 20 : 30, // don't change
   },
   disabledButton: {
     opacity: 0.5,
