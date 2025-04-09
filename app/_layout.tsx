@@ -112,7 +112,7 @@ const RootLayout = () => {
   const styles = StyleSheet.create({
     tabBar: {
       position: 'absolute',
-      bottom: Platform.OS === 'android' ? 15 : -5, // don't change!
+      bottom: Platform.OS === 'android' ? 15 : -5, // don't change! 💅🏼
     },
     tabBarLabel: {
       fontSize: 12,
@@ -129,7 +129,7 @@ const RootLayout = () => {
       overflow: 'hidden',
       position: 'absolute',
       width: '100%',
-      bottom: Platform.OS === 'android' ? -15 : 10, // don't change!
+      bottom: Platform.OS === 'android' ? -15 : 10, // don't change! 💅🏼
     },
     header: {
       display: 'flex',

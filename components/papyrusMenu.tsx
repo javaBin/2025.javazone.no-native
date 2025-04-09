@@ -18,6 +18,11 @@ const rollPositionStart = -215;
 const paperHeightStart = 0;
 export const animationDuration = 650;
 
+/** Be very careful if you really have to change this file 🥹
+ *  the animation positions, width, height, top and right attributes etc...
+ *  are very exact and perfectly aligned as is
+ */
+
 export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: Props, ref) => {
   const { lang } = useGlobalSearchParams();
 
@@ -26,7 +31,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
       position: 'absolute',
       zIndex: 1,
       right: -1,
-      top: 64, // default header height 64 - do not change!
+      top: 64, // default header height 64 - do not change! 💅🏼
       display: toggleMenu ? 'flex' : 'none',
       justifyContent: 'flex-start',
       overflow: 'hidden',

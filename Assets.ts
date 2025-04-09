@@ -368,7 +368,8 @@ export const Assets = {
       textAlign: 'justify',
     },
     shadow: {
-      /** note: this will only work if overflow hidden is disabled, see comment under Assets.styles.section */
+      /** note: this will only work if overflow hidden is disabled, see comment under Assets.styles.section
+       *  don't touch! 💅🏼 */
       shadowColor: '#403532', // dark-brown
       elevation: 7, // android
       shadowRadius: Platform.OS === 'web' ? 3 : 7,
