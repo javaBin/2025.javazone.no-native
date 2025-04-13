@@ -111,13 +111,10 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
     }, 300);
   };
 
-  const PapyrusSheet = Platform.OS === 'web' ? Assets.UI.PapyrusSheetOld : Assets.UI.PapyrusSheet;
-  const PapyrusRoll = Platform.OS === 'web' ? Assets.UI.PapyrusRollOld : Assets.UI.PapyrusRoll;
-
   return (
     <AnimatedBlurView tint="light" intensity={0} style={{ ...styles.drawer, height: paperHeightAnim }}>
       <SvgImage
-        SVG={PapyrusSheet}
+        SVG={Assets.UI.PapyrusSheetOld}
         height={315}
         width={250}
         style={{ opacity: 1, position: 'absolute', right: 5, top: -19 }}
@@ -148,7 +145,11 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           transform: [{ translateY: rollPositionAnim }],
         }}
       >
-        <SvgImage SVG={PapyrusRoll} height={40} style={{ marginTop: 260, position: 'absolute', right: -0.5 }} />
+        <SvgImage
+          SVG={Assets.UI.PapyrusRollOld}
+          height={40}
+          style={{ marginTop: 260, position: 'absolute', right: -0.5 }}
+        />
       </Animated.View>
     </AnimatedBlurView>
   );
