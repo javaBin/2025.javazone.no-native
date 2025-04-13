@@ -3,7 +3,7 @@ import { SvgImage } from '@/UI';
 import BlurView from 'expo-blur/build/BlurView';
 import { Link, useGlobalSearchParams } from 'expo-router';
 import { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
-import { View, StyleSheet, Animated, Easing } from 'react-native';
+import { View, StyleSheet, Animated, Easing, Platform } from 'react-native';
 import { LanguagePicker } from './LanguagePicker';
 
 interface Props {
@@ -45,7 +45,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
       width: '100%',
       alignItems: 'center',
       justifyContent: 'space-evenly',
-      paddingVertical: 10
+      paddingVertical: 10,
     },
     drawerItem: {
       color: Assets.colors.jz2025ThemeColors.darkBrown,
@@ -111,9 +111,17 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
     }, 300);
   };
 
+  const PapyrusSheet = Platform.OS === 'web' ? Assets.UI.PapyrusSheetOld : Assets.UI.PapyrusSheet;
+  const PapyrusRoll = Platform.OS === 'web' ? Assets.UI.PapyrusRollOld : Assets.UI.PapyrusRoll;
+
   return (
     <AnimatedBlurView tint="light" intensity={0} style={{ ...styles.drawer, height: paperHeightAnim }}>
-      <SvgImage SVG={Assets.UI.PapyrusSheet} height={315} width={250} style={{ opacity: 1, position: 'absolute', right: 5, top: -19 }} />
+      <SvgImage
+        SVG={PapyrusSheet}
+        height={315}
+        width={250}
+        style={{ opacity: 1, position: 'absolute', right: 5, top: -19 }}
+      />
       <View style={styles.drawerContent}>
         <Link href={{ pathname: `${lang}/program` }} style={styles.drawerItem} onPress={onPressItem}>
           Program
@@ -140,7 +148,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
           transform: [{ translateY: rollPositionAnim }],
         }}
       >
-        <SvgImage SVG={Assets.UI.PapyrusRoll} height={40} style={{marginTop: 260, position: 'absolute', right: -.5}} />
+        <SvgImage SVG={PapyrusRoll} height={40} style={{ marginTop: 260, position: 'absolute', right: -0.5 }} />
       </Animated.View>
     </AnimatedBlurView>
   );

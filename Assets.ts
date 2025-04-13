@@ -6,6 +6,8 @@ import Doughnut from '@/assets/images/javaZone2022Doughnut.webp';
 import TextureMarble from '@/assets/images/background/texture-marble.png';
 import PapyrusRoll from '@/assets/UI/papyrus-roll.svg';
 import PapyrusSheet from '@/assets/UI/papyrus-sheet.svg';
+import PapyrusRollOld from '@/assets/UI/papyrus-roll-old.svg';
+import PapyrusSheetOld from '@/assets/UI/papyrus-sheet-old.svg';
 import DividerWide from '@/assets/UI/divider-wide.svg';
 import DividerDot from '@/assets/UI/divider-dot.svg';
 import PillarTop from '@/assets/UI/pillar-top.svg';
@@ -142,7 +144,9 @@ export const Assets = {
   background: TextureMarble,
   UI: {
     PapyrusRoll,
+    PapyrusRollOld,
     PapyrusSheet,
+    PapyrusSheetOld,
     DividerWide,
     DividerDot,
     PillarTop,
@@ -373,7 +377,7 @@ export const Assets = {
       shadowColor: '#403532', // dark-brown
       elevation: 7, // android
       shadowRadius: Platform.OS === 'web' ? 3 : 7,
-      shadowOpacity: Platform.OS === 'web' ? .1 : .2,
+      shadowOpacity: Platform.OS === 'web' ? 0.1 : 0.2,
       shadowOffset: { width: 0, height: 3 },
     },
   }),
