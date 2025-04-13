@@ -2,8 +2,8 @@ import { Assets } from '@/Assets';
 import { SvgImage } from '@/UI';
 import BlurView from 'expo-blur/build/BlurView';
 import { Link, useGlobalSearchParams } from 'expo-router';
-import { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
-import { View, StyleSheet, Animated, Easing, Platform } from 'react-native';
+import { Dispatch, forwardRef, SetStateAction, useEffect, useImperativeHandle, useRef } from 'react';
+import { Animated, Easing, StyleSheet, View } from 'react-native';
 import { LanguagePicker } from './LanguagePicker';
 
 interface Props {
