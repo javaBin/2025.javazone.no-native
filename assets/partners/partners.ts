@@ -56,6 +56,9 @@ import {
   Ambita,
   NAV,
   KSDigitaleFellestjenester,
+  GoogleCloud,
+  Kartverket,
+  SSB,
 } from '../../Assets';
 import { FunctionComponent } from 'react';
 import { SvgProps } from 'react-native-svg';
@@ -124,4 +127,7 @@ export const partners: Partner[] = [
   { name: 'Ambita', homepageUrl: 'https://www.ambita.com', logoUrl: Ambita },
   { name: 'NAV', homepageUrl: 'https://www.nav.no', logoUrl: NAV },
   { name: 'KS Digitale Fellestjenester', homepageUrl: 'https://www.ks.no', logoUrl: KSDigitaleFellestjenester },
+  { name: 'Google Cloud', homepageUrl: 'https://cloud.google.com', logoUrl: GoogleCloud },
+  { name: 'Kartverket', homepageUrl: 'https://www.kartverket.no', logoUrl: Kartverket },
+  { name: 'SSB', homepageUrl: 'https://www.ssb.no', logoUrl: SSB },
 ];

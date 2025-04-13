@@ -60,7 +60,7 @@ import Entur from '@/assets/partners/entur.svg';
 import Finn from '@/assets/partners/finn.svg';
 import Fremtind from '@/assets/partners/fremtind.svg';
 import Gjensidige from '@/assets/partners/gjensidige.svg';
-import Google from '@/assets/partners/google.svg';
+import GoogleCloud from '@/assets/partners/googleCloud.svg';
 import Husbanken from '@/assets/partners/husbanken.svg';
 import Kantega from '@/assets/partners/kantega.svg';
 import Knowit from '@/assets/partners/knowit.svg';
@@ -103,6 +103,8 @@ import Tomra from '@/assets/partners/tomra.svg';
 import Yne from '@/assets/partners/yne.svg';
 import Ambita from '@/assets/partners/ambita.svg';
 import GE from '@/assets/partners/GE.svg';
+import Kartverket from '@/assets/partners/kartverket.svg';
+import SSB from '@/assets/partners/ssb.svg';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -191,7 +193,7 @@ export const Assets = {
     Finn,
     Fremtind,
     Gjensidige,
-    Google,
+    GoogleCloud,
     Husbanken,
     Kantega,
     Knowit,
@@ -233,6 +235,8 @@ export const Assets = {
     Sonat,
     Tomra,
     Ambita,
+    Kartverket,
+    SSB,
   },
   colors: {
     transparent: 'transparent',
@@ -417,7 +421,7 @@ export {
   Finn,
   Fremtind,
   Gjensidige,
-  Google,
+  GoogleCloud,
   Husbanken,
   Accenture,
   Bekk,
@@ -441,4 +445,6 @@ export {
   Tomra,
   Yne,
   Ambita,
+  Kartverket,
+  SSB,
 };
