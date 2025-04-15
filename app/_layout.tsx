@@ -27,7 +27,7 @@ const RootLayout = () => {
   const [isRedirected, setIsRedirected] = useState(false);
   const [languageLoaded, setLanguageLoaded] = useState(false); // track if i18n is initialized
   const [language, setLanguage] = useState<string | null>(); // language (locale) to use
-  const [toggleMenu, setToggleMenu] = useState<boolean>(false); // todo: make hamburger icon into X icon when active toggle?
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const { lang } = useGlobalSearchParams();
   const router = useRouter();
   const screenWidth = Dimensions.get('window').width;
@@ -129,7 +129,8 @@ const RootLayout = () => {
       overflow: 'hidden',
       position: 'absolute',
       width: '100%',
-      bottom: Platform.OS === 'android' ? -15 : 10, // don't change! 💅🏼
+      height: Platform.OS === 'ios' ? 93 : 'auto', // don't change! 💅🏼
+      bottom: Platform.OS === 'android' ? -15 : 0, // don't change! 💅🏼
     },
     header: {
       display: 'flex',
