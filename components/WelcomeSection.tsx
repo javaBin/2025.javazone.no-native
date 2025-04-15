@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontFamily: 'PlayfairDisplay_400Regular',
-    fontSize: Dimensions.get('window').width > 768 ? 40 : 25,
+    fontSize: Dimensions.get('window').width > 768 ? 36 : 24,
     textAlign: 'center',
   },
   ticketContainer: {

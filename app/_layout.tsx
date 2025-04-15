@@ -14,9 +14,8 @@ import i18n from 'i18next';
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
-import { LanguagePicker } from '@/components/LanguagePicker';
+import { LanguagePicker, animationDuration, PapyrusMenu } from '@/components';
 import { SvgProps } from 'react-native-svg';
-import { animationDuration, PapyrusMenu } from '@/components/papyrusMenu';
 
 interface PapyrusInterface {
   closeAnimation: () => {};
@@ -27,10 +26,11 @@ const RootLayout = () => {
   const [isRedirected, setIsRedirected] = useState(false);
   const [languageLoaded, setLanguageLoaded] = useState(false); // track if i18n is initialized
   const [language, setLanguage] = useState<string | null>(); // language (locale) to use
-  const [toggleMenu, setToggleMenu] = useState<boolean>(false); // todo: make hamburger icon into X icon when active toggle?
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const { lang } = useGlobalSearchParams();
   const router = useRouter();
   const screenWidth = Dimensions.get('window').width;
+  const papyrusMenuRef = useRef<PapyrusInterface>();
 
   useEffect(() => {
     // Set background color
@@ -109,95 +109,6 @@ const RootLayout = () => {
     };
   }, []);
 
-  const styles = StyleSheet.create({
-    tabBar: {
-      position: 'absolute',
-      bottom: Platform.OS === 'android' ? 15 : -5, // don't change! 💅🏼
-    },
-    tabBarLabel: {
-      fontSize: 12,
-      fontFamily: 'Cinzel_400Regular',
-      alignSelf: 'center',
-      display: 'flex',
-      width: "100%",
-    },
-    tabBarBlurContainer: {
-      flex: 1,
-      padding: Platform.OS === 'android' ? 36 : 42,
-      textAlign: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden',
-      position: 'absolute',
-      width: '100%',
-      bottom: Platform.OS === 'android' ? -15 : 10, // don't change! 💅🏼
-    },
-    header: {
-      display: 'flex',
-      flexDirection: 'row',
-      width: screenWidth - 20,
-    },
-    headerLogoTitle: {
-      flexDirection: 'row',
-      width: '100%',
-      alignItems: 'center',
-      marginLeft: screenWidth > 768 ? 100 : 0,
-    },
-    headerTitle: {
-      color: Assets.colors.jz2025ThemeColors.darkBrown,
-      fontFamily: 'Cinzel_500Medium',
-      fontSize: 20,
-      marginTop: 5,
-    },
-    hamburger: {
-      marginHorizontal: 20,
-      display: screenWidth > 834 ? 'none' : 'flex',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-end',
-    },
-    drawer: {
-      position: 'absolute',
-      zIndex: 1,
-      right: 0,
-      top: 63.5, // default header height 64 - do not change!
-      display: toggleMenu ? 'flex' : 'none',
-      justifyContent: 'flex-start',
-      overflow: 'hidden',
-    },
-    drawerContent: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      height: 180,
-      width: '100%',
-      alignItems: 'center',
-      justifyContent: 'space-evenly',
-    },
-    drawerItem: {
-      color: Assets.colors.jz2025ThemeColors.darkBrown,
-      paddingHorizontal: 20,
-      marginVertical: 5,
-      fontSize: 16,
-      fontFamily: 'PlayfairDisplay_400Regular',
-      textShadowColor: Assets.colors.brand.beige,
-      textShadowOffset: { width: 0, height: 0.2 },
-      textShadowRadius: 3,
-    },
-    navBar: {
-      display: screenWidth > 834 ? 'flex' : 'none',
-      flexDirection: 'row',
-      flexGrow: 1,
-      maxWidth: '75%',
-      justifyContent: 'space-evenly',
-    },
-    navItem: {
-      fontFamily: 'PlayfairDisplay_400Regular',
-      color: Assets.colors.jz2025ThemeColors.darkBrown,
-      fontSize: 18,
-      margin: 5,
-      textShadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
-    }
-  });
-
   const screenOptions = {
     headerShown: true,
     headerTitle: () => (
@@ -234,8 +145,6 @@ const RootLayout = () => {
       </View>
     ),
   };
-
-  const papyrusMenuRef = useRef<PapyrusInterface>();
 
   const nativeScreenOptions = {
     tabBarStyle: styles.tabBar,
@@ -368,3 +277,65 @@ const RootLayout = () => {
 };
 
 export default RootLayout;
+
+const styles = StyleSheet.create({
+  tabBar: {
+    position: 'absolute',
+    bottom: Platform.OS === 'android' ? 15 : -5, // don't change! 💅🏼
+  },
+  tabBarLabel: {
+    fontSize: 12,
+    fontFamily: 'Cinzel_400Regular',
+    alignSelf: 'center',
+    display: 'flex',
+    width: "100%",
+  },
+  tabBarBlurContainer: {
+    flex: 1,
+    padding: Platform.OS === 'android' ? 36 : 42,
+    textAlign: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    position: 'absolute',
+    width: '100%',
+    height: Platform.OS === 'ios' ? 93 : 'auto', // don't change! 💅🏼
+    bottom: Platform.OS === 'android' ? -15 : 0, // don't change! 💅🏼
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: Dimensions.get('window').width - 20,
+  },
+  headerLogoTitle: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    marginLeft: Dimensions.get('window').width > 768 ? 100 : 0,
+  },
+  headerTitle: {
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    fontFamily: 'Cinzel_500Medium',
+    fontSize: 20,
+    marginTop: 5,
+  },
+  hamburger: {
+    marginHorizontal: 20,
+    display: Dimensions.get('window').width > 834 ? 'none' : 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+  },
+  navBar: {
+    display: Dimensions.get('window').width > 834 ? 'flex' : 'none',
+    flexDirection: 'row',
+    flexGrow: 1,
+    maxWidth: '75%',
+    justifyContent: 'space-evenly',
+  },
+  navItem: {
+    fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    fontSize: 18,
+    margin: 5,
+    textShadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
+  }
+});
