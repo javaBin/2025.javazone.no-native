@@ -129,7 +129,8 @@ const RootLayout = () => {
       overflow: 'hidden',
       position: 'absolute',
       width: '100%',
-      bottom: Platform.OS === 'android' ? -15 : 10, // don't change! 💅🏼
+      height: Platform.OS === 'ios' ? 93 : 'auto', // don't change! 💅🏼
+      bottom: Platform.OS === 'android' ? -15 : 0, // don't change! 💅🏼
     },
     header: {
       display: 'flex',
