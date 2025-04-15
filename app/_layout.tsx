@@ -16,7 +16,7 @@ import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
 import { LanguagePicker } from '@/components/LanguagePicker';
 import { SvgProps } from 'react-native-svg';
-import { animationDuration, PapyrusMenu } from '@/components/papyrusMenu';
+import { animationDuration, PapyrusMenu } from '@/components/PapyrusMenu';
 
 interface PapyrusInterface {
   closeAnimation: () => {};
@@ -27,7 +27,7 @@ const RootLayout = () => {
   const [isRedirected, setIsRedirected] = useState(false);
   const [languageLoaded, setLanguageLoaded] = useState(false); // track if i18n is initialized
   const [language, setLanguage] = useState<string | null>(); // language (locale) to use
-  const [toggleMenu, setToggleMenu] = useState<boolean>(false); // todo: make hamburger icon into X icon when active toggle?
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const { lang } = useGlobalSearchParams();
   const router = useRouter();
   const screenWidth = Dimensions.get('window').width;

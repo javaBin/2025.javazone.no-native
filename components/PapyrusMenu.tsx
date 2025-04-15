@@ -1,6 +1,5 @@
 import { Assets } from '@/Assets';
-import { SvgImage, PapyrusRollSVG, PapyrusSheetSVG } from '@/UI';
-import BlurView from 'expo-blur/build/BlurView';
+import { PapyrusRollSVG, PapyrusSheetSVG } from '@/UI';
 import { Link, useGlobalSearchParams } from 'expo-router';
 import React, { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import { View, StyleSheet, Animated, Easing } from 'react-native';
@@ -11,8 +10,6 @@ interface Props {
   languageLoaded: boolean;
   setToggleMenu: Dispatch<SetStateAction<boolean>>;
 }
-
-//const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 
 const rollPositionStart = -215;
 const paperHeightStart = 0;
