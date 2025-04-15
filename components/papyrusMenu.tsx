@@ -1,8 +1,8 @@
 import { Assets } from '@/Assets';
-import { SvgImage } from '@/UI';
+import { SvgImage, PapyrusRollSVG, PapyrusSheetSVG } from '@/UI';
 import BlurView from 'expo-blur/build/BlurView';
 import { Link, useGlobalSearchParams } from 'expo-router';
-import { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import { View, StyleSheet, Animated, Easing } from 'react-native';
 import { LanguagePicker } from './LanguagePicker';
 
@@ -12,7 +12,7 @@ interface Props {
   setToggleMenu: Dispatch<SetStateAction<boolean>>;
 }
 
-const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
+//const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 
 const rollPositionStart = -215;
 const paperHeightStart = 0;
@@ -36,6 +36,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
       justifyContent: 'flex-start',
       overflow: 'hidden',
       width: 260,
+      height: 355,
     },
     drawerContent: {
       position: 'absolute',
@@ -112,8 +113,9 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
   };
 
   return (
-    <AnimatedBlurView tint="light" intensity={0} style={{ ...styles.drawer, height: paperHeightAnim }}>
-      <SvgImage SVG={Assets.UI.PapyrusSheet} height={315} width={250} style={{ opacity: 1, position: 'absolute', right: 5, top: -19 }} />
+    <Animated.View style={{ ...styles.drawer, height: paperHeightAnim }}>
+      <PapyrusSheetSVG height={315} width={250} style={{ position: 'absolute', right: 5, top: -19 }}/>
+
       <View style={styles.drawerContent}>
         <Link href={{ pathname: `${lang}/program` }} style={styles.drawerItem} onPress={onPressItem}>
           Program
@@ -135,13 +137,17 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
         </Link>
         <View>{languageLoaded && <LanguagePicker />}</View>
       </View>
+
       <Animated.View
         style={{
           transform: [{ translateY: rollPositionAnim }],
+          position: 'absolute', right: -1, top: 260, zIndex: 5, overflow: 'hidden'
         }}
       >
-        <SvgImage SVG={Assets.UI.PapyrusRoll} height={40} style={{marginTop: 260, position: 'absolute', right: -.5}} />
+        <PapyrusRollSVG height={40} width={260} />
       </Animated.View>
-    </AnimatedBlurView>
+    </Animated.View>
   );
 });
+
+// <SvgImage SVG={Assets.UI.PapyrusSheet} height={315} width={250} style={{ position: 'absolute', right: 5, top: -19 }} />
