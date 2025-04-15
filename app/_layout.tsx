@@ -16,7 +16,7 @@ import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
 import { LanguagePicker } from '@/components/LanguagePicker';
 import { SvgProps } from 'react-native-svg';
-import { animationDuration, PapyrusMenu } from '@/components/papyrusMenu';
+import { animationDuration, PapyrusMenu } from '@/components/PapyrusMenu';
 
 interface PapyrusInterface {
   closeAnimation: () => {};

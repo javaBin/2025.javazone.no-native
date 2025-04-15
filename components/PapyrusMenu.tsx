@@ -146,3 +146,5 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
     </Animated.View>
   );
 });
+
+// <SvgImage SVG={Assets.UI.PapyrusSheet} height={315} width={250} style={{ position: 'absolute', right: 5, top: -19 }} />
