@@ -8,6 +8,11 @@ import Svg, {
 
 interface IProps extends SvgProps {}
 
+/** When using SVG with gradients on web platform,
+ *  using react-native-svg makes sure the graphics renders correctly,
+ *  it is also essential to ensure no id attribute of a LinearGradient overlaps with another,
+ *  even if they are located in different files
+ */
 const DukeSVG = (props: IProps) => {
     return (
         <Svg width="158" height="161" fill="none" viewBox="0 0 158 161" {...props}>

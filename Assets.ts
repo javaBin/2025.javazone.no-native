@@ -15,7 +15,6 @@ import VineLeft from '@/assets/UI/vine-left.svg';
 import VineRight from '@/assets/UI/vine-right.svg';
 
 import HeroDuke from '@/assets/images/hero/hero-duke.svg';
-import HeroDukeWeb from '@/assets/images/hero/hero-duke-web.svg';
 import HeroJavaZone from '@/assets/images/hero/hero-javazone.svg';
 import HeroYear from '@/assets/images/hero/hero-year.svg';
 import Logo from '@/assets/images/logo/javaZone-logo.svg';
@@ -140,7 +139,6 @@ export const Assets = {
     Doughnut,
     hero: {
       HeroDuke,
-      HeroDukeWeb,
       HeroJavaZone,
       HeroYear,
     },

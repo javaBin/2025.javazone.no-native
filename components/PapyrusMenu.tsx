@@ -3,7 +3,7 @@ import { PapyrusRollSVG, PapyrusSheetSVG } from '@/UI';
 import { Link, useGlobalSearchParams } from 'expo-router';
 import React, { Dispatch, SetStateAction, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import { View, StyleSheet, Animated, Easing } from 'react-native';
-import { LanguagePicker } from './LanguagePicker';
+import { LanguagePicker } from '@/components';
 
 interface Props {
   toggleMenu: boolean;
@@ -19,8 +19,7 @@ export const animationDuration = 650;
  *  the animation positions, width, height, top and right attributes etc...
  *  are very exact and perfectly aligned as is
  */
-
-export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: Props, ref) => {
+const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: Props, ref) => {
   const { lang } = useGlobalSearchParams();
 
   const styles = StyleSheet.create({
@@ -138,7 +137,7 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
       <Animated.View
         style={{
           transform: [{ translateY: rollPositionAnim }],
-          position: 'absolute', right: -1, top: 260, zIndex: 5, overflow: 'hidden'
+          position: 'absolute', right: -1, top: 260
         }}
       >
         <PapyrusRollSVG height={40} width={260} />
@@ -147,4 +146,4 @@ export const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMe
   );
 });
 
-// <SvgImage SVG={Assets.UI.PapyrusSheet} height={315} width={250} style={{ position: 'absolute', right: 5, top: -19 }} />
+export default PapyrusMenu;

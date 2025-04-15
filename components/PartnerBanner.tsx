@@ -7,7 +7,7 @@ const screenWidth = Dimensions.get('window').width;
 const adjustedScreenWidth = screenWidth > 768 ? screenWidth - 200 : screenWidth - 500;
 const adjustedLogoSize = screenWidth > 768 ? 150 : 80;
 
-export const PartnerBanner = () => {
+const PartnerBanner = () => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.partnerContainer}>
@@ -52,6 +52,8 @@ export const PartnerBanner = () => {
     </View>
   );
 }
+
+export default PartnerBanner;
 
 const styles = StyleSheet.create({
   wrapper: {

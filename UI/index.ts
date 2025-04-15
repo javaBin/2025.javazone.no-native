@@ -5,8 +5,8 @@ import LinkText from '@/UI/LinkText';
 import LinkButton from '@/UI/LinkButton';
 import PageTitle from '@/UI/PageTitle';
 import SectionBox from '@/UI/SectionBox';
-import PapyrusRollSVG from "@/UI/PapyrusRollSVG";
-import PapyrusSheetSVG from "@/UI/PapyrusSheetSVG";
-import DukeSVG from "@/UI/DukeSVG";
+import PapyrusRollSVG from "@/UI/gradientSVG/PapyrusRollSVG";
+import PapyrusSheetSVG from "@/UI/gradientSVG/PapyrusSheetSVG";
+import DukeSVG from "@/UI/gradientSVG/DukeSVG";
 
 export { SvgImage, SvgCallbackImage, CircleImage, ToggleText, LinkText, LinkButton, PageTitle, SectionBox, PapyrusRollSVG, PapyrusSheetSVG, DukeSVG };

@@ -4,7 +4,7 @@ import { StyleSheet, View} from 'react-native';
 import React from 'react';
 import { useI18nContext } from '@/contexts/I18nContext';
 
-export const LanguagePicker: React.FC = () => {
+const LanguagePicker: React.FC = () => {
   //@ts-ignore
   const { setLocale } = useI18nContext();
 
@@ -27,6 +27,8 @@ export const LanguagePicker: React.FC = () => {
     </View>
   );
 };
+
+export default LanguagePicker;
 
 const styles = StyleSheet.create({
     languagePickers: {
