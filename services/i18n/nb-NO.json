@@ -12,7 +12,7 @@
 
     "partner_information": "Partner informasjon",
     "speaker_information": "Speaker informasjon",
-    "program_information": "Program informasjon",
+    "program_information": "Programinformasjon",
     "workshop_information": "Workshop informasjon",
     "ticket_information": "Billetter informasjon",
     "volunteer_information": "Frivillig informasjon",
@@ -301,7 +301,7 @@
         "awezone": "Får jeg bli med på AweZone?",
         "awezone_answer": "Ja! Ingen jobbing på kvelden – bare fest og moro!",
         "when_to_meet": "Når må jeg møte opp som frivillig?",
-        "when_to_meet_answer": "Det vil bli gitt opplæring og informasjon den 2. September, og du må møte opp både 3. og 4. september for konferansen.",
+        "when_to_meet_answer": "Det vil bli gitt opplæring og informasjon den 2. september, og du må møte opp både 3. og 4. september for konferansen.",
         "application_deadline": "Når må jeg søke?",
         "application_deadline_answer": "Søknadsfristen er mandag 8. juni."
       }
