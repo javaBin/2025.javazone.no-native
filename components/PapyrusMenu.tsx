@@ -33,6 +33,8 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
       overflow: 'hidden',
       width: 260,
       height: 355,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
     },
     drawerContent: {
       position: 'absolute',
@@ -110,7 +112,9 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
 
   return (
     <Animated.View style={{ ...styles.drawer, height: paperHeightAnim }}>
-      <PapyrusSheetSVG height={315} width={250} style={{ position: 'absolute', right: 5, top: -19 }}/>
+      <PapyrusSheetSVG height={315} width={250} style={{
+        position: 'absolute', right: 5, top: -19,
+        boxShadow: 'inset 0 0 2.5em rgba(108, 96, 92, 0.1), 0 0 0.3em rgba(108, 96, 92, 0.1)' }}/>
 
       <View style={styles.drawerContent}>
         <Link href={{ pathname: `${lang}/program` }} style={styles.drawerItem} onPress={onPressItem}>
