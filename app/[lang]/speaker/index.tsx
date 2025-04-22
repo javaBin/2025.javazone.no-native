@@ -16,7 +16,7 @@ const Speaker = () => {
     <ScreenTemplate pageTitle={t('speakers.pageTitle')} shouldScrollToTop={true}>
       <Text style={[Assets.styles.text, { marginHorizontal: 20}]}>{t('speakers.conference_intro')}</Text>
       <Text style={[Assets.styles.text, { marginHorizontal: 20 }]}>
-        {t('speakers.conference_attendance')} {t('speakers.international_speakers')}
+        {t('speakers.conference_attendance')} {t('speakers.international_speakers')} <Text style={{ fontWeight: 'bold', fontSize: 21 }}> {t('speakers.international_speakers_date')}</Text>
       </Text>
       <LinkButton
         href="https://talks.javazone.no/"
