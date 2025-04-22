@@ -7,8 +7,10 @@ import Hero from '@/components/Hero';
 import WelcomeSection from '@/components/WelcomeSection';
 import Footer from '@/components/Footer';
 import BulletListItem from '@/components/BulletListItem';
-import { PartnerBanner } from "@/components/PartnerBanner";
-
+import PartnerBanner from "@/components/PartnerBanner";
+import LanguagePicker from "@/components/LanguagePicker";
+// @ts-ignore
+import PapyrusMenu, {animationDuration} from '@/components/PapyrusMenu';
 const HoldTheDate = React.lazy(() => import('@/components/HoldTheDate'));
 const ScreenTemplate = React.lazy(() => import('@/components/ScreenTemplate'));
 
@@ -24,4 +26,7 @@ export {
   Footer,
   BulletListItem,
   PartnerBanner,
+  LanguagePicker,
+  PapyrusMenu,
+  animationDuration
 };

@@ -1,6 +1,6 @@
 import { BulletListItem, ScreenTemplate, VideoPlayer, PartnerBanner } from '@/components';
 import { useTranslation } from 'react-i18next';
-import {Dimensions, Platform, StyleSheet, Text, View} from 'react-native';
+import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 import { Assets } from '@/Assets';
 import React from 'react';
