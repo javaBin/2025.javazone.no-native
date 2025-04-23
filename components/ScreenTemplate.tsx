@@ -22,11 +22,12 @@ import {
 type ScreenTemplateProps = {
   children: React.ReactNode;
   pageTitle?: string;
+  pageSubtitle?: string;
   shouldScrollToTop?: boolean;
   infoPage?: boolean;
 };
 
-const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop }: ScreenTemplateProps) => {
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
   const scrollViewRef = useRef<ScrollView>(null);
@@ -72,7 +73,7 @@ const ScreenTemplate = ({ children, pageTitle, shouldScrollToTop }: ScreenTempla
             alwaysBounceVertical={false}
             showsVerticalScrollIndicator={false}
           >
-            {pageTitle && <PageTitle title={pageTitle} />}
+            {pageTitle && <PageTitle title={pageTitle} subTitle={pageSubtitle} />}
 
             {children}
 
