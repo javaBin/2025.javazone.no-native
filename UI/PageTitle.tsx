@@ -6,12 +6,14 @@ import { SvgImage } from '@/UI/';
 type PageTitleProps = {
   title: string;
   style?: StyleProp<ViewStyle>;
+  subTitle?: string;
 };
 
-const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
+const PageTitle: React.FC<PageTitleProps> = ({ title, subTitle }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
+      {subTitle && <Text style={[Assets.styles.sectionSubTitle, { marginBottom: 20 }]}>{subTitle}</Text>}
       <SvgImage SVG={Assets.UI.DividerWide} height={10} />
     </View>
   );

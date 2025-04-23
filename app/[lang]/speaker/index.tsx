@@ -1,7 +1,7 @@
 import { BulletListItem, ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { LinkText, LinkButton, SectionBox, SvgImage } from '@/UI';
-import {Platform, Text} from 'react-native';
+import { Platform, Text } from 'react-native';
 import { Assets } from '@/Assets';
 import React from 'react';
 import { useGlobalSearchParams } from 'expo-router';
@@ -13,8 +13,12 @@ const Speaker = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
-    <ScreenTemplate pageTitle={t('speakers.pageTitle')} shouldScrollToTop={true}>
-      <Text style={[Assets.styles.text, { marginHorizontal: 20}]}>{t('speakers.conference_intro')}</Text>
+    <ScreenTemplate
+      pageTitle={t('speakers.pageTitle')}
+      pageSubtitle={t('speakers.deadline_date')}
+      shouldScrollToTop={true}
+    >
+      <Text style={[Assets.styles.text, { marginHorizontal: 20 }]}>{t('speakers.conference_intro')}</Text>
       <Text style={[Assets.styles.text, { marginHorizontal: 20 }]}>
         {t('speakers.conference_attendance')} {t('speakers.international_speakers')} <Text style={{ fontWeight: 'bold', fontSize: 21 }}> {t('speakers.international_speakers_date')}</Text>
       </Text>
@@ -30,11 +34,11 @@ const Speaker = () => {
         <Text style={Assets.styles.text}>{t('speakers.importance_of_speakers')}</Text>
         <Text style={Assets.styles.text}>{t('speakers.commitment_to_diversity')}</Text>
         <LinkButton
-            href="https://vimeo.com/javazone"
-            title={t('speakers.vimeo')}
-            targetBlank={true}
-            margin={Platform.OS !== 'android' && isMobile ? 10 : 20}
-            androidBlurPatch={Platform.OS === 'android'}
+          href="https://vimeo.com/javazone"
+          title={t('speakers.vimeo')}
+          targetBlank={true}
+          margin={Platform.OS !== 'android' && isMobile ? 10 : 20}
+          androidBlurPatch={Platform.OS === 'android'}
         />
       </SectionBox>
 
