@@ -13,15 +13,12 @@ const Speaker = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
-    <ScreenTemplate
-      pageTitle={t('speakers.pageTitle')}
-      pageSubtitle={t('speakers.deadline_date')}
-      shouldScrollToTop={true}
-    >
+    <ScreenTemplate pageTitle={t('speakers.pageTitle')} shouldScrollToTop={true}>
       <Text style={[Assets.styles.text, { marginHorizontal: 20 }]}>{t('speakers.conference_intro')}</Text>
       <Text style={[Assets.styles.text, { marginHorizontal: 20 }]}>
-        {t('speakers.conference_attendance')} {t('speakers.international_speakers')} <Text style={{ fontWeight: 'bold', fontSize: 21 }}> {t('speakers.international_speakers_date')}</Text>
+        {t('speakers.conference_attendance')} {t('speakers.international_speakers')}
       </Text>
+      <Text style={{ fontWeight: 'bold', fontSize: 21 }}> {t('speakers.international_speakers_date')}</Text>
       <LinkButton
         href="https://talks.javazone.no/"
         title={t('speakers.submit_proposal')}
