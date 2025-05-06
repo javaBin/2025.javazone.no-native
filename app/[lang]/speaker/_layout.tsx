@@ -3,7 +3,7 @@ import { Stack } from "expo-router/stack";
 import { BlurView } from "expo-blur";
 import { Platform, StyleSheet, View } from "react-native";
 import { Assets } from "@/Assets";
-import { LanguagePicker } from "@/components/LanguagePicker";
+import { LanguagePicker } from "@/components";
 
 const SpeakerLayout = () => {
 

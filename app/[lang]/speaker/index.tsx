@@ -18,7 +18,7 @@ const Speaker = () => {
       <Text style={[Assets.styles.text, { marginHorizontal: 20 }]}>
         {t('speakers.conference_attendance')} {t('speakers.international_speakers')}
       </Text>
-      <Text style={{ fontWeight: 'bold', fontSize: 21 }}> {t('speakers.international_speakers_date')}</Text>
+      <Text style={[Assets.styles.text, {color: Assets.colors.jz2025ThemeColors.crimsonRed}]}> {t('speakers.international_speakers_date')}</Text>
       <LinkButton
         href="https://talks.javazone.no/"
         title={t('speakers.submit_proposal')}

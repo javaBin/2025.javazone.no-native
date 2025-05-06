@@ -6,23 +6,23 @@
     "orientation": "portrait",
     "icon": "./assets/images/logo/javaZone-logo.png",
     "userInterfaceStyle": "automatic",
-    "backgroundColor": "#e8dacfe6",
+    "backgroundColor": "#F7F3F1",
     "scheme": "javazone2025",
     "splash": {
       "image": "./assets/images/logo/javaZone-logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#e8dacfe6"
+      "backgroundColor": "#F7F3F1"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "JavaBin",
-      "backgroundColor": "#e8dacfe6"
+      "backgroundColor": "#F7F3F1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo/javaZone-logo.png",
-        "backgroundColor": "#e8dacfe6"
+        "backgroundColor": "#F7F3F1"
       },
       "splash": {
         "resizeMode": "native"
@@ -32,7 +32,7 @@
     "web": {
       "favicon": "./assets/images/logo/javaZone2025-favIcon.png",
       "bundler": "metro",
-      "backgroundColor": "#e8dacfe6"
+      "backgroundColor": "#F7F3F1"
     },
     "extra": {
       "eas": {
@@ -40,7 +40,7 @@
       }
     },
     "newArchEnabled": true,
-    "owner": "carolinekristin",
+    "owner": "javazoneapp",
     "plugins": ["expo-localization", "expo-router", "expo-font"]
   }
 }
