@@ -35,6 +35,7 @@
     "expo-status-bar": "~2.0.1",
     "expo-system-ui": "~5.0.7",
     "i18next": "^25.0.2",
+    "metro": "^0.82.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-i18next": "^15.1.0",
@@ -44,8 +45,8 @@
     "react-native-safe-area-context": "^5.4.0",
     "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.10",
-    "react-responsive": "^10.0.0",
-    "react-native-webview": "13.12.5"
+    "react-native-webview": "13.12.5",
+    "react-responsive": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
