@@ -98,7 +98,7 @@ const RootLayout = () => {
    *      need to listen for changes to the AppState and manually change the language with i18next
    */
   useEffect(() => {
-    setLanguage('en-US'); // default language
+    setLanguage('en-US');
 
     if (Platform.OS !== 'android') return;
 
