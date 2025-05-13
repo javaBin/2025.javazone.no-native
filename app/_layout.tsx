@@ -38,6 +38,8 @@ const RootLayout = () => {
   }, []);
 
   useEffect(() => {
+    setLanguage('en-US'); // default language
+
     // we either don't have a language, or we've already initialized
     if (!language || languageLoaded) return;
 
@@ -53,6 +55,8 @@ const RootLayout = () => {
   }, [language, languageLoaded]);
 
   useEffect(() => {
+    setLanguage('en-US'); // default language
+
     if (Platform.OS !== 'web') return;
 
     // handle redirection to default language if no lang route provided
@@ -71,6 +75,7 @@ const RootLayout = () => {
   }, [lang, isRedirected]);
 
   useEffect(() => {
+    setLanguage('en-US'); // default language
     const getStoredLanguageAndSet = async () => {
       if (Platform.OS === 'web') return;
 
@@ -93,6 +98,8 @@ const RootLayout = () => {
    *      need to listen for changes to the AppState and manually change the language with i18next
    */
   useEffect(() => {
+    setLanguage('en-US'); // default language
+
     if (Platform.OS !== 'android') return;
 
     // any time app state changes, get and set new locale
@@ -139,9 +146,7 @@ const RootLayout = () => {
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
         </View>
-        <View style={{display: screenWidth > 834 ? 'flex' : 'none'}}>
-          {languageLoaded && <LanguagePicker />}
-        </View>
+        <View style={{ display: screenWidth > 834 ? 'flex' : 'none' }}>{languageLoaded && <LanguagePicker />}</View>
       </View>
     ),
   };
@@ -151,10 +156,24 @@ const RootLayout = () => {
     tabBarLabelStyle: styles.tabBarLabel,
     tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
     tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
-    tabBarBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={styles.tabBarBlurContainer} />,
+    tabBarBackground: () => (
+      <BlurView
+        tint="light"
+        intensity={80}
+        experimentalBlurMethod={'dimezisBlurView'}
+        style={styles.tabBarBlurContainer}
+      />
+    ),
     headerShown: true,
     headerTransparent: true,
-    headerBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={[StyleSheet.absoluteFill]} />,
+    headerBackground: () => (
+      <BlurView
+        tint="light"
+        intensity={80}
+        experimentalBlurMethod={'dimezisBlurView'}
+        style={[StyleSheet.absoluteFill]}
+      />
+    ),
     headerTitle: '',
     headerBackButtonMenuEnabled: true,
     headerRight: () => languageLoaded && <LanguagePicker />,
@@ -259,11 +278,11 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-                name="[lang]/info"
-                options={{
-                  title: 'Info',
-                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
-                }}
+              name="[lang]/info"
+              options={{
+                title: 'Info',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+              }}
             />
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
@@ -288,7 +307,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Cinzel_400Regular',
     alignSelf: 'center',
     display: 'flex',
-    width: "100%",
+    width: '100%',
   },
   tabBarBlurContainer: {
     flex: 1,
@@ -337,5 +356,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     margin: 5,
     textShadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
-  }
+  },
 });
