@@ -33,11 +33,6 @@ const RootLayout = () => {
   const papyrusMenuRef = useRef<PapyrusInterface>();
 
   useEffect(() => {
-    // Set background color
-    SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
-  }, []);
-
-  useEffect(() => {
     setLanguage('en-US'); // default language
 
     // we either don't have a language, or we've already initialized
@@ -74,11 +69,53 @@ const RootLayout = () => {
     }
   }, [lang, isRedirected]);
 
-  useEffect(() => {
-    setLanguage('en-US'); // default language
-    const getStoredLanguageAndSet = async () => {
-      if (Platform.OS === 'web') return;
+  // useEffect(() => {
+  //   // TODO: bruke en enkelt switch case på OS version i useEffecten istedenfor, da kan man redusere antal useEffekter
+  //   setLanguage('en-US'); // default language
+  //   const getStoredLanguageAndSet = async () => {
+  //     if (Platform.OS === 'web') return;
+  //
+  //     // get the device's current system locale from expo-localization
+  //     const storedLocale = await AsyncStorage.getItem('javazone_locale');
+  //     const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
+  //     setLanguage(storedLocale ? storedLocale : phoneLocale);
+  //
+  //     if (!isRedirected) {
+  //       router.replace(`/${lang}`); // test if this affects performance or not
+  //       setIsRedirected(true);
+  //     }
+  //   };
+  //
+  //   getStoredLanguageAndSet();
+  // }, []);
 
+  /** app reloads when the system locale is changed for iOS,
+   *  this doesn't apply for Android
+   *      need to listen for changes to the AppState and manually change the language with i18next
+   */
+  // useEffect(() => {
+  //   setLanguage('en-US');
+  //
+  //   if (Platform.OS !== 'android') return;
+  //
+  //   // any time app state changes, get and set new locale
+  //   const handleAppStateChange = async () => {
+  //     const storedLocale = await AsyncStorage.getItem('javazone_locale');
+  //     const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
+  //     await i18n.changeLanguage(storedLocale ? storedLocale : phoneLocale);
+  //   };
+  //
+  //   const subscription = AppState.addEventListener('change', handleAppStateChange);
+  //
+  //   return () => {
+  //     subscription.remove();
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    SystemUI.setBackgroundColorAsync(Assets.colors.gradient.medium);
+
+    const getStoredLanguageAndSet = async () => {
       // get the device's current system locale from expo-localization
       const storedLocale = await AsyncStorage.getItem('javazone_locale');
       const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
@@ -90,31 +127,24 @@ const RootLayout = () => {
       }
     };
 
-    getStoredLanguageAndSet();
-  }, []);
-
-  /** app reloads when the system locale is changed for iOS,
-   *  this doesn't apply for Android
-   *      need to listen for changes to the AppState and manually change the language with i18next
-   */
-  useEffect(() => {
-    setLanguage('en-US');
-
-    if (Platform.OS !== 'android') return;
-
-    // any time app state changes, get and set new locale
-    const handleAppStateChange = async () => {
+    const handleAndroidAppStateChange = async () => {
       const storedLocale = await AsyncStorage.getItem('javazone_locale');
       const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
       await i18n.changeLanguage(storedLocale ? storedLocale : phoneLocale);
     };
 
-    const subscription = AppState.addEventListener('change', handleAppStateChange);
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
+    switch (Platform.OS) {
+      case 'android':
+        getStoredLanguageAndSet();
+        AppState.addEventListener('change', handleAndroidAppStateChange)
+        return
+      case 'ios':
+        getStoredLanguageAndSet();
+        return
+      default:
+        return
+    }
+  }, [])
 
   const screenOptions = {
     headerShown: true,
