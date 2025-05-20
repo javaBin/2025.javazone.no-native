@@ -243,7 +243,7 @@ const RootLayout = () => {
     InactiveIcon: FunctionComponent<SvgProps>
   ) => (focused ? <ActiveIcon height={24} width={'100%'} /> : <InactiveIcon height={24} width={'100%'} />);
 
-  if (Platform.OS === 'web') {
+  if (Platform.OS !== 'web') {
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
@@ -307,17 +307,16 @@ const RootLayout = () => {
               }}
             />
             {/*<Tabs.Screen*/}
-            {/*  name="[lang]/speaker"*/}
+            {/*  name="[lang]/speaker/index"*/}
             {/*  options={{*/}
             {/*    title: 'Speaker',*/}
             {/*    tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),*/}
             {/*    headerShown: false,*/}
             {/*  }}*/}
             {/*/>*/}
-            <Tabs.Screen name="[lang]/speaker/index" options={{ href: null }} />
-            <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
-            <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
-            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+            {/*<Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />*/}
+            {/*<Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />*/}
+            {/*<Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />*/}
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
         </I18nContextProvider>
