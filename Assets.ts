@@ -31,6 +31,7 @@ import LinkedInFrame from '@/assets/icons/linkedin-frame.svg';
 import ToTopArrow from '@/assets/icons/to-top-arrow.svg';
 import HandHeartInactive from '@/assets/icons/hand-heart-inactive.svg';
 import HandHeartActive from '@/assets/icons/hand-heart-active.svg';
+import XLogo from '@/assets/icons/x-logo.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -176,6 +177,7 @@ export const Assets = {
     ToTopArrow,
     HandHeartInactive,
     HandHeartActive,
+    XLogo
   },
   partnerLogos: {
     Accenture,
