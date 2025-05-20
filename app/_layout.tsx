@@ -278,10 +278,10 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-              name="[lang]/program"
+              name="[lang]/info"
               options={{
-                title: 'Program',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
+                title: 'Info',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
               }}
             />
             <Tabs.Screen
@@ -292,11 +292,10 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-              name="[lang]/speaker"
+              name="[lang]/program"
               options={{
-                title: 'Speaker',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),
-                headerShown: false,
+                title: 'Program',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
               }}
             />
             <Tabs.Screen
@@ -307,16 +306,18 @@ const RootLayout = () => {
                   renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
               }}
             />
-            <Tabs.Screen
-              name="[lang]/info"
-              options={{
-                title: 'Info',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
-              }}
-            />
-            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+            {/*<Tabs.Screen*/}
+            {/*  name="[lang]/speaker"*/}
+            {/*  options={{*/}
+            {/*    title: 'Speaker',*/}
+            {/*    tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),*/}
+            {/*    headerShown: false,*/}
+            {/*  }}*/}
+            {/*/>*/}
+            <Tabs.Screen name="[lang]/speaker/index" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
+            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
             <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
           </Tabs>
         </I18nContextProvider>
