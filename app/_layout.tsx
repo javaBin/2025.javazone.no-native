@@ -121,10 +121,10 @@ const RootLayout = () => {
       const phoneLocale = Localization.getLocales()?.[0]?.languageTag ?? 'en-US';
       setLanguage(storedLocale ? storedLocale : phoneLocale);
 
-      if (!isRedirected) {
+      /* if (!isRedirected) {
         router.replace(`/${lang}`); // test if this affects performance or not
         setIsRedirected(true);
-      }
+      } */
     };
 
     const handleAndroidAppStateChange = async () => {
@@ -243,7 +243,7 @@ const RootLayout = () => {
     InactiveIcon: FunctionComponent<SvgProps>
   ) => (focused ? <ActiveIcon height={24} width={'100%'} /> : <InactiveIcon height={24} width={'100%'} />);
 
-  if (Platform.OS !== 'web') {
+  if (Platform.OS === 'web') {
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
@@ -269,55 +269,14 @@ const RootLayout = () => {
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
-          <Tabs initialRouteName="[lang]/index" screenOptions={{ ...nativeScreenOptions }}>
+          <Tabs initialRouteName="index" screenOptions={{ ...nativeScreenOptions }}>
             <Tabs.Screen
-              name="[lang]/index"
+              name="index"
               options={{
                 title: 'Home',
                 tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Home, Assets.icons.HomeInactive),
               }}
-            />
-            <Tabs.Screen
-              name="[lang]/info"
-              options={{
-                title: 'Info',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/partner"
-              options={{
-                title: 'Partner',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Partner, Assets.icons.PartnerInactive),
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/program"
-              options={{
-                title: 'Program',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/volunteers"
-              options={{
-                title: 'Volunteers',
-                tabBarIcon: ({ focused }) =>
-                  renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
-              }}
-            />
-            {/*<Tabs.Screen*/}
-            {/*  name="[lang]/speaker/index"*/}
-            {/*  options={{*/}
-            {/*    title: 'Speaker',*/}
-            {/*    tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),*/}
-            {/*    headerShown: false,*/}
-            {/*  }}*/}
-            {/*/>*/}
-            {/*<Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />*/}
-            {/*<Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />*/}
-            {/*<Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />*/}
-            <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
+            />            
           </Tabs>
         </I18nContextProvider>
       </SafeAreaProvider>
