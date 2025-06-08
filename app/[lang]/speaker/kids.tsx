@@ -130,14 +130,12 @@ const SpeakerKids = () => {
 
             <SectionBox
               sectionTitle={t(`${workshop.title}`)}
-              style={
-                !isMobile && {
-                  height: 1500,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                }
-              }
+              style={{
+                height: 1500,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
             >
               <Text style={[Assets.styles.text, { marginHorizontal: 'auto' }]}>Rom: {t(`${workshop.room}`)}</Text>
 
