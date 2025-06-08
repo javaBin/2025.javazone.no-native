@@ -25,7 +25,7 @@ const workshops = [
     ],
   },
   {
-    title: 'Er du klar for å bygge din egen robot? (Exposalen)',
+    title: 'Er du klar for å bygge din egen robot?',
     room: 'Exposalen',
     instructors: ['Jeroen Resoort', 'Michel Breevoort'],
     checkInLink: ',',
@@ -60,7 +60,7 @@ const SpeakerKids = () => {
       <Text style={[Assets.styles.sectionSubTitle, { marginTop: -10, fontWeight: '500' }]}>
         En smakebit på voksenlivet
       </Text>
-      <SectionBox sectionTitle={t('kids.call_for_speakers_title')}>
+      <SectionBox sectionTitle={''}>
         <View style={{ marginHorizontal: 'auto', width: '80%' }}>
           <Text style={[Assets.styles.text]}>
             JavaZone inviterer alle barn og ungdommer på Rebel søndag 31. august. Vi kjører 3 parallelle workshoper; så
@@ -107,21 +107,34 @@ const SpeakerKids = () => {
 
       <View
         style={{
-          flexDirection: 'column',
+          flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'center',
-          alignItems: 'center',
+          alignItems: 'flex-start',
+          flexWrap: 'wrap',
+          gap: 20,
           marginTop: 20,
           width: '100%',
         }}
       >
         {workshops.map((workshop, index) => (
-          <View key={index} style={{ width: '100%', position: 'relative', alignItems: 'center' }}>
+          <View
+            key={index}
+            style={{
+              flexBasis: isMobile ? '100%' : '30%',
+              maxWidth: isMobile ? '100%' : '50%',
+              position: 'relative',
+              alignItems: 'center',
+              flex: 1, // Ensures all columns grow equally
+              minHeight: 500, // Set to your desired minimum height
+              marginBottom: 20,
+            }}
+          >
             <Text
               style={{
                 position: 'absolute',
-                top: 20,
-                left: isMobile ? 8 : 30,
-                fontSize: isMobile ? 35 : 60,
+                top: 5,
+                left: 5,
+                fontSize: isMobile ? 35 : 50,
                 fontWeight: 'bold',
                 color: Assets.colors.jz2025ThemeColors.vividOrange,
                 zIndex: 1,
@@ -130,8 +143,18 @@ const SpeakerKids = () => {
               {index + 1}
             </Text>
 
-            <SectionBox sectionTitle={workshop.title}>
-              <Text style={[Assets.styles.text, { marginHorizontal: 'auto' }]}>Rom: ({workshop.room})</Text>
+            <SectionBox
+              sectionTitle={workshop.title}
+              style={
+                !isMobile && {
+                  height: 1500,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }
+              }
+            >
+              <Text style={[Assets.styles.text, { marginHorizontal: 'auto' }]}>Rom: {workshop.room}</Text>
 
               <Text style={[Assets.styles.sectionSubTitle, { marginTop: 10 }]}>Instruktører</Text>
               <Text style={[Assets.styles.text, { textAlign: 'center' }]}>{workshop.instructors.join('\n')}</Text>
