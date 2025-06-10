@@ -135,20 +135,21 @@ const SpeakerKids = () => {
             >
               <Text style={[Assets.styles.text, { marginHorizontal: 'auto' }]}>Rom: {t(`${workshop.room}`)}</Text>
 
-              <Text style={[Assets.styles.sectionSubTitle]}>Instruktører</Text>
+              <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.instructors')}</Text>
               {workshop.instructors.map((instructor, i) => (
                 <Text key={i} style={[Assets.styles.text, { textAlign: 'center' }]}>
                   {t(instructor)}
                 </Text>
               ))}
-              <Text style={[Assets.styles.sectionSubTitle]}>Om Workshopen</Text>
+
+              <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.about_workshop')}</Text>
               {workshop.description.map((paragraph, i) => (
-                <Text key={i} style={[Assets.styles.text, { marginTop: i === 0 ? 0 : 1 }]}>
+                <Text key={i} style={[Assets.styles.text]}>
                   {t(paragraph)}
                 </Text>
               ))}
 
-              <Text style={[Assets.styles.sectionSubTitle]}>Praktisk info</Text>
+              <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.practical_info')}</Text>
               <View style={{ marginHorizontal: 'auto' }}>
                 {workshop.info.map((item, i) => (
                   <BulletListItem key={i} text={t(`${item}`)} />
@@ -156,7 +157,7 @@ const SpeakerKids = () => {
               </View>
 
               <View style={{ marginHorizontal: 'auto' }}>
-                <Text style={[Assets.styles.sectionSubTitle]}>Utstyr</Text>
+                <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.equipment')}</Text>
                 {workshop.equipment.map((item, i) => (
                   <BulletListItem key={i} text={t(`${item}`)} />
                 ))}
