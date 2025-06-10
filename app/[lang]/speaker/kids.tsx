@@ -94,22 +94,18 @@ const SpeakerKids = () => {
         style={{
           flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'center',
-          alignItems: 'flex-start',
-          flexWrap: 'wrap',
+          alignItems: 'center',
           gap: 20,
           marginTop: 20,
-          width: '100%',
         }}
       >
         {workshops.map((workshop, index) => (
           <View
             key={index}
             style={{
-              flexBasis: isMobile ? '100%' : '30%',
-              maxWidth: isMobile ? '100%' : '50%',
+              maxWidth: isMobile ? '87%' : '39%',
               position: 'relative',
               alignItems: 'center',
-              flex: 1,
               minHeight: 500,
               marginBottom: 20,
             }}
@@ -139,20 +135,20 @@ const SpeakerKids = () => {
             >
               <Text style={[Assets.styles.text, { marginHorizontal: 'auto' }]}>Rom: {t(`${workshop.room}`)}</Text>
 
-              <Text style={[Assets.styles.sectionSubTitle, { marginTop: 10 }]}>Instruktører</Text>
+              <Text style={[Assets.styles.sectionSubTitle]}>Instruktører</Text>
               {workshop.instructors.map((instructor, i) => (
                 <Text key={i} style={[Assets.styles.text, { textAlign: 'center' }]}>
                   {t(instructor)}
                 </Text>
               ))}
-              <Text style={[Assets.styles.sectionSubTitle, { marginTop: 20 }]}>Om Workshopen</Text>
+              <Text style={[Assets.styles.sectionSubTitle]}>Om Workshopen</Text>
               {workshop.description.map((paragraph, i) => (
-                <Text key={i} style={[Assets.styles.text, { marginTop: i === 0 ? 0 : 10 }]}>
+                <Text key={i} style={[Assets.styles.text, { marginTop: i === 0 ? 0 : 1 }]}>
                   {t(paragraph)}
                 </Text>
               ))}
 
-              <Text style={[Assets.styles.sectionSubTitle, { marginTop: 20 }]}>Praktisk info</Text>
+              <Text style={[Assets.styles.sectionSubTitle]}>Praktisk info</Text>
               <View style={{ marginHorizontal: 'auto' }}>
                 {workshop.info.map((item, i) => (
                   <BulletListItem key={i} text={t(`${item}`)} />
@@ -160,7 +156,7 @@ const SpeakerKids = () => {
               </View>
 
               <View style={{ marginHorizontal: 'auto' }}>
-                <Text style={[Assets.styles.sectionSubTitle, { marginTop: 20 }]}>Utstyr</Text>
+                <Text style={[Assets.styles.sectionSubTitle]}>Utstyr</Text>
                 {workshop.equipment.map((item, i) => (
                   <BulletListItem key={i} text={t(`${item}`)} />
                 ))}
