@@ -103,7 +103,7 @@ const SpeakerKids = () => {
           <View
             key={index}
             style={{
-              maxWidth: isMobile ? '87%' : '39%',
+              width: isMobile ? '87%' : '39%',
               position: 'relative',
               alignItems: 'center',
               minHeight: 500,
@@ -113,9 +113,9 @@ const SpeakerKids = () => {
             <Text
               style={{
                 position: 'absolute',
-                top: 5,
-                left: 5,
-                fontSize: isMobile ? 35 : 50,
+                top: 15,
+                left: 15,
+                fontSize: 50,
                 fontWeight: 'bold',
                 color: Assets.colors.jz2025ThemeColors.vividOrange,
                 zIndex: 1,
@@ -126,41 +126,48 @@ const SpeakerKids = () => {
 
             <SectionBox
               sectionTitle={t(`${workshop.title}`)}
+              titleStyle={{ width: '77%', marginHorizontal: 'auto' }}
               style={{
-                height: 1500,
+                height: isMobile && index === 2 ? 1200 : 1400,
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
               }}
             >
-              <Text style={[Assets.styles.text, { marginHorizontal: 'auto' }]}>Rom: {t(`${workshop.room}`)}</Text>
-
-              <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.instructors')}</Text>
-              {workshop.instructors.map((instructor, i) => (
-                <Text key={i} style={[Assets.styles.text, { textAlign: 'center' }]}>
-                  {t(instructor)}
+              <View style={{ flex: 1, flexDirection: 'column', gap: 34, marginBottom: 90 }}>
+                <Text style={[Assets.styles.text, { marginHorizontal: 'auto', marginVertical: 2 }]}>
+                  {t(`${workshop.room}`)}
                 </Text>
-              ))}
+                <View style={{ height: 120, justifyContent: 'flex-start' }}>
+                  <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.instructors')}</Text>
+                  {workshop.instructors.map((instructor, i) => (
+                    <Text key={i} style={[Assets.styles.text, { textAlign: 'center', marginVertical: 2 }]}>
+                      {t(instructor)}
+                    </Text>
+                  ))}
+                </View>
 
-              <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.about_workshop')}</Text>
-              {workshop.description.map((paragraph, i) => (
-                <Text key={i} style={[Assets.styles.text]}>
-                  {t(paragraph)}
-                </Text>
-              ))}
+                <View style={{ gap: 16 }}>
+                  <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.about_workshop')}</Text>
+                  {workshop.description.map((paragraph, i) => (
+                    <Text key={i} style={[Assets.styles.text]}>
+                      {t(paragraph)}
+                    </Text>
+                  ))}
+                </View>
 
-              <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.practical_info')}</Text>
-              <View style={{ marginHorizontal: 'auto' }}>
-                {workshop.info.map((item, i) => (
-                  <BulletListItem key={i} text={t(`${item}`)} />
-                ))}
-              </View>
+                <Text style={[Assets.styles.sectionSubTitle, { marginTop: 'auto' }]}>{t('kids.practical_info')}</Text>
+                <View style={{ marginHorizontal: 'auto' }}>
+                  {workshop.info.map((item, i) => (
+                    <BulletListItem key={i} text={t(`${item}`)} />
+                  ))}
+                </View>
 
-              <View style={{ marginHorizontal: 'auto' }}>
-                <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.equipment')}</Text>
-                {workshop.equipment.map((item, i) => (
-                  <BulletListItem key={i} text={t(`${item}`)} />
-                ))}
+                <View style={{ marginHorizontal: 'auto' }}>
+                  <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.equipment')}</Text>
+                  {workshop.equipment.map((item, i) => (
+                    <BulletListItem key={i} text={t(`${item}`)} />
+                  ))}
+                </View>
               </View>
 
               <LinkButton
