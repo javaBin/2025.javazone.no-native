@@ -57,6 +57,9 @@ const SpeakerKids = () => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <ScreenTemplate pageTitle={t('kids.title')}>
       <Text style={[Assets.styles.sectionSubTitle, { marginTop: -10, fontWeight: '500' }]}>{t('kids.top_text')}</Text>
@@ -94,7 +97,7 @@ const SpeakerKids = () => {
         style={{
           flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'center',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           gap: 20,
           marginTop: 20,
         }}
@@ -102,8 +105,9 @@ const SpeakerKids = () => {
         {workshops.map((workshop, index) => (
           <View
             key={index}
+            // @ts-ignore
             style={{
-              width: isMobile ? '87%' : '39%',
+              width: isMobile ? '87%' : '52vh',
               position: 'relative',
               alignItems: 'center',
               minHeight: 500,
@@ -128,7 +132,7 @@ const SpeakerKids = () => {
               sectionTitle={t(`${workshop.title}`)}
               titleStyle={{ width: '77%', marginHorizontal: 'auto' }}
               style={{
-                height: isMobile && index === 2 ? 1200 : 1400,
+                minHeight: isMobile && index === 2 ? 1200 : 1400,
                 display: 'flex',
                 flexDirection: 'column',
               }}
