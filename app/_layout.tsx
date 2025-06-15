@@ -115,7 +115,7 @@ const RootLayout = () => {
       <View style={styles.header}>
         <Pressable onPress={() => router.navigate(`/${lang}`)}>
           <View style={styles.headerLogoTitle}>
-            <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
+            <SvgImage SVG={Assets.images.hero.HeroDuke} height={24} width={24} style={{ marginHorizontal: 10 }} />
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
@@ -139,9 +139,7 @@ const RootLayout = () => {
             <Text style={styles.navItem}>Info</Text>
           </Pressable>
         </View>
-        <View style={{display: screenWidth > 834 ? 'flex' : 'none'}}>
-          {languageLoaded && <LanguagePicker />}
-        </View>
+        <View style={{ display: screenWidth > 834 ? 'flex' : 'none' }}>{languageLoaded && <LanguagePicker />}</View>
       </View>
     ),
   };
@@ -151,10 +149,24 @@ const RootLayout = () => {
     tabBarLabelStyle: styles.tabBarLabel,
     tabBarActiveTintColor: Assets.colors.jz2025ThemeColors.vividOrange,
     tabBarInactiveTintColor: Assets.colors.jz2025ThemeColors.darkBrown,
-    tabBarBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={styles.tabBarBlurContainer} />,
+    tabBarBackground: () => (
+      <BlurView
+        tint="light"
+        intensity={80}
+        experimentalBlurMethod={'dimezisBlurView'}
+        style={styles.tabBarBlurContainer}
+      />
+    ),
     headerShown: true,
     headerTransparent: true,
-    headerBackground: () => <BlurView tint="light" intensity={80} experimentalBlurMethod={'dimezisBlurView'} style={[StyleSheet.absoluteFill]} />,
+    headerBackground: () => (
+      <BlurView
+        tint="light"
+        intensity={80}
+        experimentalBlurMethod={'dimezisBlurView'}
+        style={[StyleSheet.absoluteFill]}
+      />
+    ),
     headerTitle: '',
     headerBackButtonMenuEnabled: true,
     headerRight: () => languageLoaded && <LanguagePicker />,
@@ -259,11 +271,11 @@ const RootLayout = () => {
               }}
             />
             <Tabs.Screen
-                name="[lang]/info"
-                options={{
-                  title: 'Info',
-                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
-                }}
+              name="[lang]/info"
+              options={{
+                title: 'Info',
+                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+              }}
             />
             <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
             <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
@@ -288,7 +300,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Cinzel_400Regular',
     alignSelf: 'center',
     display: 'flex',
-    width: "100%",
+    width: '100%',
   },
   tabBarBlurContainer: {
     flex: 1,
@@ -337,5 +349,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     margin: 5,
     textShadowColor: Assets.colors.jz2025ThemeColors.darkBrown,
-  }
+  },
 });
