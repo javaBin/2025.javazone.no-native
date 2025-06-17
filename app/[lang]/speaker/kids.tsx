@@ -11,11 +11,7 @@ const workshops = [
   {
     title: 'kids.workshop_bitbot_title',
     room: 'kids.workshop_bitbot_room',
-    instructors: [
-      'kids.workshop_bitbot_instructor_one',
-      'kids.workshop_bitbot_instructor_two',
-      'kids.workshop_bitbot_instructor_three',
-    ],
+    instructors: ['kids.workshop_bitbot_instructor_one', 'kids.workshop_bitbot_instructor_three'],
     checkInLink: 'kids.workshop_bitbot_check_in_link',
     description: ['kids.workshop_bitbot_description_one', 'kids.workshop_bitbot_description_two'],
     info: ['kids.workshop_bitbot_info_one', 'kids.workshop_bitbot_info_two', 'kids.workshop_bitbot_info_three'],
