@@ -115,7 +115,7 @@ export const partners: Partner[] = [
   { name: 'Apotek1', homepageUrl: 'https://www.apotek1.no', logoUrl: Apotek1 },
   { name: 'BankID', homepageUrl: 'https://bankid.no', logoUrl: BankID },
   { name: 'Bronnoysundregistrene', homepageUrl: 'https://www.brreg.no', logoUrl: Bronoy },
-  { name: 'Crayon', homepageUrl: 'https://www.crayon.com', logoUrl: Crayon },
+  { name: 'Crayon', homepageUrl: 'https://crayonconsulting.no', logoUrl: Crayon },
   { name: 'El og IT', homepageUrl: 'https://elogit.no', logoUrl: ElOgIt },
   { name: 'GE', homepageUrl: 'https://www.ge.com', logoUrl: GE },
   { name: 'JetBrains', homepageUrl: 'https://www.jetbrains.com', logoUrl: JetBrains },
