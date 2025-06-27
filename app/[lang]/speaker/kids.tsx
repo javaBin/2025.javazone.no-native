@@ -93,7 +93,7 @@ const SpeakerKids = () => {
         style={{
           flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'center',
-          alignItems: 'flex-start',
+          alignItems: isMobile ? 'center' : 'flex-start',
           gap: 20,
           marginTop: 20,
         }}
