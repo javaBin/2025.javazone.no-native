@@ -7,12 +7,13 @@ import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import LinkButton from '@/UI/LinkButton';
 
+const eventCheckInLink = 'https://event.checkin.no/132451/javazone-kids-2025';
 const workshops = [
   {
     title: 'kids.workshop_bitbot_title',
     room: 'kids.workshop_bitbot_room',
     instructors: ['kids.workshop_bitbot_instructor_one', 'kids.workshop_bitbot_instructor_three'],
-    checkInLink: 'kids.workshop_bitbot_check_in_link',
+    checkInLink: eventCheckInLink,
     description: ['kids.workshop_bitbot_description_one', 'kids.workshop_bitbot_description_two'],
     info: ['kids.workshop_bitbot_info_one', 'kids.workshop_bitbot_info_two', 'kids.workshop_bitbot_info_three'],
     equipment: [
@@ -25,7 +26,7 @@ const workshops = [
     title: 'kids.workshop_mBot_title',
     room: 'kids.workshop_mBot_room',
     instructors: ['kids.workshop_mBot_instructor_one', 'kids.workshop_mBot_instructor_two'],
-    checkInLink: 'kids.workshop_mBot_check_in_link',
+    checkInLink: eventCheckInLink,
     description: [
       'kids.workshop_mBot_description_one',
       'kids.workshop_mBot_description_two',
@@ -38,7 +39,7 @@ const workshops = [
     title: 'kids.workshop_3Dprinting_title',
     room: 'kids.workshop_3Dprinting_room',
     instructors: ['kids.workshop_3Dprinting_instructor_one'],
-    checkInLink: 'kids.workshop_3Dprinting_check_in_link',
+    checkInLink: eventCheckInLink,
     description: ['kids.workshop_3Dprinting_description_one', 'kids.workshop_3Dprinting_description_two'],
     info: [
       'kids.workshop_3Dprinting_info_one',
@@ -53,9 +54,6 @@ const SpeakerKids = () => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
   return (
     <ScreenTemplate pageTitle={t('kids.title')}>
       <Text style={[Assets.styles.sectionSubTitle, { marginTop: -10, fontWeight: '500' }]}>{t('kids.top_text')}</Text>
@@ -171,7 +169,7 @@ const SpeakerKids = () => {
               </View>
 
               <LinkButton
-                disabled={true}
+                disabled={false}
                 href={t(workshop.checkInLink)}
                 title={'Påmelding åpner 30. juni kl. 12.00'}
                 targetBlank={false}
