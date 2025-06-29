@@ -171,7 +171,7 @@ const SpeakerKids = () => {
               <LinkButton
                 disabled={false}
                 href={t(workshop.checkInLink)}
-                title={'Påmelding åpner 30. juni kl. 12.00'}
+                title={t('kids.registration_button')}
                 targetBlank={false}
                 margin={isMobile ? 10 : 20}
                 androidBlurPatch={Platform.OS === 'android'}
