@@ -1,5 +1,6 @@
+// OK
 import React, { useEffect, useState } from 'react';
-import { PageTitle, SvgCallbackImage, SvgImage } from '@/UI';
+import { PageTitle, PapyrusSheetSVG, SectionBox, SvgCallbackImage, SvgImage } from '@/UI';
 import { Assets } from '@/Assets';
 import { Dimensions, Linking, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Link } from 'expo-router';
@@ -11,26 +12,37 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 
+const screenWidth = Dimensions.get('window').width;
+
 type HoldTheDateProps = {
   subPageHeader?: string;
 };
-
+// OK
 const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
   const { t } = useTranslation();
 
   const [sessions, setSessions] = React.useState<Session[]>([]);
+  // States for filter knappene. Jeg klarte ikke ordentlig å gjøre det ved hjelp av mindre antall...Sorry...
 
   const [pressedDate, setPressedDate] = useState<string | null>(null);
-  const [hoveredFilter, setHoveredFilter] = useState<string | null>(null);
+  const [hoveredDate, setHoveredDate] = useState<string | null>(null);
+
+  const [pressedLanguage, setPressedLanguage] = useState<string | null>(null);
+  const [hoveredLanguage, setHoveredLanguage] = useState<string | null>(null);
+
+  const [pressedFormat, setPressedFormat] = useState<string | null>(null);
+  const [hoveredFormat, setHoveredFormat] = useState<string | null>(null);
 
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [selectedFormat, setSelectedFormat] = useState<string | null>(null);
 
   const [favorites, setFavorites] = useState<Session[]>([]);
+  const [pressedFavorites, setPressedFavorites] = useState(false);
+  const [hoveredFavorites, setHoveredFavorites] = useState(false);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
 
-   useEffect(() => {
+  useEffect(() => {
     fetchProgram().then((data) => setSessions(data.sessions));
     const loadFavorites = async () => {
       const storedFavorites = await getData('favorites');
@@ -39,7 +51,8 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 
     loadFavorites();
   }, []);
-  // From Async Storage documentation
+
+  // Async Storage for å lagre data i local storage.
   const storeData = async (key: string, value: any) => {
     try {
       const jsonValue = JSON.stringify(value);
@@ -57,7 +70,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
       console.error(e);
     }
   };
-
+  // Legger data til local storage.
   const addFavorite = async (session: Session) => {
     const isFavorite = favorites.some((fav) => fav.id === session.id);
 
@@ -72,6 +85,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     await storeData('favorites', updatedFavorites);
   };
 
+  //Filter knappene for dato,språk og format.
   const dateFilters = [
     { id: 'tue', label: 'Tue, September 2' },
     { id: 'wed', label: 'Wed, September 3' },
@@ -90,6 +104,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     { id: 'presentation', label: 'Presentation' },
   ];
 
+  //Filter som sjekker om brukeren valgte dato, språk og format av "talk".
   const filteredSessions = sessions.filter((session) => {
     const matchesDate =
       !selectedDate ||
@@ -105,6 +120,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     return matchesDate && matchesLanguage && matchesFormat;
   });
 
+  //Funksjon som grupperer "talks" basert på dato og tid.
   function groupSessionsByTimeslot(sessions: Session[]): Record<string, Session[]> {
     const hasStartTime = sessions.some((session) => !!session.startTime);
 
@@ -125,6 +141,7 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
     }, {});
   }
 
+  // Her bestemmes det om brukeren vil se favoritter eller hele program.
   const sessionsToShow = showFavoritesOnly ? favorites : filteredSessions;
   const groupedSessions = groupSessionsByTimeslot(Object.values(sessionsToShow).flat());
   const sortedTimeslots = Object.keys(groupedSessions).sort((a, b) => a.localeCompare(b));
@@ -138,143 +155,179 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 
   const currentTime = new Date('2024-09-07T03:24:00');
 
-  function isInteractable(filter: { id: string; label: string }) {
+  //Funksjoner som er ansvarlig for tilstand av filter-knappene.
+  function isDateInteractable(filter: { id: string; label: string }) {
     const isSelected = selectedDate === filter.id;
-    const isHovered = hoveredFilter === filter.id;
+    const isHovered = hoveredDate === filter.id;
     const isPressed = pressedDate === filter.id;
     return { isSelected, isHovered, isPressed };
   }
 
+  function isLanguageInteractable(filter: { id: string; label: string }) {
+    const isSelected = selectedLanguage === filter.id;
+    const isHovered = hoveredLanguage === filter.id;
+    const isPressed = pressedLanguage === filter.id;
+    return { isSelected, isHovered, isPressed };
+  }
+
+  function isFormatInteractable(filter: { id: string; label: string }) {
+    const isSelected = selectedFormat === filter.id;
+    const isHovered = hoveredFormat === filter.id;
+    const isPressed = pressedFormat === filter.id;
+    return { isSelected, isHovered, isPressed };
+  }
+
   return (
-    <ScreenTemplate>
+    <ScreenTemplate shouldScrollToTop={true}>
       <View style={{ marginTop: 50 }}>
         <SvgCallbackImage SVG={Assets.images.hero.HeroDuke} height={150} />
         <PageTitle title={t('Program for javaZone 2025')} />
-        <BlurView
-          tint="light"
-          intensity={Platform.OS === 'web' ? 20 : 40}
-          experimentalBlurMethod={'dimezisBlurView'}
-          style={{ ...Assets.styles.section, ...Assets.styles.shadow }}
-        >
-          <SvgImage SVG={Assets.icons.LaurelWealth} height={100} width={100} />
-          <View style={styles.filterFlex}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <SectionBox sectionTitle={''}>
+            <SvgImage SVG={Assets.icons.LaurelWealth} height={100} width={100} />
+            <View style={{ flexDirection: 'column', alignSelf: 'center' }}>
+              <Pressable
+                style={[
+                  styles.filterButton,
+                  { alignSelf: 'center', marginBottom: 20 },
+                  (showFavoritesOnly || hoveredFavorites || pressedFavorites) && styles.filterButtonSelected,
+                ]}
+                onHoverIn={() => setHoveredFavorites(true)}
+                onHoverOut={() => setHoveredFavorites(false)}
+                onPressIn={() => setPressedFavorites(true)}
+                onPressOut={() => setPressedFavorites(false)}
+                onPress={() => {
+                  setShowFavoritesOnly(!showFavoritesOnly);
+                  if (!showFavoritesOnly) {
+                    setSelectedDate(null);
+                    setSelectedLanguage(null);
+                    setSelectedFormat(null);
+                  }
+                }}
+              >
+                <Text style={[styles.buttonText]}>{showFavoritesOnly ? 'Full Program' : 'Favorites'}</Text>
+              </Pressable>
+              <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Day</Text>
+              <View style={styles.filterFlex}>
+                {dateFilters.map((filter) => {
+                  const { isSelected, isHovered, isPressed } = isDateInteractable(filter);
+                  return (
+                    <Pressable
+                      key={filter.id}
+                      onHoverIn={() => setHoveredDate(filter.id)}
+                      onHoverOut={() => setHoveredDate(null)}
+                      onPressIn={() => setPressedDate(filter.id)}
+                      onPressOut={() => setPressedDate(null)}
+                      onPress={() => {
+                        setSelectedDate(filter.id);
+                        setShowFavoritesOnly(false);
+                      }}
+                      style={() => [
+                        styles.filterButton,
+                        (isSelected || isHovered || isPressed) && styles.filterButtonSelected,
+                      ]}
+                    >
+                      <Text style={styles.buttonText}>{filter.label}</Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            </View>
+            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+              <View style={{ alignSelf: 'center', alignItems: 'center', flexShrink: 1 }}>
+                <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Language</Text>
+                <View style={styles.filterFlex}>
+                  {languageFilters.map((lang) => {
+                    const { isSelected, isHovered, isPressed } = isLanguageInteractable(lang);
+                    return (
+                      <Pressable
+                        key={lang.id}
+                        onHoverIn={() => setHoveredLanguage(lang.id)}
+                        onHoverOut={() => setHoveredLanguage(null)}
+                        onPress={() => setSelectedLanguage(lang.id)}
+                        onPressIn={() => setPressedLanguage(lang.id)}
+                        onPressOut={() => setPressedLanguage(null)}
+                        style={[
+                          styles.filterButton,
+                          (isSelected || isHovered || isPressed) && styles.filterButtonSelected,
+                        ]}
+                      >
+                        <Text style={styles.buttonText}>{lang.label}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </View>
+              <View style={{ alignSelf: 'center', alignItems: 'center', flexShrink: 1 }}>
+                <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Format</Text>
+                <View style={styles.filterFlex}>
+                  {formatFilters.map((format) => {
+                    const { isSelected, isHovered, isPressed } = isFormatInteractable(format);
+                    return (
+                      <Pressable
+                        key={format.id}
+                        onHoverIn={() => setHoveredFormat(format.id)}
+                        onHoverOut={() => setHoveredFormat(null)}
+                        onPress={() => setSelectedFormat(format.id)}
+                        onPressIn={() => setPressedFormat(format.id)}
+                        onPressOut={() => setPressedFormat(null)}
+                        style={[
+                          styles.filterButton,
+                          (isSelected || isHovered || isPressed) && styles.filterButtonSelected,
+                        ]}
+                      >
+                        <Text style={styles.buttonText}>{format.label}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </View>
+            </View>
             <Pressable
-              style={styles.filterButton}
+              style={styles.clearFilterButton}
               onPress={() => {
-                setSelectedDate(null);
-                setSelectedLanguage(null);
                 setSelectedFormat(null);
-                setShowFavoritesOnly(true);
+                setSelectedLanguage(null);
+                setSelectedDate(null);
               }}
             >
-              <Text style={styles.buttonText}>Show Favorites</Text>
+              <Text style={styles.clearFilterButtonText}>Clear filters</Text>
             </Pressable>
-            <View style={styles.filterFlex}>
-              <Text style={Assets.styles.listText}>Day</Text>
-              {dateFilters.map((filter) => {
-                const { isSelected, isHovered, isPressed } = isInteractable(filter);
-                return (
-                  <Pressable
-                    key={filter.id}
-                    onHoverIn={() => setHoveredFilter(filter.id)}
-                    onHoverOut={() => setHoveredFilter(null)}
-                    onPressIn={() => setPressedDate(filter.id)}
-                    onPressOut={() => setPressedDate(null)}
-                    onPress={() => {
-                      setSelectedDate(filter.id);
-                      setShowFavoritesOnly(false);
-                    }}
-                    style={() => [
-                      styles.filterButton,
-                      (isSelected || isHovered || isPressed) && styles.filterButtonSelected,
-                    ]}
-                  >
-                    <Text style={styles.buttonText}>{filter.label}</Text>
-                  </Pressable>
-                );
-              })}
-            </View>
-          </View>
-          <View style={{ display: 'flex', flexDirection: 'row', gap: 10 , alignItems:'center'}}>
-            <Text style={Assets.styles.listText}>Language</Text>
-            <View style={styles.filterFlex}>
-              {languageFilters.map((lang) => {
-                const { isSelected, isHovered, isPressed } = isInteractable(lang);
-
-                return (
-                  <Pressable
-                    key={lang.id}
-                    onHoverIn={() => setHoveredFilter(lang.id)}
-                    onHoverOut={() => setHoveredFilter(null)}
-                    onPress={() => setSelectedLanguage(lang.id)}
-                    style={[
-                      styles.filterButton,
-                      (isSelected || isHovered || isPressed) && styles.filterButtonSelected,
-                    ]}
-                  >
-                    <Text style={styles.buttonText}>{lang.label}</Text>
-                  </Pressable>
-                );
-              })}
-            </View>
-            <Text style={Assets.styles.listText}>Format</Text>
-            <View style={styles.filterFlex}>
-              {formatFilters.map((format) => {
-                const { isSelected, isHovered, isPressed } = isInteractable(format);
-
-                return (
-                  <Pressable
-                    key={format.id}
-                    onHoverIn={() => setHoveredFilter(format.id)}
-                    onHoverOut={() => setHoveredFilter(null)}
-                    onPress={() => setSelectedFormat(format.id)}
-                    style={[
-                      styles.filterButton,
-                      (isSelected || isHovered || isPressed) && styles.filterButtonSelected,
-                    ]}
-                  >
-                    <Text style={styles.buttonText}>{format.label}</Text>
-                  </Pressable>
-                );
-              })}
-            </View>
-          </View>
-          <Pressable
-            style={styles.clearFilterButton}
-            onPress={() => {
-              setSelectedFormat(null);
-              setSelectedLanguage(null);
-              setSelectedDate(null);
-            }}
-          >
-            <Text style={styles.clearFilterButtonText}>Clear filters</Text>
-          </Pressable>
-        </BlurView>
+          </SectionBox>
+        </View>
         <View>
           {sortedTimeslots
             .filter((time) => time.split('T')[0] <= currentTime.toISOString().split('T')[0])
             .map((time, key) => (
               <View key={`${time}-${key}`}>
                 {time && (
-                  <Text style={  Assets.styles.sectionSubTitle}>{dayAndTimeFormatWithMonth.format(new Date(time))}</Text>
+                  <Text style={[Assets.styles.sectionSubTitle, { margin: 30 }]}>
+                    {dayAndTimeFormatWithMonth.format(new Date(time))}
+                  </Text>
                 )}
                 <View style={styles.cardFlex}>
                   {groupedSessions[time].map((session) => (
                     <View style={styles.card} key={session.id}>
-                      <View style={styles.cardInner}>
-                        {/*   <LinearGradient
+                      <LinearGradient
                         style={[styles.gradient, Assets.styles.shadow]}
-                        colors={['#ffffff', '#f9f9f9', '#f2f2f2', '#e5e5e5', '#dcdcdc', '#cfcfcf', '#bfbfbf']}
-                      >*/}
+                        colors={[
+                          '#fefaf1', // почти белый с теплотой
+                          '#f9ecd4', // очень светлый бежево-кремовый
+                          '#f5e3bf', // светлый тёплый пергамент
+                          '#f2dab0', // мягкий оттенок выцветшей карамели
+                          '#f9e7ca', // воздушный теплый крем
+                          '#fff6e4', // светлый возврат — почти свет свечи
+                        ]}
+                      >
                         <Text style={styles.roomText}>{session.room}</Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                           <Text style={styles.cardTitle}>{session.title}</Text>
                           <Pressable onPress={() => addFavorite(session)}>
                             <Text>
                               {favorites.some((fav) => fav.id === session.id) ? (
-                                <SvgImage SVG={Assets.icons.HeartFilled} height={40} width={40} />
+                                <SvgImage SVG={Assets.icons.HeartFilled} height={50} width={40} />
                               ) : (
-                                <SvgImage SVG={Assets.icons.HeartVoid} height={40} width={40} />
+                                <SvgImage SVG={Assets.icons.HeartVoid} height={50} width={40} />
                               )}
                             </Text>
                           </Pressable>
@@ -305,8 +358,8 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
                             <SvgImage SVG={Assets.icons.XLogo} height={20} width={20} />
                           </TouchableOpacity>
                         </View>
-                        <Text style={styles.time}>45 min</Text>
-                      </View>
+                        <Text style={styles.time}>{session.length} min</Text>
+                      </LinearGradient>
                     </View>
                   ))}
                 </View>
@@ -321,20 +374,20 @@ const HoldTheDate = ({ subPageHeader }: HoldTheDateProps) => {
 const sharedShadow = {
   shadowColor: 'black',
   shadowOffset: { width: 0, height: 0 },
-  shadowOpacity: 0.2,
-  shadowRadius: 8,
+  shadowOpacity: 0.3,
+  shadowRadius: 10,
 };
 
 const sharedButton = {
-  padding: 8,
+  padding: 10,
   fontFamily: 'PlayfairDisplay_400Regular',
   textAlign: 'center',
 };
 
 const border = {
-  borderColor: Assets.colors.jz2025ThemeColors.cyberYellow,
-  borderWidth: 1,
-  borderRadius: 2,
+  borderColor: Assets.colors.jz2025ThemeColors.orangeYellow,
+  borderWidth: 0.5,
+  borderRadius: 4,
 };
 
 const baseFilterButton = {
@@ -351,7 +404,7 @@ const selectedButton = {
 
 const sharedText = {
   fontFamily: 'PlayfairDisplay_400Regular',
-  fontSize: 16
+  fontSize: 16,
 };
 
 const styles = StyleSheet.create({
@@ -369,11 +422,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 20,
     flexWrap: 'wrap',
-    margin: 20,
+    margin: 5,
   },
 
   filterButton: {
     ...baseFilterButton,
+    maxWidth: '100%',
   },
 
   filterButtonSelected: {
@@ -382,11 +436,13 @@ const styles = StyleSheet.create({
 
   clearFilterButton: {
     ...baseFilterButton,
+    ...sharedShadow,
+    borderColor: Assets.colors.jz2025ThemeColors.gradientRed,
     backgroundColor: Assets.colors.jz2025ThemeColors.gradientRed,
-    width: '100%',
-    maxWidth: 200,
+    maxWidth: '100%',
     alignSelf: 'center',
-    margin: 20,
+    paddingHorizontal: 20,
+    marginTop: 30,
   },
 
   buttonText: {
