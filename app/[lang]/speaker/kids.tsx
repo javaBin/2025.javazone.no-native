@@ -6,6 +6,7 @@ import { Assets } from '@/Assets';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import LinkButton from '@/UI/LinkButton';
+import { Dimensions } from 'react-native';
 
 const eventCheckInLink = 'https://event.checkin.no/132451/javazone-kids-2025';
 const workshops = [
@@ -52,7 +53,14 @@ const workshops = [
 
 const SpeakerKids = () => {
   const { t } = useTranslation();
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 900 });
+  const screenWidth = Dimensions.get('window').width;
+  const totalSpacer = isMobile ? 40 : 180; // 2 * spacer width (e.g., 2 * 20 or 2 * 90)
+  const cardWidth = isMobile
+    ? Math.round(screenWidth * 0.87)
+    : Math.round((screenWidth - totalSpacer - 150) / 3); // 3 cards, 40px gap
+
+  console.log(Dimensions.get('window').width);
 
   return (
     <ScreenTemplate pageTitle={t('kids.title')}>
@@ -82,106 +90,107 @@ const SpeakerKids = () => {
         <Text style={Assets.styles.sectionSubTitle}>{t('kids.three_workshops')}</Text>
         <Text style={Assets.styles.text}>{t('kids.workshops_info')}</Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-
         <Text style={Assets.styles.sectionTitle}>{t('kids.welcome')}</Text>
       </SectionBox>
       <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-      <View
-        style={{
-          flexDirection: isMobile ? 'column' : 'row',
-          justifyContent: 'center',
-          alignItems: isMobile ? 'center' : 'flex-start',
-          gap: 20,
-          marginTop: 20,
-        }}
-      >
-        {workshops.map((workshop, index) => (
-          <View
-            key={index}
-            // @ts-ignore
-            style={{
-              width: isMobile ? '87%' : '52vh',
-              position: 'relative',
-              alignItems: 'center',
-              minHeight: 500,
-              marginBottom: 20,
-            }}
-          >
-            <Text
+      <View style={{ flexDirection: 'row', width: '100%' }}>
+        <View
+          style={{
+            flexDirection: isMobile ? 'column' : 'row',
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: isMobile ? 'center' : 'flex-start',
+            gap: 20,
+            marginTop: 20,
+          }}
+        >
+          {workshops.map((workshop, index) => (
+            <View
+              key={index}
               style={{
-                position: 'absolute',
-                top: 15,
-                left: 15,
-                fontSize: 50,
-                fontWeight: 'bold',
-                color: Assets.colors.jz2025ThemeColors.vividOrange,
-                zIndex: 1,
+                width: cardWidth,
+                position: 'relative',
+                alignItems: 'center',
+                minHeight: 500,
+                marginBottom: 20,
               }}
             >
-              {index + 1}
-            </Text>
+              <Text
+                style={{
+                  position: 'absolute',
+                  top: 15,
+                  left: 15,
+                  fontSize: 50,
+                  fontWeight: 'bold',
+                  color: Assets.colors.jz2025ThemeColors.vividOrange,
+                  zIndex: 1,
+                }}
+              >
+                {index + 1}
+              </Text>
 
-            <SectionBox
-              sectionTitle={t(`${workshop.title}`)}
-              titleStyle={{ width: '77%', marginHorizontal: 'auto' }}
-              style={{
-                minHeight: isMobile && index === 2 ? 1200 : 1400,
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <View style={{ flex: 1, flexDirection: 'column', gap: 34, marginBottom: 90 }}>
-                <Text style={[Assets.styles.text, { marginHorizontal: 'auto', marginVertical: 2 }]}>
-                  {t(`${workshop.room}`)}
-                </Text>
-                <View style={{ height: 120, justifyContent: 'flex-start' }}>
-                  <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.instructors')}</Text>
-                  {workshop.instructors.map((instructor, i) => (
-                    <Text key={i} style={[Assets.styles.text, { textAlign: 'center', marginVertical: 2 }]}>
-                      {t(instructor)}
-                    </Text>
-                  ))}
+              <SectionBox
+                sectionTitle={t(`${workshop.title}`)}
+                titleStyle={{ width: '77%', marginHorizontal: 'auto' }}
+                style={{
+                  minHeight: isMobile && index === 2 ? 1200 : 1400,
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <View style={{ flex: 1, flexDirection: 'column', gap: 34, marginBottom: 90 }}>
+                  <Text style={[Assets.styles.text, { marginHorizontal: 'auto', marginVertical: 2 }]}>
+                    {t(`${workshop.room}`)}
+                  </Text>
+                  <View style={{ height: 120, justifyContent: 'flex-start' }}>
+                    <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.instructors')}</Text>
+                    {workshop.instructors.map((instructor, i) => (
+                      <Text key={i} style={[Assets.styles.text, { textAlign: 'center', marginVertical: 2 }]}>
+                        {t(instructor)}
+                      </Text>
+                    ))}
+                  </View>
+
+                  <View style={{ gap: 16 }}>
+                    <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.about_workshop')}</Text>
+                    {workshop.description.map((paragraph, i) => (
+                      <Text key={i} style={[Assets.styles.text]}>
+                        {t(paragraph)}
+                      </Text>
+                    ))}
+                  </View>
+
+                  <Text style={[Assets.styles.sectionSubTitle, { marginTop: 'auto' }]}>{t('kids.practical_info')}</Text>
+                  <View style={{ marginHorizontal: 'auto' }}>
+                    {workshop.info.map((item, i) => (
+                      <BulletListItem key={i} text={t(`${item}`)} />
+                    ))}
+                  </View>
+
+                  <View style={{ marginHorizontal: 'auto' }}>
+                    <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.equipment')}</Text>
+                    {workshop.equipment.map((item, i) => (
+                      <BulletListItem key={i} text={t(`${item}`)} />
+                    ))}
+                  </View>
                 </View>
 
-                <View style={{ gap: 16 }}>
-                  <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.about_workshop')}</Text>
-                  {workshop.description.map((paragraph, i) => (
-                    <Text key={i} style={[Assets.styles.text]}>
-                      {t(paragraph)}
-                    </Text>
-                  ))}
-                </View>
-
-                <Text style={[Assets.styles.sectionSubTitle, { marginTop: 'auto' }]}>{t('kids.practical_info')}</Text>
-                <View style={{ marginHorizontal: 'auto' }}>
-                  {workshop.info.map((item, i) => (
-                    <BulletListItem key={i} text={t(`${item}`)} />
-                  ))}
-                </View>
-
-                <View style={{ marginHorizontal: 'auto' }}>
-                  <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.equipment')}</Text>
-                  {workshop.equipment.map((item, i) => (
-                    <BulletListItem key={i} text={t(`${item}`)} />
-                  ))}
-                </View>
-              </View>
-
-              <LinkButton
-                disabled={false}
-                href={t(workshop.checkInLink)}
-                title={t('kids.registration_button')}
-                targetBlank={false}
-                margin={isMobile ? 10 : 20}
-                androidBlurPatch={Platform.OS === 'android'}
-              />
-            </SectionBox>
-          </View>
-        ))}
+                <LinkButton
+                  disabled={false}
+                  href={t(workshop.checkInLink)}
+                  title={t('kids.registration_button')}
+                  targetBlank={false}
+                  margin={isMobile ? 10 : 20}
+                  androidBlurPatch={Platform.OS === 'android'}
+                />
+              </SectionBox>
+            </View>
+          ))}
+        </View>
       </View>
     </ScreenTemplate>
-  );
+);
 };
 
 export default SpeakerKids;
