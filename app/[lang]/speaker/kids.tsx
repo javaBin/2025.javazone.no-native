@@ -58,9 +58,7 @@ const SpeakerKids = () => {
   const totalSpacer = isMobile ? 40 : 180; // 2 * spacer width (e.g., 2 * 20 or 2 * 90)
   const cardWidth = isMobile
     ? Math.round(screenWidth * 0.87)
-    : Math.round((screenWidth - totalSpacer - 150) / 3); // 3 cards, 40px gap
-
-  console.log(Dimensions.get('window').width);
+    : Math.round((screenWidth - totalSpacer - 150) / 3);
 
   return (
     <ScreenTemplate pageTitle={t('kids.title')}>
