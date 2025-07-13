@@ -2,9 +2,9 @@ export type TalksProgram = {
   sessions: Session[];
 };
 
-export type SessionLanguage = 'no' | 'en';
+export type SessionLanguage = 'no' | 'en'; // todo: unused
 
-export type SessionFormat = 'presentation' | 'lightning-talk' | 'workshop';
+export type SessionFormat = 'presentation' | 'lightning-talk' | 'workshop'; // todo: unused
 
 export type Session = {
   intendedAudience: string;
