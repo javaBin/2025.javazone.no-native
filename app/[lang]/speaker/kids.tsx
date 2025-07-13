@@ -130,7 +130,11 @@ const SpeakerKids = () => {
 
               <SectionBox
                 sectionTitle={t(`${workshop.title}`)}
-                titleStyle={{ width: '77%', marginHorizontal: 'auto' }}
+                titleStyle={{
+                  width: '77%',
+                  marginHorizontal: 'auto',
+                  fontSize: isMobile ? 18 : 22
+                }}
                 style={{
                   height: '100%',
                   display: 'flex',
