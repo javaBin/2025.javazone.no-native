@@ -1,7 +1,7 @@
 import { BulletListItem, ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { SectionBox, SvgImage } from '@/UI';
-import { Platform, Text, View } from 'react-native';
+import { Platform, Text, View, ScrollView } from 'react-native';
 import { Assets } from '@/Assets';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -55,7 +55,7 @@ const SpeakerKids = () => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 900 });
   const screenWidth = Dimensions.get('window').width;
-  const totalSpacer = isMobile ? 40 : 180; // 2 * spacer width (e.g., 2 * 20 or 2 * 90)
+  const totalSpacer = isMobile ? 40 : 180;
   const cardWidth = isMobile
     ? Math.round(screenWidth * 0.87)
     : Math.round((screenWidth - totalSpacer - 150) / 3);
@@ -88,7 +88,7 @@ const SpeakerKids = () => {
         <Text style={Assets.styles.sectionSubTitle}>{t('kids.three_workshops')}</Text>
         <Text style={Assets.styles.text}>{t('kids.workshops_info')}</Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-        <Text style={Assets.styles.sectionTitle}>{t('kids.welcome')}</Text>
+        <Text style={[Assets.styles.sectionTitle, {color: Assets.colors.jz2025ThemeColors.crimsonRed}]}>{t('kids.welcome')}</Text>
       </SectionBox>
       <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
@@ -110,7 +110,7 @@ const SpeakerKids = () => {
                 width: cardWidth,
                 position: 'relative',
                 alignItems: 'center',
-                minHeight: 500,
+                height: 650,
                 marginBottom: 20,
               }}
             >
@@ -130,65 +130,93 @@ const SpeakerKids = () => {
 
               <SectionBox
                 sectionTitle={t(`${workshop.title}`)}
-                titleStyle={{ width: '77%', marginHorizontal: 'auto' }}
+                titleStyle={{
+                  width: '77%',
+                  marginHorizontal: 'auto',
+                  fontSize: isMobile ? 18 : 22
+                }}
                 style={{
-                  minHeight: isMobile && index === 2 ? 1200 : 1400,
+                  height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
+                  overflow: 'hidden',
                 }}
               >
-                <View style={{ flex: 1, flexDirection: 'column', gap: 34, marginBottom: 90 }}>
-                  <Text style={[Assets.styles.text, { marginHorizontal: 'auto', marginVertical: 2 }]}>
-                    {t(`${workshop.room}`)}
-                  </Text>
-                  <View style={{ height: 120, justifyContent: 'flex-start' }}>
-                    <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.instructors')}</Text>
-                    {workshop.instructors.map((instructor, i) => (
-                      <Text key={i} style={[Assets.styles.text, { textAlign: 'center', marginVertical: 2 }]}>
-                        {t(instructor)}
-                      </Text>
-                    ))}
-                  </View>
+                <ScrollView
+                  contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
+                  showsVerticalScrollIndicator={true}
+                  indicatorStyle="default"
+                  style={{
+                    flex: 1,
+                    ...(Platform.OS === 'web' && {
+                      scrollbarColor: `${Assets.colors.jz2025ThemeColors.crimsonRed} transparent`,
+                      scrollbarWidth: 'thin',
+                    }),
+                  }}
+                  {...(Platform.OS === 'ios' && {
+                    scrollIndicatorInsets: { right: 1 },
+                  })}
+                >
+                  <View style={{ flexDirection: 'column', gap: 15, paddingRight: 20 }}>
+                    <Text style={[Assets.styles.text, { marginHorizontal: 'auto', marginVertical: 2 }]}>
+                      {t(`${workshop.room}`)}
+                    </Text>
 
-                  <View style={{ gap: 16 }}>
-                    <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.about_workshop')}</Text>
-                    {workshop.description.map((paragraph, i) => (
-                      <Text key={i} style={[Assets.styles.text]}>
-                        {t(paragraph)}
-                      </Text>
-                    ))}
-                  </View>
+                    <View>
+                      <Text style={[Assets.styles.sectionSubTitle, { fontSize: 16 }]}>{t('kids.instructors')}</Text>
+                      {workshop.instructors.map((instructor, i) => (
+                        <Text key={i} style={[Assets.styles.text, { textAlign: 'center', marginVertical: 1, fontSize: 14 }]}>
+                          {t(instructor)}
+                        </Text>
+                      ))}
+                    </View>
 
-                  <Text style={[Assets.styles.sectionSubTitle, { marginTop: 'auto' }]}>{t('kids.practical_info')}</Text>
-                  <View style={{ marginHorizontal: 'auto' }}>
-                    {workshop.info.map((item, i) => (
-                      <BulletListItem key={i} text={t(`${item}`)} />
-                    ))}
-                  </View>
+                    <View>
+                      <Text style={[Assets.styles.sectionSubTitle, { fontSize: 16 }]}>{t('kids.about_workshop')}</Text>
+                      {workshop.description.map((paragraph, i) => (
+                        <Text key={i} style={[Assets.styles.text, { fontSize: 14, lineHeight: 18 }]}>
+                          {t(paragraph)}
+                        </Text>
+                      ))}
+                    </View>
 
-                  <View style={{ marginHorizontal: 'auto' }}>
-                    <Text style={[Assets.styles.sectionSubTitle]}>{t('kids.equipment')}</Text>
-                    {workshop.equipment.map((item, i) => (
-                      <BulletListItem key={i} text={t(`${item}`)} />
-                    ))}
-                  </View>
-                </View>
+                    <View>
+                      <Text style={[Assets.styles.sectionSubTitle, { fontSize: 16 }]}>{t('kids.practical_info')}</Text>
+                      <View style={{ marginHorizontal: 'auto' }}>
+                        {workshop.info.map((item, i) => (
+                          <BulletListItem key={i} text={t(`${item}`)} textStyle={{ fontSize: 14 }} />
+                        ))}
+                      </View>
+                    </View>
 
-                <LinkButton
-                  disabled={false}
-                  href={t(workshop.checkInLink)}
-                  title={t('kids.registration_button')}
-                  targetBlank={false}
-                  margin={isMobile ? 10 : 20}
-                  androidBlurPatch={Platform.OS === 'android'}
-                />
+                    <View>
+                      <Text style={[Assets.styles.sectionSubTitle, { fontSize: 16 }]}>{t('kids.equipment')}</Text>
+                      <View style={{ marginHorizontal: 'auto' }}>
+                        {workshop.equipment.map((item, i) => (
+                          <BulletListItem key={i} text={t(`${item}`)} textStyle={{ fontSize: 14 }} />
+                        ))}
+                      </View>
+                    </View>
+                  </View>
+                </ScrollView>
               </SectionBox>
             </View>
           ))}
         </View>
       </View>
+
+      <View style={{ alignItems: 'center', marginTop: 20 }}>
+        <LinkButton
+          disabled={false}
+          href={eventCheckInLink}
+          title={t('kids.registration_button')}
+          targetBlank={false}
+          margin={isMobile ? 10 : 20}
+          androidBlurPatch={Platform.OS === 'android'}
+        />
+      </View>
     </ScreenTemplate>
-);
+  );
 };
 
 export default SpeakerKids;
