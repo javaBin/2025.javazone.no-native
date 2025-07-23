@@ -9,7 +9,6 @@
     "location_title": "Sted: ",
     "location": "Nova Spektrum, Lillestrøm",
     "hold_the_date": "Hold av datoen!",
-
     "partner_information": "Partner informasjon",
     "speaker_information": "Speaker informasjon",
     "program_information": "Programinformasjon",
@@ -20,7 +19,6 @@
     "aweZone_information": "AweZone informasjon",
     "javaZone_kids_information": "JavaZone Kids informasjon",
     "javaBin_information": "javaBin informasjon",
-
     "pageTitles": {
       "home": "Hjem",
       "program": "Program",
@@ -28,7 +26,6 @@
       "speaker": "Talere",
       "info": "Informasjon"
     },
-
     "javaBin": {
       "intro": "Bli en del av noe stort",
       "about": "Om javaBin",
@@ -135,8 +132,56 @@
     },
     "kids": {
       "title": "JavaZone Kids",
-      "call_for_speakers_title": "Call for speakers for JavaZone Kids 2025",
-      "javazone_kids_intro": "JavaZone Kids er en dag med workshops for barn i alderen 8-17 år. Det er en dag for læring og moro, og foreldre oppfordres til å bli og delta i moroa. Workshopene er ment å være på forskjellige nivåer, så det er noe for alle. ",
+      "top_text": "En smakebit på voksenlivet",
+      "intro_one": "JavaZone inviterer alle barn og ungdommer på Rebel søndag 31. august. Vi kjører 3 parallelle workshoper; så det er noe for både barn og ungdommer.",
+      "intro_two": "Arrangementet er gratis for alle!",
+      "time_and_place": "Tid og sted",
+      "time_and_place_one": "Registrering fra kl. 10.30",
+      "time_and_place_two": "Arrangement kl. 11.00 - 15.00",
+      "time_and_place_three": "Rebel, Universitetsgata 2",
+      "sign_up": "Påmelding",
+      "sign_up_description_one": "Påmeldingen åpner mandag 30. juni kl. 12.00. Vi har et begrenset antall plasser, derfor er det viktig at du melder deg på før fristen 10. august kl. 12.00.",
+      "sign_up_description_two": "Har du ikke mulighet til å komme likevel, er det viktig at dette blir gitt beskjed om så raskt som mulig, siden det pleier å være ventelister på våre kurs.",
+      "equipment": "Utstyr",
+      "instructors": "Instruktører",
+      "practical_info": "Praktisk informasjon",
+      "about_workshop": "Om workshopen",
+      "equipment_info": "Kursene krever enten egen laptop eller nettbrett. Mer informasjon finner du på den enkelte workshop.",
+      "three_workshops": "Tre parallelle workshops",
+      "workshops_info": "Det er 3 workshoper som går samtidig, så du kan bare være med på en workshop. Les mer om hver av dem under, og meld deg på den det ønsker å delta på. Vi serverer enkel mat underveis. Det er viktig at foreldre/foresatte også setter av tid til å være til stede hele dagen. Vi lager en egen sone for dem med kaffe.",
+      "welcome": "Velkommen til en lærerik dag på Rebel!",
+      "workshop_bitbot_title": "BitBot XL - Selvkjørende bil",
+      "workshop_bitbot_room": "Rom: Ada",
+      "workshop_bitbot_instructor_one": "Bjørn Hamre",
+      "workshop_bitbot_instructor_three": "Børge Nese",
+      "workshop_bitbot_description_one": "Bli med og utforsk bilen BitBot XL. På denne workshopen skal du lære å programmere bilens sensorer slik at den blir selvkjørende. Du skal blant annet lære å bruke avstandssensoren slik at bilen stopper selv og unngår å krasje i omgivelsene.",
+      "workshop_bitbot_description_two": "Til slutt skal du programmere bilen til å følge en svart linje langs en bane vi tegner på gulvet. Hvor fort klarer du å få bilen til å kjøre, men likevel klare svingene? Kom og finn ut!",
+      "workshop_bitbot_info_one": "Maks deltagere: 20",
+      "workshop_bitbot_info_two": "Alder: 12 – 17 år",
+      "workshop_bitbot_info_three": "Språk: Norsk",
+      "workshop_bitbot_equipment_one": "Egen PC eller Mac",
+      "workshop_bitbot_equipment_two": "USB-C til USB-A overgang hvis datamaskinen ikke har USB-A-port",
+      "workshop_bitbot_equipment_three": "Hvis du har Mac anbefaler vi å bruke Chrome som nettleser",
+      "workshop_mBot_title": "Er du klar for å bygge din egen robot?",
+      "workshop_mBot_room": "Rom: Exposalen",
+      "workshop_mBot_instructor_one": "Jeroen Resoort",
+      "workshop_mBot_instructor_two": "Michel Breevoort",
+      "workshop_mBot_description_one": "MBot er en kun liten robot som du får kontrollere med en pc! I denne workshopen viser vi hvordan du kan sette den sammen og få den i gang, ved å bruke Python, et programmeringsspråk som er veldig bra og gøy! Du vil få roboten til å blinke med fargerike lys, lage gøyale lyder, og kjøre rundt som en racerbil.",
+      "workshop_mBot_description_two": "Først vil du lære det grunnleggende ved Python, og steg for steg programmere din mBot til å gjøre mer og mer. Ditt mål? Bygg en robot som kan kjøre selv og unngå hindringer som profesjonell!",
+      "workshop_mBot_description_three": "På veien kan du gjøre sideoppgaver og la kreativiteten gå løpsk. Vi har sett roboter som politi, racerbiler og til og med wrestlingkamper i tidligere workshoper!",
+      "workshop_mBot_info_one": "Maks deltagere: 30",
+      "workshop_mBot_info_two": "Alder: 12 - 17 år",
+      "workshop_mBot_info_three": "Språk: Engelsk",
+      "workshop_mBot_equipment_one": "Egen PC med Windows 10+, Linux, eller MacOS",
+      "workshop_3Dprinting_title": "Lær å designe 3D-figurer til 3D-printing",
+      "workshop_3Dprinting_room": "Rom: Hangout 2. etasje",
+      "workshop_3Dprinting_instructor_one": "Joachim Haagen Skeie",
+      "workshop_3Dprinting_description_one": "Kom å delta på workshop med 3D-printing! Lær å designe egne figurer i 3D-verktøyet Tinkercad, som kan printes ut på en av 3D-printerne. Vi tar med flere fargevalg på filamenter, slik at du kan velge farger selv!",
+      "workshop_3Dprinting_description_two": "I tillegg til Tinkercad, kan du også bruke et kloss-bygge-program for å bygge figurer i en 3D-verden som ligner litt på Minecraft!",
+      "workshop_3Dprinting_info_one": "Maks deltagere: 12",
+      "workshop_3Dprinting_info_two": "Alder: 10+ år",
+      "workshop_3Dprinting_info_three": "Språk: Norsk",
+      "workshop_3Dprinting_equipment_one": "Egen PC eller Mac",
       "event_date_location_start": "Arrangementet vil finne sted 31. august 2025 på Rebel i Oslo. Vi ber om workshops på både norsk og engelsk. Varigheten av arrangementet er 4 timer, med en pause i mellom. Fristen for innsending av bidrag er nå stengt. Du kan ta kontakt på ",
       "event_date_location_link_title": "kids@java.no",
       "event_date_location_end": " for spørsmål.",
@@ -148,7 +193,8 @@
       "workshop_max_participants": "Maksimalt antall deltakere",
       "workshop_language": "Engelsk eller norsk",
       "workshop_experience": "Har du erfaring med å jobbe med barn tidligere",
-      "speakers_benefits": "Foredragsholdere for JavaZone Kids vil bli invitert til Speakers' Dinner på tirsdag 2. september, gratis billetter til JavaZone-konferansen 3.-4. september, og du kan søke om å bli med på vår tur for foredragsholdere, JourneyZone."
+      "speakers_benefits": "Foredragsholdere for JavaZone Kids vil bli invitert til Speakers' Dinner på tirsdag 2. september, gratis billetter til JavaZone-konferansen 3.-4. september, og du kan søke om å bli med på vår tur for foredragsholdere, JourneyZone.",
+      "registration_button": "Påmelding er åpent! Meld deg på her"
     },
     "speakers": {
       "pageTitle": "Call for Speakers",
@@ -158,7 +204,6 @@
       "international_speakers": "JavaZone har både internasjonale og norske foredragsholdere. Vi vil gjerne ha deg med oss i september!",
       "international_speakers_date": "Innsending av forslag er nå stengt.",
       "submit_proposal": "Endre forslag",
-
       "speaking_experience": "Hvordan er det å holde foredrag på JavaZone?",
       "speaking_experience_desc": "I løpet av det siste tiåret har JavaZone vokst til å bli en av de viktigste Java-hendelsene i Europa! Du kan se selv - over 1500 videoer fra tidligere års foredrag er tilgjengelige gratis på Vimeo, og hele programmet fra JavaZone 2024 er også tilgjengelig.",
       "importance_of_speakers": "Vi kan skryte så mye vi vil, men JavaZone ville vært ingenting uten alle de flotte foredragsholderne! Derfor trenger vi din hjelp for å sikre at JavaZone 2025 blir minst like fantastisk som de tidligere arrangementene. Hvis du tror du har noe interessant å dele, vennligst send inn ditt foredrag eller workshop.",
@@ -176,26 +221,21 @@
       "javazone_kids_desc_start": "For de som er interessert i å bringe magien med programvareutvikling til barn, har vi en mini-konferanse for barn helgen før JavaZone. Vennligst se deres ",
       "javazone_kids_desc_link_title": "separate call for speakers",
       "javazone_kids_desc_end": " for mer informasjon.",
-
       "audience_and_topics": "Publikum og emner",
       "audience_and_topics_desc": "JavaZone er en konferanse for utviklere og tekniske arkitekter, med vekt på tekniske foredrag. Vi er imidlertid åpne for foredrag om andre emner relatert til programmering også, som metodikk eller prosjektledelse.",
       "content_scope": "Til tross for vårt konferansenavn, begrenser vi ikke innholdet vårt til Java-teknologi. Vi vil vurdere alle foredrag basert på deres relevans for utviklere og tekniske arkitekter. Vi fokuserer imidlertid på teknologi rundt JVM når vi velger foredrag.",
-
       "evaluation_of_talks": "Løpende evaluering av foredrag",
       "evaluation_of_talks_desc": "Hvert år mottar vi hundrevis av innsendelser, og vi vurderer hver innsendelse etter hvert som de kommer inn. Vi svarer på alle innsendelser og vil gjøre det senest innen utgangen av juni.",
       "submit_early": "Vårt råd til deg er enkelt. Send inn tidlig! Jo tidligere du sender inn, desto mer sannsynlig er det at du blir lagt merke til. Unngå å drukne i slutten av Call for Speakers-tsunamien!",
-
       "submission_tips": "Innsendingstips",
       "submission_tips_desc_start": "Gjennom årene har vi samlet noen",
       "submission_tips_desc_link_title": "innsendingstips",
       "submission_tips_desc_end": ", som kan være nyttige for både nye og erfarne foredragsholdere.",
       "submission_tips_learn_more": "Lær mer",
-
       "location": "Sted",
       "location_desc": "Vårt vanlige sted, Oslo Spektrum, er stengt for renovering og utvidelse, så vi har flyttet JavaZone til NOVA Spektrum, en stor arena i Lillestrøm, en by rett utenfor Oslo. Vi jobber hardt for å gjøre det nye stedet like magisk som vårt vanlige sted.",
       "traveling_to_lillestrom": "Å reise til Lillestrøm er like enkelt som å reise til Oslo, fordi både Flytoget og vanlige tog stopper her på vei fra Oslo lufthavn til Oslo sentrum. For de som bor i Oslo, er Lillestrøm bare 10 minutter unna, med svært hyppige togavganger.",
       "workshops_location": "Workshops er lokalisert på vårt vanlige samfunnssenter, Rebel, i Oslo sentrum nær Nationaltheatret stasjon, slik at deltakerne har nær tilgang fra sine kontorer.",
-
       "whats_in_it_for_me": "Hva er i det for meg?",
       "accepted_presentations": "Godkjente presentasjoner, lynforedrag og workshops",
       "accepted_presentations_desc": "Som en JavaZone-foredragsholder får du gratis adgang til konferansen. I tillegg blir du også invitert til foredragsholdermiddagen, som holdes 3. september.",
@@ -203,7 +243,6 @@
       "coverage_of_expenses_start": "Vennligst se våre",
       "coverage_of_expenses_link": "refusjonsvilkår",
       "coverage_of_expenses_end": "hvis du har spørsmål angående dekning av andre utgifter.",
-
       "important_principles": "Viktige prinsipper",
       "important_principles_desc_start": "JavaZone er stolt av å være en uavhengig og fellesskapsdrevet konferanse. Den er organisert av frivillige fra javaBin (den norske Java-brukergruppen) og drives som en non-profit organisasjon.",
       "important_principles_desc_read_more_1": " Du kan lese mer om oss",
@@ -221,61 +260,42 @@
       "increase_chance": "Øk sjansen for at ditt foredrag blir akseptert",
       "proposal_correlation": "Det er generelt en veldig høy korrelasjon mellom hvor mye arbeid man legger i å lage et forslag og sjansen for at forslaget blir akseptert. Selv et forslag med et ekstremt kult tema, underholdende tittel og en erfaren foredragsholder kan bli ekskludert hvis beskrivelsen mangler.",
       "tips_intro": "Vi har samlet noen tips som bør vurderes når du skriver et JavaZone-forslag, og noen få grunner til hvorfor forslag kan bli avvist.",
-
       "good_title": "Lag en god tittel",
       "good_title_desc": "Tittelen er det første folk vil se. En dårlig formulert tittel kan være det eneste mange vil se av ditt forslag. En god tittel er fengende og konsis, og bør beskrive hva du skal snakke om.",
-
       "catchy_abstract": "Skriv et fengende sammendrag",
       "catchy_abstract_desc": "Sammendraget er det som vil bli vist i JavaZone-programmet for publikum å lese. Hvis programkomiteen ikke tror at sammendraget er godt nok til å overbevise folk om å komme til din presentasjon, vil forslaget ikke bli akseptert.",
-
       "detailed_outline": "Gi en detaljert oversikt",
       "detailed_outline_desc": "Oversikten er din sjanse til å pitche forslaget til programkomiteen. Denne delen vil ikke bli publisert, men hvis oversikten din er tynn eller bare en kopi av sammendraget ditt, selger du deg ikke godt.",
-
       "be_concise": "Vær konsis",
       "be_concise_desc": "Med et spennende tema er det lett å finne mange ting man vil presentere. Ikke bli revet med. Forslaget ditt bør forklare hvordan du vil dekke alt på en klar og strukturert måte.",
-
       "supporting_materials": "Inkluder støttemateriale",
       "supporting_materials_desc": "Hvis du har holdt foredraget før, vennligst inkluder lenker til alt støttemateriale du kan vise oss. Dette kan være videoopptak, lysbilder, blogginnlegg, GitHub-repositorier, bilder, etc. Videoopptak av mindre relaterte foredrag kan også gi oss et inntrykk av hvordan du er som foredragsholder.",
-
       "fill_mandatory_fields": "Fyll ut alle obligatoriske felt riktig",
       "fill_mandatory_fields_desc": "Ingenting sier at du ikke har lagt mye innsats i forslaget ditt som et innsending skjema fylt med 'TODO' eller 'TBD' i de obligatoriske feltene. Dette er greit for den første innsendingen, men sørg for at den nødvendige informasjonen er fylt ut riktig innen innsending fristen.",
-
       "review_proposal": "Be noen om å gjennomgå forslaget ditt",
       "review_proposal_desc": "Hvis forslaget ditt er fullt av skrivefeil, vil det bli lagt merke til (spesielt i nøkkelfelt som tittelen). Dette er ikke nødvendigvis et punkt som vil bety at forslaget blir avvist, men det hjelper ikke saken din.",
-
       "live_coding": "Planlegger du å gjøre live-koding? Sørg for å beskrive planen din for oss",
       "live_coding_desc": "Live-koding kan gjøre en presentasjon mer underholdende, men det øker også sjansene for at noe går galt. Hvis programkomiteen ikke får følelsen av at du har en solid plan for demonstrasjonen, kan det skade sjansene dine for å bli akseptert.",
-
       "multiple_proposals": "Send inn flere forslag",
       "multiple_proposals_desc": "Hvis du har flere ting du kan snakke om, vil innsending av 2 eller 3 forskjellige forslag øke sjansene dine for å finne en plass i programmet.",
-
       "no_spam": "... men vær så snill, ikke spam oss",
       "no_spam_desc": "Programkomiteen gjennomgår hundrevis av forslag hvert år. Noen få godt skrevne forslag er mye mer verdifulle enn en bøtte full av halvforberedte ideer.",
-
       "no_shouting": "Ikke rop",
       "no_shouting_desc": "Du vil definitivt bli lagt merke til HVIS TITTELEN DIN ER HELT I STORE BOKSTAVER (!!!!!!!!), men ikke nødvendigvis på en positiv måte.",
-
       "rejection_reasons_title": "Hvorfor ble foredraget mitt avvist?",
       "rejection_reasons_intro": "Selv om vi heier på at ditt foredrag skal bli akseptert, er faktum at noen foredrag må avvises. Les gjennom disse tipsene for å forstå hvorfor dette kan skje. Enda bedre, hvis du leser dette før Call for Speakers-fristen, kan du gå gjennom forslaget ditt og sørge for at du gjør ditt beste for å unngå disse vanlige fallgruvene.",
-
       "not_enough_info": "Ikke nok informasjon",
       "not_enough_info_desc": "Programkomiteen var ikke sikker på hva du skal presentere, eller det var ikke nok informasjon om teknologien/tingene du vil snakke om til å avgjøre hvor flott presentasjonen vil være.",
-
       "proposal_too_thin": "Forslaget er for tynt",
       "proposal_too_thin_desc": "Sammendraget gir ikke følelsen av at du har lagt mye arbeid i det, eller at du har tenkt gjennom presentasjonen din.",
-
       "too_much_content": "Du vil snakke om mer enn vi tror du vil ha tid til å dekke",
       "too_much_content_desc": "10-minutters lynforedrag forslag som ser ut til å kreve dobbelt så mye tid vil bli diskontert. Det samme gjelder forslag som prøver å dekke alt mulig i stedet for å fokusere på et spesifikt område. Hvis du vil dekke et bredt spekter av materiale, sørg for å formidle til oss at du har tenkt gjennom tidslinjen for foredraget ditt. Vi må føle at du tror det vil fungere, noe som kan oppnås med en klar og detaljert oversikt.",
-
       "abstract_not_catchy": "Sammendraget var ikke fengende nok",
       "abstract_not_catchy_desc": "Hvis komiteen ender opp med rundt 600 forslag å gå gjennom, blir tid en faktor. Dette er spesielt sant i første pass, og i de tidlige stadiene. Hvis sammendraget ditt fanger interessen til bare en eller flere av komitémedlemmene, er forslaget ditt sannsynligvis å bli tommel-opp til neste fase. Hvis ikke, har det en tendens til å falle ut.",
-
       "theme_not_fit": "Temaet passet ikke inn med det vi ønsker å inkludere i programmet i år",
       "theme_not_fit_desc": "Selv om JavaZone har plass til mange temaer, er det noen forslag som ikke passer. Noen forslag blir avvist fordi vi føler at presentasjonen ville vært bedre tjent på en annen konferanse.",
-
       "co_presenter_accepted": "Din medpresentator hadde et annet forslag akseptert",
       "co_presenter_accepted_desc": "Hvis du har tenkt å presentere med en medpresentator, og de tilfeldigvis har fått et annet forslag allerede akseptert, kan vi måtte avvise ditt felles forslag.",
-
       "unlucky": "Du var uheldig",
       "unlucky_desc": "Vi mottar ofte flere gode forslag som dekker nøyaktig samme tema. Programkomiteen må da bestemme mellom disse flere utmerkede innsendingene. I 2016 mottok vi mange flotte forslag som dekket 'hvordan vi gjør DevOps i skyen'. Begrenset plass i programmet betydde at mange av disse endte opp med å bli avvist."
     },
@@ -313,7 +333,6 @@
       "what_how": "Hva & Hvordan",
       "eligibility": "Hvis din presentasjon eller workshop blir akseptert, kan du søke om refusjon for reise og overnatting. Les nedenfor for å finne ut om du er kvalifisert.",
       "application_deadline": "Søknader om refusjon for foredragsholdere må sendes inn før 1. august 2025.",
-
       "how_to_apply": "Hvordan søke",
       "apply_note_start": "Det første du må merke deg er at du må søke om refusjon av kostnader. Dette er nødvendig for vår budsjettplanlegging. Hvis du trenger økonomisk støtte, vennligst kontakt ",
       "apply_note_link": "refund@java.no",
@@ -321,7 +340,6 @@
       "apply_details": "I denne e-posten, oppgi et estimat av dine reiseutgifter og dagene du vil være i Oslo under konferansen.",
       "hotel_deal": "Vi har en avtale med et hotell, så hvis du trenger overnatting, vil vi reservere et rom for deg. Vennligst oppgi i søknaden hvilke dager du planlegger å bo. Vi refunderer ikke reiseutgifter over kostnaden av en rimelig priset økonomibillett.",
       "lightning_talks": "Vennligst merk at vi ikke refunderer reiseutgifter for de som holder lynforedrag. Imidlertid vil foredragsholdere (inkludert de som holder lynforedrag) motta en gratis konferansebillett.",
-
       "confirmation_reimbursement": "Bekreftelse & Refusjon",
       "confirmation_note_start": "Søknader må bekreftes eksplisitt via ",
       "confirmation_note_link": "refund@java.no",

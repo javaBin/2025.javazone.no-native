@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Assets } from '@/Assets';
 import { PageTitle } from '@/UI';
@@ -11,6 +11,7 @@ import {
   Cinzel_600SemiBold,
   Cinzel_700Bold,
   Cinzel_800ExtraBold,
+
 } from '@expo-google-fonts/cinzel';
 import {
   PlayfairDisplay_400Regular,
@@ -18,6 +19,7 @@ import {
   PlayfairDisplay_700Bold,
   PlayfairDisplay_800ExtraBold,
 } from '@expo-google-fonts/playfair-display';
+import * as Updates from 'expo-updates'; // Add this import
 
 type ScreenTemplateProps = {
   children: React.ReactNode;
@@ -57,6 +59,18 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop }
       opacity: 0.3,
     },
   });
+
+  // Hard refresh on dimension change
+  useEffect(() => {
+    const subscription = Dimensions.addEventListener('change', () => {
+      if (Platform.OS === 'web') {
+        window.location.reload();
+      } else {
+        Updates.reloadAsync(); // Use Updates API to reload the app
+      }
+    });
+    return () => subscription?.remove();
+  }, []);
 
   return (
     <ImageBackground source={Assets.background} style={{ flex: 1, width: '100%', height: '100%' }}>

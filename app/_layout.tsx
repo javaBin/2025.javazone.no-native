@@ -116,7 +116,7 @@ const RootLayout = () => {
       <View style={styles.header}>
         <Pressable onPress={() => router.navigate(`/${lang}`)}>
           <View style={styles.headerLogoTitle}>
-            <SvgImage SVG={Assets.images.Logo} height={24} width={24} style={{ marginHorizontal: 10 }} />
+            <SvgImage SVG={Assets.images.hero.HeroDuke} height={24} width={24} style={{ marginHorizontal: 10 }} />
             <Text style={styles.headerTitle}>JavaZone 2025</Text>
           </View>
         </Pressable>
