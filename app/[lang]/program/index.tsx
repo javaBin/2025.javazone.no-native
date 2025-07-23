@@ -12,7 +12,7 @@ import ProgramFilters from '@/components/ProgramFilters';
 import { groupSessionsByTimeslot, dayAndTimeFormatWithMonth } from '@/utils/programUtils';
 import { Session } from '@/api/types/talksProgram';
 
-const Program = () => {
+const Index = () => {
   const { t } = useTranslation();
   const [sessions, setSessions] = useState<Session[]>([]);
   const { favorites } = useFavoritesContext();
@@ -34,7 +34,7 @@ const Program = () => {
   return (
     <ScreenTemplate shouldScrollToTop={true}>
       <PageTitle title={t('Program for javaZone 2025')} />
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
         <SectionBox sectionTitle={''}>
           <ProgramFilters
             filters={filters}
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Program;
+export default Index;

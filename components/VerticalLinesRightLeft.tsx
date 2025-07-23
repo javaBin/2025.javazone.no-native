@@ -13,12 +13,12 @@ const VerticalLinesRightLeft = () => {
   const [containerStyle, setContainerStyle] = useState(styles.container);
   const route = useRoute();
 
-  const leftLineWidth = useRef(new Animated.Value(isMobile ? 250 : 1000)).current;
+  const leftLineWidth = useRef(new Animated.Value(isMobile ? 250 : 2000)).current;
   const leftVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
   const leftOrangeYellowWidth = useRef(new Animated.Value(isMobile ? 80 : 300)).current;
   const leftCyberYellowWidth = useRef(new Animated.Value(isMobile ? 70 : 200)).current;
   const leftDarkRedWidth = useRef(new Animated.Value(isMobile ? 60 : 100)).current;
-  const rightLineWidth = useRef(new Animated.Value(isMobile ? 250 : 1000)).current;
+  const rightLineWidth = useRef(new Animated.Value(isMobile ? 250 : 2000)).current;
   const rightVividOrangeWidth = useRef(new Animated.Value(isMobile ? 90 : 400)).current;
   const rightOrangeYellowWidth = useRef(new Animated.Value(isMobile ? 80 : 300)).current;
   const rightCyberYellowWidth = useRef(new Animated.Value(isMobile ? 70 : 200)).current;
