@@ -8,7 +8,7 @@ export type SessionFormat = 'presentation' | 'lightning-talk' | 'workshop'; // t
 
 export type Session = {
   intendedAudience: string;
-  suggestedKeywords: string[];
+  suggestedKeywords: string;
   length: string;
   format: string;
   language: string;
