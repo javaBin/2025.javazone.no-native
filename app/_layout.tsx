@@ -16,6 +16,7 @@ import { BlurView } from 'expo-blur';
 import { SvgImage } from '@/UI';
 import { LanguagePicker, animationDuration, PapyrusMenu } from '@/components';
 import { SvgProps } from 'react-native-svg';
+import { FavoritesContext, FavoritesContextProvider } from '@/contexts/FavoritesContext';
 
 interface PapyrusInterface {
   closeAnimation: () => {};
@@ -210,20 +211,22 @@ const RootLayout = () => {
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
-          <PapyrusMenu
-            ref={papyrusMenuRef}
-            languageLoaded={languageLoaded}
-            setToggleMenu={setToggleMenu}
-            toggleMenu={toggleMenu}
-          />
-          <Stack initialRouteName="[lang]/index" screenOptions={{ ...screenOptions, ...webScreenOptions }}>
-            <Stack.Screen name="[lang]/index" options={{ title: '' }} />
-            <Stack.Screen name="[lang]/program" options={{ title: 'Program' }} />
-            <Stack.Screen name="[lang]/partner" options={{ title: 'Partner' }} />
-            <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
-            <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
-            <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
-          </Stack>
+          <FavoritesContextProvider>
+            <PapyrusMenu
+              ref={papyrusMenuRef}
+              languageLoaded={languageLoaded}
+              setToggleMenu={setToggleMenu}
+              toggleMenu={toggleMenu}
+            />
+            <Stack initialRouteName="[lang]/index" screenOptions={{ ...screenOptions, ...webScreenOptions }}>
+              <Stack.Screen name="[lang]/index" options={{ title: '' }} />
+              <Stack.Screen name="[lang]/program" options={{ title: 'Program' }} />
+              <Stack.Screen name="[lang]/partner" options={{ title: 'Partner' }} />
+              <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
+              <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
+              <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
+            </Stack>
+          </FavoritesContextProvider>
         </I18nContextProvider>
       </SafeAreaProvider>
     );
@@ -232,56 +235,58 @@ const RootLayout = () => {
     return (
       <SafeAreaProvider>
         <I18nContextProvider>
-          <Tabs initialRouteName="[lang]/index" screenOptions={{ ...nativeScreenOptions }}>
-            <Tabs.Screen
-              name="[lang]/index"
-              options={{
-                title: 'Home',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Home, Assets.icons.HomeInactive),
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/program"
-              options={{
-                title: 'Program',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/partner"
-              options={{
-                title: 'Partner',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Partner, Assets.icons.PartnerInactive),
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/speaker"
-              options={{
-                title: 'Speaker',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),
-                headerShown: false,
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/volunteers"
-              options={{
-                title: 'Volunteers',
-                tabBarIcon: ({ focused }) =>
-                  renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
-              }}
-            />
-            <Tabs.Screen
-              name="[lang]/info"
-              options={{
-                title: 'Info',
-                tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
-              }}
-            />
-            <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
-            <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
-            <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
-            <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
-          </Tabs>
+          <FavoritesContextProvider>
+            <Tabs initialRouteName="[lang]/index" screenOptions={{ ...nativeScreenOptions }}>
+              <Tabs.Screen
+                name="[lang]/index"
+                options={{
+                  title: 'Home',
+                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Home, Assets.icons.HomeInactive),
+                }}
+              />
+              <Tabs.Screen
+                name="[lang]/program"
+                options={{
+                  title: 'Program',
+                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Program, Assets.icons.ProgramInactive),
+                }}
+              />
+              <Tabs.Screen
+                name="[lang]/partner"
+                options={{
+                  title: 'Partner',
+                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Partner, Assets.icons.PartnerInactive),
+                }}
+              />
+              <Tabs.Screen
+                name="[lang]/speaker"
+                options={{
+                  title: 'Speaker',
+                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Speaker, Assets.icons.SpeakerInactive),
+                  headerShown: false,
+                }}
+              />
+              <Tabs.Screen
+                name="[lang]/volunteers"
+                options={{
+                  title: 'Volunteers',
+                  tabBarIcon: ({ focused }) =>
+                    renderIcon(focused, Assets.icons.HandHeartActive, Assets.icons.HandHeartInactive),
+                }}
+              />
+              <Tabs.Screen
+                name="[lang]/info"
+                options={{
+                  title: 'Info',
+                  tabBarIcon: ({ focused }) => renderIcon(focused, Assets.icons.Info, Assets.icons.InfoInactive),
+                }}
+              />
+              <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+              <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
+              <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
+              <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />
+            </Tabs>
+          </FavoritesContextProvider>
         </I18nContextProvider>
       </SafeAreaProvider>
     );

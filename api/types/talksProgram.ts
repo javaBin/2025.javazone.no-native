@@ -2,12 +2,13 @@ export type TalksProgram = {
   sessions: Session[];
 };
 
-export type SessionLanguage = 'no' | 'en';
+export type SessionLanguage = 'no' | 'en'; // todo: unused
 
-export type SessionFormat = 'presentation' | 'lightning-talk' | 'workshop';
+export type SessionFormat = 'presentation' | 'lightning-talk' | 'workshop'; // todo: unused
 
 export type Session = {
   intendedAudience: string;
+  suggestedKeywords: string;
   length: string;
   format: string;
   language: string;
@@ -17,6 +18,7 @@ export type Session = {
   sessionId: string;
   conferenceId: string;
   speakers: Speaker[];
+  //fields below are not yet available in the API, but will be used in the future
   room?: string;
   workshopPrerequisites?: string;
   registerLoc?: string;
@@ -32,5 +34,7 @@ export type Session = {
 export type Speaker = {
   name: string;
   bio?: string;
-  twitter: string;
+  twitter?: string;
+  linkedin?: string;
+  bluesky?: string;
 };
