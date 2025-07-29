@@ -54,7 +54,7 @@ const Index = () => {
               </Text>
             )}
             <View style={styles.cardFlex}>
-              {groupedSessions[time].map((session) => (
+              {groupedSessions[time].map((session, index) => (
                 <ProgramCard
                   key={session.id}
                   session={session}

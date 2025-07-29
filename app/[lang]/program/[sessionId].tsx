@@ -18,6 +18,7 @@ import { fetchIndividualProgram } from '@/api/fetchProgram';
 import { Session } from '@/api/types/talksProgram';
 import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useTranslation } from 'react-i18next';
+import { createAnimations } from '@/utils/animationUtils';
 
 const SessionDetail = () => {
   const { sessionId } = useLocalSearchParams<{ sessionId: string }>();
@@ -61,25 +62,6 @@ const SessionDetail = () => {
     }
   };
 
-  const formatDateTime = (startTime: string, endTime: string) => {
-    const start = new Date(startTime);
-    const end = new Date(endTime);
-
-    const dateFormat = new Intl.DateTimeFormat('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-
-    const timeFormat = new Intl.DateTimeFormat('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-
-    return `${dateFormat.format(start)} at ${timeFormat.format(start)} - ${timeFormat.format(end)}`;
-  };
-
   if (loading) {
     return (
       <ScreenTemplate>
@@ -113,31 +95,7 @@ const SessionDetail = () => {
       </ScreenTemplate>
     );
   }
-
-  const favoriteButtonScale = new Animated.Value(1);
-  const twitterScale = new Animated.Value(1);
-  const linkedinScale = new Animated.Value(1);
-  const blueskyScale = new Animated.Value(1);
-
-  const createAnimationHandlers = (scaleValue: Animated.Value) => ({
-    handleMouseEnter: () => {
-      Animated.spring(scaleValue, {
-        toValue: 1.4,
-        useNativeDriver: true,
-      }).start();
-    },
-    handleMouseLeave: () => {
-      Animated.spring(scaleValue, {
-        toValue: 1,
-        useNativeDriver: true,
-      }).start();
-    },
-  });
-
-  const favoriteButtonHandlers = createAnimationHandlers(favoriteButtonScale);
-  const twitterHandlers = createAnimationHandlers(twitterScale);
-  const linkedinHandlers = createAnimationHandlers(linkedinScale);
-  const blueskyHandlers = createAnimationHandlers(blueskyScale);
+  const animations = createAnimations();
 
   return (
     <ScreenTemplate shouldScrollToTop={true}>
@@ -157,10 +115,10 @@ const SessionDetail = () => {
                 <View style={{ position: 'absolute', right: 0, top: 0 }}>
                   <Animated.View
                     style={{
-                      transform: [{ scale: favoriteButtonScale }],
+                      transform: [{ scale: animations.favoriteButton.scale }],
                     }}
-                    onPointerEnter={favoriteButtonHandlers.handleMouseEnter}
-                    onPointerLeave={favoriteButtonHandlers.handleMouseLeave}>
+                    onPointerEnter={animations.favoriteButton.handlers.handleMouseEnter}
+                    onPointerLeave={animations.favoriteButton.handlers.handleMouseLeave}>
                     <Pressable onPress={toggleFavorite}>
                       <SvgImage SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={50} width={40} />
                     </Pressable>
@@ -176,7 +134,7 @@ const SessionDetail = () => {
 
                 <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
                   <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Duration: </Text>
-                  {session.length} minutes
+                  {session.length} min
                 </Text>
 
 
@@ -191,77 +149,79 @@ const SessionDetail = () => {
                   {session.speakers.length > 1 ? 'Speakers' : 'Speaker'}
                 </Text>
 
-                {session.speakers.map((speaker, index) => (
-                  <View key={index} style={{ marginBottom: 15 }}>
-                    <View style={{ flexDirection: 'row', gap: 10 }}>
-                      <Text
-                        style={[
-                          Assets.styles.text,
-                          {
-                            fontSize: 22,
-                            color: Assets.colors.jz2025ThemeColors.darkRed,
-                            fontWeight: 'bold',
-                          },
-                        ]}
-                      >
-                        {speaker.name}
-                      </Text>
+                {session.speakers.map((speaker, index) => {
+                  const animations = createAnimations(index);
+                  return (
+                    <View key={index} style={{ marginBottom: 15 }}>
+                      <View style={{ flexDirection: 'row', gap: 10 }}>
+                        <Text
+                          style={[
+                            Assets.styles.text,
+                            {
+                              fontSize: 22,
+                              color: Assets.colors.jz2025ThemeColors.darkRed,
+                              fontWeight: 'bold',
+                            },
+                          ]}
+                        >
+                          {speaker.name}
+                        </Text>
 
-                      {/* Social media links */}
-                      {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
-                        <View style={{ flexDirection: 'row', gap: 15, marginTop: 10 }}>
-                          {speaker.twitter && (
-                            <Animated.View
-                              style={{
-                                transform: [{ scale: twitterScale }],
-                              }}
-                              onPointerEnter={twitterHandlers.handleMouseEnter}
-                              onPointerLeave={twitterHandlers.handleMouseLeave}
-                            >
-                              <TouchableOpacity
-                                onPress={() => Linking.openURL(`https://x.com/${speaker.twitter}`)}
+                        {/* Social media links */}
+                        {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
+                          <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
+                            {speaker.twitter && (
+                              <Animated.View
+                                style={{
+                                  transform: [{ scale: animations.twitter.scale }],
+                                }}
+                                onPointerEnter={animations.twitter.handlers.handleMouseEnter}
+                                onPointerLeave={animations.twitter.handlers.handleMouseLeave}
                               >
-                                <SvgImage SVG={Assets.icons.XLogo} height={25} width={25} />
-                              </TouchableOpacity>
-                            </Animated.View>
-                          )}
-                          {speaker.linkedin && (
-                            <Animated.View
-                              style={{
-                                transform: [{ scale: linkedinScale }],
-                              }}
-                              onPointerEnter={linkedinHandlers.handleMouseEnter}
-                              onPointerLeave={linkedinHandlers.handleMouseLeave}
-                            >
-                              <TouchableOpacity onPress={() => Linking.openURL(`${speaker.linkedin}`)}>
-                                <SvgImage SVG={Assets.icons.LinkedInLogo} height={25} width={25} />
-                              </TouchableOpacity>
-                            </Animated.View>
-                          )}
-                          {speaker.bluesky && (
-                            <Animated.View
-                              style={{
-                                transform: [{ scale: blueskyScale }],
-                              }}
-                              onPointerEnter={blueskyHandlers.handleMouseEnter}
-                              onPointerLeave={blueskyHandlers.handleMouseLeave}
-                            >
-                              <TouchableOpacity
-                                onPress={() =>
-                                  Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`)
-                                }
+                                <TouchableOpacity
+                                  onPress={() => Linking.openURL(`https://x.com/${speaker.twitter}`)}
+                                >
+                                  <SvgImage SVG={Assets.icons.XLogo} height={25} width={25} />
+                                </TouchableOpacity>
+                              </Animated.View>
+                            )}
+                            {speaker.linkedin && (
+                              <Animated.View
+                                style={{
+                                  transform: [{ scale: animations.linkedin.scale }],
+                                }}
+                                onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
+                                onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
                               >
-                                <SvgImage SVG={Assets.icons.BlueSkyLogo} height={25} width={25} />
-                              </TouchableOpacity>
-                            </Animated.View>
-                          )}
-                        </View>
-                      )}
+                                <TouchableOpacity onPress={() => Linking.openURL(`${speaker.linkedin}`)}>
+                                  <SvgImage SVG={Assets.icons.LinkedInLogo} height={25} width={25} />
+                                </TouchableOpacity>
+                              </Animated.View>
+                            )}
+                            {speaker.bluesky && (
+                              <Animated.View
+                                style={{
+                                  transform: [{ scale: animations.bluesky.scale }],
+                                }}
+                                onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
+                                onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
+                              >
+                                <TouchableOpacity
+                                  onPress={() =>
+                                    Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`)
+                                  }
+                                >
+                                  <SvgImage SVG={Assets.icons.BlueSkyLogo} height={25} width={25} />
+                                </TouchableOpacity>
+                              </Animated.View>
+                            )}
+                          </View>
+                        )}
+                      </View>
+                      {speaker.bio && <Text style={[Assets.styles.text, { marginTop: 5 }]}>{speaker.bio}</Text>}
                     </View>
-                    {speaker.bio && <Text style={[Assets.styles.text, { marginTop: 5 }]}>{speaker.bio}</Text>}
-                  </View>
-                ))}
-
+                  );
+                })}
 
               </View>
             )}
