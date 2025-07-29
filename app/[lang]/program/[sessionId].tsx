@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Linking, ActivityIndicator, Alert, Animated } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Linking,
+  ActivityIndicator,
+  Alert,
+  Animated,
+  Pressable,
+} from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Assets } from '@/Assets';
 import { PageTitle, SectionBox, SvgImage } from '@/UI';
@@ -94,7 +104,7 @@ const SessionDetail = () => {
               marginTop: 20,
               padding: 10,
               backgroundColor: Assets.colors.jz2025ThemeColors.crimsonRed,
-              borderRadius: 5
+              borderRadius: 5,
             }}
           >
             <Text style={[Assets.styles.text, { color: 'white' }]}>Go Back</Text>
@@ -104,7 +114,7 @@ const SessionDetail = () => {
     );
   }
 
-  // Animation values for each social media icon
+  const favoriteButtonScale = new Animated.Value(1);
   const twitterScale = new Animated.Value(1);
   const linkedinScale = new Animated.Value(1);
   const blueskyScale = new Animated.Value(1);
@@ -121,9 +131,10 @@ const SessionDetail = () => {
         toValue: 1,
         useNativeDriver: true,
       }).start();
-    }
+    },
   });
 
+  const favoriteButtonHandlers = createAnimationHandlers(favoriteButtonScale);
   const twitterHandlers = createAnimationHandlers(twitterScale);
   const linkedinHandlers = createAnimationHandlers(linkedinScale);
   const blueskyHandlers = createAnimationHandlers(blueskyScale);
@@ -134,147 +145,154 @@ const SessionDetail = () => {
 
       <SectionBox sectionTitle="">
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={{ padding: 20 }}>
-            {/* Header with favorite button */}
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
-              <Text style={[Assets.styles.sectionTitle, { flex: 1, textAlign: 'left' }]}>
-                {session.title}
-              </Text>
-              <TouchableOpacity onPress={toggleFavorite} style={{ marginLeft: 10 }}>
-                <SvgImage
-                  SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid}
-                  height={40}
-                  width={35}
-                />
-              </TouchableOpacity>
-            </View>
-
+          <View style={{ padding: 10 }}>
             {/* Session details */}
             <View style={{ marginBottom: 20 }}>
-              <Text style={[Assets.styles.sectionSubTitle, { fontSize: 18, marginBottom: 10 }]}>
-                Session Details
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 15, position: 'relative' }}>
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                  <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25 }]}>Session Details</Text>
+                </View>
 
-              <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
-                <Text style={{ fontWeight: 'bold' }}>Room: </Text>{session.room}
-              </Text>
+                {/* Favorite Button - positioned absolutely to the right */}
+                <View style={{ position: 'absolute', right: 0, top: 0 }}>
+                  <Animated.View
+                    style={{
+                      transform: [{ scale: favoriteButtonScale }],
+                    }}
+                    onPointerEnter={favoriteButtonHandlers.handleMouseEnter}
+                    onPointerLeave={favoriteButtonHandlers.handleMouseLeave}>
+                    <Pressable onPress={toggleFavorite}>
+                      <SvgImage SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={50} width={40} />
+                    </Pressable>
+                  </Animated.View>
+                </View>
+              </View>
 
-              <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
-                <Text style={{ fontWeight: 'bold' }}>Duration: </Text>{session.length} minutes
-              </Text>
+              <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 10 }}>
+                <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
+                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Format: </Text>
+                  {session.format}
+                </Text>
 
-              <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
-                <Text style={{ fontWeight: 'bold' }}>Format: </Text>{session.format}
-              </Text>
+                <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
+                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Duration: </Text>
+                  {session.length} minutes
+                </Text>
 
-              <Text style={[Assets.styles.text, { marginBottom: 10 }]}>
-                <Text style={{ fontWeight: 'bold' }}>When: </Text>
-                {/*{formatDateTime(session.startTime, session.endTime)}*/}
-              </Text>
+
+              </View>
             </View>
+            <SvgImage SVG={Assets.UI.DividerWide} height={10} />
 
             {/* Speakers */}
             {session.speakers && session.speakers.length > 0 && (
-              <View style={{ marginBottom: 20 }}>
-                <Text style={[Assets.styles.sectionSubTitle, { fontSize: 18, marginBottom: 10 }]}>
+              <View style={{ marginVertical: 20, alignItems: 'center' }}>
+                <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25 }]}>
                   {session.speakers.length > 1 ? 'Speakers' : 'Speaker'}
                 </Text>
 
                 {session.speakers.map((speaker, index) => (
                   <View key={index} style={{ marginBottom: 15 }}>
-                    <Text style={[Assets.styles.text, { fontWeight: 'bold', fontSize: 16 }]}>
-                      {speaker.name}
-                    </Text>
-                    {speaker.bio && (
-                      <Text style={[Assets.styles.text, { marginTop: 5 }]}>
-                        {speaker.bio}
+                    <View style={{ flexDirection: 'row', gap: 10 }}>
+                      <Text
+                        style={[
+                          Assets.styles.text,
+                          {
+                            fontSize: 22,
+                            color: Assets.colors.jz2025ThemeColors.darkRed,
+                            fontWeight: 'bold',
+                          },
+                        ]}
+                      >
+                        {speaker.name}
                       </Text>
-                    )}
+
+                      {/* Social media links */}
+                      {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
+                        <View style={{ flexDirection: 'row', gap: 15, marginTop: 10 }}>
+                          {speaker.twitter && (
+                            <Animated.View
+                              style={{
+                                transform: [{ scale: twitterScale }],
+                              }}
+                              onPointerEnter={twitterHandlers.handleMouseEnter}
+                              onPointerLeave={twitterHandlers.handleMouseLeave}
+                            >
+                              <TouchableOpacity
+                                onPress={() => Linking.openURL(`https://x.com/${speaker.twitter}`)}
+                              >
+                                <SvgImage SVG={Assets.icons.XLogo} height={25} width={25} />
+                              </TouchableOpacity>
+                            </Animated.View>
+                          )}
+                          {speaker.linkedin && (
+                            <Animated.View
+                              style={{
+                                transform: [{ scale: linkedinScale }],
+                              }}
+                              onPointerEnter={linkedinHandlers.handleMouseEnter}
+                              onPointerLeave={linkedinHandlers.handleMouseLeave}
+                            >
+                              <TouchableOpacity onPress={() => Linking.openURL(`${speaker.linkedin}`)}>
+                                <SvgImage SVG={Assets.icons.LinkedInLogo} height={25} width={25} />
+                              </TouchableOpacity>
+                            </Animated.View>
+                          )}
+                          {speaker.bluesky && (
+                            <Animated.View
+                              style={{
+                                transform: [{ scale: blueskyScale }],
+                              }}
+                              onPointerEnter={blueskyHandlers.handleMouseEnter}
+                              onPointerLeave={blueskyHandlers.handleMouseLeave}
+                            >
+                              <TouchableOpacity
+                                onPress={() =>
+                                  Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`)
+                                }
+                              >
+                                <SvgImage SVG={Assets.icons.BlueSkyLogo} height={25} width={25} />
+                              </TouchableOpacity>
+                            </Animated.View>
+                          )}
+                        </View>
+                      )}
+                    </View>
+                    {speaker.bio && <Text style={[Assets.styles.text, { marginTop: 5 }]}>{speaker.bio}</Text>}
                   </View>
                 ))}
 
-                {/* Social media links */}
-                {(session.speakers[0]?.twitter || session.speakers[0]?.linkedin || session.speakers[0]?.bluesky) && (
-                  <View style={{ flexDirection: 'row', gap: 15, marginTop: 10 }}>
-                    {session.speakers[0]?.twitter && (
-                      <Animated.View
-                        style={{
-                          transform: [{ scale: twitterScale }],
-                        }}
-                        onPointerEnter={twitterHandlers.handleMouseEnter}
-                        onPointerLeave={twitterHandlers.handleMouseLeave}
-                      >
-                        <TouchableOpacity
-                          onPress={() => Linking.openURL(`https://x.com/${session.speakers[0].twitter}`)}
-                        >
-                          <SvgImage SVG={Assets.icons.XLogo} height={25} width={25} />
-                        </TouchableOpacity>
-                      </Animated.View>
-                    )}
-                    {session.speakers[0]?.linkedin && (
-                      <Animated.View
-                        style={{
-                          transform: [{ scale: linkedinScale }],
-                        }}
-                        onPointerEnter={linkedinHandlers.handleMouseEnter}
-                        onPointerLeave={linkedinHandlers.handleMouseLeave}
-                      >
-                        <TouchableOpacity
-                          onPress={() => Linking.openURL(`${session.speakers[0].linkedin}`)}
-                        >
-                          <SvgImage SVG={Assets.icons.LinkedInLogo} height={25} width={25} />
-                        </TouchableOpacity>
-                      </Animated.View>
-                    )}
-                    {session.speakers[0]?.bluesky && (
-                      <Animated.View
-                        style={{
-                          transform: [{ scale: blueskyScale }],
-                        }}
-                        onPointerEnter={blueskyHandlers.handleMouseEnter}
-                        onPointerLeave={blueskyHandlers.handleMouseLeave}
-                      >
-                        <TouchableOpacity
-                          onPress={() => Linking.openURL(`https://bsky.app/profile/${session.speakers[0].bluesky!.replace('@', '')}`)}
-                        >
-                          <SvgImage SVG={Assets.icons.BlueSkyLogo} height={25} width={25} />
-                        </TouchableOpacity>
-                      </Animated.View>
-                    )}
-                  </View>
-                )}
+
               </View>
             )}
 
             {/* Abstract */}
             {session.abstract && (
               <View style={{ marginBottom: 20 }}>
-                <Text style={[Assets.styles.sectionSubTitle, { fontSize: 18, marginBottom: 10 }]}>
-                  Abstract
-                </Text>
-                <Text style={Assets.styles.text}>
-                  {session.abstract}
-                </Text>
+                <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25 }]}>Abstract</Text>
+                <Text style={Assets.styles.text}>{session.abstract}</Text>
               </View>
             )}
+            <SvgImage SVG={Assets.UI.DividerWide} height={10} />
 
             {/* Suggested Keywords */}
             {session.suggestedKeywords && (
-              <View style={{ marginBottom: 20 }}>
-                <Text style={[Assets.styles.sectionSubTitle, { fontSize: 18, marginBottom: 10 }]}>
-                  Keywords
-                </Text>
+              <View style={{ marginVertical: 20 }}>
+                <Text style={[Assets.styles.sectionSubTitle, { marginBottom: 10, fontSize: 25 }]}>Keywords</Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
                   {session.suggestedKeywords.split(',').map((keyword: string, index: number) => (
-                    <Text key={index} style={{
-                      color: Assets.colors.jz2025ThemeColors.crimsonRed,
-                      fontSize: 14,
-                      fontWeight: '500',
-                      backgroundColor: Assets.colors.jz2025ThemeColors.linen,
-                      paddingHorizontal: 8,
-                      paddingVertical: 4,
-                      borderRadius: 12,
-                    }}>
+                    <Text
+                      key={index}
+                      style={{
+                        color: Assets.colors.jz2025ThemeColors.crimsonRed,
+                        fontSize: 14,
+                        fontWeight: '500',
+                        backgroundColor: 'rgba(249, 246, 245, 0.65)',
+                        paddingHorizontal: 8,
+                        paddingVertical: 4,
+                        borderRadius: 12,
+                      }}
+                    >
                       #{keyword.trim()}
                     </Text>
                   ))}
