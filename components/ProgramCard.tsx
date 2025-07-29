@@ -1,4 +1,4 @@
-import { Linking, Pressable, StyleSheet, Text, TouchableOpacity, View, Animated } from 'react-native';
+import { Linking, Pressable, StyleSheet, Text, TouchableOpacity, View, Animated, Platform } from 'react-native';
 import { Assets } from '@/Assets';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SvgImage } from '@/UI';
@@ -6,11 +6,12 @@ import React from 'react';
 import { Session } from '@/api/types/talksProgram';
 import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
+import { BlurView } from 'expo-blur';
 
 type ProgramCardProps = {
   session: Session;
   isFavorite: boolean;
-}
+};
 
 const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: ProgramCardProps) => {
   const { addFavorite, removeFavorite } = useFavoritesContext();
@@ -30,7 +31,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
     router.push(`${lang}/program/${session.id}`);
   };
 
-  // Animation values for each social media icon
+  const favoriteButtonScale = new Animated.Value(1);
   const twitterScale = new Animated.Value(1);
   const linkedinScale = new Animated.Value(1);
   const blueskyScale = new Animated.Value(1);
@@ -47,36 +48,35 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
         toValue: 1,
         useNativeDriver: true,
       }).start();
-    }
+    },
   });
 
+  const favoriteButtonHandlers = createAnimationHandlers(favoriteButtonScale);
   const twitterHandlers = createAnimationHandlers(twitterScale);
   const linkedinHandlers = createAnimationHandlers(linkedinScale);
   const blueskyHandlers = createAnimationHandlers(blueskyScale);
 
   return (
-    <Pressable style={styles.card} key={session.id} onPress={navigateToDetail}>
-      <LinearGradient
-        style={[styles.gradient, Assets.styles.shadow]}
-        colors={[
-          '#fefaf1',
-          '#f9ecd4',
-          '#f5e3bf',
-          '#f2dab0',
-          '#f9e7ca',
-          '#fff6e4',
-        ]}
+    <Pressable style={[styles.card, Assets.styles.shadow]} key={session.id} onPress={navigateToDetail}>
+      <BlurView
+        tint="default"
+        intensity={Platform.OS === 'web' ? 20 : 40}
+        experimentalBlurMethod={'dimezisBlurView'}
+        style={[styles.innerCardContainer]}
       >
         <Text style={styles.roomText}>{session.room}</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={styles.cardTitle}>{session.title}</Text>
-          <Pressable onPress={toggleFavorite}>
-            <SvgImage
-              SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid}
-              height={50}
-              width={40}
-            />
-          </Pressable>
+          <Animated.View
+            style={{
+              transform: [{ scale: favoriteButtonScale }],
+            }}
+            onPointerEnter={favoriteButtonHandlers.handleMouseEnter}
+            onPointerLeave={favoriteButtonHandlers.handleMouseLeave}>
+            <Pressable onPress={toggleFavorite}>
+              <SvgImage SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={50} width={40} />
+            </Pressable>
+          </Animated.View>
         </View>
         {session.speakers.map((speaker) => (
           <Text style={styles.speaker} key={speaker.name}>
@@ -154,15 +154,13 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
         )}
 
         <Text style={styles.time}>{session.length} min</Text>
-      </LinearGradient>
+      </BlurView>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  gradient: {
-    borderColor: Assets.colors.jz2025ThemeColors.cyberYellow,
-    borderWidth: 4,
+  innerCardContainer: {
     paddingHorizontal: 20,
     paddingVertical: 20,
     height: '100%',
@@ -173,13 +171,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   card: {
-    borderColor: Assets.colors.jz2025ThemeColors.crimsonRed,
-    borderWidth: 4,
-    borderRadius: 10,
     overflow: 'hidden',
     fontFamily: 'PlayfairDisplay_400Regular',
     width: '100%',
     maxWidth: 400,
+    borderRadius: 5,
   },
   time: {
     justifyContent: 'flex-end',
@@ -198,6 +194,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
   },
-})
+});
 
 export default ProgramCard;
