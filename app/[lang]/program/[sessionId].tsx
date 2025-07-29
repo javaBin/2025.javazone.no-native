@@ -107,12 +107,12 @@ const SessionDetail = () => {
             {/* Session details */}
             <View style={{ marginBottom: 20 }}>
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 15, position: 'relative' }}>
-                <View style={{ flex: 1, alignItems: 'center' }}>
+                <View style={{ flex: 1, alignItems: 'center', marginRight: 20 }}>
                   <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25 }]}>Session Details</Text>
                 </View>
 
                 {/* Favorite Button - positioned absolutely to the right */}
-                <View style={{ position: 'absolute', right: 0, top: 0 }}>
+                <View style={{ position: 'absolute', right: 0, top: 0}}>
                   <Animated.View
                     style={{
                       transform: [{ scale: animations.favoriteButton.scale }],
