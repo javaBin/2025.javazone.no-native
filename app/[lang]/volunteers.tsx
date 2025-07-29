@@ -14,29 +14,29 @@ const Volunteers: React.FC = () => {
   const { t } = useTranslation();
 
   const faqItems: FaqItem[] = [
-    { key: 'language', title: t('volunteer.faq.language_question'), answer: t('volunteer.faq.language_answer') },
+    { key: 'language', menuGroupLabel: t('volunteer.faq.language_question'), answer: t('volunteer.faq.language_answer') },
     {
       key: 'whoCanVolunteer',
-      title: t('volunteer.faq.who_can_volunteer'),
+      menuGroupLabel: t('volunteer.faq.who_can_volunteer'),
       answer: t('volunteer.faq.who_can_volunteer_answer'),
     },
-    { key: 'tasks', title: t('volunteer.faq.tasks'), answer: t('volunteer.faq.tasks_answer') },
+    { key: 'tasks', menuGroupLabel: t('volunteer.faq.tasks'), answer: t('volunteer.faq.tasks_answer') },
     {
       key: 'howManyVolunteers',
-      title: t('volunteer.faq.how_many_volunteers'),
+      menuGroupLabel: t('volunteer.faq.how_many_volunteers'),
       answer: t('volunteer.faq.how_many_volunteers_answer'),
     },
     {
       key: 'learningOpportunities',
-      title: t('volunteer.faq.learning_opportunities'),
+      menuGroupLabel: t('volunteer.faq.learning_opportunities'),
       answer: t('volunteer.faq.learning_opportunities_answer'),
     },
-    { key: 'travel', title: t('volunteer.faq.travel'), answer: t('volunteer.faq.travel_answer') },
-    { key: 'awezone', title: t('volunteer.faq.awezone'), answer: t('volunteer.faq.awezone_answer') },
-    { key: 'whenToMeet', title: t('volunteer.faq.when_to_meet'), answer: t('volunteer.faq.when_to_meet_answer') },
+    { key: 'travel', menuGroupLabel: t('volunteer.faq.travel'), answer: t('volunteer.faq.travel_answer') },
+    { key: 'awezone', menuGroupLabel: t('volunteer.faq.awezone'), answer: t('volunteer.faq.awezone_answer') },
+    { key: 'whenToMeet', menuGroupLabel: t('volunteer.faq.when_to_meet'), answer: t('volunteer.faq.when_to_meet_answer') },
     {
       key: 'applicationDeadline',
-      title: t('volunteer.faq.application_deadline'),
+      menuGroupLabel: t('volunteer.faq.application_deadline'),
       answer: t('volunteer.faq.application_deadline_answer'),
     },
   ];

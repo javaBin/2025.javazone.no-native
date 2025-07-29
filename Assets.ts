@@ -306,6 +306,14 @@ export const Assets = {
       marginTop: 50,
       padding: 10,
     },
+    dangerousOverrideScrollContentContainer: {
+      width: screenWidth > 768 ? '82.5%' : '90%',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      alignSelf: 'center',
+      marginTop: 50,
+      padding: 10,
+    },
     pageTitle: {},
     preface: {
       color: '#403532', // dark-brown

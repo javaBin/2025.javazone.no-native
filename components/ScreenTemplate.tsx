@@ -25,9 +25,10 @@ type ScreenTemplateProps = {
   pageSubtitle?: string;
   shouldScrollToTop?: boolean;
   infoPage?: boolean;
+  dangerousOverride?: boolean;
 };
 
-const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, dangerousOverride = false }: ScreenTemplateProps) => {
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
   const scrollViewRef = useRef<ScrollView>(null);
@@ -50,18 +51,8 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop }
     PlayfairDisplay_800ExtraBold,
   });
 
-  const styles = StyleSheet.create({
-    overlay: {
-      ...StyleSheet.absoluteFillObject,
-      backgroundColor: 'rgba(254,211,195,0.6)',
-      opacity: 0.3,
-    },
-  });
-
   return (
     <ImageBackground source={Assets.background} style={{ flex: 1, width: '100%', height: '100%' }}>
-      <View style={styles.overlay} />
-
       <SafeAreaView style={Assets.styles.safeArea}>
         <VerticalLinesRightLeft />
 
@@ -69,7 +60,9 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop }
           <ScrollView
             ref={scrollViewRef}
             style={Assets.styles.scrollContainer}
-            contentContainerStyle={Assets.styles.scrollContentContainer}
+            contentContainerStyle={dangerousOverride ?
+                Assets.styles.dangerousOverrideScrollContentContainer :
+                Assets.styles.scrollContentContainer}
             alwaysBounceVertical={false}
             showsVerticalScrollIndicator={false}
           >
