@@ -19,9 +19,11 @@ import { Session } from '@/api/types/talksProgram';
 import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useTranslation } from 'react-i18next';
 import { createAnimations } from '@/utils/animationUtils';
+import { useMediaQuery } from 'react-responsive';
 
 const SessionDetail = () => {
   const { sessionId } = useLocalSearchParams<{ sessionId: string }>();
+  const isMobile = useMediaQuery({ maxWidth: 900 });
   const { t } = useTranslation();
   const router = useRouter();
   const [session, setSession] = useState<Session | null>(null);
@@ -106,13 +108,17 @@ const SessionDetail = () => {
           <View style={{ padding: 10 }}>
             {/* Session details */}
             <View style={{ marginBottom: 20 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 15, position: 'relative' }}>
-                <View style={{ flex: 1, alignItems: 'center', marginRight: 20 }}>
-                  <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25 }]}>Session Details</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 15, justifyContent: 'space-between' }}>
+                {/* Left spacer to balance the layout */}
+                <View style={{ width: 40 }} />
+
+                {/* Centered text */}
+                <View style={{ flex: 1, alignItems: 'center', paddingHorizontal: 5 }}>
+                  <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25, textAlign: 'center' }]}>Session Details</Text>
                 </View>
 
-                {/* Favorite Button - positioned absolutely to the right */}
-                <View style={{ position: 'absolute', right: 0, top: 0}}>
+                {/* Favorite Button - takes fixed space */}
+                <View style={{ width: 40, alignItems: 'flex-end' }}>
                   <Animated.View
                     style={{
                       transform: [{ scale: animations.favoriteButton.scale }],
@@ -158,7 +164,7 @@ const SessionDetail = () => {
                           style={[
                             Assets.styles.text,
                             {
-                              fontSize: 22,
+                              fontSize: isMobile ? 20 : 22,
                               color: Assets.colors.jz2025ThemeColors.darkRed,
                               fontWeight: 'bold',
                             },

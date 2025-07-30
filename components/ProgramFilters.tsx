@@ -137,14 +137,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.3,
     shadowRadius: 10,
-    borderColor: Assets.colors.jz2025ThemeColors.orangeYellow,
-    borderWidth: 0.5,
     borderRadius: 4,
-    backgroundColor: '#ffebcd',
+    backgroundColor: Assets.colors.jz2025ThemeColors.gradientRed,
     maxWidth: '100%',
   },
   filterButtonSelected: {
-    backgroundColor: Assets.colors.jz2025ThemeColors.cyberYellow,
+    backgroundColor: Assets.colors.jz2025ThemeColors.lightBrown,
   },
   clearFilterButton: {
     backgroundColor: Assets.colors.jz2025ThemeColors.gradientRed,
@@ -162,13 +160,13 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
   },
   buttonText: {
-    fontFamily: 'PlayfairDisplay_400Regular',
+    fontFamily: 'Cinzel_500Medium',
     fontSize: 16,
-    color: Assets.colors.jz2025ThemeColors.darkRed,
+    color: Assets.colors.jz2025ThemeColors.orangeYellow,
     textAlign: 'center',
   },
   clearFilterButtonText: {
-    fontFamily: 'PlayfairDisplay_400Regular',
+    fontFamily: 'Cinzel_500Medium',
     fontSize: 16,
     color: Assets.colors.jz2025ThemeColors.cyberYellow,
     textAlign: 'center',
