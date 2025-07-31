@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import BulletListItem from '@/components/BulletListItem';
 import PartnerBanner from "@/components/PartnerBanner";
 import LanguagePicker from "@/components/LanguagePicker";
+import ProgramCard from '@/components/ProgramCard';
 // @ts-ignore
 import PapyrusMenu, {animationDuration} from '@/components/PapyrusMenu';
 const HoldTheDate = React.lazy(() => import('@/components/HoldTheDate'));
@@ -28,5 +29,6 @@ export {
   PartnerBanner,
   LanguagePicker,
   PapyrusMenu,
-  animationDuration
+  animationDuration,
+  ProgramCard
 };

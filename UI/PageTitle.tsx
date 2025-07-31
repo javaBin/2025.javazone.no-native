@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: Dimensions.get('window').width > 768 ? 42 : 36,
-
+    marginBottom: 20,
     color: Assets.colors.brand.charcoal,
     fontFamily: 'Cinzel_400Regular',
     textAlign: 'center',
