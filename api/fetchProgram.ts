@@ -2,12 +2,8 @@ import type { TalksProgram } from '@/api/types/talksProgram';
 
 export async function fetchProgram(): Promise<TalksProgram> {
   try {
-    const response = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2025', {
-      headers: {
-        'Accept': 'application/json; charset=utf-8',
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    });    if (!response.ok) {
+    const response = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2025');
+    if (!response.ok) {
       throw new Error(`Failed to fetch program: ${response.status} ${response.statusText}`);
     }
 
