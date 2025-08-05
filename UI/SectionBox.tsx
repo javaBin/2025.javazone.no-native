@@ -1,13 +1,13 @@
 import { Assets } from '@/Assets';
 import { BlurView } from 'expo-blur';
-import { DimensionValue, Platform, StyleProp, Text, ViewStyle } from 'react-native';
+import { DimensionValue, Platform, StyleProp, Text, TextStyle, ViewStyle } from 'react-native';
 import React from 'react';
 
 type SectionBoxProps = {
   children: React.ReactNode;
   sectionTitle: string;
   style?: StyleProp<ViewStyle>;
-  titleStyle?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
 };
 
 /** 'dimezisBlurView' is a must for BlurView support on android */
