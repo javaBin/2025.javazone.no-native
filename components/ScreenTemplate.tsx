@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

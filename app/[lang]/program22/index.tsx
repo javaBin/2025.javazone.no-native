@@ -12,7 +12,7 @@ import ProgramFilters from '@/components/ProgramFilters';
 import { groupSessionsByTimeslot, dayAndTimeFormatWithMonth } from '@/utils/programUtils';
 import { Session } from '@/api/types/talksProgram';
 
-const Index = () => {
+const Program = () => {
   const { t } = useTranslation();
   const [sessions, setSessions] = useState<Session[]>([]);
   const { favorites } = useFavoritesContext();
@@ -46,24 +46,7 @@ const Index = () => {
         </SectionBox>
       </View>
       <View>
-        {sortedTimeslots.map((time, key) => (
-          <View key={`${time}-${key}`}>
-            {time && (
-              <Text style={[Assets.styles.sectionSubTitle, { margin: 30 }]}>
-                {dayAndTimeFormatWithMonth.format(new Date(time))}
-              </Text>
-            )}
-            <View style={styles.cardFlex}>
-              {groupedSessions[time].map((session, index) => (
-                <ProgramCard
-                  key={session.id}
-                  session={session}
-                  isFavorite={favorites.some((favId) => favId === session.id)}
-                />
-              ))}
-            </View>
-          </View>
-        ))}
+
       </View>
     </ScreenTemplate>
   );
@@ -83,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Index;
+export default Program;
