@@ -50,6 +50,7 @@ export default function ProgramFilters({
           style={[
             styles.filterButton,
             showFavoritesOnly && styles.filterButtonSelected,
+            { paddingHorizontal: 200, alignSelf: 'center'}
           ]}
           onPress={() => {
             setShowFavoritesOnly(!showFavoritesOnly);
@@ -58,7 +59,9 @@ export default function ProgramFilters({
         >
           <Text style={styles.buttonText}>{showFavoritesOnly ? 'Full Program' : 'Favorites'}</Text>
         </Pressable>
+        {/*
         <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Day</Text>
+
         <View style={styles.filterFlex}>
           {dateFilters.map((filter) => (
             <Pressable
@@ -76,6 +79,7 @@ export default function ProgramFilters({
             </Pressable>
           ))}
         </View>
+*/}
       </View>
       <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
         <View style={{ alignSelf: 'center', alignItems: 'center', flexShrink: 1 }}>
