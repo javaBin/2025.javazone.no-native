@@ -45,13 +45,9 @@ export default function ProgramFilters({
 }: ProgramFiltersProps) {
   return (
     <View>
-      <View style={{ flexDirection: 'column', alignSelf: 'center' }}>
+      <View style={{ flexDirection: 'column', alignSelf: 'center', width: '100%' }}>
         <Pressable
-          style={[
-            styles.filterButton,
-            showFavoritesOnly && styles.filterButtonSelected,
-            { paddingHorizontal: 200, alignSelf: 'center'}
-          ]}
+          style={[styles.filterButton, showFavoritesOnly && styles.filterButtonSelected]}
           onPress={() => {
             setShowFavoritesOnly(!showFavoritesOnly);
             if (!showFavoritesOnly) clearFilters();
@@ -89,10 +85,7 @@ export default function ProgramFilters({
               <Pressable
                 key={lang.id}
                 onPress={() => setFilter('language', lang.id)}
-                style={[
-                  styles.filterButton,
-                  filters.language === lang.id && styles.filterButtonSelected,
-                ]}
+                style={[styles.filterButton, filters.language === lang.id && styles.filterButtonSelected]}
               >
                 <Text style={styles.buttonText}>{lang.label}</Text>
               </Pressable>
@@ -106,10 +99,7 @@ export default function ProgramFilters({
               <Pressable
                 key={format.id}
                 onPress={() => setFilter('format', format.id)}
-                style={[
-                  styles.filterButton,
-                  filters.format === format.id && styles.filterButtonSelected,
-                ]}
+                style={[styles.filterButton, filters.format === format.id && styles.filterButtonSelected]}
               >
                 <Text style={styles.buttonText}>{format.label}</Text>
               </Pressable>
