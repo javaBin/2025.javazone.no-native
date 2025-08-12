@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { fetchProgram } from '@/api/fetchProgram';
 import React, { useEffect, useState } from 'react';
 import { TalksProgram } from '@/api/types/talksProgram';
-import {Text, TouchableOpacity, View, StyleSheet, Animated, Platform} from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, Animated, Platform, Pressable} from 'react-native';
 import {Assets} from "@/Assets";
 import FlatList = Animated.FlatList;
-import {SectionBox} from "@/UI";
+import {SectionBox, SvgImage} from "@/UI";
 import {BlurView} from "expo-blur";
 
 const Program = () => {
@@ -25,13 +25,17 @@ const Program = () => {
       });
   }, []);
 
+  const toggleFavorite = () => {
+    console.log('clicked')
+  }
+
   const mockupData = [
-    { id: '1', label: 'Item 1' },
-    { id: '2', label: 'Item 2' },
-    { id: '3', label: 'Item 3' },
-    { id: '4', label: 'Item 4' },
-    { id: '5', label: 'Item 5' },
-    { id: '6', label: 'Item 6' },
+    { id: '1', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
+    { id: '2', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: true },
+    { id: '3', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
+    { id: '4', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
+    { id: '5', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: true },
+    { id: '6', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
   ];
 
   return (
@@ -123,8 +127,26 @@ const Program = () => {
                     tint="light"
                     intensity={Platform.OS === 'web' ? 30 : 40}
                     experimentalBlurMethod={'dimezisBlurView'}
-                    style={[styles.card, Assets.styles.shadow]}>
-                      <Text>{item.item.label}</Text>
+                    style={[cardStyles.container, Assets.styles.shadow]}>
+
+                      <View style={cardStyles.horizontalSpaceBetween}>
+                        <Text style={cardStyles.room}>{item.item.room}</Text>
+                        <Text style={cardStyles.duration}>{item.item.duration}</Text>
+                      </View>
+
+                      <View style={cardStyles.horizontalSpaceBetween}>
+                        <Text style={cardStyles.title}>{item.item.title}</Text>
+                        <Pressable onPress={toggleFavorite}>
+                          <SvgImage SVG={item.item.isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={40} width={40} />
+                        </Pressable>
+                      </View>
+
+                      <Text style={cardStyles.type}>{item.item.lang}{' '}{item.item.type}</Text>
+                      <View style={cardStyles.horizontalStart}>
+                        <Text style={cardStyles.author}>{item.item.author}</Text>
+                        <SvgImage SVG={Assets.icons.XLogo} height={20} width={20} style={cardStyles.social} />
+                      </View>
+
                   </BlurView>}
               keyExtractor={(item) => item.id}
               numColumns={2}
@@ -142,6 +164,66 @@ const Program = () => {
     </ScreenTemplate>
   );
 };
+
+const cardStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    marginHorizontal: 10,
+    borderRadius: 5,
+    height: 'auto',
+  },
+  title: {
+    width: '75%',
+    fontSize: 20,
+    fontFamily: 'PlayfairDisplay_400Regular',
+  },
+  room: {
+    fontSize: 16,
+    fontFamily: 'Cinzel_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  duration: {
+    fontSize: 16,
+    fontFamily: 'Cinzel_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  type: {
+    fontSize: 18,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    marginTop: 20,
+  },
+  author: {
+    fontSize: 18,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  social: {
+    display: "flex",
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: 5,
+  },
+  horizontalStart: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  horizontalSpaceBetween: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 10,
+  }
+})
 
 const styles = StyleSheet.create({
   container: {
@@ -351,14 +433,6 @@ const styles = StyleSheet.create({
     gap: 10,
     marginTop: 10,
   },
-  card: {
-    flex: 1,
-    paddingVertical: 20,
-    paddingHorizontal: 30,
-    borderRadius: 5,
-    marginHorizontal: 10,
-    height: 300,
-  }
 })
 
 
