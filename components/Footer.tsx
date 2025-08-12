@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ displayToTopArrow, handleScrollToTop })
 
 const styles = StyleSheet.create({
   footer: {
-    marginTop: 'auto',
+    //marginTop: 'auto',
     paddingVertical: 20,
     alignItems: 'center',
     width: '100%',

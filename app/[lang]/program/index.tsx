@@ -198,7 +198,7 @@ const Program = () => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: '100%',
+        height: 'auto',
         display: 'flex',
         alignItems: 'center',
         justifyContent: "flex-start",
