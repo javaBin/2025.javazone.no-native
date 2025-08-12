@@ -5,12 +5,13 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 type BulletListItemProps = {
   text: string;
+  textStyle?: object;
 };
-const BulletListItem: React.FC<BulletListItemProps> = ({ text }) => {
+const BulletListItem: React.FC<BulletListItemProps> = ({ text, textStyle }) => {
   return (
     <View style={styles.container}>
       <SvgImage SVG={Assets.UI.DividerDot} height={8} style={styles.bullet} />
-      <Text style={Assets.styles.listText}>{text}</Text>
+      <Text style={[Assets.styles.listText, textStyle]}>{text}</Text>
     </View>
   );
 };

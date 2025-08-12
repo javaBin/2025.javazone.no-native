@@ -32,8 +32,11 @@ import ToTopArrow from '@/assets/icons/to-top-arrow.svg';
 import HandHeartInactive from '@/assets/icons/hand-heart-inactive.svg';
 import HandHeartActive from '@/assets/icons/hand-heart-active.svg';
 import XLogo from '@/assets/icons/x.svg';
+import LinkedInLogo from '@/assets/icons/linkedin.svg';
+import BlueSkyLogo from '@/assets/icons/bluesky.svg';
 import HeartFilled from '@/assets/program-svg/heart-filled.svg'
 import HeartVoid from '@/assets/program-svg/heart-void.svg'
+import LaurelWealth from '@/assets/program-svg/laurel-wealth.svg'
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -180,8 +183,11 @@ export const Assets = {
     HandHeartInactive,
     HandHeartActive,
     XLogo,
+    LinkedInLogo,
+    BlueSkyLogo,
     HeartFilled,
     HeartVoid,
+    LaurelWealth
   },
   partnerLogos: {
     Accenture,

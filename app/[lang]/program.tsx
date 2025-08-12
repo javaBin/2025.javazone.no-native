@@ -1,58 +1,95 @@
-import { ScreenTemplate } from '@/components';
+import { HoldTheDate, ProgramCard, ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { fetchProgram } from '@/api/fetchProgram';
 import React, { useEffect, useState } from 'react';
-import { TalksProgram } from '@/api/types/talksProgram';
-import { Text, TouchableOpacity, View, StyleSheet, Animated, Platform, Pressable } from 'react-native';
-import {Assets} from "@/Assets";
+import { Session, TalksProgram } from '@/api/types/talksProgram';
+import { Text, TouchableOpacity, View, StyleSheet, Animated, Platform } from 'react-native';
+import { Assets } from '@/Assets';
 import FlatList = Animated.FlatList;
-import { SvgImage } from "@/UI";
-import { BlurView } from "expo-blur";
+import { SectionBox } from '@/UI';
+import { BlurView } from 'expo-blur';
+import { useFavoritesContext } from '@/contexts/FavoritesContext';
+import useProgramFilters from '@/hooks/useProgramFilters';
+import { dayAndTimeFormatWithMonth } from '@/utils/programUtils';
+
+const dateFilters = [
+  { id: 'tue', label: 'Sep 2', labelGreek: 'a.d. IV Non. Sept.' },
+  { id: 'wed', label: 'Sep 3', labelGreek: 'a.d. IV Non. Sept.' },
+  { id: 'thur', label: 'Sep 4', labelGreek: 'prid. Non. Sept.' },
+  { id: 'live', label: 'Live', labelGreek: 'praesēns' },
+];
+
+const formatFilters = [
+  { id: 'workshop', label: 'Workshop', labelGreek: 'laboratorium' },
+  { id: 'presentation', label: 'Presentation', labelGreek: 'expositiō' },
+  { id: 'lightning-talk', label: 'Lightning talk', labelGreek: 'orātiō brevis' },
+];
 
 const Program = () => {
-  const [programs, setPrograms] = useState<TalksProgram>({ sessions: [] });
   const { t } = useTranslation();
-
-  const allPrograms = fetchProgram();
+  const [sessions, setSessions] = useState<Session[]>([]);
+  const { favorites } = useFavoritesContext();
+  const {
+    filters,
+    setFilter,
+    clearFilters,
+    showFavoritesOnly,
+    setShowFavoritesOnly,
+    filteredSessions,
+    sortedTimeslots,
+    groupedSessions,
+  } = useProgramFilters(sessions, favorites);
 
   useEffect(() => {
-    allPrograms
-      .then((data) => {
-        setPrograms(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching program:', error);
-      });
+    fetchProgram().then((data) => setSessions(data.sessions));
   }, []);
 
-  const toggleFavorite = () => {
-    console.log('clicked')
-  }
+  // Prepare data for FlatList
+  const flatListData = sortedTimeslots.map((time, index) => ({
+    id: `${time}-${index}`,
+    time,
+    sessions: groupedSessions[time],
+  }));
 
-  const mockupData = [
-    { id: '1', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
-    { id: '2', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: true },
-    { id: '3', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
-    { id: '4', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
-    { id: '5', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: true },
-    { id: '6', title: 'Demystifying GenAI: Building a ChatGPT App with Spring, LangChain4J, and Vector Store', author: 'Mary Grygleski', duration: '240 min', room: 'Workshop D', type: 'workshop', lang: 'English', isFavorite: false },
-  ];
+  const renderTimeslotItem = ({ item }: { item: { id: string; time: string; sessions: Session[] } }) => (
+    <View style={styles.timeslotContainer}>
+      {item.time && (
+        <Text style={[Assets.styles.sectionSubTitle, { margin: 30 }]}>
+          {dayAndTimeFormatWithMonth.format(new Date(item.time))}
+        </Text>
+      )}
+      <View style={[styles.card]}>
+        {item.sessions.map((session) => (
+          <ProgramCard
+            key={session.id}
+            session={session}
+            isFavorite={favorites.some((favId) => favId === session.id)}
+          />
+        ))}
+      </View>
+    </View>
+  );
 
   return (
     <ScreenTemplate pageTitle={t('pageTitles.program')} shouldScrollToTop={true} dangerousOverride={true}>
       <View style={styles.container}>
         <View style={styles.menuContainer}>
-
           <View style={styles.topMenu}>
             <View style={styles.pyramidOuterBorder} />
             <View style={styles.pyramidOuterBackground} />
             <View style={styles.pyramidInnerBorder} />
             <View style={styles.pyramidInnerBackground} />
 
-            <View style={styles.pyramidContent}>
+            <TouchableOpacity
+              onPress={() => {
+                setShowFavoritesOnly(!showFavoritesOnly);
+                if (!showFavoritesOnly) clearFilters();
+              }}
+              style={styles.pyramidContent}
+            >
               <Text style={styles.favoriteTitle}>FAVORITES</Text>
               <Text style={styles.favoriteSubtitle}>RĒS SELECTAE</Text>
-            </View>
+            </TouchableOpacity>
           </View>
 
           <View style={[styles.bottomMenu, Assets.styles.shadow]}>
@@ -60,29 +97,17 @@ const Program = () => {
               <Text style={styles.menuGroupLabel}>Date</Text>
 
               <View style={styles.menuGroupContent}>
-                <View style={styles.buttonWrapper}>
-                  <Text style={styles.buttonTitle}>Sep 2</Text>
-                  <View style={styles.buttonDivider}/>
-                  <Text style={styles.buttonSubtitle}>a.d. IV Non. Sept.</Text>
-                </View>
-
-                <View style={styles.buttonWrapper}>
-                  <Text style={styles.buttonTitle}>Sep 3</Text>
-                  <View style={styles.buttonDivider}/>
-                  <Text style={styles.buttonSubtitle}>a.d. III Non. Sept.</Text>
-                </View>
-
-                <View style={styles.buttonWrapper}>
-                  <Text style={styles.buttonTitle}>Sep 4</Text>
-                  <View style={styles.buttonDivider}/>
-                  <Text style={styles.buttonSubtitle}>prid. Non. Sept.</Text>
-                </View>
-
-                <View style={styles.buttonWrapper}>
-                  <Text style={styles.buttonTitle}>Live</Text>
-                  <View style={styles.buttonDivider}/>
-                  <Text style={styles.buttonSubtitle}>praesēns</Text>
-                </View>
+                {dateFilters.map((filter) => (
+                  <TouchableOpacity
+                    key={filter.id}
+                    style={styles.buttonWrapper}
+                    onPress={() => setFilter('date', filter.id)}
+                  >
+                    <Text style={styles.buttonTitle}>{filter.label}</Text>
+                    <View style={styles.buttonDivider} />
+                    <Text style={styles.buttonSubtitle}>{filter.labelGreek}</Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
 
@@ -90,74 +115,42 @@ const Program = () => {
               <Text style={styles.menuGroupLabel}>Type</Text>
 
               <View style={styles.menuGroupContent}>
-                <View style={styles.buttonWrapper}>
-                  <Text style={styles.buttonTitle}>Workshop</Text>
-                  <View style={styles.buttonDivider}/>
-                  <Text style={styles.buttonSubtitle}>laboratorium</Text>
-                </View>
-
-                <View style={styles.buttonWrapper}>
-                  <Text style={styles.buttonTitle}>Presentation</Text>
-                  <View style={styles.buttonDivider}/>
-                  <Text style={styles.buttonSubtitle}>expositiō</Text>
-                </View>
-
-                <View style={styles.buttonWrapper}>
-                  <Text style={styles.buttonTitle}>Lightning Talk</Text>
-                  <View style={styles.buttonDivider}/>
-                  <Text style={styles.buttonSubtitle}>orātiō brevis</Text>
-                </View>
+                {formatFilters.map((format) => (
+                  <TouchableOpacity
+                    key={format.id}
+                    style={styles.buttonWrapper}
+                    onPress={() => setFilter('format', format.id)}
+                  >
+                    <Text style={styles.buttonTitle}>{format.label}</Text>
+                    <View style={styles.buttonDivider} />
+                    <Text style={styles.buttonSubtitle}>{format.labelGreek}</Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
-
           </View>
         </View>
 
         <View style={styles.pillarContentContainer}>
           <View style={[styles.pillar, Assets.styles.shadow]}>
-            <View style={styles.pillarLine}/>
-            <View style={styles.pillarLine}/>
-            <View style={styles.pillarLine}/>
+            <View style={styles.pillarLine} />
+            <View style={styles.pillarLine} />
+            <View style={styles.pillarLine} />
           </View>
 
           <FlatList
-              data={mockupData}
-              renderItem={(item) =>
-                  <BlurView
-                    tint="light"
-                    intensity={Platform.OS === 'web' ? 30 : 40}
-                    experimentalBlurMethod={'dimezisBlurView'}
-                    style={[cardStyles.container, Assets.styles.shadow]}>
-
-                      <View style={cardStyles.horizontalSpaceBetween}>
-                        <Text style={cardStyles.room}>{item.item.room}</Text>
-                        <Text style={cardStyles.duration}>{item.item.duration}</Text>
-                      </View>
-
-                      <View style={cardStyles.horizontalSpaceBetween}>
-                        <Text style={cardStyles.title}>{item.item.title}</Text>
-                        <Pressable onPress={toggleFavorite}>
-                          <SvgImage SVG={item.item.isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={40} width={40} />
-                        </Pressable>
-                      </View>
-
-                      <Text style={cardStyles.type}>{item.item.lang}{' '}{item.item.type}</Text>
-                      <View style={cardStyles.horizontalStart}>
-                        <Text style={cardStyles.author}>{item.item.author}</Text>
-                        <SvgImage SVG={Assets.icons.XLogo} height={20} width={20} style={cardStyles.social} />
-                      </View>
-
-                  </BlurView>}
-              keyExtractor={(item) => item.id}
-              numColumns={2}
-              columnWrapperStyle={{margin: 10}}
-              contentContainerStyle={styles.gallery}
+            data={flatListData}
+            renderItem={renderTimeslotItem}
+            keyExtractor={(item) => item.id}
+            numColumns={2}
+            columnWrapperStyle={{ margin: 10 }}
+            contentContainerStyle={styles.gallery}
           />
 
           <View style={[styles.pillar, Assets.styles.shadow]}>
-            <View style={styles.pillarLine}/>
-            <View style={styles.pillarLine}/>
-            <View style={styles.pillarLine}/>
+            <View style={styles.pillarLine} />
+            <View style={styles.pillarLine} />
+            <View style={styles.pillarLine} />
           </View>
         </View>
       </View>
@@ -165,79 +158,25 @@ const Program = () => {
   );
 };
 
-const cardStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 20,
-    paddingHorizontal: 30,
-    marginHorizontal: 10,
-    borderRadius: 5,
-    height: 'auto',
-  },
-  title: {
-    width: '75%',
-    fontSize: 20,
-    fontFamily: 'PlayfairDisplay_400Regular',
-  },
-  room: {
-    fontSize: 16,
-    fontFamily: 'Cinzel_400Regular',
-    color: Assets.colors.jz2025ThemeColors.darkBrown,
-  },
-  duration: {
-    fontSize: 16,
-    fontFamily: 'Cinzel_400Regular',
-    color: Assets.colors.jz2025ThemeColors.darkBrown,
-  },
-  type: {
-    fontSize: 18,
-    fontFamily: 'PlayfairDisplay_400Regular',
-    color: Assets.colors.jz2025ThemeColors.darkBrown,
-    marginTop: 20,
-  },
-  author: {
-    fontSize: 18,
-    fontFamily: 'PlayfairDisplay_400Regular',
-    color: Assets.colors.jz2025ThemeColors.darkBrown,
-  },
-  social: {
-    display: "flex",
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingHorizontal: 5,
-  },
-  horizontalStart: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginVertical: 5,
-  },
-  horizontalSpaceBetween: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: 10,
-  }
-})
-
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: "flex-start",
+    justifyContent: 'flex-start',
+  },
+  cardFlex: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 16,
   },
   menuContainer: {
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: "center",
+    justifyContent: 'center',
     zIndex: 90,
   },
   topMenu: {
@@ -406,7 +345,7 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'flex',
     alignItems: 'flex-start',
-    justifyContent: "center",
+    justifyContent: 'center',
     flexDirection: 'row',
   },
   pillar: {
@@ -421,19 +360,30 @@ const styles = StyleSheet.create({
     backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: "space-evenly",
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   pillarLine: {
     width: 1,
     height: '100%',
-    backgroundColor: Assets.colors.jz2025ThemeColors.sheetShadow
+    backgroundColor: Assets.colors.jz2025ThemeColors.sheetShadow,
   },
   gallery: {
     gap: 10,
     marginTop: 10,
   },
-})
-
+  card: {
+    flex: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    borderRadius: 5,
+    marginHorizontal: 10,
+    height: 300,
+  },
+  timeslotContainer: {
+    flex: 1,
+    margin: 5,
+  },
+});
 
 export default Program;
