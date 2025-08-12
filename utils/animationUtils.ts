@@ -29,7 +29,7 @@ export const createAnimations = (index?: number) => {
 const createAnimationHandlers = (scaleValue: Animated.Value) => ({
   handleMouseEnter: () => {
     Animated.spring(scaleValue, {
-      toValue: 1.4,
+      toValue: 1.2,
       useNativeDriver: true,
     }).start();
   },

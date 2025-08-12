@@ -14,7 +14,7 @@ import { dayAndTimeFormatWithMonth } from '@/utils/programUtils';
 
 const dateFilters = [
   { id: 'tue', label: 'Sep 2', labelGreek: 'a.d. IV Non. Sept.' },
-  { id: 'wed', label: 'Sep 3', labelGreek: 'a.d. IV Non. Sept.' },
+  { id: 'wed', label: 'Sep 3', labelGreek: 'a.d. III Non. Sept.' },
   { id: 'thur', label: 'Sep 4', labelGreek: 'prid. Non. Sept.' },
   { id: 'live', label: 'Live', labelGreek: 'praesēns' },
 ];

@@ -16,6 +16,7 @@ import {
 import {
   PlayfairDisplay_400Regular,
   PlayfairDisplay_400Regular_Italic,
+  PlayfairDisplay_500Medium,
   PlayfairDisplay_700Bold,
   PlayfairDisplay_800ExtraBold,
 } from '@expo-google-fonts/playfair-display';
@@ -49,6 +50,7 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, 
     Cinzel_800ExtraBold,
     PlayfairDisplay_400Regular,
     PlayfairDisplay_400Regular_Italic,
+    PlayfairDisplay_500Medium,
     PlayfairDisplay_700Bold,
     PlayfairDisplay_800ExtraBold,
   });

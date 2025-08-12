@@ -8,6 +8,7 @@ import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { createAnimations } from '@/utils/animationUtils';
+import {useTranslation} from "react-i18next";
 
 type ProgramCardProps = {
   session: Session;
@@ -17,6 +18,7 @@ type ProgramCardProps = {
 const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: ProgramCardProps) => {
   const { addFavorite, removeFavorite } = useFavoritesContext();
   const { lang } = useGlobalSearchParams();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const toggleFavorite = (e: any) => {
@@ -34,17 +36,27 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
 
   const animations = createAnimations();
 
+  const getLangFormat = (session: Session) => {
+    const language = session.language === 'no' ? t('language_name.nb-NO') : t('language_name.en-US');
+    const format = session.format === 'presentation' ? t('program.presentation') : session.format.replace('-', ' ');
+    return language + ' ' + format;
+  }
+
   return (
-    <Pressable style={[styles.card, Assets.styles.shadow]} key={session.id} onPress={navigateToDetail}>
+    <Pressable key={session.id} onPress={navigateToDetail} style={[styles.container, Assets.styles.shadow]}>
       <BlurView
-        tint="default"
-        intensity={Platform.OS === 'web' ? 20 : 40}
-        experimentalBlurMethod={'dimezisBlurView'}
-        style={[styles.innerCardContainer]}
-      >
-        <Text style={styles.roomText}>{session.room}</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={styles.cardTitle}>{session.title}</Text>
+          tint="light"
+          intensity={Platform.OS === 'web' ? 30 : 40}
+          experimentalBlurMethod={'dimezisBlurView'}
+          style={styles.content}>
+
+        <View style={styles.horizontalSpaceBetween}>
+          <Text style={styles.room}>{session.room || t('program.room_TBD')}</Text>
+          <Text style={styles.lengthDuration}>{session.length}{' min'}</Text>
+        </View>
+
+        <View style={styles.horizontalSpaceBetween}>
+          <Text style={styles.title}>{session.title}</Text>
           <Animated.View
             style={{
               transform: [{ scale: animations.favoriteButton.scale }],
@@ -53,23 +65,32 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
             onPointerLeave={animations.favoriteButton.handlers.handleMouseLeave}
           >
             <Pressable onPress={toggleFavorite}>
-              <SvgImage SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={50} width={40} />
+              <SvgImage SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={40} width={40} />
             </Pressable>
           </Animated.View>
         </View>
+
+        <Text style={styles.format}>{getLangFormat(session)}</Text>
+
+        {/* TODO: REFACTOR BELOW */}
+        <View style={styles.horizontalWrap}>
         {session.speakers.map((speaker, index) => {
           const animations = createAnimations(index);
+          const prevSpeaker = session.speakers[index - 1];
+          const prevNoSocials = prevSpeaker && !prevSpeaker.twitter && !prevSpeaker.linkedin && !prevSpeaker.bluesky;
+          const speakerName = prevNoSocials ? ', ' + speaker.name : speaker.name;
 
           return (
-            <View key={speaker.name} style={{ flexDirection: 'row', gap: 10 }}>
-              <Text style={styles.speaker}>{speaker.name}</Text>
+            <View key={speaker.name} style={styles.horizontalContain}>
+              <Text style={styles.speakerName}>{speakerName}</Text>
+
               {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
-                <View style={{ flexDirection: 'row', gap: 5 }}>
+                <View style={styles.horizontalContain}>
                   {speaker.twitter && (
                     <Animated.View
-                      style={{
+                      style={[styles.social, {
                         transform: [{ scale: animations.twitter.scale }],
-                      }}
+                      }]}
                       onPointerEnter={animations.twitter.handlers.handleMouseEnter}
                       onPointerLeave={animations.twitter.handlers.handleMouseLeave}
                     >
@@ -85,9 +106,9 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
                   )}
                   {speaker.linkedin && (
                     <Animated.View
-                      style={{
+                      style={[styles.social, {
                         transform: [{ scale: animations.linkedin.scale }],
-                      }}
+                      }]}
                       onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
                       onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
                     >
@@ -103,9 +124,9 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
                   )}
                   {speaker.bluesky && (
                     <Animated.View
-                      style={{
+                      style={[styles.social, {
                         transform: [{ scale: animations.bluesky.scale }],
-                      }}
+                      }]}
                       onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
                       onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
                     >
@@ -124,58 +145,100 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
             </View>
           );
         })}
+        </View>
 
         {session.suggestedKeywords && (
-          <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 5 }}>
+          <View style={styles.horizontalWrap}>
             {session.suggestedKeywords.split(',').map((keyword: string, index: number) => (
               <Text key={index} style={styles.keyword}>
-                #{keyword.trim()}
+                #{keyword.trim().toLowerCase().replaceAll(' ', ' #')}
               </Text>
             ))}
           </View>
         )}
-
-        <Text style={styles.time}>{session.length} min</Text>
       </BlurView>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  innerCardContainer: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    height: '100%',
-  },
-  roomText: {
-    color: '#343434',
-    fontSize: 14,
-    marginBottom: 10,
-  },
-  card: {
-    overflow: 'hidden',
-    fontFamily: 'PlayfairDisplay_400Regular',
-    width: '100%',
-    maxWidth: 400,
+  container: {
+    flex: 1,
+    marginHorizontal: 10,
     borderRadius: 5,
+    height: 'auto',
   },
-  time: {
-    justifyContent: 'flex-end',
+  content: {
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    height: '100%'
   },
-  speaker: {
-    color: '#363636',
-    fontSize: 14,
+  title: {
+    width: '75%',
+    fontSize: 20,
+    fontFamily: 'PlayfairDisplay_400Regular',
   },
-  cardTitle: {
+  room: {
     fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 8,
+    fontFamily: 'Cinzel_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  lengthDuration: {
+    fontSize: 16,
+    fontFamily: 'Cinzel_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  format: {
+    fontSize: 18,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    marginTop: 'auto',
+    paddingTop: 20,
+  },
+  speakerName: {
+    fontSize: 18,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  social: {
+    paddingHorizontal: 5,
   },
   keyword: {
     color: Assets.colors.jz2025ThemeColors.crimsonRed,
     fontSize: 12,
     fontWeight: '500',
+    paddingRight: 5,
+  },
+  horizontalStart: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  horizontalSpaceBetween: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  horizontalWrap: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginVertical: 5,
+  },
+  horizontalContain: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
 });
-
 export default ProgramCard;
