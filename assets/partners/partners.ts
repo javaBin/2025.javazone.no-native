@@ -59,6 +59,7 @@ import {
   GoogleCloud,
   Kartverket,
   SSB,
+  STOE,
 } from '../../Assets';
 import { FunctionComponent } from 'react';
 import { SvgProps } from 'react-native-svg';
@@ -130,4 +131,5 @@ export const partners: Partner[] = [
   { name: 'Google Cloud', homepageUrl: 'https://cloud.google.com', logoUrl: GoogleCloud },
   { name: 'Kartverket', homepageUrl: 'https://www.kartverket.no', logoUrl: Kartverket },
   { name: 'SSB', homepageUrl: 'https://www.ssb.no', logoUrl: SSB },
+  { name: 'STØ', homepageUrl: 'https://stoe.no/', logoUrl: STOE },
 ];

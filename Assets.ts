@@ -111,6 +111,7 @@ import Ambita from '@/assets/partners/ambita.svg';
 import GE from '@/assets/partners/GE.svg';
 import Kartverket from '@/assets/partners/kartverket.svg';
 import SSB from '@/assets/partners/ssb.svg';
+import STOE from '@/assets/partners/stoe.svg';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -249,6 +250,7 @@ export const Assets = {
     Ambita,
     Kartverket,
     SSB,
+    STOE
   },
   colors: {
     transparent: 'transparent',
@@ -459,4 +461,5 @@ export {
   Ambita,
   Kartverket,
   SSB,
+  STOE
 };
