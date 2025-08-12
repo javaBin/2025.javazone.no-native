@@ -1,13 +1,13 @@
-import { HoldTheDate, ScreenTemplate } from '@/components';
+import { ScreenTemplate } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { fetchProgram } from '@/api/fetchProgram';
 import React, { useEffect, useState } from 'react';
 import { TalksProgram } from '@/api/types/talksProgram';
-import {Text, TouchableOpacity, View, StyleSheet, Animated, Platform, Pressable} from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet, Animated, Platform, Pressable } from 'react-native';
 import {Assets} from "@/Assets";
 import FlatList = Animated.FlatList;
-import {SectionBox, SvgImage} from "@/UI";
-import {BlurView} from "expo-blur";
+import { SvgImage } from "@/UI";
+import { BlurView } from "expo-blur";
 
 const Program = () => {
   const [programs, setPrograms] = useState<TalksProgram>({ sessions: [] });
