@@ -56,8 +56,8 @@ const SpeakerKids = () => {
   const isMobile = useMediaQuery({ maxWidth: 900 });
   const screenWidth = Dimensions.get('window').width;
   const totalSpacer = isMobile ? 40 : 180;
-  const cardWidth = isMobile
-    ? Math.round(screenWidth * 0.87)
+  const cardWidth = isMobile || Platform.OS != 'web'
+    ? Math.round(screenWidth * 0.9)
     : Math.round((screenWidth - totalSpacer - 150) / 3);
 
   return (
@@ -95,12 +95,15 @@ const SpeakerKids = () => {
       <View style={{ flexDirection: 'row', width: '100%' }}>
         <View
           style={{
-            flexDirection: isMobile ? 'column' : 'row',
+            flexDirection: isMobile || Platform.OS != 'web' ? 'column' : 'row',
             flex: 1,
             justifyContent: 'center',
-            alignItems: isMobile ? 'center' : 'flex-start',
+            alignItems: isMobile || Platform.OS != 'web' ? 'center' : 'flex-start',
             gap: 20,
             marginTop: 20,
+            ...(Platform.OS != 'web' && {
+              paddingHorizontal: 20,
+            }),
           }}
         >
           {workshops.map((workshop, index) => (
@@ -108,6 +111,7 @@ const SpeakerKids = () => {
               key={index}
               style={{
                 width: cardWidth,
+                maxWidth: Platform.OS != 'web' ? screenWidth - 60 : cardWidth,
                 position: 'relative',
                 alignItems: 'center',
                 height: 650,

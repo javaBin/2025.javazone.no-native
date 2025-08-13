@@ -238,7 +238,7 @@ export const Assets = {
     Webstep,
     Apotek1,
     BankID,
-    Bornoy: Bronoy,
+    Bronoy,
     Crayon,
     ElOgIt,
     GE,
