@@ -1,4 +1,14 @@
-import { Linking, Pressable, StyleSheet, Text, TouchableOpacity, View, Animated, Platform } from 'react-native';
+import {
+  Linking,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Animated,
+  Platform,
+  Dimensions
+} from 'react-native';
 import { Assets } from '@/Assets';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SvgImage } from '@/UI';
@@ -171,7 +181,7 @@ const styles = StyleSheet.create({
   content: {
     paddingVertical: 20,
     paddingHorizontal: 30,
-    height: '100%'
+    height: '100%',
   },
   title: {
     width: '75%',

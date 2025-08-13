@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { fetchProgram } from '@/api/fetchProgram';
 import React, { useEffect, useState } from 'react';
 import { Session } from '@/api/types/talksProgram';
-import { Text, TouchableOpacity, View, StyleSheet, Animated } from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, Animated, Dimensions} from 'react-native';
 import { Assets } from "@/Assets";
 import FlatList = Animated.FlatList;
 import { useFavoritesContext } from "@/contexts/FavoritesContext";
@@ -67,8 +67,8 @@ const Program = () => {
                     <ProgramCard key={sessionItem.item.id} session={sessionItem.item} isFavorite={favorites.some((favId) => favId === sessionItem.item.id)}/>
                     }
                 keyExtractor={(item) => item.id}
-                numColumns={2}
-                columnWrapperStyle={{margin: 10}}
+                numColumns={Dimensions.get('window').width > 1000 ? 2 : 1}
+                columnWrapperStyle={Dimensions.get('window').width > 1000 && {margin: 10}}
                 contentContainerStyle={styles.gallery}
             />
         </>
@@ -82,52 +82,73 @@ const Program = () => {
     return (
         <ScreenTemplate pageTitle={t('pageTitles.program')} shouldScrollToTop={true} dangerousOverride={true}>
             <View style={styles.container}>
-                <View style={styles.menuContainer}>
+                <View style={templeMenuStyles.menuContainer}>
 
-                    <View style={styles.topMenu}>
-                        <View style={styles.pyramidOuterBorder} />
-                        <View style={styles.pyramidOuterBackground} />
-                        <View style={styles.pyramidInnerBorder} />
-                        <View style={styles.pyramidInnerBackground} />
+                    <View style={templeMenuStyles.topMenu}>
+                        <View style={[templeMenuStyles.pyramid, templeMenuStyles.pyramidOuterBorder]} />
+                        <View style={[
+                            templeMenuStyles.pyramid,
+                            templeMenuStyles.pyramidOuterBackground,
+                            Dimensions.get('window').width > 1240 ?
+                                pyramidLargeStyles.outerBackground :
+                                Dimensions.get('window').width > 1000 ?
+                                    pyramidMediumStyles.outerBackground :
+                                    pyramidSmallStyles.outerBackground]} />
+                        <View style={[
+                            templeMenuStyles.pyramid,
+                            templeMenuStyles.pyramidInnerBorder,
+                            Dimensions.get('window').width > 1240 ?
+                                pyramidLargeStyles.innerBorder :
+                                Dimensions.get('window').width > 1000 ?
+                                    pyramidMediumStyles.innerBorder :
+                                    pyramidSmallStyles.innerBorder]} />
+                        <View style={[
+                            templeMenuStyles.pyramid,
+                            templeMenuStyles.pyramidInnerBackground,
+                            Dimensions.get('window').width > 1240 ?
+                                pyramidLargeStyles.innerBackground :
+                                Dimensions.get('window').width > 1000 ?
+                                    pyramidMediumStyles.innerBackground :
+                                    pyramidSmallStyles.innerBackground]} />
 
-                        <TouchableOpacity onPress={handleFilterFavorites} style={styles.pyramidContent}>
-                            <Text style={styles.favoriteTitle}>FAVORITES</Text>
-                            <Text style={styles.favoriteSubtitle}>RĒS SELECTAE</Text>
+                        <TouchableOpacity onPress={handleFilterFavorites} style={templeMenuStyles.pyramidContent}>
+                            <Text style={templeMenuStyles.favoriteTitle}>FAVORITES</Text>
+                            <Text style={templeMenuStyles.favoriteSubtitle}>RĒS SELECTAE</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={[styles.bottomMenu, Assets.styles.shadow]}>
-                        <View style={[styles.menuGroup, styles.dateMenuGroup]}>
-                            <Text style={styles.menuGroupLabel}>Date</Text>
+                    <View style={[templeMenuStyles.bottomMenu, Assets.styles.shadow]}>
+                        <View style={[templeMenuStyles.menuGroup, templeMenuStyles.dateMenuGroup]}>
+                            <Text style={templeMenuStyles.menuGroupLabel}>Date</Text>
 
-                            <View style={styles.menuGroupContent}>
+                            <View style={templeMenuStyles.menuGroupContent}>
                                 {dateFilters.map((filter) => (
                                     <TouchableOpacity
                                         key={filter.id}
-                                        style={styles.buttonWrapper}
+                                        style={templeMenuStyles.buttonWrapper}
                                         onPress={() => setFilter('date', filter.id)}
                                     >
-                                        <Text style={styles.buttonTitle}>{filter.label}</Text>
-                                        <View style={styles.buttonDivider} />
-                                        <Text style={styles.buttonSubtitle}>{filter.labelGreek}</Text>
+                                        <Text style={templeMenuStyles.buttonTitle}>{filter.label}</Text>
+                                        <View style={templeMenuStyles.buttonDivider} />
+                                        <Text style={templeMenuStyles.buttonSubtitle}>{filter.labelGreek}</Text>
                                     </TouchableOpacity>
                                 ))}
                             </View>
                         </View>
 
-                        <View style={[styles.menuGroup, styles.typeMenuGroup]}>
-                            <Text style={styles.menuGroupLabel}>Type</Text>
+                        <View style={[templeMenuStyles.menuGroup, templeMenuStyles.typeMenuGroup]}>
+                            <Text style={templeMenuStyles.menuGroupLabel}>Type</Text>
 
-                            <View style={styles.menuGroupContent}>
+                            <View style={templeMenuStyles.menuGroupContent}>
                                 {formatFilters.map((format) => (
                                     <TouchableOpacity
                                         key={format.id}
-                                        style={styles.buttonWrapper}
+                                        style={templeMenuStyles.buttonWrapper}
                                         onPress={() => setFilter('format', format.id)}
                                     >
-                                        <Text style={styles.buttonTitle}>{format.label}</Text>
-                                        <View style={styles.buttonDivider} />
-                                        <Text style={styles.buttonSubtitle}>{format.labelGreek}</Text>
+                                        <Text style={templeMenuStyles.buttonTitle}>{format.label}</Text>
+                                        <View style={templeMenuStyles.buttonDivider} />
+                                        <Text style={templeMenuStyles.buttonSubtitle}>{format.labelGreek}</Text>
                                     </TouchableOpacity>
                                 ))}
                             </View>
@@ -195,16 +216,63 @@ const Program = () => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: 'auto',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: "flex-start",
+const pyramidLargeStyles = StyleSheet.create({
+    outerBackground: {
+        borderLeftWidth: Dimensions.get('window').width > 1365 ? 550 : 500,
+        borderRightWidth: Dimensions.get('window').width > 1365 ? 550 : 500,
+        borderBottomWidth: Dimensions.get('window').width > 1365 ? 100 : 100,
     },
+    innerBorder: {
+        borderLeftWidth: Dimensions.get('window').width > 1365 ? 500 : 455,
+        borderRightWidth: Dimensions.get('window').width > 1365 ? 500 : 455,
+        borderBottomWidth: Dimensions.get('window').width > 1365 ? 90 : 90,
+    },
+    innerBackground: {
+        borderLeftWidth: Dimensions.get('window').width > 1365 ? 491 : 441,
+        borderRightWidth: Dimensions.get('window').width > 1365 ? 491 : 441,
+        borderBottomWidth: Dimensions.get('window').width > 1365 ? 88 : 88,
+    },
+});
+
+const pyramidMediumStyles = StyleSheet.create({
+    outerBackground: {
+        borderLeftWidth: Dimensions.get('window').width > 1200 ? 450 : 400,
+        borderRightWidth: Dimensions.get('window').width > 1200 ? 450 : 400,
+        borderBottomWidth: Dimensions.get('window').width > 1200 ? 100 : 100,
+    },
+    innerBorder: {
+        borderLeftWidth: Dimensions.get('window').width > 1200 ? 410 : 365,
+        borderRightWidth: Dimensions.get('window').width > 1200 ? 410 : 365,
+        borderBottomWidth: Dimensions.get('window').width > 1200 ? 90 : 90,
+    },
+    innerBackground: {
+        borderLeftWidth: Dimensions.get('window').width > 1200 ? 396 : 351,
+        borderRightWidth: Dimensions.get('window').width > 1200 ? 396 : 351,
+        borderBottomWidth: Dimensions.get('window').width > 1200 ? 88 : 88,
+    },
+});
+
+const pyramidSmallStyles = StyleSheet.create({
+    outerBackground: {
+        borderLeftWidth: Dimensions.get('window').width > 950 ? 350 : 300,
+        borderRightWidth: Dimensions.get('window').width > 950 ? 350 : 300,
+        borderBottomWidth: Dimensions.get('window').width > 950 ? 100 : 100,
+    },
+    innerBorder: {
+        borderLeftWidth: Dimensions.get('window').width > 950 ? 305 : 265,
+        borderRightWidth: Dimensions.get('window').width > 950 ? 305 : 265,
+        borderBottomWidth: Dimensions.get('window').width > 950 ? 90 : 90,
+    },
+    innerBackground: {
+        borderLeftWidth: Dimensions.get('window').width > 950 ? 298 : 258,
+        borderRightWidth: Dimensions.get('window').width > 950 ? 298 : 258,
+        borderBottomWidth: Dimensions.get('window').width > 950 ? 88 : 88,
+    },
+});
+
+const templeMenuStyles = StyleSheet.create({
     menuContainer: {
-        width: '100%',
+        width: Dimensions.get('window').width > 1000 ? '100%' : '90%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: "center",
@@ -219,60 +287,35 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         zIndex: 20,
     },
-    pyramidOuterBorder: {
+    pyramid: {
         position: 'absolute',
-        bottom: 0,
         width: 0,
         height: 0,
+        borderLeftColor: 'transparent',
+        borderRightColor: 'transparent',
+        borderStyle: 'solid',
+    },
+    pyramidOuterBorder: {
+        bottom: 0,
         //borderLeftWidth: 555,
         //borderRightWidth: 555,
         //borderBottomWidth: 101,
-        borderLeftColor: 'transparent',
-        borderRightColor: 'transparent',
         borderBottomColor: Assets.colors.jz2025ThemeColors.lightBrown,
-        borderStyle: 'solid',
         zIndex: 10,
     },
     pyramidOuterBackground: {
-        position: 'absolute',
         bottom: 0,
-        width: 0,
-        height: 0,
-        borderLeftWidth: 550,
-        borderRightWidth: 550,
-        borderBottomWidth: 100,
-        borderLeftColor: 'transparent',
-        borderRightColor: 'transparent',
         borderBottomColor: Assets.colors.jz2025ThemeColors.sheet,
-        borderStyle: 'solid',
         zIndex: 20,
     },
     pyramidInnerBorder: {
-        position: 'absolute',
         bottom: 5,
-        width: 0,
-        height: 0,
-        borderLeftWidth: 500,
-        borderRightWidth: 500,
-        borderBottomWidth: 90,
-        borderLeftColor: 'transparent',
-        borderRightColor: 'transparent',
         borderBottomColor: Assets.colors.jz2025ThemeColors.sheetShadow,
-        borderStyle: 'solid',
         zIndex: 30,
     },
     pyramidInnerBackground: {
-        position: 'absolute',
         bottom: 6,
-        width: 0,
-        height: 0,
-        borderLeftWidth: 491,
-        borderRightWidth: 491,
-        borderBottomWidth: 88,
-        borderLeftColor: 'transparent',
-        borderRightColor: 'transparent',
         borderBottomColor: Assets.colors.jz2025ThemeColors.sheet,
-        borderStyle: 'solid',
         zIndex: 40,
     },
     pyramidContent: {
@@ -282,24 +325,24 @@ const styles = StyleSheet.create({
         zIndex: 50,
     },
     favoriteTitle: {
-        fontSize: 24,
+        fontSize: Dimensions.get('window').width > 1300 ? 24 : 22,
         color: Assets.colors.jz2025ThemeColors.darkRed,
         fontFamily: 'PlayfairDisplay_400Regular_Italic',
         textTransform: 'uppercase',
     },
     favoriteSubtitle: {
-        fontSize: 22,
+        fontSize: Dimensions.get('window').width > 1300 ? 22 : 20,
         color: Assets.colors.jz2025ThemeColors.lightBrown,
         fontFamily: 'Cinzel_400Regular',
         textTransform: 'uppercase',
     },
     bottomMenu: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: Dimensions.get('window').width > 1300 ? 'row' : 'column',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         width: '100%',
-        minHeight: 150,
+        minHeight: Dimensions.get('window').width > 1300 ? 150 : 'auto',
         padding: 5,
         borderRadius: 10,
         backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
@@ -310,19 +353,24 @@ const styles = StyleSheet.create({
     },
     menuGroup: {
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: Dimensions.get('window').width > 1000 ? 'column' : 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        rowGap: 5,
+        gap: 5,
     },
     dateMenuGroup: {
-        maxWidth: '48%',
+        width: Dimensions.get('window').width > 1300 ? 'auto' : '100%',
+        maxWidth: Dimensions.get('window').width > 1300 ? '48%' : '100%',
     },
     typeMenuGroup: {
-        maxWidth: '51%',
+        width: Dimensions.get('window').width > 1300 ? 'auto' : '100%',
+        maxWidth: Dimensions.get('window').width > 1300 ? '51%' : '100%',
+        paddingTop: Dimensions.get('window').width > 1300 ? 0 : 5,
     },
     menuGroupLabel: {
-        width: '100%',
+        width: Dimensions.get('window').width > 1000 ? '100%' : 70,
+        height: Dimensions.get('window').width > 1000 ? 'auto' : '100%',
+        marginRight: Dimensions.get('window').width > 1000 ? 5 : 0,
         borderRadius: 5,
         borderStyle: 'solid',
         borderWidth: 1,
@@ -330,12 +378,13 @@ const styles = StyleSheet.create({
         color: Assets.colors.jz2025ThemeColors.lightBrown,
         fontFamily: 'PlayfairDisplay_400Regular',
         textAlign: 'center',
-        fontSize: 22,
-        paddingVertical: 5,
+        alignContent: 'center',
+        fontSize: Dimensions.get('window').width > 1300 ? 22 : Dimensions.get('window').width > 1000 ? 20 : 18,
+        paddingVertical: Dimensions.get('window').width > 1300 ? 5 : 2,
     },
     menuGroupContent: {
-        height: '100%',
-        width: '100%',
+        height: Dimensions.get('window').width > 1300 ? '100%' : 'auto',
+        width: Dimensions.get('window').width > 1000 ? '100%' : '89%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -351,28 +400,39 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: Assets.colors.jz2025ThemeColors.sheetShadow,
         paddingHorizontal: 5,
-        paddingVertical: 10,
+        paddingVertical: Dimensions.get('window').width > 1300 ? 10 : Dimensions.get('window').width > 1000 ? 5 : 2,
     },
     buttonTitle: {
-        fontSize: 20,
+        fontSize: Dimensions.get('window').width > 1403 ? 20 : Dimensions.get('window').width > 1000 ? 18 : 16,
         color: Assets.colors.jz2025ThemeColors.darkRed,
         fontFamily: 'PlayfairDisplay_400Regular_Italic',
         textTransform: 'uppercase',
-        padding: 5,
+        padding: Dimensions.get('window').width > 1000 ? 5 : 0,
     },
     buttonDivider: {
+        display: Dimensions.get('window').width > 1000 ? 'flex' : 'none',
         borderTopWidth: 1,
         borderTopColor: Assets.colors.jz2025ThemeColors.sheetShadow,
         width: '80%',
     },
     buttonSubtitle: {
-        fontSize: 14,
+        fontSize: Dimensions.get('window').width > 1376 ? 14 : 12,
         color: Assets.colors.jz2025ThemeColors.lightBrown,
         fontFamily: 'Cinzel_400Regular',
         paddingTop: 5,
     },
-    pillarContentContainer: {
+})
+
+const styles = StyleSheet.create({
+    container: {
         width: '100%',
+        height: 'auto',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: "flex-start",
+    },
+    pillarContentContainer: {
+        width: Dimensions.get('window').width > 1000 ? '100%' : '90%',
         height: '100%',
         display: 'flex',
         alignItems: 'flex-start',
@@ -380,12 +440,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     pillar: {
-        width: 80,
+        width: Dimensions.get('window').width > 1000 ? 80 : 70,
         height: '100%',
         marginHorizontal: 10,
         padding: 5,
         borderStyle: 'solid',
-        //borderWidth: 1,
         borderTopWidth: 0,
         borderColor: Assets.colors.jz2025ThemeColors.lightBrown,
         backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
