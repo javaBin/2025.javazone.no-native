@@ -9,7 +9,7 @@ import { ProgramCard, ScreenTemplate } from '@/components';
 import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import useProgramFilters from '@/hooks/useProgramFilters';
 import ProgramFilters from '@/components/ProgramFilters';
-import { groupSessionsByTimeslot, dayAndTimeFormatWithMonth } from '@/utils/programUtils';
+import { groupSessionsByTimeslot, formatSessionTime } from '@/utils/programUtils';
 import { Session } from '@/api/types/talksProgram';
 
 const Index = () => {
@@ -50,7 +50,7 @@ const Index = () => {
           <View key={`${time}-${key}`}>
             {time && (
               <Text style={[Assets.styles.sectionSubTitle, { margin: 30 }]}>
-                {dayAndTimeFormatWithMonth.format(new Date(time))}
+                {formatSessionTime(time)}
               </Text>
             )}
             <View style={styles.cardFlex}>
