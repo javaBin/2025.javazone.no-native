@@ -11,9 +11,11 @@ import useProgramFilters from '@/hooks/useProgramFilters';
 import ProgramFilters from '@/components/ProgramFilters';
 import { groupSessionsByTimeslot, formatSessionTime } from '@/utils/programUtils';
 import { Session } from '@/api/types/talksProgram';
+import { useGlobalSearchParams } from 'expo-router';
 
 const Index = () => {
   const { t } = useTranslation();
+  const { lang } = useGlobalSearchParams();
   const [sessions, setSessions] = useState<Session[]>([]);
   const { favorites } = useFavoritesContext();
   const {
@@ -49,8 +51,8 @@ const Index = () => {
         {sortedTimeslots.map((time, key) => (
           <View key={`${time}-${key}`}>
             {time && (
-              <Text style={[Assets.styles.sectionSubTitle, { margin: 30 }]}>
-                {formatSessionTime(time)}
+              <Text style={[Assets.styles.sectionSubTitle, { margin: 30, alignSelf: 'center' }]}>
+                {formatSessionTime(time, lang)}
               </Text>
             )}
             <View style={styles.cardFlex}>

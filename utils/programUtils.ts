@@ -48,31 +48,79 @@ export function groupSessionsByTimeslot(sessions: Session[]): Record<string, Ses
   }, {});
 }
 
-export const dayAndTimeFormatWithMonth = new Intl.DateTimeFormat('en', {
-  month: 'long',
-  day: 'numeric',
+// Create locale-aware formatters
+export const createDayAndTimeFormatter = (locale: string | string[]) => new Intl.DateTimeFormat(locale === 'no' ? 'nb-NO' : 'en', {
+  weekday: 'long',
   hour: 'numeric',
   minute: '2-digit',
 });
 
+export const createTimeOnlyFormatter = (locale: string | string[]) => new Intl.DateTimeFormat(locale === 'no' ? 'nb-NO' : 'en', {
+  hour: 'numeric',
+  minute: '2-digit',
+});
+
+// Helper function to capitalize first letter
+const capitalizeFirst = (str: string): string => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 // Safe date formatting utility
-export function formatSessionTime(timeString: string): string {
+export function formatSessionTime(timeString: string, locale: string | string[] = 'en'): string {
   const date = safeParseDate(timeString);
   if (!date) {
     return 'Time TBD';
   }
 
   try {
-    return dayAndTimeFormatWithMonth.format(date);
+    const formatter = createDayAndTimeFormatter(locale);
+    const formatted = formatter.format(date);
+
+    // Capitalize first letter for Norwegian
+    return locale === 'no' ? capitalizeFirst(formatted) : formatted;
   } catch (error) {
     console.warn('Failed to format date:', timeString, error);
     return 'Time TBD';
   }
 }
 
-export const formatSessionInfo = (session: Session, card: boolean) => {
-  const timeDisplay = session.startTime ? formatSessionTime(session.startTime) : 'Time/Room TBD';
-  const formatDisplay = session.format ? ` - ${session.format}` : '';
-  const roomDisplay = session.room != undefined && session.format != 'workshop' ? ` - ${session.room} -` : '';
-  return card ? `${roomDisplay}${timeDisplay}${formatDisplay}` : `${timeDisplay}${roomDisplay}`;
+export const formatSessionInfo = (session: Session, card: boolean, locale: string | string[]  = 'en') => {
+  const startDate = session.startTime ? safeParseDate(session.startTime) : null;
+  const endDate = session.endTime ? safeParseDate(session.endTime) : null;
+
+  if (!startDate) {
+    return 'Time/Room TBD';
+  }
+
+  try {
+    const dayAndTimeFormatter = createDayAndTimeFormatter(locale);
+    const timeOnlyFormatter = createTimeOnlyFormatter(locale);
+
+    let startTimeDisplay = dayAndTimeFormatter.format(startDate);
+
+    // Capitalize first letter for Norwegian
+    if (locale === 'no') {
+      startTimeDisplay = capitalizeFirst(startTimeDisplay);
+    }
+
+    let timeDisplay = startTimeDisplay;
+
+    // If we have an end time and it's on the same day, just show the end time
+    if (endDate && startDate.toDateString() === endDate.toDateString()) {
+      const endTimeOnly = timeOnlyFormatter.format(endDate);
+      timeDisplay = `${startTimeDisplay} - ${endTimeOnly}`;
+    } else if (endDate) {
+      let endTimeDisplay = dayAndTimeFormatter.format(endDate);
+      if (locale === 'no') {
+        endTimeDisplay = capitalizeFirst(endTimeDisplay);
+      }
+      timeDisplay = `${startTimeDisplay} - ${endTimeDisplay}`;
+    }
+
+    const roomDisplay = session.room != undefined && session.format != 'workshop' ? ` - ${session.room} -` : '';
+    return card ? `${roomDisplay}${timeDisplay}` : `${timeDisplay}${roomDisplay}`;
+  } catch (error) {
+    console.warn('Failed to format session info:', session.startTime, error);
+    return 'Time/Room TBD';
+  }
 };
