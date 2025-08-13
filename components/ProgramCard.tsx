@@ -8,7 +8,7 @@ import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { createAnimations } from '@/utils/animationUtils';
-import { formatSessionTime, safeParseDate } from '@/utils/programUtils';
+import { formatSessionInfo, formatSessionTime, safeParseDate } from '@/utils/programUtils';
 
 type ProgramCardProps = {
   session: Session;
@@ -35,13 +35,6 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
 
   const animations = createAnimations();
 
-  const formatSessionInfo = () => {
-    const timeDisplay = session.startTime ? formatSessionTime(session.startTime) : 'Time TBD';
-    const formatDisplay = session.format ? ` - ${session.format}` : '';
-    const roomDisplay = session.room != undefined && session.format != 'workshop' ? ` - ${session.room} -` : '';
-    return `${roomDisplay}${timeDisplay}${formatDisplay}`;
-  };
-
   return (
     <Pressable style={[styles.card, Assets.styles.shadow]} key={session.id} onPress={navigateToDetail}>
       <BlurView
@@ -50,7 +43,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
         experimentalBlurMethod={'dimezisBlurView'}
         style={[styles.innerCardContainer]}
       >
-        <Text style={styles.sessionInfo}>{formatSessionInfo()}</Text>
+        <Text style={styles.sessionInfo}>{formatSessionInfo(session, true)}</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={styles.cardTitle}>{session.title}</Text>
           <Animated.View

@@ -20,6 +20,7 @@ import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useTranslation } from 'react-i18next';
 import { createAnimations } from '@/utils/animationUtils';
 import { useMediaQuery } from 'react-responsive';
+import { formatSessionInfo } from '@/utils/programUtils';
 
 const SessionDetail = () => {
   const { sessionId } = useLocalSearchParams<{ sessionId: string }>();
@@ -142,9 +143,11 @@ const SessionDetail = () => {
                   <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Duration: </Text>
                   {session.length} min
                 </Text>
-
-
               </View>
+              <Text style={[Assets.styles.text, { marginBottom: 5, alignSelf: 'center' }]}>
+                <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Time and room: </Text>
+                {formatSessionInfo(session, false)}
+              </Text>
             </View>
             <SvgImage SVG={Assets.UI.DividerWide} height={10} />
 

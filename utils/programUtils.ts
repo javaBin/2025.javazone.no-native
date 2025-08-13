@@ -69,3 +69,10 @@ export function formatSessionTime(timeString: string): string {
     return 'Time TBD';
   }
 }
+
+export const formatSessionInfo = (session: Session, card: boolean) => {
+  const timeDisplay = session.startTime ? formatSessionTime(session.startTime) : 'Time/Room TBD';
+  const formatDisplay = session.format ? ` - ${session.format}` : '';
+  const roomDisplay = session.room != undefined && session.format != 'workshop' ? ` - ${session.room} -` : '';
+  return card ? `${roomDisplay}${timeDisplay}${formatDisplay}` : `${timeDisplay}${roomDisplay}`;
+};
