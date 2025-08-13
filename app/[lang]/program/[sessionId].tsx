@@ -242,6 +242,13 @@ const SessionDetail = () => {
                 <Text style={Assets.styles.text}>{session.abstract}</Text>
               </View>
             )}
+
+            {session.workshopPrerequisites && (
+              <View style={{ marginBottom: 20 }}>
+                <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25 }]}>Workshop Prerequisites</Text>
+                <Text style={Assets.styles.text}>{session.workshopPrerequisites}</Text>
+              </View>
+            )}
             <SvgImage SVG={Assets.UI.DividerWide} height={10} />
 
             {/* Suggested Keywords */}
