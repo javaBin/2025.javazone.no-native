@@ -8,6 +8,7 @@ import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { createAnimations } from '@/utils/animationUtils';
+import { formatSessionInfo, formatSessionTime, safeParseDate } from '@/utils/programUtils';
 
 type ProgramCardProps = {
   session: Session;
@@ -42,7 +43,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
         experimentalBlurMethod={'dimezisBlurView'}
         style={[styles.innerCardContainer]}
       >
-        <Text style={styles.roomText}>{session.room}</Text>
+        <Text style={styles.sessionInfo}>{formatSessionInfo(session, true)}</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={styles.cardTitle}>{session.title}</Text>
           <Animated.View
@@ -146,6 +147,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     height: '100%',
+  },
+  sessionInfo: {
+    color: '#343434',
+    fontSize: 14,
+    marginBottom: 10,
+    fontWeight: '500',
   },
   roomText: {
     color: '#343434',
