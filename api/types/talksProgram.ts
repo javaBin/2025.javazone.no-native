@@ -18,7 +18,6 @@ export type Session = {
   sessionId: string;
   conferenceId: string;
   speakers: Speaker[];
-  //fields below are not yet available in the API, but will be used in the future
   room?: string;
   workshopPrerequisites?: string;
   registerLoc?: string;
