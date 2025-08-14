@@ -8,6 +8,7 @@ import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { createAnimations } from '@/utils/animationUtils';
+import { formatSessionInfo, formatSessionTime, safeParseDate } from '@/utils/programUtils';
 
 type ProgramCardProps = {
   session: Session;
@@ -42,7 +43,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
         experimentalBlurMethod={'dimezisBlurView'}
         style={[styles.innerCardContainer]}
       >
-        <Text style={styles.roomText}>{session.room}</Text>
+        <Text style={styles.sessionInfo}>{formatSessionInfo(session, true, lang)}</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={styles.cardTitle}>{session.title}</Text>
           <Animated.View
@@ -126,7 +127,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
         })}
 
         {session.suggestedKeywords && (
-          <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 5 }}>
+          <View style={{ marginVertical: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 5 }}>
             {session.suggestedKeywords.split(',').map((keyword: string, index: number) => (
               <Text key={index} style={styles.keyword}>
                 #{keyword.trim()}
@@ -135,7 +136,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
           </View>
         )}
 
-        <Text style={styles.time}>{session.length} min</Text>
+        <Text style={styles.time}>{session.format} - {session.length} min</Text>
       </BlurView>
     </Pressable>
   );
@@ -147,10 +148,11 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     height: '100%',
   },
-  roomText: {
+  sessionInfo: {
     color: '#343434',
     fontSize: 14,
-    marginBottom: 10,
+    marginBottom: 5,
+    fontWeight: '500',
   },
   card: {
     overflow: 'hidden',
