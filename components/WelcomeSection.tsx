@@ -14,6 +14,11 @@ const WelcomeSection = () => {
       <View style={styles.eventCheckinContainer}>
         <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.event_check_in')} targetBlank={true} />
       </View>
+
+      <View style={styles.eventCheckinContainer}>
+        <Text style={styles.workshopText}>{t('javaZone.workshop_registration')}</Text>
+        <LinkButton href={Assets.links.workshopRegistration} title={t('javaZone.register_for_workshops')} targetBlank={true} />
+      </View>
     </View>
   );
 };
@@ -32,6 +37,12 @@ const styles = StyleSheet.create({
     fontFamily: 'PlayfairDisplay_400Regular',
     fontSize: Dimensions.get('window').width > 768 ? 36 : 24,
     textAlign: 'center',
+  },
+  workshopText: {
+    fontFamily: 'PlayfairDisplay_400Regular',
+    fontSize: Dimensions.get('window').width > 768 ? 26 : 22,
+    textAlign: 'center',
+    marginVertical: 10,
   },
   ticketContainer: {
     marginTop: 20,

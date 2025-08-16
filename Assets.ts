@@ -139,6 +139,7 @@ export const Assets = {
     partnerVideo: 'https://player.vimeo.com/video/1038270530',
     partnerTickets: 'https://event.checkin.no/108603/javazone-2025-partner-tickets',
     eventCheckin: 'https://event.checkin.no/109009/javazone-2025',
+    workshopRegistration: 'https://event.checkin.no/138671/javazone-workshops-2025',
   },
   images: {
     Logo,
