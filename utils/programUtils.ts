@@ -110,7 +110,12 @@ export const formatSessionInfo = (session: Session, card: boolean, locale: strin
     }
 
     const roomDisplay = session.room != undefined && session.format != 'workshop' ? `${session.room}` : '';
-    return card ? `${roomDisplay}, ${timeDisplay} ` : `${timeDisplay}, ${roomDisplay}`;
+
+    if (card) {
+      return roomDisplay ? `${roomDisplay}, ${timeDisplay} ` : `${timeDisplay} `;
+    } else {
+      return roomDisplay ? `${timeDisplay}, ${roomDisplay}` : timeDisplay;
+    }
   } catch (error) {
     console.warn('Failed to format session info:', session.startTimeZulu, error);
     return 'Time/Room TBD';
