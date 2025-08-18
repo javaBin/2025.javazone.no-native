@@ -10,9 +10,10 @@ const WelcomeSection = () => {
     <View style={[styles.titleContainer, { marginTop: 50, flexDirection: 'column', marginBottom: 'auto' }]}>
       <Text style={styles.welcomeText}>{t('javaZone.welcome_to_NOVA')}</Text>
       <Text style={styles.welcomeText}>{t('conference_date')}</Text>
+      <Text style={[styles.ticketText, {marginTop: 20}]}>{t('javaZone.waiting_list')}</Text>
 
       <View style={styles.eventCheckinContainer}>
-        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.event_check_in')} targetBlank={true} />
+        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.waiting_list_register')} targetBlank={true} />
       </View>
 
       <View style={styles.eventCheckinContainer}>
