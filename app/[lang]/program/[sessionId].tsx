@@ -10,7 +10,7 @@ import {
   Animated,
   Pressable,
 } from 'react-native';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useGlobalSearchParams, useLocalSearchParams, useRouter } from 'expo-router';
 import { Assets } from '@/Assets';
 import { PageTitle, SectionBox, SvgImage } from '@/UI';
 import { ScreenTemplate } from '@/components';
@@ -25,7 +25,7 @@ import { formatSessionInfo } from '@/utils/programUtils';
 const SessionDetail = () => {
   const { sessionId } = useLocalSearchParams<{ sessionId: string }>();
   const isMobile = useMediaQuery({ maxWidth: 900 });
-  const { t } = useTranslation();
+  const { lang } = useGlobalSearchParams();
   const router = useRouter();
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
@@ -146,7 +146,7 @@ const SessionDetail = () => {
               </View>
               <Text style={[Assets.styles.text, { marginBottom: 5, alignSelf: 'center' }]}>
                 <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Time and room: </Text>
-                {formatSessionInfo(session, false)}
+                {formatSessionInfo(session, false, lang)}
               </Text>
             </View>
             <SvgImage SVG={Assets.UI.DividerWide} height={10} />

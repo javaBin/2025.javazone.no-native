@@ -61,7 +61,11 @@
       "thank_you": "Being the biggest community-driven conference would not have been easy without all the partners, event coordinators, and subcontractors, so we would like to thank them as well! Thank you, all! ❤\uFE0F",
       "reach_core_team": "If you have any questions or comments, you can always reach the Core Team at ",
       "welcome_to_NOVA": "Welcome to NOVA Spektrum, Lillestrøm",
-      "event_check_in": "Buy tickets"
+      "waiting_list": "JavaZone is sold out. But a waiting list is available.",
+      "waiting_list_register": "Register on Waitinglist",
+      "event_check_in": "Buy tickets",
+      "workshop_registration": "Registration for workshops is open!",
+      "register_for_workshops": "Register here"
     },
     "principles": {
       "principles": "A few very important principles",
@@ -140,7 +144,7 @@
       "time_and_place_two": "Sessions from 11.00 am - 15.00 pm",
       "time_and_place_three": "Rebel, Universitetsgata 2",
       "sign_up": "Sign up",
-      "sign_up_description_one": "Registration opens on Monday 30th June at 12 am. We have a limited number of spots, so it is important that you sign up as a participant before the deadline on 14th August at 12am.",
+      "sign_up_description_one": "Registration opens on Monday 30th June at 12 am. We have a limited number of spots, so it is important that you sign up as a participant before they are gone.",
       "sign_up_description_two": "It is important that you notify us as fast as you can if you are unable to participate, so those that are on the waiting list can get the spot instead.",
       "equipment": "Equipment",
       "instructors": "Instructors",

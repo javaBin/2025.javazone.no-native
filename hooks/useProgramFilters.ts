@@ -35,8 +35,8 @@ export default function useProgramFilters(
       const matchesDate =
         !filters.date ||
         filters.date === 'full' ||
-        (filters.date === 'wed' && session.startTime?.startsWith('2025-09-03')) ||
-        (filters.date === 'thur' && session.startTime?.startsWith('2025-09-04')) ||
+        (filters.date === 'wed' && session.startTimeZulu?.startsWith('2025-09-03')) ||
+        (filters.date === 'thur' && session.startTimeZulu?.startsWith('2025-09-04')) ||
         filters.date === 'live';
 
       const matchesLanguage = !filters.language || filters.language === 'all' || session.language === filters.language;
