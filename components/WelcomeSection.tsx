@@ -10,9 +10,15 @@ const WelcomeSection = () => {
     <View style={[styles.titleContainer, { marginTop: 50, flexDirection: 'column', marginBottom: 'auto' }]}>
       <Text style={styles.welcomeText}>{t('javaZone.welcome_to_NOVA')}</Text>
       <Text style={styles.welcomeText}>{t('conference_date')}</Text>
+      <Text style={[styles.ticketText, {marginTop: 20}]}>{t('javaZone.waiting_list')}</Text>
 
       <View style={styles.eventCheckinContainer}>
-        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.event_check_in')} targetBlank={true} />
+        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.waiting_list_register')} targetBlank={true} />
+      </View>
+
+      <View style={styles.eventCheckinContainer}>
+        <Text style={styles.workshopText}>{t('javaZone.workshop_registration')}</Text>
+        <LinkButton href={Assets.links.workshopRegistration} title={t('javaZone.register_for_workshops')} targetBlank={true} />
       </View>
     </View>
   );
@@ -32,6 +38,12 @@ const styles = StyleSheet.create({
     fontFamily: 'PlayfairDisplay_400Regular',
     fontSize: Dimensions.get('window').width > 768 ? 36 : 24,
     textAlign: 'center',
+  },
+  workshopText: {
+    fontFamily: 'PlayfairDisplay_400Regular',
+    fontSize: Dimensions.get('window').width > 768 ? 26 : 22,
+    textAlign: 'center',
+    marginVertical: 10,
   },
   ticketContainer: {
     marginTop: 20,

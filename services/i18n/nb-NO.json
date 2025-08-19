@@ -65,7 +65,12 @@
       "event_check_in": "Kjøp billetter",
       "helter": "JavaZone Helter",
       "helter_link": "Se mer om våre helter her",
-      "helter_intro": "JavaZone lages av en stor gjeng frivillige fordelt over de ulike gruppene, som jobber hele året for å skape best mulig konferanse."
+      "helter_intro": "JavaZone lages av en stor gjeng frivillige fordelt over de ulike gruppene, som jobber hele året for å skape best mulig konferanse.",
+      "waiting_list": "JavaZone er utsolgt. Men en venteliste er tilgjengelig.",
+      "waiting_list_register": "Registrer deg på venteliste",
+      "event_check_in": "Kjøp billetter",
+      "workshop_registration": "Registrering for workshops er åpent!",
+      "register_for_workshops": "Registrer her"
     },
     "principles": {
       "principles": "Noen få svært viktige prinsipper",
@@ -148,7 +153,7 @@
       "time_and_place_two": "Arrangement kl. 11.00 - 15.00",
       "time_and_place_three": "Rebel, Universitetsgata 2",
       "sign_up": "Påmelding",
-      "sign_up_description_one": "Påmeldingen åpner mandag 30. juni kl. 12.00. Vi har et begrenset antall plasser, derfor er det viktig at du melder deg på før fristen 14. august kl. 12.00.",
+      "sign_up_description_one": "Påmeldingen åpner mandag 30. juni kl. 12.00. Vi har et begrenset antall plasser, derfor er det viktig at du melder deg på før det blir fullt.",
       "sign_up_description_two": "Har du ikke mulighet til å komme likevel, er det viktig at dette blir gitt beskjed om så raskt som mulig, siden det pleier å være ventelister på våre kurs.",
       "equipment": "Utstyr",
       "instructors": "Instruktører",

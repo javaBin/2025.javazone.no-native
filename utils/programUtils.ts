@@ -96,12 +96,7 @@ export const formatSessionInfo = (session: Session, card: boolean, locale: strin
     const dayAndTimeFormatter = createDayAndTimeFormatter(locale);
     const timeOnlyFormatter = createTimeOnlyFormatter(locale);
 
-    let startTimeDisplay = dayAndTimeFormatter.format(startDate);
-
-    // Capitalize first letter for Norwegian
-    if (locale === 'no') {
-      startTimeDisplay = capitalizeFirst(startTimeDisplay);
-    }
+    let startTimeDisplay = capitalizeFirst(dayAndTimeFormatter.format(startDate));
 
     let timeDisplay = startTimeDisplay;
 
@@ -110,15 +105,17 @@ export const formatSessionInfo = (session: Session, card: boolean, locale: strin
       const endTimeOnly = timeOnlyFormatter.format(endDate);
       timeDisplay = `${startTimeDisplay} - ${endTimeOnly}`;
     } else if (endDate) {
-      let endTimeDisplay = dayAndTimeFormatter.format(endDate);
-      if (locale === 'no') {
-        endTimeDisplay = capitalizeFirst(endTimeDisplay);
-      }
+      let endTimeDisplay = capitalizeFirst(dayAndTimeFormatter.format(endDate));
       timeDisplay = `${startTimeDisplay} - ${endTimeDisplay}`;
     }
 
-    const roomDisplay = session.room != undefined && session.format != 'workshop' ? ` - ${session.room} -` : '';
-    return card ? `${roomDisplay}${timeDisplay}` : `${timeDisplay}${roomDisplay}`;
+    const roomDisplay = session.room != undefined && session.format != 'workshop' ? `${session.room}` : '';
+
+    if (card) {
+      return roomDisplay ? `${roomDisplay}, ${timeDisplay} ` : `${timeDisplay} `;
+    } else {
+      return roomDisplay ? `${timeDisplay}, ${roomDisplay}` : timeDisplay;
+    }
   } catch (error) {
     console.warn('Failed to format session info:', session.startTimeZulu, error);
     return 'Time/Room TBD';
