@@ -34,9 +34,9 @@ import HandHeartActive from '@/assets/icons/hand-heart-active.svg';
 import XLogo from '@/assets/icons/x.svg';
 import LinkedInLogo from '@/assets/icons/linkedin.svg';
 import BlueSkyLogo from '@/assets/icons/bluesky.svg';
-import HeartFilled from '@/assets/program-svg/heart-filled.svg'
-import HeartVoid from '@/assets/program-svg/heart-void.svg'
-import LaurelWealth from '@/assets/program-svg/laurel-wealth.svg'
+import HeartFilled from '@/assets/program-svg/heart-filled.svg';
+import HeartVoid from '@/assets/program-svg/heart-void.svg';
+import LaurelWealth from '@/assets/program-svg/laurel-wealth.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -188,7 +188,7 @@ export const Assets = {
     BlueSkyLogo,
     HeartFilled,
     HeartVoid,
-    LaurelWealth
+    LaurelWealth,
   },
   partnerLogos: {
     Accenture,
@@ -250,7 +250,7 @@ export const Assets = {
     Ambita,
     Kartverket,
     SSB,
-    STOE
+    STOE,
   },
   colors: {
     transparent: 'transparent',
@@ -461,5 +461,5 @@ export {
   Ambita,
   Kartverket,
   SSB,
-  STOE
+  STOE,
 };

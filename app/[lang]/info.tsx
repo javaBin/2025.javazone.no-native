@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 
 const Info = () => {
   // @ts-ignore
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [toggleJavaBin, setToggleJavaBin] = useState<boolean>(false);
   const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
   const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
@@ -93,7 +93,6 @@ const Info = () => {
           <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
           <View style={{ alignSelf: 'center', width: '100%', marginBottom: 20 }}>
             <View style={styles.listItemWrapper}>
-
               <View style={styles.listItemGroup}>
                 <Text style={Assets.styles.text}>{t('javaZone.leader')}</Text>
                 <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} />
@@ -127,6 +126,12 @@ const Info = () => {
           </Text>
         </View>
 
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+
+        <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.helter')}</Text>
+        <Text style={Assets.styles.text}>
+          {t('javaZone.helter_intro')} <LinkText title={t('javaZone.helter_link')} href={`heroes`} targetSelf />
+        </Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>
 
@@ -193,9 +198,9 @@ const Info = () => {
             <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_1')}</Text>
 
             <ToggleText
-                title={t('sustainable_waste.read_more')}
-                toggle={toggleWaste}
-                handleToggle={() => handleToggle(t('sustainable_waste.read_more'), toggleWaste)}
+              title={t('sustainable_waste.read_more')}
+              toggle={toggleWaste}
+              handleToggle={() => handleToggle(t('sustainable_waste.read_more'), toggleWaste)}
             />
 
             <View style={{ display: toggleWaste ? 'flex' : 'none' }}>
@@ -236,7 +241,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexWrap: 'wrap',
     alignSelf: 'center',
-    gap: 5
+    gap: 5,
   },
   listItemGroup: {
     display: 'flex',
