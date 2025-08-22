@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   ticketText: {
     fontFamily: 'PlayfairDisplay_400Regular',
+    textAlign: 'center',
     fontSize: Dimensions.get('window').width > 768 ? 24 : 20,
     color: Assets.colors.jz2025ThemeColors.darkBrown,
   },

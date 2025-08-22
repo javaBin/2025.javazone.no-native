@@ -225,6 +225,7 @@ const RootLayout = () => {
               <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
               <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
               <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
+              <Stack.Screen name="[lang]/heroes" options={{ title: 'Heroes' }} />
             </Stack>
           </FavoritesContextProvider>
         </I18nContextProvider>

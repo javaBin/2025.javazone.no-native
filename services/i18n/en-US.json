@@ -24,7 +24,8 @@
       "program": "Program",
       "partner": "Partners",
       "speaker": "Speakers",
-      "info": "Information"
+      "info": "Information",
+      "heroes": "Heroes"
     },
     "javaBin": {
       "intro": "Become part of something great",
@@ -61,6 +62,10 @@
       "thank_you": "Being the biggest community-driven conference would not have been easy without all the partners, event coordinators, and subcontractors, so we would like to thank them as well! Thank you, all! ❤\uFE0F",
       "reach_core_team": "If you have any questions or comments, you can always reach the Core Team at ",
       "welcome_to_NOVA": "Welcome to NOVA Spektrum, Lillestrøm",
+      "event_check_in": "Buy tickets",
+      "helter": "JavaZone Heroes",
+      "helter_link": "Learn more about our heroes here",
+      "helter_intro": "JavaZone is made by a large group of volunteers distributed across the various groups, who work all year round to create the best possible conference.",
       "waiting_list": "JavaZone is sold out. But a waiting list is available.",
       "waiting_list_register": "Register on Waitinglist",
       "event_check_in": "Buy tickets",
@@ -94,6 +99,10 @@
       "paragraph_2": "Upon entering JavaZone, attendees may not be immediately aware of the meticulous waste management system that operates behind the scenes. Once waste is discarded, the process of responsible disposal begins. A comprehensive sorting mechanism is in place, designed to separate recyclables from non-recyclable materials.",
       "paragraph_3": "One notable aspect of this waste management initiative is the sorting and collection of beverage containers for deposit refund, known as \"pant\" in Norway. The bottles and cans are systematically collected, sorted, and sent for recycling, embodying the ethos of resource efficiency.",
       "paragraph_4": "Considerable portions of waste generated during JavaZone are earmarked for recycling. Through a blend of advanced waste separation technology and dedicated staff, materials like paper, plastic, glass, and metal are carefully segregated. The residual waste is further sorted at the Franzefoss plant in Haraldsrud and the remaining 70% is ground up and converted into FOB (refined waste fuel). Franzefoss has an agreement with Norcem for the delivery of FOB and this is used by Norcem as a high-value fuel for cement production. The food waste/wet organic waste delivered is used for biogas and fertilizer on grain fields. This not only reduces the environmental impact of JavaZone but also sets an example for attendees and the wider community."
+    },
+    "heroes": {
+      "title": "JavaZone Heroes",
+      "description": "Meet the amazing volunteers who make JavaZone possible! These are some of the heroes behind the scenes working tirelessly to create an unforgettable conference experience."
     },
     "partner": {
       "watch_title": "First partner meeting",
