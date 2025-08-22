@@ -15,7 +15,7 @@ const SectionBox: React.FC<SectionBoxProps> = ({ children, sectionTitle, style, 
   return (
     <BlurView
       tint="light"
-      intensity={Platform.OS === 'web' ? 20 : 40}
+      intensity={Platform.OS === 'web' ? 20 : 65}
       experimentalBlurMethod={'dimezisBlurView'}
       style={[Assets.styles.section, Assets.styles.shadow, style]}
     >

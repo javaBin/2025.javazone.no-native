@@ -133,13 +133,13 @@ const SessionDetail = () => {
                 </View>
               </View>
 
-              <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 10 }}>
-                <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
+              <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 10 }}>
+                <Text style={[Assets.styles.text, { marginBottom: 5, textAlign: 'center' }]}>
                   <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Format: </Text>
                   {session.format}
                 </Text>
 
-                <Text style={[Assets.styles.text, { marginBottom: 5 }]}>
+                <Text style={[Assets.styles.text, { marginBottom: 5, textAlign: 'center' }]}>
                   <Text style={{ fontWeight: 'bold', fontSize: 22 }}>Duration: </Text>
                   {session.length} min
                 </Text>

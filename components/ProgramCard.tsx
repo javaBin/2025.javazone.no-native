@@ -39,16 +39,17 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
     <Pressable style={[styles.card, Assets.styles.shadow]} key={session.id} onPress={navigateToDetail}>
       <BlurView
         tint="default"
-        intensity={Platform.OS === 'web' ? 20 : 40}
+        intensity={Platform.OS === 'web' ? 20 : 100}
         experimentalBlurMethod={'dimezisBlurView'}
         style={[styles.innerCardContainer]}
       >
         <Text style={styles.sessionInfo}>{formatSessionInfo(session, true, lang)}</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={styles.cardTitle}>{session.title}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <Text style={[styles.cardTitle, { flex: 1, marginRight: 10 }]}>{session.title}</Text>
           <Animated.View
             style={{
               transform: [{ scale: animations.favoriteButton.scale }],
+              minWidth: 40,
             }}
             onPointerEnter={animations.favoriteButton.handlers.handleMouseEnter}
             onPointerLeave={animations.favoriteButton.handlers.handleMouseLeave}
@@ -142,11 +143,13 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
   );
 };
 
+const isNotWeb = Platform.OS !== 'web';
+
 const styles = StyleSheet.create({
   innerCardContainer: {
     paddingHorizontal: 20,
-    paddingVertical: 20,
-    height: '100%',
+    paddingVertical: isNotWeb ? 12 : 20,
+    height: isNotWeb ? 'auto' : '100%',
   },
   sessionInfo: {
     color: '#343434',

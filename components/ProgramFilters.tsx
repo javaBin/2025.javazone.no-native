@@ -44,7 +44,7 @@ export default function ProgramFilters({
   setShowFavoritesOnly,
 }: ProgramFiltersProps) {
   return (
-    <View>
+    <>
       <View style={{ flexDirection: 'column', alignSelf: 'center', width: '100%' }}>
         <Pressable
           style={[styles.filterButton, showFavoritesOnly && styles.filterButtonSelected]}
@@ -110,7 +110,7 @@ export default function ProgramFilters({
       <Pressable style={styles.clearFilterButton} onPress={clearFilters}>
         <Text style={styles.clearFilterButtonText}>Clear filters</Text>
       </Pressable>
-    </View>
+    </>
   );
 }
 
