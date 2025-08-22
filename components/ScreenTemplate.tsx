@@ -27,9 +27,10 @@ type ScreenTemplateProps = {
   pageSubtitle?: string;
   shouldScrollToTop?: boolean;
   infoPage?: boolean;
+  flatListPage?: boolean;
 };
 
-const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, flatListPage }: ScreenTemplateProps) => {
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
   const scrollViewRef = useRef<ScrollView>(null);
@@ -80,19 +81,26 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop }
         <VerticalLinesRightLeft />
 
         <View style={[Assets.styles.container, { marginTop: newTop }]}>
-          <ScrollView
-            ref={scrollViewRef}
-            style={Assets.styles.scrollContainer}
-            contentContainerStyle={Assets.styles.scrollContentContainer}
-            alwaysBounceVertical={false}
-            showsVerticalScrollIndicator={false}
-          >
-            {pageTitle && <PageTitle title={pageTitle} subTitle={pageSubtitle} />}
+          {flatListPage ? (
+            <View style={[Assets.styles.scrollContainer, Assets.styles.scrollContentContainer]}>
+              {pageTitle && <PageTitle title={pageTitle} subTitle={pageSubtitle} />}
+              {children}
+            </View>
+          ) : (
+            <ScrollView
+              ref={scrollViewRef}
+              style={Assets.styles.scrollContainer}
+              contentContainerStyle={Assets.styles.scrollContentContainer}
+              alwaysBounceVertical={false}
+              showsVerticalScrollIndicator={false}
+            >
+              {pageTitle && <PageTitle title={pageTitle} subTitle={pageSubtitle} />}
 
-            {children}
+              {children}
 
-            <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop} />
-          </ScrollView>
+              <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop} />
+            </ScrollView>
+          )}
         </View>
       </SafeAreaView>
     </ImageBackground>

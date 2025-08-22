@@ -4,10 +4,12 @@ import { ScreenTemplate } from '@/components';
 import { CircleImage, LinkText, SvgImage, ToggleText, SectionBox } from '@/UI';
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
+import { useGlobalSearchParams } from 'expo-router';
 
 const Info = () => {
   // @ts-ignore
   const { t, i18n } = useTranslation();
+  const { lang } = useGlobalSearchParams();
   const [toggleJavaBin, setToggleJavaBin] = useState<boolean>(false);
   const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
   const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
@@ -130,7 +132,7 @@ const Info = () => {
 
         <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.helter')}</Text>
         <Text style={Assets.styles.text}>
-          {t('javaZone.helter_intro')} <LinkText title={t('javaZone.helter_link')} href={`heroes`} targetSelf />
+          {t('javaZone.helter_intro')} <LinkText title={t('javaZone.helter_link')} href={`/${lang}/info/heroes`} targetSelf />
         </Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>

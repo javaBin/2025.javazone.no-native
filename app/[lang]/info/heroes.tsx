@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, View, Image, Text, Dimensions, FlatList, Platform } from 'react-native';
 import { ScreenTemplate } from '@/components';
-import { SectionBox } from '@/UI';
+import { PageTitle, SectionBox, SvgImage } from '@/UI';
 import { useTranslation } from 'react-i18next';
 import { Assets } from '@/Assets';
+import { useMediaQuery } from 'react-responsive';
 
 // Import all hero images
 const heroImages = {
@@ -41,6 +42,8 @@ const heroImages = {
 const Heroes = () => {
   const { t } = useTranslation();
   const screenWidth = Dimensions.get('window').width;
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
 
   // Set a maximum width for the grid container to prevent images from getting too large
   const maxContainerWidth = 600;
@@ -50,22 +53,53 @@ const Heroes = () => {
   const gap = 15;
   const itemWidth = (containerWidth - gap * 2) / 3;
 
-  return (
-    <ScreenTemplate pageTitle={t('pageTitles.heroes')} shouldScrollToTop={true}>
-      <SectionBox sectionTitle={t('heroes.title')}>
-        <Text style={[Assets.styles.text, { marginBottom: 20 }]}>{t('heroes.description')}</Text>
+  // Convert hero images to FlatList data
+  const heroData = Object.entries(heroImages).map(([name, imageSource]) => ({
+    id: name,
+    name,
+    imageSource,
+  }));
 
-        <View style={[styles.gridContainer, { maxWidth: maxContainerWidth, alignSelf: 'center', gap: gap }]}>
-          {Object.entries(heroImages).map(([name, imageSource]) => (
-            <View key={name} style={[styles.heroCard, { width: itemWidth }]}>
-              <Image
-                source={imageSource}
-                style={[styles.heroImage, { width: itemWidth, height: itemWidth }]}
-                resizeMode="cover"
-              />
-              <Text style={styles.heroName}>{name}</Text>
-            </View>
-          ))}
+  const renderHeaderItem = () => (
+      <Text style={[Assets.styles.text, { marginBottom: 20 }]}>{t('heroes.description')}</Text>
+    );
+
+  const renderHeroItem = ({ item }: { item: typeof heroData[0] }) => (
+    <View style={[styles.heroCard, { width: itemWidth }]}>
+      <Image
+        source={item.imageSource}
+        style={[styles.heroImage, { width: itemWidth, height: itemWidth }]}
+        resizeMode="cover"
+      />
+      <Text style={styles.heroName}>{item.name}</Text>
+    </View>
+  );
+
+  const isNotWeb = Platform.OS !== 'web';
+
+  return (
+    <ScreenTemplate pageTitle={t("pageTitles.heroes")} shouldScrollToTop={true} flatListPage={isNotWeb}>
+      <SectionBox sectionTitle={t('heroes.title')}>
+        <View style={[styles.flatListContainer, { maxWidth: maxContainerWidth, alignSelf: 'center', marginTop: 20 }]}>
+          <FlatList
+            data={heroData}
+            renderItem={renderHeroItem}
+            ListHeaderComponent={renderHeaderItem}
+            keyExtractor={(item) => item.id}
+            numColumns={isMobile ? 2 : 3 && isNotWeb ? 2 : 3}
+            contentContainerStyle={styles.gridContainer}
+            columnWrapperStyle={styles.row}
+            removeClippedSubviews={true}
+            maxToRenderPerBatch={9}
+            initialNumToRender={12}
+            windowSize={5}
+            getItemLayout={(data, index) => ({
+              length: itemWidth + 8 + 16, // image height + text height + margins
+              offset: (itemWidth + 8 + 16) * Math.floor(index / 3),
+              index,
+            })}
+            showsVerticalScrollIndicator={false}
+          />
         </View>
       </SectionBox>
     </ScreenTemplate>
@@ -73,12 +107,16 @@ const Heroes = () => {
 };
 
 const styles = StyleSheet.create({
-  gridContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    paddingHorizontal: 0,
+  flatListContainer: {
+    height: Platform.OS != 'web' ? '77%' : 'auto',
     width: '100%',
+  },
+  gridContainer: {
+    paddingHorizontal: 0,
+  },
+  row: {
+    justifyContent: 'space-between',
+    marginBottom: 15,
   },
   heroCard: {
     alignItems: 'center',
