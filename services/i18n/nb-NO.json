@@ -24,7 +24,8 @@
       "program": "Program",
       "partner": "Partnere",
       "speaker": "Talere",
-      "info": "Informasjon"
+      "info": "Informasjon",
+      "heroes": "Helter"
     },
     "javaBin": {
       "intro": "Bli en del av noe stort",
@@ -61,6 +62,10 @@
       "thank_you": "Å være den største fellesskapsdrevne konferansen hadde ikke vært lett uten alle partnere, arrangementskoordinatorer og underleverandører, så vi vil gjerne takke dem også! Takk, alle sammen! ❤\uFE0F",
       "reach_core_team": "Dersom du har spørsmål eller kommentarer kan du alltid nå kjerne-teamet via ",
       "welcome_to_NOVA": "Velkommen til NOVA Spektrum, Lillestrøm",
+      "event_check_in": "Kjøp billetter",
+      "helter": "JavaZone Helter",
+      "helter_link": "Se mer om våre helter her",
+      "helter_intro": "JavaZone lages av en stor gjeng frivillige fordelt over de ulike gruppene, som jobber hele året for å skape best mulig konferanse.",
       "waiting_list": "JavaZone er utsolgt. Men en venteliste er tilgjengelig.",
       "waiting_list_register": "Registrer deg på venteliste",
       "event_check_in": "Kjøp billetter",
@@ -94,6 +99,10 @@
       "paragraph_2": "Når man kommer inn på JavaZone, er det kanskje ikke umiddelbart klart for deltakerne at det finnes et nøye avfallshåndteringssystem som opererer i kulissene. Når avfall kastes, begynner prosessen med ansvarlig avfallshåndtering. En omfattende sorteringsmekanisme er på plass, designet for å skille resirkulerbare materialer fra ikke-resirkulerbare materialer.",
       "paragraph_3": "Et bemerkelsesverdig aspekt ved dette avfallshåndteringsinitiativet er sorteringen og innsamlingen av drikkebeholdere for panteordning, kjent som \"pant\" i Norge. Flasker og bokser samles systematisk, sorteres og sendes til resirkulering, og legemliggjør etoset om ressurseffektivitet.",
       "paragraph_4": "Betydelige mengder avfall generert under JavaZone er øremerket for resirkulering. Gjennom en kombinasjon av avansert avfallssorteringsteknologi og dedikert personale, blir materialer som papir, plast, glass og metall nøye sortert. Restavfallet blir videre sortert på Franzefoss-anlegget i Haraldsrud, og de resterende 70% blir malt opp og omgjort til FOB (raffinert avfallsbrensel). Franzefoss har en avtale med Norcem om levering av FOB, som brukes av Norcem som et høyverdig brensel for sementproduksjon. Matavfall/vått organisk avfall som leveres, brukes til biogass og gjødsel på kornåkre. Dette reduserer ikke bare miljøpåvirkningen fra JavaZone, men setter også et eksempel for deltakerne og samfunnet for øvrig."
+    },
+    "heroes": {
+      "title": "JavaZone Helter",
+      "description": "Møt de fantastiske frivillige som gjør JavaZone mulig! Her er noen av heltene bak kulissene som jobber utrettelig for å skape en uforglemmelig konferanseopplevelse."
     },
     "partner": {
       "watch_title": "Første partnermøte",

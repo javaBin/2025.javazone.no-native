@@ -126,7 +126,7 @@ export const partners: Partner[] = [
   { name: 'Tomra', homepageUrl: 'https://www.tomra.com', logoUrl: Tomra },
   { name: 'Yne', homepageUrl: 'https://www.yne.no', logoUrl: Yne },
   { name: 'Ambita', homepageUrl: 'https://www.ambita.com', logoUrl: Ambita },
-  { name: 'NAV', homepageUrl: 'https://www.nav.no', logoUrl: NAV },
+  { name: 'NAV', homepageUrl: 'https://www.detsombetyrnoe.no/nav-pa-javazone-2025', logoUrl: NAV },
   { name: 'KS Digitale Fellestjenester', homepageUrl: 'https://ksdigital.no/', logoUrl: KSDigitaleFellestjenester },
   { name: 'Google Cloud', homepageUrl: 'https://cloud.google.com', logoUrl: GoogleCloud },
   { name: 'Kartverket', homepageUrl: 'https://www.kartverket.no', logoUrl: Kartverket },
