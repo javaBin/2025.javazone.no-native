@@ -21,5 +21,9 @@ Use `npm install` and then `npx expo start`
 Run `npx expo prebuild` to check native build for iOS and Android
 Run `npx expo export -p web` to check web build
 
+### Commit conventions
+
+- Use [Conventional Commits](https://www.conventionalcommits.org)
+
 **Credits:**
 The i18next language feature was implemented by following a [tutorial](https://ilearnedathing.com/internationalizing-a-react-native-app-with-i18next-and-expo-part-1) by Richard Westmoreland
