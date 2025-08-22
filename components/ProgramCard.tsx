@@ -2,7 +2,7 @@ import { Linking, Pressable, StyleSheet, Text, TouchableOpacity, View, Animated,
 import { Assets } from '@/Assets';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SvgImage } from '@/UI';
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { Session } from '@/api/types/talksProgram';
 import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
@@ -15,23 +15,23 @@ type ProgramCardProps = {
   isFavorite: boolean;
 };
 
-const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: ProgramCardProps) => {
+const ProgramCard: React.FC<ProgramCardProps> = memo(({ session, isFavorite }: ProgramCardProps) => {
   const { addFavorite, removeFavorite } = useFavoritesContext();
   const { lang } = useGlobalSearchParams();
   const router = useRouter();
 
-  const toggleFavorite = (e: any) => {
+  const toggleFavorite = useCallback((e: any) => {
     e.stopPropagation();
     if (isFavorite) {
       removeFavorite(session.id);
     } else {
       addFavorite(session.id);
     }
-  };
+  }, [isFavorite, session.id, addFavorite, removeFavorite]);
 
-  const navigateToDetail = () => {
+  const navigateToDetail = useCallback(() => {
     router.push(`${lang}/program/${session.id}`);
-  };
+  }, [router, lang, session.id]);
 
   const animations = createAnimations();
 
@@ -141,7 +141,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
       </BlurView>
     </Pressable>
   );
-};
+});
 
 const isNotWeb = Platform.OS !== 'web';
 

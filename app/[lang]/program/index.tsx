@@ -1,5 +1,5 @@
 // OK
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { PageTitle, SectionBox } from '@/UI';
 import { Assets } from '@/Assets';
 import { View, Text, StyleSheet, Platform, FlatList, Dimensions } from 'react-native';
@@ -17,7 +17,6 @@ const Program = () => {
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
   const [sessions, setSessions] = useState<Session[]>([]);
-  const screenWidth = Dimensions.get('window').width;
   const { favorites } = useFavoritesContext();
   const {
     filters,
@@ -29,6 +28,10 @@ const Program = () => {
     sortedTimeslots,
     groupedSessions,
   } = useProgramFilters(sessions, favorites);
+
+  const emptyFavorites = useMemo(() => {
+    return showFavoritesOnly && filteredSessions.length === 0;
+  }, [showFavoritesOnly, filteredSessions.length]);
 
   useEffect(() => {
     fetchProgram()
@@ -111,41 +114,63 @@ const Program = () => {
     return items;
   }, [sortedTimeslots, groupedSessions]);
 
-  const renderItem = ({ item }: { item: typeof flatListData[0] }) => {
-    if (item.type === 'header') {
+  const renderItem = useCallback(
+    ({ item }: { item: (typeof flatListData)[0] }) => {
+      if (item.type === 'header') {
+        return (
+          <>
+            <Text style={[Assets.styles.sectionSubTitle, { padding: 10, textAlign: 'center', width: '80%' }]}>
+              {formatSessionTime(item.time!, lang)}
+            </Text>
+          </>
+        );
+      }
+
       return (
-        <Text style={[Assets.styles.sectionSubTitle, { padding: 10, textAlign: 'center', width: '80%' }]}>
-          {formatSessionTime(item.time!, lang)}
-        </Text>
-      );
-    }
-
-    return (
-      <View style={styles.programCardContainer}>
-        <ProgramCard
-          key={item.session!.id}
-          session={item.session!}
-          isFavorite={favorites.some((favId) => favId === item.session!.id)}
-        />
-      </View>
-    );
-  };
-
-  const ListHeader = () => (
-    <View style={{width: '80%'}}>
-      <PageTitle title={t('Program for javaZone 2025')} />
-      <View style={styles.filtersContainer}>
-        <SectionBox sectionTitle={''}>
-          <ProgramFilters
-            filters={filters}
-            setFilter={setFilter}
-            clearFilters={clearFilters}
-            showFavoritesOnly={showFavoritesOnly}
-            setShowFavoritesOnly={setShowFavoritesOnly}
+        <View style={styles.programCardContainer}>
+          <ProgramCard
+            key={item.session!.id}
+            session={item.session!}
+            isFavorite={favorites.some((favId) => favId === item.session!.id)}
           />
-        </SectionBox>
+        </View>
+      );
+    },
+    [favorites, lang]
+  );
+
+  const keyExtractor = useCallback((item: (typeof flatListData)[0]) => item.id, []);
+
+  const ListHeader = useCallback(
+    () => (
+      <View style={{ width: emptyFavorites ? '95%' : '80%' }}>
+        <PageTitle title={t('Program for javaZone 2025')} />
+        <View style={styles.filtersContainer}>
+            <ProgramFilters
+              filters={filters}
+              setFilter={setFilter}
+              clearFilters={clearFilters}
+              showFavoritesOnly={showFavoritesOnly}
+              setShowFavoritesOnly={setShowFavoritesOnly}
+            />
+        </View>
+        {emptyFavorites && (
+          <View style={styles.noFavoritesContainer}>
+            <Text style={styles.noFavoritesText}>No favorites saved</Text>
+          </View>
+        )}
       </View>
-    </View>
+    ),
+    [t, filters, setFilter, clearFilters, showFavoritesOnly, setShowFavoritesOnly, flatListData, showFavoritesOnly]
+  );
+
+  const getItemLayout = useCallback(
+    (data: any, index: number) => ({
+      length: 200, // Estimated item height
+      offset: 200 * index,
+      index,
+    }),
+    []
   );
 
   return (
@@ -153,17 +178,20 @@ const Program = () => {
       <FlatList
         data={flatListData}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={keyExtractor}
         ListHeaderComponent={ListHeader}
         contentContainerStyle={[
           styles.gridContainer,
           {
             paddingBottom: Platform.OS != 'web' ? 120 : 100,
-          }
+          },
         ]}
         removeClippedSubviews={true}
-        maxToRenderPerBatch={9}
-        initialNumToRender={12}
+        maxToRenderPerBatch={6}
+        initialNumToRender={8}
+        windowSize={10}
+        updateCellsBatchingPeriod={50}
+        getItemLayout={Platform.OS != 'web' ? getItemLayout : undefined}
         showsVerticalScrollIndicator={false}
       />
     </ScreenTemplate>
@@ -199,6 +227,18 @@ const styles = StyleSheet.create({
   text: {
     color: Assets.colors.brand.neutral,
     fontSize: Platform.OS === 'web' ? 18 : 16,
+  },
+  noFavoritesContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 40,
+    width: '100%',
+  },
+  noFavoritesText: {
+    color: Assets.colors.brand.neutral,
+    fontSize: 16,
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
 });
 

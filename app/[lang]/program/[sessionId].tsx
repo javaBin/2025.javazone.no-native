@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   Alert,
   Animated,
   Pressable,
+  Platform,
 } from 'react-native';
 import { useGlobalSearchParams, useLocalSearchParams, useRouter } from 'expo-router';
 import { Assets } from '@/Assets';
@@ -21,6 +22,116 @@ import { useTranslation } from 'react-i18next';
 import { createAnimations } from '@/utils/animationUtils';
 import { useMediaQuery } from 'react-responsive';
 import { formatSessionInfo } from '@/utils/programUtils';
+
+// Memoized components for better performance
+const SpeakerSection = React.memo(({ speaker, index, isMobile }: { speaker: any; index: number; isMobile: boolean }) => {
+  const animations = createAnimations(index);
+
+  const handleTwitterPress = useCallback(() => {
+    Linking.openURL(`https://x.com/${speaker.twitter}`);
+  }, [speaker.twitter]);
+
+  const handleLinkedInPress = useCallback(() => {
+    Linking.openURL(`${speaker.linkedin}`);
+  }, [speaker.linkedin]);
+
+  const handleBlueskyPress = useCallback(() => {
+    Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`);
+  }, [speaker.bluesky]);
+
+  return (
+    <View style={{ marginBottom: 15 }}>
+      <View style={{ flexDirection: 'row', gap: 10 }}>
+        <Text
+          style={[
+            Assets.styles.text,
+            {
+              fontSize: isMobile ? 20 : 22,
+              color: Assets.colors.jz2025ThemeColors.darkRed,
+              fontWeight: 'bold',
+            },
+          ]}
+        >
+          {speaker.name}
+        </Text>
+
+        {/* Social media links */}
+        {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
+          <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
+            {speaker.twitter && (
+              <Animated.View
+                style={{
+                  transform: [{ scale: animations.twitter.scale }],
+                }}
+                onPointerEnter={animations.twitter.handlers.handleMouseEnter}
+                onPointerLeave={animations.twitter.handlers.handleMouseLeave}
+              >
+                <TouchableOpacity onPress={handleTwitterPress}>
+                  <SvgImage SVG={Assets.icons.XLogo} height={25} width={25} />
+                </TouchableOpacity>
+              </Animated.View>
+            )}
+            {speaker.linkedin && (
+              <Animated.View
+                style={{
+                  transform: [{ scale: animations.linkedin.scale }],
+                }}
+                onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
+                onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
+              >
+                <TouchableOpacity onPress={handleLinkedInPress}>
+                  <SvgImage SVG={Assets.icons.LinkedInLogo} height={25} width={25} />
+                </TouchableOpacity>
+              </Animated.View>
+            )}
+            {speaker.bluesky && (
+              <Animated.View
+                style={{
+                  transform: [{ scale: animations.bluesky.scale }],
+                }}
+                onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
+                onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
+              >
+                <TouchableOpacity onPress={handleBlueskyPress}>
+                  <SvgImage SVG={Assets.icons.BlueSkyLogo} height={25} width={25} />
+                </TouchableOpacity>
+              </Animated.View>
+            )}
+          </View>
+        )}
+      </View>
+      {speaker.bio && <Text style={[Assets.styles.text, { marginTop: 5 }]}>{speaker.bio}</Text>}
+    </View>
+  );
+});
+
+const KeywordSection = React.memo(({ keywords }: { keywords: string }) => {
+  const keywordList = useMemo(() => keywords.split(','), [keywords]);
+
+  return (
+    <View style={{ marginVertical: 20 }}>
+      <Text style={[Assets.styles.sectionSubTitle, { marginBottom: 10, fontSize: 25 }]}>Keywords</Text>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        {keywordList.map((keyword: string, index: number) => (
+          <Text
+            key={index}
+            style={{
+              color: Assets.colors.jz2025ThemeColors.crimsonRed,
+              fontSize: 14,
+              fontWeight: '500',
+              backgroundColor: 'rgba(249, 246, 245, 0.65)',
+              paddingHorizontal: 8,
+              paddingVertical: 4,
+              borderRadius: 12,
+            }}
+          >
+            #{keyword.trim()}
+          </Text>
+        ))}
+      </View>
+    </View>
+  );
+});
 
 const SessionDetail = () => {
   const { sessionId } = useLocalSearchParams<{ sessionId: string }>();
@@ -161,74 +272,7 @@ const SessionDetail = () => {
                 {session.speakers.map((speaker, index) => {
                   const animations = createAnimations(index);
                   return (
-                    <View key={index} style={{ marginBottom: 15 }}>
-                      <View style={{ flexDirection: 'row', gap: 10 }}>
-                        <Text
-                          style={[
-                            Assets.styles.text,
-                            {
-                              fontSize: isMobile ? 20 : 22,
-                              color: Assets.colors.jz2025ThemeColors.darkRed,
-                              fontWeight: 'bold',
-                            },
-                          ]}
-                        >
-                          {speaker.name}
-                        </Text>
-
-                        {/* Social media links */}
-                        {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
-                          <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
-                            {speaker.twitter && (
-                              <Animated.View
-                                style={{
-                                  transform: [{ scale: animations.twitter.scale }],
-                                }}
-                                onPointerEnter={animations.twitter.handlers.handleMouseEnter}
-                                onPointerLeave={animations.twitter.handlers.handleMouseLeave}
-                              >
-                                <TouchableOpacity
-                                  onPress={() => Linking.openURL(`https://x.com/${speaker.twitter}`)}
-                                >
-                                  <SvgImage SVG={Assets.icons.XLogo} height={25} width={25} />
-                                </TouchableOpacity>
-                              </Animated.View>
-                            )}
-                            {speaker.linkedin && (
-                              <Animated.View
-                                style={{
-                                  transform: [{ scale: animations.linkedin.scale }],
-                                }}
-                                onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
-                                onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
-                              >
-                                <TouchableOpacity onPress={() => Linking.openURL(`${speaker.linkedin}`)}>
-                                  <SvgImage SVG={Assets.icons.LinkedInLogo} height={25} width={25} />
-                                </TouchableOpacity>
-                              </Animated.View>
-                            )}
-                            {speaker.bluesky && (
-                              <Animated.View
-                                style={{
-                                  transform: [{ scale: animations.bluesky.scale }],
-                                }}
-                                onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
-                                onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
-                              >
-                                <TouchableOpacity
-                                  onPress={() =>
-                                    Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`)
-                                  }
-                                >
-                                  <SvgImage SVG={Assets.icons.BlueSkyLogo} height={25} width={25} />
-                                </TouchableOpacity>
-                              </Animated.View>
-                            )}
-                          </View>
-                        )}
-                      </View>
-                      {speaker.bio && <Text style={[Assets.styles.text, { marginTop: 5 }]}>{speaker.bio}</Text>}
-                    </View>
+                    <SpeakerSection key={index} speaker={speaker} index={index} isMobile={isMobile} />
                   );
                 })}
 
@@ -253,27 +297,7 @@ const SessionDetail = () => {
 
             {/* Suggested Keywords */}
             {session.suggestedKeywords && (
-              <View style={{ marginVertical: 20 }}>
-                <Text style={[Assets.styles.sectionSubTitle, { marginBottom: 10, fontSize: 25 }]}>Keywords</Text>
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-                  {session.suggestedKeywords.split(',').map((keyword: string, index: number) => (
-                    <Text
-                      key={index}
-                      style={{
-                        color: Assets.colors.jz2025ThemeColors.crimsonRed,
-                        fontSize: 14,
-                        fontWeight: '500',
-                        backgroundColor: 'rgba(249, 246, 245, 0.65)',
-                        paddingHorizontal: 8,
-                        paddingVertical: 4,
-                        borderRadius: 12,
-                      }}
-                    >
-                      #{keyword.trim()}
-                    </Text>
-                  ))}
-                </View>
-              </View>
+              <KeywordSection keywords={session.suggestedKeywords} />
             )}
 
             {/* Language */}
