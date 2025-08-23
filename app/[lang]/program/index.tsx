@@ -30,8 +30,8 @@ const Program = () => {
   } = useProgramFilters(sessions, favorites);
 
   const emptyFavorites = useMemo(() => {
-    return showFavoritesOnly && filteredSessions.length === 0;
-  }, [showFavoritesOnly, filteredSessions.length]);
+    return favorites.length === 0 && showFavoritesOnly;
+  }, [showFavoritesOnly, favorites.length]);
 
   useEffect(() => {
     fetchProgram()
@@ -119,7 +119,7 @@ const Program = () => {
       if (item.type === 'header') {
         return (
           <>
-            <Text style={[Assets.styles.sectionSubTitle, { padding: 10, textAlign: 'center', width: '80%' }]}>
+            <Text style={[Assets.styles.sectionSubTitle, { padding: 10, textAlign: 'center', width: showFavoritesOnly ? '100%' : '80%' }]}>
               {formatSessionTime(item.time!, lang)}
             </Text>
           </>
@@ -127,7 +127,7 @@ const Program = () => {
       }
 
       return (
-        <View style={styles.programCardContainer}>
+        <View style={[styles.programCardContainer, { width: showFavoritesOnly ? '95%' : '75%' }]}>
           <ProgramCard
             key={item.session!.id}
             session={item.session!}
@@ -136,14 +136,13 @@ const Program = () => {
         </View>
       );
     },
-    [favorites, lang]
+    [favorites, lang, showFavoritesOnly]
   );
 
   const keyExtractor = useCallback((item: (typeof flatListData)[0]) => item.id, []);
 
-  const ListHeader = useCallback(
-    () => (
-      <View style={{ width: emptyFavorites ? '95%' : '80%' }}>
+  const ListHeader = useCallback(() => (
+      <View style={{ width: showFavoritesOnly ? '100%' : '80%' }}>
         <PageTitle title={t('Program for javaZone 2025')} />
         <View style={styles.filtersContainer}>
             <ProgramFilters
@@ -216,7 +215,6 @@ const styles = StyleSheet.create({
   programCardContainer: {
     alignItems: 'center',
     marginHorizontal: 10,
-    width: '75%',
   },
   filtersContainer: {
     alignItems: 'center',
