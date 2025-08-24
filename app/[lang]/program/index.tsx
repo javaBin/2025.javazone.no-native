@@ -144,7 +144,7 @@ const Program = () => {
   const keyExtractor = useCallback((item: (typeof flatListData)[0]) => item.id, []);
 
   const ListHeader = useCallback(() => (
-      <View style={{ width: windowWidth }}>
+      <View style={{ width: windowWidth, alignSelf: 'center' }}>
         <PageTitle title={t('Program for javaZone 2025')} />
         <View style={styles.filtersContainer}>
             <ProgramFilters
