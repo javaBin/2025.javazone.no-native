@@ -29,7 +29,7 @@ const Program = () => {
     groupedSessions,
   } = useProgramFilters(sessions, favorites);
 
-  const windowWidth = Dimensions.get('window').width;
+  const windowWidth = Dimensions.get('window').width - 100;
 
   const emptyFavorites = useMemo(() => {
     return favorites.length === 0 && showFavoritesOnly;
@@ -121,7 +121,7 @@ const Program = () => {
       if (item.type === 'header') {
         return (
           <>
-            <Text style={[Assets.styles.sectionSubTitle, { padding: 10, textAlign: 'center', width: windowWidth - 90 }]}>
+            <Text style={[Assets.styles.sectionSubTitle, { padding: 10, textAlign: 'center', width: windowWidth }]}>
               {formatSessionTime(item.time!, lang)}
             </Text>
           </>
@@ -129,7 +129,7 @@ const Program = () => {
       }
 
       return (
-        <View style={[styles.programCardContainer, { width: windowWidth - 90 }]}>
+        <View style={[styles.programCardContainer, { width: windowWidth }]}>
           <ProgramCard
             key={item.session!.id}
             session={item.session!}
@@ -144,7 +144,7 @@ const Program = () => {
   const keyExtractor = useCallback((item: (typeof flatListData)[0]) => item.id, []);
 
   const ListHeader = useCallback(() => (
-      <View style={{ width: windowWidth - 90 }}>
+      <View style={{ width: windowWidth }}>
         <PageTitle title={t('Program for javaZone 2025')} />
         <View style={styles.filtersContainer}>
             <ProgramFilters
