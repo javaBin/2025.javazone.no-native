@@ -5,6 +5,12 @@ module.exports = (() => {
 
   const { transformer, resolver } = config;
 
+  // Add web support for React Native modules
+  resolver.platforms = ['ios', 'android', 'native', 'web'];
+
+  // Add support for SVG files
+  transformer.assetPlugins = ['expo-asset/tools/hashAssetFiles'];
+
   config.transformer = {
     ...transformer,
     babelTransformerPath: require.resolve('react-native-svg-transformer/expo'),
