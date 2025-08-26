@@ -5,7 +5,7 @@ import { Platform, StyleSheet, View } from "react-native";
 import { LanguagePicker } from "@/components";
 import { Assets } from '@/Assets';
 
-const InfoLayout = () => {
+const AboutUsLayout = () => {
 
   const nativeScreenOptions = {
     headerShown: true,
@@ -32,4 +32,4 @@ const InfoLayout = () => {
   )
 }
 
-export default InfoLayout;
+export default AboutUsLayout;

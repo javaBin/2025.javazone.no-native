@@ -24,6 +24,7 @@
       "program": "Program",
       "partner": "Partners",
       "speaker": "Speakers",
+      "aboutUs": "About us",
       "info": "Information",
       "heroes": "Heroes"
     },
@@ -66,7 +67,7 @@
       "helter": "JavaZone Heroes",
       "helter_link": "Learn more about our heroes here",
       "helter_intro": "JavaZone is made by a large group of volunteers distributed across the various groups, who work all year round to create the best possible conference.",
-      "waiting_list": "JavaZone is sold out. But a waiting list is available.",
+      "waiting_list": "JavaZone is sold out.",
       "waiting_list_register": "Register on Waitinglist",
       "event_check_in": "Buy tickets",
       "workshop_registration": "Registration for workshops is open!",

@@ -2,9 +2,11 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Assets } from '@/Assets';
 import { LinkButton } from '@/UI';
+import { useGlobalSearchParams } from 'expo-router';
 
 const WelcomeSection = () => {
   const { t } = useTranslation();
+  const { lang } = useGlobalSearchParams();
 
   return (
     <View style={[styles.titleContainer, { marginTop: 50, flexDirection: 'column', marginBottom: 'auto' }]}>
@@ -13,12 +15,11 @@ const WelcomeSection = () => {
       <Text style={[styles.ticketText, {marginTop: 20}]}>{t('javaZone.waiting_list')}</Text>
 
       <View style={styles.eventCheckinContainer}>
-        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.waiting_list_register')} targetBlank={true} />
+        <LinkButton href={`${lang}/program`} title={t("program")} targetBlank={true} />
       </View>
-
       <View style={styles.eventCheckinContainer}>
-        <Text style={styles.workshopText}>{t('javaZone.workshop_registration')}</Text>
-        <LinkButton href={Assets.links.workshopRegistration} title={t('javaZone.register_for_workshops')} targetBlank={true} />
+        <Text style={[styles.ticketText, {marginTop: 20}]}>{t('General info')}</Text>
+        <LinkButton href={`${lang}/info`} title={t("Info")} targetBlank={true} />
       </View>
     </View>
   );

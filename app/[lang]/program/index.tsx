@@ -13,7 +13,7 @@ import { groupSessionsByTimeslot, formatSessionTime } from '@/utils/programUtils
 import { Session } from '@/api/types/talksProgram';
 import { useGlobalSearchParams } from 'expo-router';
 
-const Program = () => {
+const Index = () => {
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
   const [sessions, setSessions] = useState<Session[]>([]);
@@ -38,7 +38,7 @@ const Program = () => {
   useEffect(() => {
     fetchProgram()
       .then((data) => {
-        setSessions(data.sessions);
+        setSessions(data.sessions.sort((a, b) => (a.room || '').localeCompare(b.room || '')));
       })
       .catch((error) => {
         console.error('Error fetching program:', error);
