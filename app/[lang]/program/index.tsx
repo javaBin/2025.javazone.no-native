@@ -30,7 +30,7 @@ const Index = () => {
   } = useProgramFilters(sessions, favorites);
 
   useEffect(() => {
-    fetchProgram().then((data) => setSessions(data.sessions));
+    fetchProgram().then((data) => setSessions(data.sessions.sort((a, b) => (a.room || '').localeCompare(b.room || ''))));
   }, []);
 
   return (
