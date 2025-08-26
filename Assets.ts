@@ -112,6 +112,7 @@ import GE from '@/assets/partners/GE.svg';
 import Kartverket from '@/assets/partners/kartverket.svg';
 import SSB from '@/assets/partners/ssb.svg';
 import STOE from '@/assets/partners/stoe.svg';
+import VEND from '@/assets/partners/vend.svg';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -252,6 +253,7 @@ export const Assets = {
     Kartverket,
     SSB,
     STOE,
+    VEND
   },
   colors: {
     transparent: 'transparent',
@@ -463,4 +465,5 @@ export {
   Kartverket,
   SSB,
   STOE,
+  VEND
 };
