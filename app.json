@@ -4,12 +4,12 @@
     "slug": "javazone2025",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo/javaZone-logo.png",
+    "icon": "./assets/images/logo/hero-duke.png",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#E8DACF",
     "scheme": "javazone2025",
     "splash": {
-      "image": "./assets/images/logo/javaZone-logo.png",
+      "image": "./assets/images/logo/hero-duke.png",
       "resizeMode": "contain",
       "backgroundColor": "#E8DACF"
     },
@@ -21,11 +21,7 @@
     },
     "android": {
       "package": "no.javabin.javazone2025",
-      "versionCode": 2,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo/javaZone-logo.png",
-        "backgroundColor": "#E8DACF"
-      },
+      "versionCode": 1,
       "splash": {
         "resizeMode": "native"
       }
