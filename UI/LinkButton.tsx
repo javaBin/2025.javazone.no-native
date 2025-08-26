@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: Assets.colors.jz2025ThemeColors.orangeYellow,
+    color: Assets.colors.jz2025ThemeColors.sheetShadow,
     fontSize: Dimensions.get('window').width > 1200 ? 20 : 18,
     fontFamily: 'Cinzel_500Medium',
     textAlign: 'center',
