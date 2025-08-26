@@ -24,6 +24,7 @@
       "program": "Program",
       "partner": "Partnere",
       "speaker": "Talere",
+      "aboutUs": "Om oss",
       "info": "Informasjon",
       "heroes": "Helter"
     },
@@ -66,7 +67,7 @@
       "helter": "JavaZone Helter",
       "helter_link": "Se mer om våre helter her",
       "helter_intro": "JavaZone lages av en stor gjeng frivillige fordelt over de ulike gruppene, som jobber hele året for å skape best mulig konferanse.",
-      "waiting_list": "JavaZone er utsolgt. Men en venteliste er tilgjengelig.",
+      "waiting_list": "JavaZone er utsolgt.",
       "waiting_list_register": "Registrer deg på venteliste",
       "event_check_in": "Kjøp billetter",
       "workshop_registration": "Registrering for workshops er åpent!",

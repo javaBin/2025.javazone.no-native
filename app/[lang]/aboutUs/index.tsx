@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import { useGlobalSearchParams } from 'expo-router';
 
-const Info = () => {
+const AboutUs = () => {
   // @ts-ignore
   const { t, i18n } = useTranslation();
   const { lang } = useGlobalSearchParams();
@@ -47,7 +47,7 @@ const Info = () => {
   };
 
   return (
-    <ScreenTemplate pageTitle={t('pageTitles.info')} shouldScrollToTop={true}>
+    <ScreenTemplate pageTitle={t('pageTitles.aboutUs')} shouldScrollToTop={true}>
       {/* About javaBin */}
       <SectionBox sectionTitle={t('javaBin.about')}>
         <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
@@ -132,7 +132,7 @@ const Info = () => {
 
         <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.helter')}</Text>
         <Text style={Assets.styles.text}>
-          {t('javaZone.helter_intro')} <LinkText title={t('javaZone.helter_link')} href={`/${lang}/info/heroes`} targetSelf />
+          {t('javaZone.helter_intro')} <LinkText title={t('javaZone.helter_link')} href={`/${lang}/aboutUs/heroes`} targetSelf />
         </Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>
@@ -264,4 +264,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Info;
+export default AboutUs;

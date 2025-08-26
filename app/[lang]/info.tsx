@@ -123,7 +123,7 @@ const ArrivalToNovaSpektrum = () => {
           </Text>
           <Link
             href="mailto:javazone@macsimum.no"
-            style={{color: Assets.colors.jz2025ThemeColors.darkRed}}
+            style={styles.linkText}
           >
             javazone@macsimum.no
           </Link>
@@ -186,6 +186,13 @@ const styles = StyleSheet.create({
     borderLeftWidth: 4,
     borderLeftColor: Assets.colors.jz2025ThemeColors.orangeYellow,
   },
+  linkText: {
+    color: Assets.colors.jz2025ThemeColors.darkRed,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    fontSize: Dimensions.get('window').width > 768 ? 20 : 18,
+    textDecorationLine: 'underline',
+    marginHorizontal: 3,
+  }
 });
 
 export default ArrivalToNovaSpektrum;

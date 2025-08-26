@@ -17,6 +17,10 @@ const WelcomeSection = () => {
       <View style={styles.eventCheckinContainer}>
         <LinkButton href={`${lang}/program`} title={t("program")} targetBlank={true} />
       </View>
+      <View style={styles.eventCheckinContainer}>
+        <Text style={[styles.ticketText, {marginTop: 20}]}>{t('General info')}</Text>
+        <LinkButton href={`${lang}/info`} title={t("Info")} targetBlank={true} />
+      </View>
     </View>
   );
 };

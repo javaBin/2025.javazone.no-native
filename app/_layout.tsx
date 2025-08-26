@@ -136,8 +136,8 @@ const RootLayout = () => {
           <Pressable onPress={() => router.replace(`${lang}/volunteers`)}>
             <Text style={styles.navItem}>Volunteers</Text>
           </Pressable>
-          <Pressable onPress={() => router.replace(`${lang}/info`)}>
-            <Text style={styles.navItem}>Info</Text>
+          <Pressable onPress={() => router.replace(`${lang}/aboutUs`)}>
+            <Text style={styles.navItem}>About Us</Text>
           </Pressable>
         </View>
         <View style={{ display: screenWidth > 834 ? 'flex' : 'none' }}>{languageLoaded && <LanguagePicker />}</View>
@@ -225,6 +225,7 @@ const RootLayout = () => {
               <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
               <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
               <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
+              <Stack.Screen name="[lang]/aboutUs" options={{ title: 'AboutUs' }} />
               <Stack.Screen name="[lang]/heroes" options={{ title: 'Heroes' }} />
             </Stack>
           </FavoritesContextProvider>
@@ -283,6 +284,7 @@ const RootLayout = () => {
                 }}
               />
               <Tabs.Screen name="[lang]/speaker/tips" options={{ href: null }} />
+              <Tabs.Screen name="[lang]/aboutUs" options={{ href: null }} />
               <Tabs.Screen name="[lang]/speaker/kids" options={{ href: null }} />
               <Tabs.Screen name="[lang]/speaker/reimbursement" options={{ href: null }} />
               <Tabs.Screen name="[lang]/+not-found" options={{ href: null }} />

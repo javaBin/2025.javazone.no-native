@@ -5,7 +5,7 @@ import { Platform, StyleSheet, View } from "react-native";
 import { LanguagePicker } from "@/components";
 import { Assets } from '@/Assets';
 
-const InfoLayout = () => {
+const AboutUsLayout = () => {
 
   const nativeScreenOptions = {
     headerShown: true,
@@ -28,9 +28,8 @@ const InfoLayout = () => {
     <Stack initialRouteName="index" screenOptions={Platform.OS === 'web' ? webScreenOptions : nativeScreenOptions}>
       <Stack.Screen name="index"/>
       <Stack.Screen name="heroes"/>
-      <Stack.Screen name="arrival-to-nova-spektrum"/>
     </Stack>
   )
 }
 
-export default InfoLayout;
+export default AboutUsLayout;
