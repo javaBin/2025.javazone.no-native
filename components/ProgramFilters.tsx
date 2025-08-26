@@ -108,7 +108,7 @@ export default function ProgramFilters({
         </View>
       </View>
       <Pressable style={styles.clearFilterButton} onPress={clearFilters}>
-        <Text style={styles.clearFilterButtonText}>Clear filters</Text>
+        <Text style={styles.buttonText}>Clear filters</Text>
       </Pressable>
     </View>
   );
@@ -156,13 +156,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: 'Cinzel_500Medium',
     fontSize: 16,
-    color: Assets.colors.jz2025ThemeColors.orangeYellow,
+    color: Assets.colors.jz2025ThemeColors.sheet,
     textAlign: 'center',
-  },
-  clearFilterButtonText: {
-    fontFamily: 'Cinzel_500Medium',
-    fontSize: 16,
-    color: Assets.colors.jz2025ThemeColors.cyberYellow,
-    textAlign: 'center',
-  },
+  }
 });
