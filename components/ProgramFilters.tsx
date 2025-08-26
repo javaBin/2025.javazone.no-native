@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: 'Cinzel_500Medium',
     fontSize: 16,
-    color: Assets.colors.jz2025ThemeColors.sheetShadow,
+    color: Assets.colors.jz2025ThemeColors.sheet,
     textAlign: 'center',
   }
 });
