@@ -4,6 +4,7 @@ import { ScreenTemplate } from '@/components';
 import { SvgImage, SectionBox, LinkText } from '@/UI';
 import { BulletListItem } from '@/components';
 import React from 'react';
+import { Link } from 'expo-router';
 
 const ArrivalToNovaSpektrum = () => {
   const screenWidth = Dimensions.get('window').width;
@@ -120,11 +121,12 @@ const ArrivalToNovaSpektrum = () => {
           <Text style={Assets.styles.text}>
             Contact us prior to the conference if you need assistance:
           </Text>
-          <LinkText
-            title="javazone@macsimum.no"
+          <Link
             href="mailto:javazone@macsimum.no"
             style={{color: Assets.colors.jz2025ThemeColors.darkRed}}
-          />
+          >
+            javazone@macsimum.no
+          </Link>
         </View>
       </SectionBox>
 
