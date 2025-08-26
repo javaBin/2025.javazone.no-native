@@ -13,7 +13,7 @@ import { groupSessionsByTimeslot, formatSessionTime } from '@/utils/programUtils
 import { Session } from '@/api/types/talksProgram';
 import { useGlobalSearchParams } from 'expo-router';
 
-const Index = () => {
+const Program = () => {
   const { t } = useTranslation();
   const { lang } = useGlobalSearchParams();
   const [sessions, setSessions] = useState<Session[]>([]);
