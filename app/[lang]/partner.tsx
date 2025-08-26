@@ -17,11 +17,6 @@ const Partner = () => {
         {t('partner.partner_info.questions_email')}{' '}
         <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} />
       </Text>
-      <LinkButton
-        href={Assets.links.partnerRegistration}
-        title={t('partner.partner_info.register_cta')}
-        targetBlank={true}
-      />
 
       <PartnerBanner />
 
@@ -79,13 +74,6 @@ const Partner = () => {
 
           <BulletListItem text={t('partner.partner_info.round_robin_distribution')} />
           <BulletListItem text={t('partner.partner_info.first_come_first_served')} />
-          <LinkButton
-            href={Assets.links.partnerTickets}
-            title={t('partner.partner_info.order_tickets')}
-            targetBlank={true}
-            margin={isMobile ? 10 : 20}
-            androidBlurPatch={Platform.OS === 'android'}
-          />
         </BlurView>
       </View>
 
