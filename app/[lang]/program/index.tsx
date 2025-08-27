@@ -8,7 +8,7 @@ import { Assets } from '@/Assets';
 import FlatList = Animated.FlatList;
 import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import useProgramFilters from '@/hooks/useProgramFilters';
-import { dayAndTimeFormatWithMonth } from '@/utils/programUtils';
+import { formatSessionTime } from '@/utils/programUtils';
 
 const Program = () => {
   const { t } = useTranslation();
@@ -68,7 +68,7 @@ const Program = () => {
     <>
       {item.time && (
         <Text style={[Assets.styles.sectionSubTitle, { padding: 10 }]}>
-          {dayAndTimeFormatWithMonth.format(new Date(item.time))}
+          {formatSessionTime(item.time)}
         </Text>
       )}
       <FlatList
@@ -117,7 +117,7 @@ const Program = () => {
     if (item.type === 'timeHeader') {
       return (
         <Text style={[Assets.styles.sectionSubTitle, { padding: 10, marginTop: 10 }]}>
-          {dayAndTimeFormatWithMonth.format(new Date(item.time))}
+          {formatSessionTime(item.time)}
         </Text>
       );
     }
@@ -150,7 +150,7 @@ const Program = () => {
   };
 
   return (
-    <ScreenTemplate pageTitle={t('pageTitles.program')} shouldScrollToTop={isDesktop} dangerousOverride={true}>
+    <ScreenTemplate pageTitle={t('pageTitles.program')} shouldScrollToTop={isDesktop} flatListPage={true}>
       <View style={styles.container}>
         {/* Desktop Layout */}
         {isDesktop ? (
