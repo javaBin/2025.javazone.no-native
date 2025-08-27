@@ -174,50 +174,56 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 10,
+    marginHorizontal: Dimensions.get('window').width < 768 ? 5 : 10,
     borderRadius: 5,
     height: 'auto',
   },
   content: {
-    paddingVertical: 20,
-    paddingHorizontal: 30,
+    paddingVertical: Dimensions.get('window').width < 768 ? 15 : 20,
+    paddingHorizontal: Dimensions.get('window').width < 768 ? 20 : 30,
     height: '100%',
   },
   title: {
     width: '75%',
-    fontSize: 20,
+    fontSize: Dimensions.get('window').width < 768 ? 18 : 20,
     fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    lineHeight: Dimensions.get('window').width < 768 ? 22 : 24,
   },
   room: {
-    fontSize: 16,
+    fontSize: Dimensions.get('window').width < 768 ? 14 : 16,
     fontFamily: 'Cinzel_400Regular',
     color: Assets.colors.jz2025ThemeColors.darkBrown,
+    fontWeight: '500',
   },
   lengthDuration: {
-    fontSize: 16,
+    fontSize: Dimensions.get('window').width < 768 ? 14 : 16,
     fontFamily: 'Cinzel_400Regular',
     color: Assets.colors.jz2025ThemeColors.darkBrown,
+    fontWeight: '500',
   },
   format: {
-    fontSize: 18,
+    fontSize: Dimensions.get('window').width < 768 ? 16 : 18,
     fontFamily: 'PlayfairDisplay_400Regular',
     color: Assets.colors.jz2025ThemeColors.darkBrown,
     marginTop: 'auto',
-    paddingTop: 20,
+    paddingTop: Dimensions.get('window').width < 768 ? 15 : 20,
   },
   speakerName: {
-    fontSize: 18,
+    fontSize: Dimensions.get('window').width < 768 ? 16 : 18,
     fontFamily: 'PlayfairDisplay_400Regular',
     color: Assets.colors.jz2025ThemeColors.darkBrown,
+    lineHeight: Dimensions.get('window').width < 768 ? 20 : 22,
   },
   social: {
     paddingHorizontal: 5,
   },
   keyword: {
     color: Assets.colors.jz2025ThemeColors.crimsonRed,
-    fontSize: 12,
+    fontSize: Dimensions.get('window').width < 768 ? 11 : 12,
     fontWeight: '500',
     paddingRight: 5,
+    lineHeight: Dimensions.get('window').width < 768 ? 14 : 16,
   },
   horizontalStart: {
     display: 'flex',
@@ -225,7 +231,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginVertical: 5,
+    marginVertical: Dimensions.get('window').width < 768 ? 3 : 5,
   },
   horizontalSpaceBetween: {
     display: 'flex',
@@ -233,7 +239,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: Dimensions.get('window').width < 768 ? 8 : 10,
   },
   horizontalWrap: {
     display: 'flex',
@@ -242,7 +248,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexWrap: 'wrap',
-    marginVertical: 5,
+    marginVertical: Dimensions.get('window').width < 768 ? 4 : 5,
   },
   horizontalContain: {
     display: 'flex',
