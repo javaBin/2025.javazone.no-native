@@ -45,12 +45,9 @@ export default function ProgramFilters({
 }: ProgramFiltersProps) {
   return (
     <View>
-      <View style={{ flexDirection: 'column', alignSelf: 'center' }}>
+      <View style={{ flexDirection: 'column', alignSelf: 'center', width: '100%' }}>
         <Pressable
-          style={[
-            styles.filterButton,
-            showFavoritesOnly && styles.filterButtonSelected,
-          ]}
+          style={[styles.filterButton, showFavoritesOnly && styles.filterButtonSelected]}
           onPress={() => {
             setShowFavoritesOnly(!showFavoritesOnly);
             if (!showFavoritesOnly) clearFilters();
@@ -58,7 +55,9 @@ export default function ProgramFilters({
         >
           <Text style={styles.buttonText}>{showFavoritesOnly ? 'Full Program' : 'Favorites'}</Text>
         </Pressable>
+        {/*
         <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Day</Text>
+
         <View style={styles.filterFlex}>
           {dateFilters.map((filter) => (
             <Pressable
@@ -76,6 +75,7 @@ export default function ProgramFilters({
             </Pressable>
           ))}
         </View>
+*/}
       </View>
       <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
         <View style={{ alignSelf: 'center', alignItems: 'center', flexShrink: 1 }}>
@@ -85,10 +85,7 @@ export default function ProgramFilters({
               <Pressable
                 key={lang.id}
                 onPress={() => setFilter('language', lang.id)}
-                style={[
-                  styles.filterButton,
-                  filters.language === lang.id && styles.filterButtonSelected,
-                ]}
+                style={[styles.filterButton, filters.language === lang.id && styles.filterButtonSelected]}
               >
                 <Text style={styles.buttonText}>{lang.label}</Text>
               </Pressable>
@@ -102,10 +99,7 @@ export default function ProgramFilters({
               <Pressable
                 key={format.id}
                 onPress={() => setFilter('format', format.id)}
-                style={[
-                  styles.filterButton,
-                  filters.format === format.id && styles.filterButtonSelected,
-                ]}
+                style={[styles.filterButton, filters.format === format.id && styles.filterButtonSelected]}
               >
                 <Text style={styles.buttonText}>{format.label}</Text>
               </Pressable>
@@ -114,7 +108,7 @@ export default function ProgramFilters({
         </View>
       </View>
       <Pressable style={styles.clearFilterButton} onPress={clearFilters}>
-        <Text style={styles.clearFilterButtonText}>Clear filters</Text>
+        <Text style={styles.buttonText}>Clear filters</Text>
       </Pressable>
     </View>
   );
@@ -162,13 +156,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: 'Cinzel_500Medium',
     fontSize: 16,
-    color: Assets.colors.jz2025ThemeColors.orangeYellow,
+    color: Assets.colors.jz2025ThemeColors.sheet,
     textAlign: 'center',
-  },
-  clearFilterButtonText: {
-    fontFamily: 'Cinzel_500Medium',
-    fontSize: 16,
-    color: Assets.colors.jz2025ThemeColors.cyberYellow,
-    textAlign: 'center',
-  },
+  }
 });

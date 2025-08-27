@@ -2,17 +2,24 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Assets } from '@/Assets';
 import { LinkButton } from '@/UI';
+import { useGlobalSearchParams } from 'expo-router';
 
 const WelcomeSection = () => {
   const { t } = useTranslation();
+  const { lang } = useGlobalSearchParams();
 
   return (
     <View style={[styles.titleContainer, { marginTop: 50, flexDirection: 'column', marginBottom: 'auto' }]}>
       <Text style={styles.welcomeText}>{t('javaZone.welcome_to_NOVA')}</Text>
       <Text style={styles.welcomeText}>{t('conference_date')}</Text>
+      <Text style={[styles.ticketText, {marginTop: 20}]}>{t('javaZone.waiting_list')}</Text>
 
       <View style={styles.eventCheckinContainer}>
-        <LinkButton href={Assets.links.eventCheckin} title={t('javaZone.event_check_in')} targetBlank={true} />
+        <LinkButton href={`${lang}/program`} title={t("program")} targetBlank={true} />
+      </View>
+      <View style={styles.eventCheckinContainer}>
+        <Text style={[styles.ticketText, {marginTop: 20}]}>{t('General info')}</Text>
+        <LinkButton href={`${lang}/info`} title={t("Info")} targetBlank={true} />
       </View>
     </View>
   );
@@ -33,6 +40,12 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').width > 768 ? 36 : 24,
     textAlign: 'center',
   },
+  workshopText: {
+    fontFamily: 'PlayfairDisplay_400Regular',
+    fontSize: Dimensions.get('window').width > 768 ? 26 : 22,
+    textAlign: 'center',
+    marginVertical: 10,
+  },
   ticketContainer: {
     marginTop: 20,
     padding: 10,
@@ -47,6 +60,7 @@ const styles = StyleSheet.create({
   },
   ticketText: {
     fontFamily: 'PlayfairDisplay_400Regular',
+    textAlign: 'center',
     fontSize: Dimensions.get('window').width > 768 ? 24 : 20,
     color: Assets.colors.jz2025ThemeColors.darkBrown,
   },

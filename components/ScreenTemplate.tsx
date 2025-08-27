@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, View, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,15 +11,15 @@ import {
   Cinzel_600SemiBold,
   Cinzel_700Bold,
   Cinzel_800ExtraBold,
+
 } from '@expo-google-fonts/cinzel';
 import {
   PlayfairDisplay_400Regular,
   PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium,
   PlayfairDisplay_700Bold,
   PlayfairDisplay_800ExtraBold,
 } from '@expo-google-fonts/playfair-display';
-import * as Updates from 'expo-updates';
+import * as Updates from 'expo-updates'; // Add this import
 
 type ScreenTemplateProps = {
   children: React.ReactNode;
@@ -28,10 +27,10 @@ type ScreenTemplateProps = {
   pageSubtitle?: string;
   shouldScrollToTop?: boolean;
   infoPage?: boolean;
-  dangerousOverride?: boolean;
+  flatListPage?: boolean;
 };
 
-const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, dangerousOverride = false }: ScreenTemplateProps) => {
+const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, flatListPage }: ScreenTemplateProps) => {
   const { top } = useSafeAreaInsets();
   const newTop = Platform.OS === 'android' ? top : 0;
   const scrollViewRef = useRef<ScrollView>(null);
@@ -50,7 +49,6 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, 
     Cinzel_800ExtraBold,
     PlayfairDisplay_400Regular,
     PlayfairDisplay_400Regular_Italic,
-    PlayfairDisplay_500Medium,
     PlayfairDisplay_700Bold,
     PlayfairDisplay_800ExtraBold,
   });
@@ -83,21 +81,26 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, 
         <VerticalLinesRightLeft />
 
         <View style={[Assets.styles.container, { marginTop: newTop }]}>
-          <ScrollView
-            ref={scrollViewRef}
-            style={Assets.styles.scrollContainer}
-            contentContainerStyle={dangerousOverride ?
-                Assets.styles.dangerousOverrideScrollContentContainer :
-                Assets.styles.scrollContentContainer}
-            alwaysBounceVertical={false}
-            showsVerticalScrollIndicator={false}
-          >
-            {pageTitle && <PageTitle title={pageTitle} subTitle={pageSubtitle} />}
+          {flatListPage ? (
+            <View style={[Assets.styles.scrollContainer, Assets.styles.scrollContentContainer]}>
+              {pageTitle && <PageTitle title={pageTitle} subTitle={pageSubtitle} />}
+              {children}
+            </View>
+          ) : (
+            <ScrollView
+              ref={scrollViewRef}
+              style={Assets.styles.scrollContainer}
+              contentContainerStyle={Assets.styles.scrollContentContainer}
+              alwaysBounceVertical={false}
+              showsVerticalScrollIndicator={false}
+            >
+              {pageTitle && <PageTitle title={pageTitle} subTitle={pageSubtitle} />}
 
-            {children}
+              {children}
 
-            <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop} />
-          </ScrollView>
+              <Footer displayToTopArrow={shouldScrollToTop} handleScrollToTop={handleScrollToTop} />
+            </ScrollView>
+          )}
         </View>
       </SafeAreaView>
     </ImageBackground>

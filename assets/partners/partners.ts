@@ -59,6 +59,8 @@ import {
   GoogleCloud,
   Kartverket,
   SSB,
+  STOE,
+  VEND,
 } from '../../Assets';
 import { FunctionComponent } from 'react';
 import { SvgProps } from 'react-native-svg';
@@ -82,7 +84,7 @@ export const partners: Partner[] = [
   { name: 'Elastic', homepageUrl: 'https://www.elastic.co', logoUrl: Elastic },
   { name: 'Embriq', homepageUrl: 'https://www.embriq.no', logoUrl: Embriq },
   { name: 'Entur', homepageUrl: 'https://www.entur.no', logoUrl: Entur },
-  { name: 'Finn', homepageUrl: 'https://www.finn.no', logoUrl: Finn },
+  { name: 'Finn', homepageUrl: 'https://www.finn.no', logoUrl: VEND },
   { name: 'Fremtind', homepageUrl: 'https://www.fremtind.no', logoUrl: Fremtind },
   { name: 'Gjensidige', homepageUrl: 'https://www.gjensidige.no', logoUrl: Gjensidige },
   { name: 'Husbanken', homepageUrl: 'https://www.husbanken.no', logoUrl: Husbanken },
@@ -125,9 +127,10 @@ export const partners: Partner[] = [
   { name: 'Tomra', homepageUrl: 'https://www.tomra.com', logoUrl: Tomra },
   { name: 'Yne', homepageUrl: 'https://www.yne.no', logoUrl: Yne },
   { name: 'Ambita', homepageUrl: 'https://www.ambita.com', logoUrl: Ambita },
-  { name: 'NAV', homepageUrl: 'https://www.nav.no', logoUrl: NAV },
+  { name: 'NAV', homepageUrl: 'https://www.detsombetyrnoe.no/nav-pa-javazone-2025', logoUrl: NAV },
   { name: 'KS Digitale Fellestjenester', homepageUrl: 'https://ksdigital.no/', logoUrl: KSDigitaleFellestjenester },
   { name: 'Google Cloud', homepageUrl: 'https://cloud.google.com', logoUrl: GoogleCloud },
   { name: 'Kartverket', homepageUrl: 'https://www.kartverket.no', logoUrl: Kartverket },
   { name: 'SSB', homepageUrl: 'https://www.ssb.no', logoUrl: SSB },
+  { name: 'STØ', homepageUrl: 'https://stoe.no/', logoUrl: STOE },
 ];

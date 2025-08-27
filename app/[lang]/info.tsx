@@ -1,260 +1,198 @@
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Assets } from '@/Assets';
 import { ScreenTemplate } from '@/components';
-import { CircleImage, LinkText, SvgImage, ToggleText, SectionBox } from '@/UI';
-import { useTranslation } from 'react-i18next';
-import React, { useEffect, useState } from 'react';
+import { SvgImage, SectionBox, LinkText } from '@/UI';
+import { BulletListItem } from '@/components';
+import React from 'react';
+import { Link } from 'expo-router';
 
-const Info = () => {
-  // @ts-ignore
-  const { t } = useTranslation();
-  const [toggleJavaBin, setToggleJavaBin] = useState<boolean>(false);
-  const [toggleJavaZone, setToggleJavaZone] = useState<boolean>(false);
-  const [togglePrinciples, setTogglePrinciples] = useState<boolean>(false);
-  const [toggleWaste, setToggleWaste] = useState<boolean>(false);
+const ArrivalToNovaSpektrum = () => {
   const screenWidth = Dimensions.get('window').width;
 
-  useEffect(() => {
-    if (screenWidth > 768) {
-      setToggleJavaBin(true);
-      setToggleJavaZone(true);
-      setTogglePrinciples(true);
-      setToggleWaste(true);
-    }
-  }, []);
-
-  const handleToggle = (title: string, toggle: boolean) => {
-    switch (title) {
-      case t('javaBin.read_more'): {
-        setToggleJavaBin(!toggle);
-        break;
-      }
-      case t('javaZone.read_more'): {
-        setToggleJavaZone(!toggle);
-        break;
-      }
-      case t('principles.read_more'): {
-        setTogglePrinciples(!toggle);
-        break;
-      }
-      case t('sustainable_waste.read_more'): {
-        setToggleWaste(!toggle);
-        break;
-      }
-    }
-  };
-
   return (
-    <ScreenTemplate pageTitle={t('pageTitles.info')} shouldScrollToTop={true}>
-      {/* About javaBin */}
-      <SectionBox sectionTitle={t('javaBin.about')}>
-        <Text style={Assets.styles.text}>{t('javaBin.about_javaBin')}</Text>
-
-        <ToggleText
-          title={t('javaBin.read_more')}
-          toggle={toggleJavaBin}
-          handleToggle={() => handleToggle(t('javaBin.read_more'), toggleJavaBin)}
-        />
-
-        <View style={{ display: toggleJavaBin ? 'flex' : 'none' }}>
-          <Text style={Assets.styles.text}>{t('javaBin.about_JavaZone')}</Text>
-          <Text style={Assets.styles.text}>{t('javaBin.about_meetups')}</Text>
-          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-
-          <Text style={Assets.styles.sectionSubTitle}>{t('javaBin.become_active')}</Text>
-          <Text style={Assets.styles.text}>{t('javaBin.about_becoming_active')}</Text>
-
-          <View style={styles.imageContainer}>
-            <SvgImage SVG={Assets.images.JavaBinLogo} height={150} style={styles.image} />
-          </View>
-        </View>
-
-        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-      </SectionBox>
-
-      {/* About JavaZone */}
-      <SectionBox sectionTitle={t('javaZone.about')}>
-        <Text style={Assets.styles.text}>{t('javaZone.about_JavaZone')}</Text>
-        <ToggleText
-          title={t('javaZone.read_more')}
-          toggle={toggleJavaZone}
-          handleToggle={() => handleToggle(t('javaZone.read_more'), toggleJavaZone)}
-        />
-
-        <View style={{ display: toggleJavaZone ? 'flex' : 'none' }}>
-          <Text style={Assets.styles.text}>{t('javaZone.goal')}</Text>
-          <Text style={Assets.styles.text}>{t('javaZone.last_year')}</Text>
-          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-
-          <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.who_is_behind')}</Text>
-          <Text style={Assets.styles.text}>{t('javaZone.about_organizers')}</Text>
-          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-
-          <Text style={Assets.styles.sectionSubTitle}>{t('javaZone.core_team_title')}</Text>
-          <View style={{ alignSelf: 'center', width: '100%', marginBottom: 20 }}>
-            <View style={styles.listItemWrapper}>
-
-              <View style={styles.listItemGroup}>
-                <Text style={Assets.styles.text}>{t('javaZone.leader')}</Text>
-                <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} />
-                <Text style={Assets.styles.text}>{t('javaZone.leader_name')}</Text>
-              </View>
-
-              <View style={styles.listItemGroup}>
-                <Text style={Assets.styles.text}>{t('javaZone.partners')}</Text>
-                <LinkText title={t('javaZone.partners_mail')} href={Assets.links.partnerMail} />
-                <Text style={Assets.styles.text}>{t('javaZone.partners_name')}</Text>
-              </View>
-
-              <View style={styles.listItemGroup}>
-                <Text style={Assets.styles.text}>{t('javaZone.program')}</Text>
-                <LinkText title={t('javaZone.program_mail')} href={Assets.links.programMail} />
-                <Text style={Assets.styles.text}>{t('javaZone.program_name')}</Text>
-              </View>
-
-              <View style={styles.listItemGroup}>
-                <Text style={Assets.styles.text}>{t('javaZone.volunteers')}</Text>
-                <LinkText title={t('javaZone.volunteers_mail')} href={Assets.links.volunteerMail} />
-                <Text style={Assets.styles.text}>{t('javaZone.volunteers_name')}</Text>
-              </View>
-            </View>
-          </View>
-
-          <Text style={Assets.styles.text}>{t('javaZone.thank_you')}</Text>
-          <Text style={Assets.styles.text}>
-            {t('javaZone.reach_core_team')}
-            <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} />
-          </Text>
-        </View>
-
-        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-      </SectionBox>
-
-      {/* Principles */}
-      <SectionBox sectionTitle={t('principles.principles')}>
-        <Text style={Assets.styles.text}>{t('principles.intro')}</Text>
-
-        <ToggleText
-          title={t('principles.read_more')}
-          toggle={togglePrinciples}
-          handleToggle={() => handleToggle(t('principles.read_more'), togglePrinciples)}
-        />
-
-        <View style={{ display: togglePrinciples ? 'flex' : 'none' }}>
-          <Text style={Assets.styles.text}>{t('principles.about')}</Text>
-          <Text style={Assets.styles.intro}>{t('principles.notify')}</Text>
-
-          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-          <Text style={Assets.styles.sectionSubTitle}>{t('principles.before_conference')}</Text>
-
-          <Text style={Assets.styles.text}>
-            {t('principles.contact_us_start')}
-            <LinkText title={t('javaZone.javaZone_mail')} href={Assets.links.javaZoneMail} />
-            {t('principles.contact_us_middle')}
-            <LinkText title={t('principles.java_board_mail')} href={Assets.links.javaBoardMail} />
-            {t('principles.contact_us_end')}
-          </Text>
-
-          <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-          <Text style={Assets.styles.sectionSubTitle}>{t('principles.during_conference')}</Text>
-          <Text style={Assets.styles.text}>{t('principles.contact_stand')}</Text>
-        </View>
-        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-      </SectionBox>
-
-      {/* Food */}
-      <SectionBox sectionTitle={t('food.food')}>
-        <View style={styles.paragraphImageContainer}>
-          <View style={{ display: 'flex', width: screenWidth > 834 ? '75%' : '100%' }}>
-            <Text style={[Assets.styles.text]}>{t('food.about')}</Text>
-            <Text style={[Assets.styles.text, { display: screenWidth > 834 ? 'flex' : 'none' }]}>
-              {t('food.our_chefs')}
-            </Text>
-          </View>
-          <CircleImage
-            source={Assets.images.Doughnut}
-            size={screenWidth > 834 ? 200 : 150}
-            style={{
-              marginHorizontal: screenWidth > 834 ? 'auto' : 20,
-              marginVertical: screenWidth > 834 ? 0 : 10,
-            }}
-          />
-        </View>
-        <Text style={[Assets.styles.text, { display: screenWidth <= 834 ? 'flex' : 'none' }]}>
-          {t('food.our_chefs')}
+    <ScreenTemplate pageTitle="How to get to JavaZone at Nova Spektrum" shouldScrollToTop={true}>
+      {/* Introduction */}
+      <SectionBox sectionTitle="Location & Address">
+        <Text style={Assets.styles.preface}>
+          NOVA Spektrum is centrally located in the city of Lillestrøm, a short distance from Oslo Central Station and Oslo Airport Gardermoen.
+          It is approximately 8 minutes walking distance from Lillestrøm train station.
         </Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-      </SectionBox>
 
-      {/* Sustainable waste management */}
-      <SectionBox sectionTitle={t('sustainable_waste.sustainable_waste')}>
-        <View style={styles.paragraphImageContainer}>
-          <View style={{ display: 'flex', width: '100%' }}>
-            <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_1')}</Text>
-
-            <ToggleText
-                title={t('sustainable_waste.read_more')}
-                toggle={toggleWaste}
-                handleToggle={() => handleToggle(t('sustainable_waste.read_more'), toggleWaste)}
-            />
-
-            <View style={{ display: toggleWaste ? 'flex' : 'none' }}>
-              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_2')}</Text>
-              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_3')}</Text>
-
-              <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
-              <Text style={Assets.styles.sectionSubTitle}>{t('sustainable_waste.final_destination')}</Text>
-              <Text style={Assets.styles.text}>{t('sustainable_waste.paragraph_4')}</Text>
-            </View>
-          </View>
+        <Text style={Assets.styles.sectionSubTitle}>Visiting Address</Text>
+        <View style={styles.addressBox}>
+          <Text style={[Assets.styles.text, styles.addressText]}>NOVA Spektrum</Text>
+          <Text style={[Assets.styles.text, styles.addressText]}>Messeveien 8</Text>
+          <Text style={[Assets.styles.text, styles.addressText]}>2004 Lillestrøm</Text>
         </View>
-        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
       </SectionBox>
+
+      {/* Public Transportation */}
+      <SectionBox sectionTitle="🚆 Public Transportation">
+        <Text style={Assets.styles.sectionSubTitle}>Train</Text>
+        <Text style={Assets.styles.text}>
+          Vy has several departures per hour from both Oslo and Gardermoen. Travel time is only 11 minutes from Oslo S
+          and 12 minutes from Oslo Airport.
+        </Text>
+        <View style={styles.importantBox}>
+          <Text style={[Assets.styles.callout, styles.importantText]}>
+            IMPORTANT: Use the trains marked R for the fastest travel time (RE11, R12, R14 etc.)
+          </Text>
+        </View>
+        <Text style={Assets.styles.text}>Use the Ruter app to plan your journey to JavaZone.</Text>
+
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+
+        <Text style={Assets.styles.sectionSubTitle}>Airport Train</Text>
+        <Text style={Assets.styles.text}>
+          The airport train takes 12 minutes from Oslo Airport to Lillestrøm.
+        </Text>
+
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+
+        <Text style={Assets.styles.sectionSubTitle}>Bus</Text>
+        <Text style={Assets.styles.text}>
+          From Lillestrøm bus terminal it takes approximately 8 minutes to walk to NOVA Spektrum.
+        </Text>
+
+        <View style={styles.linkContainer}>
+          <LinkText
+            title="📍 View walking directions on Google Maps"
+            href="https://maps.app.goo.gl/6YCAZhLvBNHJA2rD6"
+          />
+        </View>
+      </SectionBox>
+
+      {/* Car/Motorcycle */}
+      <SectionBox sectionTitle="🚗 Arriving by Car/Motorcycle">
+        <Text style={Assets.styles.sectionSubTitle}>Parking Information</Text>
+        <Text style={Assets.styles.text}>
+          There are 2,200 parking spaces in front of the venue. All parking spaces are chargeable 24 hours a day.
+        </Text>
+
+        <View style={styles.importantBox}>
+          <Text style={[Assets.styles.callout, styles.warningText]}>
+            If your vehicle uses two parking spaces, you will be charged for both parking spaces
+            (Mobile home, van, car with trailer etc).
+          </Text>
+        </View>
+
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+
+        <Text style={Assets.styles.sectionSubTitle}>Parking Rates</Text>
+
+        <View style={styles.pricingBox}>
+          <Text style={Assets.styles.sectionSubTitle}>Vehicles under 3500 kg</Text>
+          <Text style={Assets.styles.text}>(also applies to trailers/mopeds/scooters etc.)</Text>
+          <BulletListItem text="NOK 72 per hour started" />
+          <BulletListItem text="Maximum price for continuous parking within 24 hours: NOK 420" />
+        </View>
+
+        <View style={styles.pricingBox}>
+          <Text style={Assets.styles.sectionSubTitle}>Vehicles over 3500 kg</Text>
+          <BulletListItem text="NOK 144 per hour started" />
+          <BulletListItem text="Maximum price for continuous parking within 24 hours: NOK 840" />
+        </View>
+
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
+
+        <Text style={Assets.styles.sectionSubTitle}>Special Parking</Text>
+        <BulletListItem text="Parking for the disabled is available in fields C and F, for a fee" />
+        <BulletListItem text="10 charging stations for electric cars in field A, for a fee" />
+
+        <Text style={Assets.styles.sectionSubTitle}>Payment Options</Text>
+        <Text style={Assets.styles.text}>Autopay, card or mobile payment accepted.</Text>
+
+        <View style={styles.linkContainer}>
+          <LinkText
+            title="📍 View parking location on Google Maps"
+            href="https://maps.app.goo.gl/PRsnr73LnHxS5qwH8"
+          />
+        </View>
+      </SectionBox>
+
+      {/* Accessibility */}
+      <SectionBox sectionTitle="♿ Accessibility">
+        <Text style={Assets.styles.text}>
+          NOVA Spektrum is adapted for wheelchair users. We have a limited number of wheelchairs available.
+        </Text>
+
+        <View style={styles.contactBox}>
+          <Text style={Assets.styles.text}>
+            Contact us prior to the conference if you need assistance:
+          </Text>
+          <Link
+            href="mailto:javazone@macsimum.no"
+            style={styles.linkText}
+          >
+            javazone@macsimum.no
+          </Link>
+        </View>
+      </SectionBox>
+
+      <SvgImage SVG={Assets.UI.DividerWide} height={20} style={{ margin: 20 }} />
     </ScreenTemplate>
   );
 };
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+  addressBox: {
+    backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
+    padding: 15,
+    borderRadius: 8,
     marginVertical: 10,
+    borderLeftWidth: 4,
+    borderLeftColor: Assets.colors.jz2025ThemeColors.vividOrange,
   },
-  image: {
-    width: Dimensions.get('window').width > 768 ? '50%' : '80%',
-    marginBottom: Dimensions.get('window').width > 768 ? 20 : 0,
-    objectFit: 'scale-down',
-    resizeMode: 'contain',
+  addressText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginVertical: 2,
   },
-  listItemWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+  importantBox: {
+    backgroundColor: Assets.colors.jz2025ThemeColors.sheetOpacity,
+    padding: 15,
+    borderRadius: 8,
+    marginVertical: 10,
+    borderLeftWidth: 4,
+    borderLeftColor: Assets.colors.jz2025ThemeColors.cyberYellow,
+  },
+  importantText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  warningText: {
+    textAlign: 'left',
+    fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
+  },
+  pricingBox: {
+    backgroundColor: Assets.colors.jz2025ThemeColors.linen,
+    padding: 15,
+    borderRadius: 8,
+    marginVertical: 10,
+    borderLeftWidth: 4,
+    borderLeftColor: Assets.colors.jz2025ThemeColors.crimsonRed,
+  },
+  linkContainer: {
     alignItems: 'center',
-    width: '100%',
-    flexWrap: 'wrap',
-    alignSelf: 'center',
-    gap: 5
+    marginTop: 15,
   },
-  listItemGroup: {
-    display: 'flex',
+  contactBox: {
+    backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
+    padding: 15,
+    borderRadius: 8,
+    marginVertical: 10,
     alignItems: 'center',
-    justifyContent: Dimensions.get('window').width > 1200 ? 'flex-start' : 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    flexGrow: 1,
-    marginVertical: 5,
-    paddingHorizontal: 5,
-    width: Dimensions.get('window').width > 768 ? 'auto' : '80%',
+    borderLeftWidth: 4,
+    borderLeftColor: Assets.colors.jz2025ThemeColors.orangeYellow,
   },
-  paragraphImageContainer: {
-    display: 'flex',
-    flexDirection: Dimensions.get('window').width > 834 ? 'row' : 'column',
-    width: '100%',
-    alignItems: Dimensions.get('window').width > 834 ? 'flex-start' : 'center',
-  },
+  linkText: {
+    color: Assets.colors.jz2025ThemeColors.darkRed,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    fontSize: Dimensions.get('window').width > 768 ? 20 : 18,
+    textDecorationLine: 'underline',
+    marginHorizontal: 3,
+  }
 });
 
-export default Info;
+export default ArrivalToNovaSpektrum;

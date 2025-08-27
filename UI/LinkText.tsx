@@ -10,7 +10,7 @@ type LinkTextProps = {
   targetSelf?: boolean;
 };
 
-const LinkText: React.FC<LinkTextProps> = ({ title, href, style, targetSelf }) => {
+const LinkText: React.FC<LinkTextProps> = ({ title, href, style, targetSelf = false }) => {
   return (
     <Link
       href={href}
