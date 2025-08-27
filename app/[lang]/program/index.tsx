@@ -57,7 +57,38 @@ const Program = () => {
       });
   }, []);
 
-  // Flatten the data structure to avoid nested FlatList
+  // Desktop: Use simple layout with nested FlatList
+  const desktopFlatListData = sortedTimeslots.map((time, index) => ({
+    id: `${time}-${index}`,
+    time,
+    sessions: groupedSessions[time],
+  }));
+
+  const desktopRenderTimeslotItem = ({ item }: { item: { id: string; time: string; sessions: Session[] } }) => (
+    <>
+      {item.time && (
+        <Text style={[Assets.styles.sectionSubTitle, { padding: 10 }]}>
+          {dayAndTimeFormatWithMonth.format(new Date(item.time))}
+        </Text>
+      )}
+      <FlatList
+        data={item.sessions}
+        renderItem={(sessionItem) => (
+          <ProgramCard
+            key={sessionItem.item.id}
+            session={sessionItem.item}
+            isFavorite={favorites.some((favId) => favId === sessionItem.item.id)}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+        numColumns={isDesktop ? 2 : 1}
+        columnWrapperStyle={isDesktop && { margin: 10 }}
+        contentContainerStyle={styles.gallery}
+      />
+    </>
+  );
+
+  // Mobile/Tablet: Use flattened data structure
   const flatListData = sortedTimeslots.reduce((acc, time, timeIndex) => {
     // Add time header
     if (time) {
@@ -119,139 +150,56 @@ const Program = () => {
   };
 
   return (
-    <ScreenTemplate pageTitle={t('pageTitles.program')} shouldScrollToTop={false} dangerousOverride={true}>
+    <ScreenTemplate pageTitle={t('pageTitles.program')} shouldScrollToTop={isDesktop} dangerousOverride={true}>
       <View style={styles.container}>
-        {/* Temple Menu - Mobile-Optimized Temple Design - FIXED */}
-        <View style={[templeMenuStyles.menuContainer, isMobile && templeMenuStyles.mobileMenuContainer]}>
-          {/* Pyramid - Scaled down for mobile, full size for desktop */}
-          <View
-            style={[
-              templeMenuStyles.topMenu,
-              isMobile && templeMenuStyles.mobileTopMenu,
-              isTablet && templeMenuStyles.tabletTopMenu,
-            ]}
-          >
-            <View style={[templeMenuStyles.pyramid, templeMenuStyles.pyramidOuterBorder]} />
-            <View
-              style={[
-                templeMenuStyles.pyramid,
-                templeMenuStyles.pyramidOuterBackground,
-                isMobile
-                  ? pyramidMobileStyles.outerBackground
-                  : screenWidth > 1240
-                    ? pyramidLargeStyles.outerBackground
-                    : screenWidth > 1000
-                      ? pyramidMediumStyles.outerBackground
-                      : pyramidSmallStyles.outerBackground,
-              ]}
-            />
-            <View
-              style={[
-                templeMenuStyles.pyramid,
-                templeMenuStyles.pyramidInnerBorder,
-                isMobile
-                  ? pyramidMobileStyles.innerBorder
-                  : screenWidth > 1240
-                    ? pyramidLargeStyles.innerBorder
-                    : screenWidth > 1000
-                      ? pyramidMediumStyles.innerBorder
-                      : pyramidSmallStyles.innerBorder,
-              ]}
-            />
-            <View
-              style={[
-                templeMenuStyles.pyramid,
-                templeMenuStyles.pyramidInnerBackground,
-                isMobile
-                  ? pyramidMobileStyles.innerBackground
-                  : screenWidth > 1240
-                    ? pyramidLargeStyles.innerBackground
-                    : screenWidth > 1000
-                      ? pyramidMediumStyles.innerBackground
-                      : pyramidSmallStyles.innerBackground,
-              ]}
-            />
+        {/* Desktop Layout */}
+        {isDesktop ? (
+          <>
+            {/* Desktop Temple Menu */}
+            <View style={templeMenuStyles.menuContainer}>
+              <View style={templeMenuStyles.topMenu}>
+                <View style={[templeMenuStyles.pyramid, templeMenuStyles.pyramidOuterBorder]} />
+                <View
+                  style={[
+                    templeMenuStyles.pyramid,
+                    templeMenuStyles.pyramidOuterBackground,
+                    screenWidth > 1240
+                      ? pyramidLargeStyles.outerBackground
+                      : screenWidth > 1000
+                        ? pyramidMediumStyles.outerBackground
+                        : pyramidSmallStyles.outerBackground,
+                  ]}
+                />
+                <View
+                  style={[
+                    templeMenuStyles.pyramid,
+                    templeMenuStyles.pyramidInnerBorder,
+                    screenWidth > 1240
+                      ? pyramidLargeStyles.innerBorder
+                      : screenWidth > 1000
+                        ? pyramidMediumStyles.innerBorder
+                        : pyramidSmallStyles.innerBorder,
+                  ]}
+                />
+                <View
+                  style={[
+                    templeMenuStyles.pyramid,
+                    templeMenuStyles.pyramidInnerBackground,
+                    screenWidth > 1240
+                      ? pyramidLargeStyles.innerBackground
+                      : screenWidth > 1000
+                        ? pyramidMediumStyles.innerBackground
+                        : pyramidSmallStyles.innerBackground,
+                  ]}
+                />
 
-            <TouchableOpacity onPress={handleFilterFavorites} style={templeMenuStyles.pyramidContent}>
-              <Text
-                style={[
-                  templeMenuStyles.favoriteTitle,
-                  isMobile && templeMenuStyles.mobileFavoriteTitle,
-                  showFavoritesOnly && templeMenuStyles.fullProgramTitle,
-                  showFavoritesOnly && isMobile && templeMenuStyles.mobileFullProgramTitle,
-                  showFavoritesOnly && isTablet && templeMenuStyles.tabletFullProgramTitle,
-                ]}
-              >
-                {showFavoritesOnly ? "FULL PROGRAM" : "FAVORITES"}
-              </Text>
-              <Text
-                style={[
-                  templeMenuStyles.favoriteSubtitle,
-                  isMobile && templeMenuStyles.mobileFavoriteSubtitle,
-                  showFavoritesOnly && templeMenuStyles.fullProgramSubtitle,
-                  showFavoritesOnly && isMobile && templeMenuStyles.mobileFullProgramSubtitle,
-                  showFavoritesOnly && isTablet && templeMenuStyles.tabletFullProgramSubtitle,
-                ]}
-              >
-                {showFavoritesOnly ? "OMNIA PROGRAMMATA" : "RĒS SELECTAE"}
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          {/* Bottom Menu - Compact for mobile */}
-          <View
-            style={[templeMenuStyles.bottomMenu, Assets.styles.shadow, isMobile && templeMenuStyles.mobileBottomMenu]}
-          >
-            {/* Mobile Layout: Compact Grid */}
-            {isMobile ? (
-              <View style={templeMenuStyles.mobileFilterGrid}>
-                {/* Date filters row - 3 small boxes */}
-                <View style={templeMenuStyles.dateFilterRow}>
-                  {dateFilters.slice(0, 3).map((filter) => (
-                    <TouchableOpacity
-                      key={filter.id}
-                      style={templeMenuStyles.smallDateButton}
-                      onPress={() => setFilter('date', filter.id)}
-                    >
-                      <Text style={templeMenuStyles.smallDateButtonText}>{filter.label}</Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-
-                {/* Live button - full width below date row */}
-                <TouchableOpacity
-                  style={templeMenuStyles.liveButtomFullWidth}
-                  onPress={() => setFilter('date', 'live')}
-                >
-                  <Text style={templeMenuStyles.liveButtonText}>Live</Text>
+                <TouchableOpacity onPress={handleFilterFavorites} style={templeMenuStyles.pyramidContent}>
+                  <Text style={templeMenuStyles.favoriteTitle}>FAVORITES</Text>
+                  <Text style={templeMenuStyles.favoriteSubtitle}>RĒS SELECTAE</Text>
                 </TouchableOpacity>
-
-                {/* Format filters row */}
-                <View style={templeMenuStyles.formatFilterRow}>
-                  {formatFilters.map((format) => (
-                    <TouchableOpacity
-                      key={format.id}
-                      style={templeMenuStyles.formatButton}
-                      onPress={() => setFilter('format', format.id)}
-                    >
-                      <Text style={templeMenuStyles.formatButtonText}>{format.label}</Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-
-                {/* Reset button - full width below format row */}
-                <View style={{marginTop: 5, width: '100%'}}>
-                  <TouchableOpacity
-                    style={templeMenuStyles.liveButtomFullWidth}
-                    onPress={() => clearFilters()}
-                  >
-                    <Text style={templeMenuStyles.liveButtonText}>Reset</Text>
-                  </TouchableOpacity>
-                </View>
               </View>
-            ) : (
-              /* Desktop/Tablet Layout - Keep existing structure */
-              <>
+
+              <View style={[templeMenuStyles.bottomMenu, Assets.styles.shadow]}>
                 <View style={[templeMenuStyles.menuGroup, templeMenuStyles.dateMenuGroup]}>
                   <Text style={templeMenuStyles.menuGroupLabel}>Date</Text>
 
@@ -287,71 +235,268 @@ const Program = () => {
                     ))}
                   </View>
                 </View>
-              </>
-            )}
-          </View>
-        </View>
+              </View>
+            </View>
 
-        {/* Content Area - FIXED PILLARS WITH SCROLLABLE CONTENT */}
-        <View style={[styles.pillarContentContainer, isMobile && styles.mobilePillarContentContainer]}>
-          {/* Left Pillar - FIXED */}
-          <View
-            style={[
-              styles.pillar,
-              Assets.styles.shadow,
-              isMobile && styles.mobilePillar,
-              isTablet && styles.tabletPillar,
-              { height: availableHeight }
-            ]}
-          >
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-          </View>
+            {/* Desktop Content with Pillars */}
+            <View style={styles.pillarContentContainer}>
+              <View style={[styles.desktopPillar, Assets.styles.shadow]}>
+                <View style={styles.pillarLine} />
+                <View style={styles.pillarLine} />
+                <View style={styles.pillarLine} />
+              </View>
 
-          {/* SCROLLABLE Main Content Area - Independent Scroll */}
-          <View style={[
-            styles.mainContentContainer,
-            isMobile && styles.mobileMainContentContainer,
-            { height: availableHeight }
-          ]}>
-            <FlatList
-              style={styles.mainContentFlatList}
-              contentContainerStyle={styles.mainContentScrollContainer}
-              data={flatListData}
-              renderItem={renderFlatListItem}
-              keyExtractor={(item) => item.id}
-              showsVerticalScrollIndicator={true}
-              scrollIndicatorInsets={{ right: 1 }}
-              nestedScrollEnabled={false}
-              bounces={true}
-              scrollEventThrottle={16}
-              removeClippedSubviews={true}
-              maxToRenderPerBatch={10}
-              initialNumToRender={15}
-              windowSize={10}
-            />
-          </View>
+              <FlatList
+                data={desktopFlatListData}
+                renderItem={desktopRenderTimeslotItem}
+                keyExtractor={(item) => item.id}
+                numColumns={1}
+              />
 
-          {/* Right Pillar - FIXED */}
-          <View
-            style={[
-              styles.pillar,
-              Assets.styles.shadow,
-              isMobile && styles.mobilePillar,
-              isTablet && styles.tabletPillar,
-              { height: availableHeight }
-            ]}
-          >
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-            <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
-          </View>
-        </View>
+              <View style={[styles.desktopPillar, Assets.styles.shadow]}>
+                <View style={styles.pillarLine} />
+                <View style={styles.pillarLine} />
+                <View style={styles.pillarLine} />
+              </View>
+            </View>
+          </>
+        ) : (
+          <>
+            {/* Mobile/Tablet Layout - Complex Temple Menu */}
+            <View style={[templeMenuStyles.menuContainer, isMobile && templeMenuStyles.mobileMenuContainer]}>
+              {/* Pyramid - Scaled down for mobile, full size for desktop */}
+              <View
+                style={[
+                  templeMenuStyles.topMenu,
+                  isMobile && templeMenuStyles.mobileTopMenu,
+                  isTablet && templeMenuStyles.tabletTopMenu,
+                ]}
+              >
+                <View style={[templeMenuStyles.pyramid, templeMenuStyles.pyramidOuterBorder]} />
+                <View
+                  style={[
+                    templeMenuStyles.pyramid,
+                    templeMenuStyles.pyramidOuterBackground,
+                    isMobile
+                      ? pyramidMobileStyles.outerBackground
+                      : screenWidth > 1240
+                        ? pyramidLargeStyles.outerBackground
+                        : screenWidth > 1000
+                          ? pyramidMediumStyles.outerBackground
+                          : pyramidSmallStyles.outerBackground,
+                  ]}
+                />
+                <View
+                  style={[
+                    templeMenuStyles.pyramid,
+                    templeMenuStyles.pyramidInnerBorder,
+                    isMobile
+                      ? pyramidMobileStyles.innerBorder
+                      : screenWidth > 1240
+                        ? pyramidLargeStyles.innerBorder
+                        : screenWidth > 1000
+                          ? pyramidMediumStyles.innerBorder
+                          : pyramidSmallStyles.innerBorder,
+                  ]}
+                />
+                <View
+                  style={[
+                    templeMenuStyles.pyramid,
+                    templeMenuStyles.pyramidInnerBackground,
+                    isMobile
+                      ? pyramidMobileStyles.innerBackground
+                      : screenWidth > 1240
+                        ? pyramidLargeStyles.innerBackground
+                        : screenWidth > 1000
+                          ? pyramidMediumStyles.innerBackground
+                          : pyramidSmallStyles.innerBackground,
+                  ]}
+                />
+
+                <TouchableOpacity onPress={handleFilterFavorites} style={templeMenuStyles.pyramidContent}>
+                  <Text
+                    style={[
+                      templeMenuStyles.favoriteTitle,
+                      isMobile && templeMenuStyles.mobileFavoriteTitle,
+                      showFavoritesOnly && templeMenuStyles.fullProgramTitle,
+                      showFavoritesOnly && isMobile && templeMenuStyles.mobileFullProgramTitle,
+                      showFavoritesOnly && isTablet && templeMenuStyles.tabletFullProgramTitle,
+                    ]}
+                  >
+                    {showFavoritesOnly ? "FULL PROGRAM" : "FAVORITES"}
+                  </Text>
+                  <Text
+                    style={[
+                      templeMenuStyles.favoriteSubtitle,
+                      isMobile && templeMenuStyles.mobileFavoriteSubtitle,
+                      showFavoritesOnly && templeMenuStyles.fullProgramSubtitle,
+                      showFavoritesOnly && isMobile && templeMenuStyles.mobileFullProgramSubtitle,
+                      showFavoritesOnly && isTablet && templeMenuStyles.tabletFullProgramSubtitle,
+                    ]}
+                  >
+                    {showFavoritesOnly ? "OMNIA PROGRAMMATA" : "RĒS SELECTAE"}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              {/* Bottom Menu - Compact for mobile */}
+              <View
+                style={[templeMenuStyles.bottomMenu, Assets.styles.shadow, isMobile && templeMenuStyles.mobileBottomMenu]}
+              >
+                {/* Mobile Layout: Compact Grid */}
+                {isMobile ? (
+                  <View style={templeMenuStyles.mobileFilterGrid}>
+                    {/* Date filters row - 3 small boxes */}
+                    <View style={templeMenuStyles.dateFilterRow}>
+                      {dateFilters.slice(0, 3).map((filter) => (
+                        <TouchableOpacity
+                          key={filter.id}
+                          style={templeMenuStyles.smallDateButton}
+                          onPress={() => setFilter('date', filter.id)}
+                        >
+                          <Text style={templeMenuStyles.smallDateButtonText}>{filter.label}</Text>
+                        </TouchableOpacity>
+                      ))}
+                    </View>
+
+                    {/* Live button - full width below date row */}
+                    <TouchableOpacity
+                      style={templeMenuStyles.liveButtomFullWidth}
+                      onPress={() => setFilter('date', 'live')}
+                    >
+                      <Text style={templeMenuStyles.liveButtonText}>Live</Text>
+                    </TouchableOpacity>
+
+                    {/* Format filters row */}
+                    <View style={templeMenuStyles.formatFilterRow}>
+                      {formatFilters.map((format) => (
+                        <TouchableOpacity
+                          key={format.id}
+                          style={templeMenuStyles.formatButton}
+                          onPress={() => setFilter('format', format.id)}
+                        >
+                          <Text style={templeMenuStyles.formatButtonText}>{format.label}</Text>
+                        </TouchableOpacity>
+                      ))}
+                    </View>
+
+                    {/* Reset button - full width below format row */}
+                    <View style={{marginTop: 5, width: '100%'}}>
+                      <TouchableOpacity
+                        style={templeMenuStyles.liveButtomFullWidth}
+                        onPress={() => clearFilters()}
+                      >
+                        <Text style={templeMenuStyles.liveButtonText}>Reset</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                ) : (
+                  /* Desktop/Tablet Layout - Keep existing structure */
+                  <>
+                    <View style={[templeMenuStyles.menuGroup, templeMenuStyles.dateMenuGroup]}>
+                      <Text style={templeMenuStyles.menuGroupLabel}>Date</Text>
+
+                      <View style={templeMenuStyles.menuGroupContent}>
+                        {dateFilters.map((filter) => (
+                          <TouchableOpacity
+                            key={filter.id}
+                            style={templeMenuStyles.buttonWrapper}
+                            onPress={() => setFilter('date', filter.id)}
+                          >
+                            <Text style={templeMenuStyles.buttonTitle}>{filter.label}</Text>
+                            <View style={templeMenuStyles.buttonDivider} />
+                            <Text style={templeMenuStyles.buttonSubtitle}>{filter.labelGreek}</Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+
+                    <View style={[templeMenuStyles.menuGroup, templeMenuStyles.typeMenuGroup]}>
+                      <Text style={templeMenuStyles.menuGroupLabel}>Type</Text>
+
+                      <View style={templeMenuStyles.menuGroupContent}>
+                        {formatFilters.map((format) => (
+                          <TouchableOpacity
+                            key={format.id}
+                            style={templeMenuStyles.buttonWrapper}
+                            onPress={() => setFilter('format', format.id)}
+                          >
+                            <Text style={templeMenuStyles.buttonTitle}>{format.label}</Text>
+                            <View style={templeMenuStyles.buttonDivider} />
+                            <Text style={templeMenuStyles.buttonSubtitle}>{format.labelGreek}</Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+                  </>
+                )}
+              </View>
+            </View>
+
+            {/* Mobile/Tablet Content Area - FIXED PILLARS WITH SCROLLABLE CONTENT */}
+            <View style={[styles.pillarContentContainer, isMobile && styles.mobilePillarContentContainer]}>
+              {/* Left Pillar - FIXED */}
+              <View
+                style={[
+                  styles.pillar,
+                  Assets.styles.shadow,
+                  isMobile && styles.mobilePillar,
+                  isTablet && styles.tabletPillar,
+                  { height: availableHeight },
+                ]}
+              >
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+              </View>
+
+              {/* SCROLLABLE Main Content Area - Independent Scroll */}
+              <View
+                style={[
+                  styles.mainContentContainer,
+                  isMobile && styles.mobileMainContentContainer,
+                  { height: availableHeight },
+                ]}
+              >
+                <FlatList
+                  style={styles.mainContentFlatList}
+                  contentContainerStyle={styles.mainContentScrollContainer}
+                  data={flatListData}
+                  renderItem={renderFlatListItem}
+                  keyExtractor={(item) => item.id}
+                  showsVerticalScrollIndicator={true}
+                  scrollIndicatorInsets={{ right: 1 }}
+                  nestedScrollEnabled={false}
+                  bounces={true}
+                  scrollEventThrottle={16}
+                  removeClippedSubviews={true}
+                  maxToRenderPerBatch={10}
+                  initialNumToRender={15}
+                  windowSize={10}
+                />
+              </View>
+
+              {/* Right Pillar - FIXED */}
+              <View
+                style={[
+                  styles.pillar,
+                  Assets.styles.shadow,
+                  isMobile && styles.mobilePillar,
+                  isTablet && styles.tabletPillar,
+                  { height: availableHeight },
+                ]}
+              >
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+                <View style={[styles.pillarLine, isMobile && styles.mobilePillarLine]} />
+              </View>
+            </View>
+          </>
+        )}
       </View>
     </ScreenTemplate>
   );
@@ -359,19 +504,19 @@ const Program = () => {
 
 const pyramidLargeStyles = StyleSheet.create({
   outerBackground: {
-    borderLeftWidth: Dimensions.get('window').width > 1365 ? 550 : 500,
-    borderRightWidth: Dimensions.get('window').width > 1365 ? 550 : 500,
-    borderBottomWidth: Dimensions.get('window').width > 1365 ? 100 : 100,
+    borderLeftWidth: Dimensions.get('window').width > 1365 ? 600 : 500,
+    borderRightWidth: Dimensions.get('window').width > 1365 ? 600 : 500,
+    borderBottomWidth: Dimensions.get('window').width > 1365 ? 120 : 100,
   },
   innerBorder: {
-    borderLeftWidth: Dimensions.get('window').width > 1365 ? 500 : 455,
-    borderRightWidth: Dimensions.get('window').width > 1365 ? 500 : 455,
-    borderBottomWidth: Dimensions.get('window').width > 1365 ? 90 : 90,
+    borderLeftWidth: Dimensions.get('window').width > 1365 ? 530 : 455,
+    borderRightWidth: Dimensions.get('window').width > 1365 ? 530 : 455,
+    borderBottomWidth: Dimensions.get('window').width > 1365 ? 110 : 90,
   },
   innerBackground: {
-    borderLeftWidth: Dimensions.get('window').width > 1365 ? 491 : 441,
-    borderRightWidth: Dimensions.get('window').width > 1365 ? 491 : 441,
-    borderBottomWidth: Dimensions.get('window').width > 1365 ? 88 : 88,
+    borderLeftWidth: Dimensions.get('window').width > 1365 ? 521 : 441,
+    borderRightWidth: Dimensions.get('window').width > 1365 ? 521 : 441,
+    borderBottomWidth: Dimensions.get('window').width > 1365 ? 108 : 88,
   },
 });
 
@@ -495,7 +640,7 @@ const templeMenuStyles = StyleSheet.create({
   },
   pyramidContent: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 20,
     alignItems: 'center',
     zIndex: 50,
   },
@@ -787,12 +932,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  mobilePillarContentContainer: {
-    // Specific styles for mobile pillar content container - keep horizontal layout
+  // Desktop pillar styles (simpler)
+  desktopPillar: {
+    width: 80,
+    height: '100%',
+    marginHorizontal: 10,
+    padding: 5,
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderColor: Assets.colors.jz2025ThemeColors.lightBrown,
+    backgroundColor: Assets.colors.jz2025ThemeColors.sheet,
+    display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    width: '100%',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
+  // Mobile/Tablet pillar styles (complex)
   pillar: {
     width: Dimensions.get('window').width > 1000 ? 50 : 40,
     height: '100%',
@@ -806,6 +961,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+  },
+  mobilePillarContentContainer: {
+    // Specific styles for mobile pillar content container - keep horizontal layout
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    width: '100%',
   },
   mobilePillar: {
     // Specific styles for mobile pillar - thinner
@@ -858,7 +1019,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 1,
-    scrollbarColor: `${Assets.colors.jz2025ThemeColors.crimsonRed} transparent`
+    scrollbarColor: `${Assets.colors.jz2025ThemeColors.crimsonRed} transparent`,
   },
   // Content container for the FlatList
   mainContentScrollContainer: {
