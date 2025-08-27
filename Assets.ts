@@ -37,6 +37,10 @@ import BlueSkyLogo from '@/assets/icons/bluesky.svg';
 import HeartFilled from '@/assets/program-svg/heart-filled.svg';
 import HeartVoid from '@/assets/program-svg/heart-void.svg';
 import LaurelWealth from '@/assets/program-svg/laurel-wealth.svg';
+import Vine from '@/assets/icons/vine.svg';
+import Vine2 from '@/assets/icons/vine2.svg';
+import Lyre from '@/assets/icons/lyre.svg';
+import Caesar from '@/assets/icons/caezar.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -191,6 +195,10 @@ export const Assets = {
     HeartFilled,
     HeartVoid,
     LaurelWealth,
+    Vine,
+    Vine2,
+    Lyre,
+    Caesar
   },
   partnerLogos: {
     Accenture,
