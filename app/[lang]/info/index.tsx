@@ -171,6 +171,8 @@ const JavaZoneInfo = () => {
         </Text>
         <BulletListItem text="Bars open: 18:00" />
         <BulletListItem text="Party starts: 19:20" />
+
+        <LinkButton href={`speaker/awezone`} title={"More details about AweZone"}/>
         <View style={styles.imageContainer}>
           <Image
             source={require('@/assets/images/info/party.jpeg')}
