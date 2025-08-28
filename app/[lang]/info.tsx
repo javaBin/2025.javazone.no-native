@@ -129,8 +129,6 @@ const ArrivalToNovaSpektrum = () => {
           </Link>
         </View>
       </SectionBox>
-
-      <SvgImage SVG={Assets.UI.DividerWide} height={20} style={{ margin: 20 }} />
     </ScreenTemplate>
   );
 };
