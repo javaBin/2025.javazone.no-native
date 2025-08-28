@@ -133,8 +133,8 @@ const RootLayout = () => {
           <Pressable onPress={() => router.replace(`${lang}/speaker/kids`)}>
             <Text style={styles.navItem}>JavaZone Kids</Text>
           </Pressable>
-          <Pressable onPress={() => router.replace(`${lang}/volunteers`)}>
-            <Text style={styles.navItem}>Volunteers</Text>
+          <Pressable onPress={() => router.replace(`${lang}/speaker/awezone`)}>
+            <Text style={styles.navItem}>AweZone</Text>
           </Pressable>
           <Pressable onPress={() => router.replace(`${lang}/aboutUs`)}>
             <Text style={styles.navItem}>About Us</Text>
