@@ -30,7 +30,6 @@ const SpeakerLayout = () => {
             <Stack.Screen name="kids"/>
             <Stack.Screen name="reimbursement"/>
             <Stack.Screen name="tips"/>
-            <Stack.Screen name="awezone"/>
         </Stack>
     )
 }

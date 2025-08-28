@@ -133,7 +133,7 @@ const RootLayout = () => {
           <Pressable onPress={() => router.replace(`${lang}/speaker/kids`)}>
             <Text style={styles.navItem}>JavaZone Kids</Text>
           </Pressable>
-          <Pressable onPress={() => router.replace(`${lang}/speaker/awezone`)}>
+          <Pressable onPress={() => router.replace(`${lang}/awezone`)}>
             <Text style={styles.navItem}>AweZone</Text>
           </Pressable>
           <Pressable onPress={() => router.replace(`${lang}/aboutUs`)}>
@@ -225,6 +225,7 @@ const RootLayout = () => {
               <Stack.Screen name="[lang]/speaker" options={{ title: 'Speaker' }} />
               <Stack.Screen name="[lang]/volunteers" options={{ title: 'Volunteers' }} />
               <Stack.Screen name="[lang]/info" options={{ title: 'Info' }} />
+              <Stack.Screen name="[lang]/awezone" options={{ title: 'AweZone' }} />
               <Stack.Screen name="[lang]/aboutUs" options={{ title: 'AboutUs' }} />
               <Stack.Screen name="[lang]/heroes" options={{ title: 'Heroes' }} />
             </Stack>
