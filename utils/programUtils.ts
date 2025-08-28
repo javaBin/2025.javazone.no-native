@@ -53,11 +53,13 @@ export const createDayAndTimeFormatter = (locale: string | string[]) => new Intl
   weekday: 'long',
   hour: 'numeric',
   minute: '2-digit',
+  timeZone: 'Europe/Oslo', // Always use Norwegian time
 });
 
 export const createTimeOnlyFormatter = (locale: string | string[]) => new Intl.DateTimeFormat(locale === 'no' ? 'nb-NO' : 'en', {
   hour: 'numeric',
   minute: '2-digit',
+  timeZone: 'Europe/Oslo', // Always use Norwegian time
 });
 
 // Helper function to capitalize first letter
