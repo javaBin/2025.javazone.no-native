@@ -1,11 +1,11 @@
 import React from 'react';
 import { SvgImage } from '@/UI';
 import { Assets } from '@/Assets';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, TextStyle, View } from 'react-native';
 
 type BulletListItemProps = {
   text: string;
-  textStyle?: object;
+  textStyle?: TextStyle;
 };
 const BulletListItem: React.FC<BulletListItemProps> = ({ text, textStyle }) => {
   return (

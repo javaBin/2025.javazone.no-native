@@ -41,6 +41,10 @@ import Vine from '@/assets/icons/vine.svg';
 import Vine2 from '@/assets/icons/vine2.svg';
 import Lyre from '@/assets/icons/lyre.svg';
 import Caesar from '@/assets/icons/caezar.svg';
+import CaesarDj from '@/assets/images/awezone/cesar-dj.svg';
+import endometrioseforeningen from '@/assets/images/awezone/endometrioseforeningen.svg';
+import kreftforeningen from '@/assets/images/awezone/kreftforeningen.svg';
+import legerutengrenser from '@/assets/images/awezone/legerutengrenser.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -198,7 +202,11 @@ export const Assets = {
     Vine,
     Vine2,
     Lyre,
-    Caesar
+    Caesar,
+    CaesarDj,
+    endometrioseforeningen,
+    kreftforeningen,
+    legerutengrenser,
   },
   partnerLogos: {
     Accenture,
