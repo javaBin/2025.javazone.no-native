@@ -6,7 +6,7 @@ import { BulletListItem } from '@/components';
 import React from 'react';
 import { Link } from 'expo-router';
 
-const ArrivalToNovaSpektrum = () => {
+const Directions = () => {
   const screenWidth = Dimensions.get('window').width;
 
   return (
@@ -193,4 +193,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ArrivalToNovaSpektrum;
+export default Directions;

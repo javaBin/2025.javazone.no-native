@@ -6,7 +6,7 @@ import React from 'react';
 type LinkTextProps = {
   title: string;
   href: string;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<LinkStyle>;
   targetSelf?: boolean;
 };
 

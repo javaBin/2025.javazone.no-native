@@ -15,11 +15,11 @@ const WelcomeSection = () => {
       <Text style={[styles.ticketText, {marginTop: 20}]}>{t('javaZone.waiting_list')}</Text>
 
       <View style={styles.eventCheckinContainer}>
-        <LinkButton href={`${lang}/program`} title={t("program")} targetBlank={true} />
+        <LinkButton href={`${lang}/program`} title={t("program")} targetBlank={false} />
       </View>
       <View style={styles.eventCheckinContainer}>
         <Text style={[styles.ticketText, {marginTop: 20}]}>{t('General info')}</Text>
-        <LinkButton href={`${lang}/info`} title={t("Info")} targetBlank={true} />
+        <LinkButton href={`${lang}/info`} title={t("Info")} targetBlank={false} />
       </View>
     </View>
   );
