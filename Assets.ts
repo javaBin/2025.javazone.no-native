@@ -37,6 +37,14 @@ import BlueSkyLogo from '@/assets/icons/bluesky.svg';
 import HeartFilled from '@/assets/program-svg/heart-filled.svg';
 import HeartVoid from '@/assets/program-svg/heart-void.svg';
 import LaurelWealth from '@/assets/program-svg/laurel-wealth.svg';
+import Vine from '@/assets/icons/vine.svg';
+import Vine2 from '@/assets/icons/vine2.svg';
+import Lyre from '@/assets/icons/lyre.svg';
+import Caesar from '@/assets/icons/caezar.svg';
+import CaesarDj from '@/assets/images/awezone/cesar-dj.svg';
+import endometrioseforeningen from '@/assets/images/awezone/endometrioseforeningen.svg';
+import kreftforeningen from '@/assets/images/awezone/kreftforeningen.svg';
+import legerutengrenser from '@/assets/images/awezone/legerutengrenser.svg';
 
 // Tab icons
 import Home from '@/assets/icons/home.svg';
@@ -191,6 +199,14 @@ export const Assets = {
     HeartFilled,
     HeartVoid,
     LaurelWealth,
+    Vine,
+    Vine2,
+    Lyre,
+    Caesar,
+    CaesarDj,
+    endometrioseforeningen,
+    kreftforeningen,
+    legerutengrenser,
   },
   partnerLogos: {
     Accenture,

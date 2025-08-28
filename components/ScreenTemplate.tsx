@@ -62,7 +62,7 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, 
   });
 
   // Hard refresh on dimension change
-  useEffect(() => {
+/*  useEffect(() => {
     const subscription = Dimensions.addEventListener('change', () => {
       if (Platform.OS === 'web') {
         window.location.reload();
@@ -71,7 +71,7 @@ const ScreenTemplate = ({ children, pageTitle, pageSubtitle, shouldScrollToTop, 
       }
     });
     return () => subscription?.remove();
-  }, []);
+  }, []);*/
 
   return (
     <ImageBackground source={Assets.background} style={{ flex: 1, width: '100%', height: '100%' }}>

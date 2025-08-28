@@ -49,12 +49,6 @@ const Volunteers: React.FC = () => {
       <Text style={[Assets.styles.sectionSubTitle, { marginHorizontal: 20 }]}>{t('volunteer.who_are_we_looking_for')}</Text>
       <Text style={[Assets.styles.preface, { marginHorizontal: 20 }]}>{t('volunteer.who_can_apply')}</Text>
 
-      <LinkButton
-        margin={20}
-        title={t('volunteer.apply_now')}
-        targetBlank={true}
-        href={'https://docs.google.com/forms/d/19bdXhtH55KBcZy6JudOFnaN0_K67Q7ZozUUhCnuf49U/viewform'}
-      />
       <SectionBox sectionTitle={t('volunteer.faq_title')}>
         {faqItems.map(({ key, title, answer }) => (
           <View key={key} style={{padding: 10}}>
