@@ -129,8 +129,8 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
         <Link href={{ pathname: `${lang}/speaker/kids` }} style={styles.drawerItem} onPress={onPressItem}>
           JavaZone Kids
         </Link>
-        <Link href={{ pathname: `${lang}/volunteers` }} style={styles.drawerItem} onPress={onPressItem}>
-          Volunteers
+        <Link href={{ pathname: `${lang}/speaker/awezone` }} style={styles.drawerItem} onPress={onPressItem}>
+          AweZone
         </Link>
         <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={onPressItem}>
           Info
