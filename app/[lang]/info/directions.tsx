@@ -5,21 +5,22 @@ import { SvgImage, SectionBox, LinkText } from '@/UI';
 import { BulletListItem } from '@/components';
 import React from 'react';
 import { Link } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 const Directions = () => {
+  const { t } = useTranslation();
   const screenWidth = Dimensions.get('window').width;
 
   return (
-    <ScreenTemplate pageTitle="How to get to JavaZone at Nova Spektrum" shouldScrollToTop={true}>
+    <ScreenTemplate pageTitle={t('info.directions.how_to')} shouldScrollToTop={true}>
       {/* Introduction */}
-      <SectionBox sectionTitle="Location & Address">
+      <SectionBox sectionTitle={t('info.directions.location')}>
         <Text style={Assets.styles.preface}>
-          NOVA Spektrum is centrally located in the city of Lillestrøm, a short distance from Oslo Central Station and Oslo Airport Gardermoen.
-          It is approximately 8 minutes walking distance from Lillestrøm train station.
+          {t('info.directions.nova_spektrum')}
         </Text>
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Visiting Address</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.visiting_address')}</Text>
         <View style={styles.addressBox}>
           <Text style={[Assets.styles.text, styles.addressText]}>NOVA Spektrum</Text>
           <Text style={[Assets.styles.text, styles.addressText]}>Messeveien 8</Text>
@@ -28,104 +29,102 @@ const Directions = () => {
       </SectionBox>
 
       {/* Public Transportation */}
-      <SectionBox sectionTitle="🚆 Public Transportation">
-        <Text style={Assets.styles.sectionSubTitle}>Train</Text>
+      <SectionBox sectionTitle={`🚆 ${t('info.directions.public_transportation')}`}>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.train')}</Text>
         <Text style={Assets.styles.text}>
-          Vy has several departures per hour from both Oslo and Gardermoen. Travel time is only 11 minutes from Oslo S
-          and 12 minutes from Oslo Airport.
+          {t('info.directions.vy_info')}
         </Text>
         <View style={styles.importantBox}>
           <Text style={[Assets.styles.callout, styles.importantText]}>
-            IMPORTANT: Use the trains marked R for the fastest travel time (RE11, R12, R14 etc.)
+            {t('info.directions.important_note')}
           </Text>
         </View>
-        <Text style={Assets.styles.text}>Use the Ruter app to plan your journey to JavaZone.</Text>
+        <Text style={Assets.styles.text}>{t('info.directions.use_ruter')}</Text>
 
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Airport Train</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.airport_train')}</Text>
         <Text style={Assets.styles.text}>
-          The airport train takes 12 minutes from Oslo Airport to Lillestrøm.
+          {t('info.directions.airport_train_info')}
         </Text>
 
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Bus</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.bus')}</Text>
         <Text style={Assets.styles.text}>
-          From Lillestrøm bus terminal it takes approximately 8 minutes to walk to NOVA Spektrum.
+          {t('info.directions.bus_info')}
         </Text>
 
         <View style={styles.linkContainer}>
           <LinkText
-            title="📍 View walking directions on Google Maps"
+            title={t('info.directions.view_walking_directions')}
             href="https://maps.app.goo.gl/6YCAZhLvBNHJA2rD6"
           />
         </View>
       </SectionBox>
 
       {/* Car/Motorcycle */}
-      <SectionBox sectionTitle="🚗 Arriving by Car/Motorcycle">
-        <Text style={Assets.styles.sectionSubTitle}>Parking Information</Text>
+      <SectionBox sectionTitle={`🚗 ${t('info.directions.car_motorcycle')}`}>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.parking_info')}</Text>
         <Text style={Assets.styles.text}>
-          There are 2,200 parking spaces in front of the venue. All parking spaces are chargeable 24 hours a day.
+          {t('info.directions.parking_info_one')}
         </Text>
 
         <View style={styles.importantBox}>
           <Text style={[Assets.styles.callout, styles.warningText]}>
-            If your vehicle uses two parking spaces, you will be charged for both parking spaces
-            (Mobile home, van, car with trailer etc).
+            {t('info.directions.parking_info_two')}
           </Text>
         </View>
 
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Parking Rates</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.parking_rates')}</Text>
 
         <View style={styles.pricingBox}>
-          <Text style={Assets.styles.sectionSubTitle}>Vehicles under 3500 kg</Text>
-          <Text style={Assets.styles.text}>(also applies to trailers/mopeds/scooters etc.)</Text>
-          <BulletListItem text="NOK 72 per hour started" />
-          <BulletListItem text="Maximum price for continuous parking within 24 hours: NOK 420" />
+          <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.vehicles_under_3_5_kg')}</Text>
+          <Text style={Assets.styles.text}>{t('info.directions.also_applies_to')}</Text>
+          <BulletListItem text={t('info.directions.nok_per_hour')} />
+          <BulletListItem text={t('info.directions.max_price')} />
         </View>
 
         <View style={styles.pricingBox}>
-          <Text style={Assets.styles.sectionSubTitle}>Vehicles over 3500 kg</Text>
-          <BulletListItem text="NOK 144 per hour started" />
-          <BulletListItem text="Maximum price for continuous parking within 24 hours: NOK 840" />
+          <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.vehicles_over_3500_kg')}</Text>
+          <BulletListItem text={t('info.directions.nok_144_per_hour')} />
+          <BulletListItem text={t('info.directions.max_price_over_3500')} />
         </View>
 
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Special Parking</Text>
-        <BulletListItem text="Parking for the disabled is available in fields C and F, for a fee" />
-        <BulletListItem text="10 charging stations for electric cars in field A, for a fee" />
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.special_parking')}</Text>
+        <BulletListItem text={t('info.directions.disabled_parking')} />
+        <BulletListItem text={t('info.directions.electric_charging')} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Payment Options</Text>
-        <Text style={Assets.styles.text}>Autopay, card or mobile payment accepted.</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.directions.payment_options')}</Text>
+        <Text style={Assets.styles.text}>{t('info.directions.payment_methods')}</Text>
 
         <View style={styles.linkContainer}>
           <LinkText
-            title="📍 View parking location on Google Maps"
+            title={t('info.directions.view_parking_location')}
             href="https://maps.app.goo.gl/PRsnr73LnHxS5qwH8"
           />
         </View>
       </SectionBox>
 
       {/* Accessibility */}
-      <SectionBox sectionTitle="♿ Accessibility">
+      <SectionBox sectionTitle={t('info.directions.accessibility')}>
         <Text style={Assets.styles.text}>
-          NOVA Spektrum is adapted for wheelchair users. We have a limited number of wheelchairs available.
+          {t('info.directions.accessibility_info')}
         </Text>
 
         <View style={styles.contactBox}>
           <Text style={Assets.styles.text}>
-            Contact us prior to the conference if you need assistance:
+            {t('info.directions.contact_assistance')}
           </Text>
           <Link
             href="mailto:javazone@macsimum.no"
             style={styles.linkText}
           >
-            javazone@macsimum.no
+            {t('info.directions.contact_email')}
           </Link>
         </View>
       </SectionBox>
