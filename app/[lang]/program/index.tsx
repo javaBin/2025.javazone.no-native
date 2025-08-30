@@ -523,7 +523,7 @@ const templeMenuStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
   fullProgramTitle: {
-    fontSize: 16, // Smaller font size for "FULL PROGRAM" when favorites are shown
+    fontSize: Dimensions.get('window').width > 1300 ? 24 : 22,
   },
   mobileFullProgramTitle: {
     // Specific styles for mobile "FULL PROGRAM" title
@@ -549,7 +549,7 @@ const templeMenuStyles = StyleSheet.create({
   },
   fullProgramSubtitle: {
     // Styles for the subtitle when showing "FULL PROGRAM"
-    fontSize: 14,
+    fontSize: Dimensions.get('window').width > 1300 ? 22 : 20,
     color: Assets.colors.jz2025ThemeColors.lightBrown,
     fontFamily: 'Cinzel_400Regular',
     textTransform: 'uppercase',
