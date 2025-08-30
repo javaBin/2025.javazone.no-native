@@ -19,10 +19,10 @@ const images = [
 const FoodMenu = () => (
   <ScreenTemplate pageTitle="JavaZone Food">
     <SectionBox sectionTitle="Menu">
-      {images.map((path, index) => (
+      {images.map((src, index) => (
         <Image
           key={index}
-          source={path}
+          source={src}
           style={{
             width: '100%',
             height: 700,
