@@ -448,7 +448,7 @@ const templeMenuStyles = StyleSheet.create({
   },
   mobileMenuContainer: {
     // Specific styles for mobile menu container
-    width: '100%',
+    width: '104%',
     padding: 0,
     alignItems: 'flex-start',
   },
