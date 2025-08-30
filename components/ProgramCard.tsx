@@ -55,10 +55,10 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
   return (
     <Pressable key={session.id} onPress={navigateToDetail} style={[styles.container, Assets.styles.shadow]}>
       <BlurView
-          tint="light"
-          intensity={Platform.OS === 'web' ? 30 : 40}
-          experimentalBlurMethod={'dimezisBlurView'}
-          style={styles.content}>
+        tint="light"
+        intensity={Platform.OS === 'web' ? 30 : 40}
+        experimentalBlurMethod={'dimezisBlurView'}
+        style={styles.content}>
 
         <View style={styles.horizontalSpaceBetween}>
           <Text style={styles.room}>{session.room || t('program.room_TBD')}</Text>
@@ -84,77 +84,77 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
 
         {/* TODO: REFACTOR BELOW */}
         <View style={styles.horizontalWrap}>
-        {session.speakers.map((speaker, index) => {
-          const animations = createAnimations(index);
-          const prevSpeaker = session.speakers[index - 1];
-          const prevNoSocials = prevSpeaker && !prevSpeaker.twitter && !prevSpeaker.linkedin && !prevSpeaker.bluesky;
-          const speakerName = prevNoSocials ? ', ' + speaker.name : speaker.name;
+          {session.speakers.map((speaker, index) => {
+            const animations = createAnimations(index);
+            const prevSpeaker = session.speakers[index - 1];
+            const prevNoSocials = prevSpeaker && !prevSpeaker.twitter && !prevSpeaker.linkedin && !prevSpeaker.bluesky;
+            const speakerName = prevNoSocials ? ', ' + speaker.name : speaker.name;
 
-          return (
-            <View key={speaker.name} style={styles.horizontalContain}>
-              <Text style={styles.speakerName}>{speakerName}</Text>
+            return (
+              <View key={speaker.name} style={styles.horizontalContain}>
+                <Text style={styles.speakerName}>{speakerName}</Text>
 
-              {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
-                <View style={styles.horizontalContain}>
-                  {speaker.twitter && (
-                    <Animated.View
-                      style={[styles.social, {
-                        transform: [{ scale: animations.twitter.scale }],
-                      }]}
-                      onPointerEnter={animations.twitter.handlers.handleMouseEnter}
-                      onPointerLeave={animations.twitter.handlers.handleMouseLeave}
-                    >
-                      <TouchableOpacity
-                        onPress={(e) => {
-                          e.stopPropagation();
-                          Linking.openURL(`https://x.com/${speaker.twitter}`);
-                        }}
+                {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
+                  <View style={styles.horizontalContain}>
+                    {speaker.twitter && (
+                      <Animated.View
+                        style={[styles.social, {
+                          transform: [{ scale: animations.twitter.scale }],
+                        }]}
+                        onPointerEnter={animations.twitter.handlers.handleMouseEnter}
+                        onPointerLeave={animations.twitter.handlers.handleMouseLeave}
                       >
-                        <SvgImage SVG={Assets.icons.XLogo} height={20} width={20} />
-                      </TouchableOpacity>
-                    </Animated.View>
-                  )}
-                  {speaker.linkedin && (
-                    <Animated.View
-                      style={[styles.social, {
-                        transform: [{ scale: animations.linkedin.scale }],
-                      }]}
-                      onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
-                      onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
-                    >
-                      <TouchableOpacity
-                        onPress={(e) => {
-                          e.stopPropagation();
-                          Linking.openURL(`${speaker.linkedin}`);
-                        }}
+                        <TouchableOpacity
+                          onPress={(e) => {
+                            e.stopPropagation();
+                            Linking.openURL(`https://x.com/${speaker.twitter}`);
+                          }}
+                        >
+                          <SvgImage SVG={Assets.icons.XLogo} height={20} width={20} />
+                        </TouchableOpacity>
+                      </Animated.View>
+                    )}
+                    {speaker.linkedin && (
+                      <Animated.View
+                        style={[styles.social, {
+                          transform: [{ scale: animations.linkedin.scale }],
+                        }]}
+                        onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
+                        onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
                       >
-                        <SvgImage SVG={Assets.icons.LinkedInLogo} height={20} width={20} />
-                      </TouchableOpacity>
-                    </Animated.View>
-                  )}
-                  {speaker.bluesky && (
-                    <Animated.View
-                      style={[styles.social, {
-                        transform: [{ scale: animations.bluesky.scale }],
-                      }]}
-                      onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
-                      onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
-                    >
-                      <TouchableOpacity
-                        onPress={(e) => {
-                          e.stopPropagation();
-                          Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`);
-                        }}
+                        <TouchableOpacity
+                          onPress={(e) => {
+                            e.stopPropagation();
+                            Linking.openURL(`${speaker.linkedin}`);
+                          }}
+                        >
+                          <SvgImage SVG={Assets.icons.LinkedInLogo} height={20} width={20} />
+                        </TouchableOpacity>
+                      </Animated.View>
+                    )}
+                    {speaker.bluesky && (
+                      <Animated.View
+                        style={[styles.social, {
+                          transform: [{ scale: animations.bluesky.scale }],
+                        }]}
+                        onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
+                        onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
                       >
-                        <SvgImage SVG={Assets.icons.BlueSkyLogo} height={20} width={20} />
-                      </TouchableOpacity>
-                    </Animated.View>
-                  )}
-                </View>
-              )}
-            </View>
-          );
-        })}
+                        <TouchableOpacity
+                          onPress={(e) => {
+                            e.stopPropagation();
+                            Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`);
+                          }}
+                        >
+                          <SvgImage SVG={Assets.icons.BlueSkyLogo} height={20} width={20} />
+                        </TouchableOpacity>
+                      </Animated.View>
+                    )}
+                  </View>
+                )}
+              </View>
+            );
+          })}
         </View>
 
         {session.suggestedKeywords && (
