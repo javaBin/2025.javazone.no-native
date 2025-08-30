@@ -360,6 +360,12 @@
       "confirmation_note_end": " og aksepteres kun før vår konferanse. Refusjoner gis etter konferansen. For dette krever vi at du sender oss kopier av alle kvitteringer, navnet på din bank og internasjonale kontonumre (IBAN, BIC/SWIFT, hvis tilgjengelig). Vi forbeholder oss retten til å avslå en refusjonssøknad. Foredragsholdere som bor i nærheten av Oslo er ikke kvalifisert.",
       "reimbursement_process": "Refusjoner behandles og utbetales etter konferansen. Vi vil kontakte foredragsholdere som har søkt om refusjon og behandle betalingene når betalingsdetaljene er mottatt."
     },
+    "program": {
+      "workshop": "Workshop",
+      "lightning_talk": "Lightning Talk",
+      "presentation": "Presentasjon",
+      "room_TBD": "Ubestemt rom"
+    },
     "404": {
       "error_code": "Void 0",
       "error_title": "Oisann, dette er flaut...",

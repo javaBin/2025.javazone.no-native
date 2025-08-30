@@ -1,4 +1,14 @@
-import { Linking, Pressable, StyleSheet, Text, TouchableOpacity, View, Animated, Platform } from 'react-native';
+import {
+  Linking,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Animated,
+  Platform,
+  Dimensions
+} from 'react-native';
 import { Assets } from '@/Assets';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SvgImage } from '@/UI';
@@ -8,7 +18,7 @@ import { useFavoritesContext } from '@/contexts/FavoritesContext';
 import { useGlobalSearchParams, useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { createAnimations } from '@/utils/animationUtils';
-import { formatSessionInfo, formatSessionTime, safeParseDate } from '@/utils/programUtils';
+import {useTranslation} from "react-i18next";
 
 type ProgramCardProps = {
   session: Session;
@@ -18,6 +28,7 @@ type ProgramCardProps = {
 const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: ProgramCardProps) => {
   const { addFavorite, removeFavorite } = useFavoritesContext();
   const { lang } = useGlobalSearchParams();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const toggleFavorite = (e: any) => {
@@ -35,17 +46,27 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
 
   const animations = createAnimations();
 
+  const getLangFormat = (session: Session) => {
+    const language = session.language === 'no' ? t('language_name.nb-NO') : t('language_name.en-US');
+    const format = session.format === 'presentation' ? t('program.presentation') : session.format.replace('-', ' ');
+    return language + ' ' + format;
+  }
+
   return (
-    <Pressable style={[styles.card, Assets.styles.shadow]} key={session.id} onPress={navigateToDetail}>
+    <Pressable key={session.id} onPress={navigateToDetail} style={[styles.container, Assets.styles.shadow]}>
       <BlurView
-        tint="default"
-        intensity={Platform.OS === 'web' ? 20 : 40}
+        tint="light"
+        intensity={Platform.OS === 'web' ? 30 : 40}
         experimentalBlurMethod={'dimezisBlurView'}
-        style={[styles.innerCardContainer]}
-      >
-        <Text style={styles.sessionInfo}>{formatSessionInfo(session, true, lang)}</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={styles.cardTitle}>{session.title}</Text>
+        style={styles.content}>
+
+        <View style={styles.horizontalSpaceBetween}>
+          <Text style={styles.room}>{session.room || t('program.room_TBD')}</Text>
+          <Text style={styles.lengthDuration}>{session.length}{' min'}</Text>
+        </View>
+
+        <View style={styles.horizontalSpaceBetween}>
+          <Text style={styles.title}>{session.title}</Text>
           <Animated.View
             style={{
               transform: [{ scale: animations.favoriteButton.scale }],
@@ -54,130 +75,186 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
             onPointerLeave={animations.favoriteButton.handlers.handleMouseLeave}
           >
             <Pressable onPress={toggleFavorite}>
-              <SvgImage SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={50} width={40} />
+              <SvgImage SVG={isFavorite ? Assets.icons.HeartFilled : Assets.icons.HeartVoid} height={40} width={40} />
             </Pressable>
           </Animated.View>
         </View>
-        {session.speakers.map((speaker, index) => {
-          const animations = createAnimations(index);
 
-          return (
-            <View key={speaker.name} style={{ flexDirection: 'row', gap: 10 }}>
-              <Text style={styles.speaker}>{speaker.name}</Text>
-              {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
-                <View style={{ flexDirection: 'row', gap: 5 }}>
-                  {speaker.twitter && (
-                    <Animated.View
-                      style={{
-                        transform: [{ scale: animations.twitter.scale }],
-                      }}
-                      onPointerEnter={animations.twitter.handlers.handleMouseEnter}
-                      onPointerLeave={animations.twitter.handlers.handleMouseLeave}
-                    >
-                      <TouchableOpacity
-                        onPress={(e) => {
-                          e.stopPropagation();
-                          Linking.openURL(`https://x.com/${speaker.twitter}`);
-                        }}
+        <Text style={styles.format}>{getLangFormat(session)}</Text>
+
+        {/* TODO: REFACTOR BELOW */}
+        <View style={styles.horizontalWrap}>
+          {session.speakers.map((speaker, index) => {
+            const animations = createAnimations(index);
+            const prevSpeaker = session.speakers[index - 1];
+            const prevNoSocials = prevSpeaker && !prevSpeaker.twitter && !prevSpeaker.linkedin && !prevSpeaker.bluesky;
+            const speakerName = prevNoSocials ? ', ' + speaker.name : speaker.name;
+
+            return (
+              <View key={speaker.name} style={styles.horizontalContain}>
+                <Text style={styles.speakerName}>{speakerName}</Text>
+
+                {(speaker.twitter || speaker.linkedin || speaker.bluesky) && (
+                  <View style={styles.horizontalContain}>
+                    {speaker.twitter && (
+                      <Animated.View
+                        style={[styles.social, {
+                          transform: [{ scale: animations.twitter.scale }],
+                        }]}
+                        onPointerEnter={animations.twitter.handlers.handleMouseEnter}
+                        onPointerLeave={animations.twitter.handlers.handleMouseLeave}
                       >
-                        <SvgImage SVG={Assets.icons.XLogo} height={20} width={20} />
-                      </TouchableOpacity>
-                    </Animated.View>
-                  )}
-                  {speaker.linkedin && (
-                    <Animated.View
-                      style={{
-                        transform: [{ scale: animations.linkedin.scale }],
-                      }}
-                      onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
-                      onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
-                    >
-                      <TouchableOpacity
-                        onPress={(e) => {
-                          e.stopPropagation();
-                          Linking.openURL(`${speaker.linkedin}`);
-                        }}
+                        <TouchableOpacity
+                          onPress={(e) => {
+                            e.stopPropagation();
+                            Linking.openURL(`https://x.com/${speaker.twitter}`);
+                          }}
+                        >
+                          <SvgImage SVG={Assets.icons.XLogo} height={20} width={20} />
+                        </TouchableOpacity>
+                      </Animated.View>
+                    )}
+                    {speaker.linkedin && (
+                      <Animated.View
+                        style={[styles.social, {
+                          transform: [{ scale: animations.linkedin.scale }],
+                        }]}
+                        onPointerEnter={animations.linkedin.handlers.handleMouseEnter}
+                        onPointerLeave={animations.linkedin.handlers.handleMouseLeave}
                       >
-                        <SvgImage SVG={Assets.icons.LinkedInLogo} height={20} width={20} />
-                      </TouchableOpacity>
-                    </Animated.View>
-                  )}
-                  {speaker.bluesky && (
-                    <Animated.View
-                      style={{
-                        transform: [{ scale: animations.bluesky.scale }],
-                      }}
-                      onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
-                      onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
-                    >
-                      <TouchableOpacity
-                        onPress={(e) => {
-                          e.stopPropagation();
-                          Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`);
-                        }}
+                        <TouchableOpacity
+                          onPress={(e) => {
+                            e.stopPropagation();
+                            Linking.openURL(`${speaker.linkedin}`);
+                          }}
+                        >
+                          <SvgImage SVG={Assets.icons.LinkedInLogo} height={20} width={20} />
+                        </TouchableOpacity>
+                      </Animated.View>
+                    )}
+                    {speaker.bluesky && (
+                      <Animated.View
+                        style={[styles.social, {
+                          transform: [{ scale: animations.bluesky.scale }],
+                        }]}
+                        onPointerEnter={animations.bluesky.handlers.handleMouseEnter}
+                        onPointerLeave={animations.bluesky.handlers.handleMouseLeave}
                       >
-                        <SvgImage SVG={Assets.icons.BlueSkyLogo} height={20} width={20} />
-                      </TouchableOpacity>
-                    </Animated.View>
-                  )}
-                </View>
-              )}
-            </View>
-          );
-        })}
+                        <TouchableOpacity
+                          onPress={(e) => {
+                            e.stopPropagation();
+                            Linking.openURL(`https://bsky.app/profile/${speaker.bluesky!.replace('@', '')}`);
+                          }}
+                        >
+                          <SvgImage SVG={Assets.icons.BlueSkyLogo} height={20} width={20} />
+                        </TouchableOpacity>
+                      </Animated.View>
+                    )}
+                  </View>
+                )}
+              </View>
+            );
+          })}
+        </View>
 
         {session.suggestedKeywords && (
-          <View style={{ marginVertical: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 5 }}>
+          <View style={styles.horizontalWrap}>
             {session.suggestedKeywords.split(',').map((keyword: string, index: number) => (
               <Text key={index} style={styles.keyword}>
-                #{keyword.trim()}
+                #{keyword.trim().toLowerCase().replaceAll(' ', ' #')}
               </Text>
             ))}
           </View>
         )}
-
-        <Text style={styles.time}>{session.format} - {session.length} min</Text>
       </BlurView>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  innerCardContainer: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+  container: {
+    flex: 1,
+    marginHorizontal: Dimensions.get('window').width < 768 ? 5 : 10,
+    borderRadius: 5,
+    height: 'auto',
+  },
+  content: {
+    paddingVertical: Dimensions.get('window').width < 768 ? 15 : 20,
+    paddingHorizontal: Dimensions.get('window').width < 768 ? 20 : 30,
     height: '100%',
   },
-  sessionInfo: {
-    color: '#343434',
-    fontSize: 14,
-    marginBottom: 5,
+  title: {
+    width: '75%',
+    fontSize: Dimensions.get('window').width < 768 ? 18 : 20,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    lineHeight: Dimensions.get('window').width < 768 ? 22 : 24,
+  },
+  room: {
+    fontSize: Dimensions.get('window').width < 768 ? 14 : 16,
+    fontFamily: 'Cinzel_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
     fontWeight: '500',
   },
-  card: {
-    overflow: 'hidden',
+  lengthDuration: {
+    fontSize: Dimensions.get('window').width < 768 ? 14 : 16,
+    fontFamily: 'Cinzel_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    fontWeight: '500',
+  },
+  format: {
+    fontSize: Dimensions.get('window').width < 768 ? 16 : 18,
     fontFamily: 'PlayfairDisplay_400Regular',
-    width: '100%',
-    maxWidth: 400,
-    borderRadius: 5,
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    marginTop: 'auto',
+    paddingTop: Dimensions.get('window').width < 768 ? 15 : 20,
   },
-  time: {
-    justifyContent: 'flex-end',
+  speakerName: {
+    fontSize: Dimensions.get('window').width < 768 ? 16 : 18,
+    fontFamily: 'PlayfairDisplay_400Regular',
+    color: Assets.colors.jz2025ThemeColors.darkBrown,
+    lineHeight: Dimensions.get('window').width < 768 ? 20 : 22,
   },
-  speaker: {
-    color: '#363636',
-    fontSize: 14,
-  },
-  cardTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 8,
+  social: {
+    paddingHorizontal: 5,
   },
   keyword: {
     color: Assets.colors.jz2025ThemeColors.crimsonRed,
-    fontSize: 12,
+    fontSize: Dimensions.get('window').width < 768 ? 11 : 12,
     fontWeight: '500',
+    paddingRight: 5,
+    lineHeight: Dimensions.get('window').width < 768 ? 14 : 16,
+  },
+  horizontalStart: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginVertical: Dimensions.get('window').width < 768 ? 3 : 5,
+  },
+  horizontalSpaceBetween: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: Dimensions.get('window').width < 768 ? 8 : 10,
+  },
+  horizontalWrap: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginVertical: Dimensions.get('window').width < 768 ? 4 : 5,
+  },
+  horizontalContain: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
 });
-
 export default ProgramCard;
