@@ -4,12 +4,14 @@ import { Dimensions, Text, View } from 'react-native';
 import { Assets } from '@/Assets';
 import React from 'react';
 import { Link } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 const Awezone = () => {
+  const { t } = useTranslation();
   const isNotMobile = Dimensions.get('window').width > 450;
   // @ts-ignore
   return (
-    <ScreenTemplate pageTitle={'AweZone Party'}>
+    <ScreenTemplate pageTitle={t('awezone.page_title')}>
       <SectionBox sectionTitle="">
         <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom:0 }}>
           {isNotMobile ? (
@@ -32,47 +34,43 @@ const Awezone = () => {
           )}
         </View>
         <Text style={[Assets.styles.intro, { marginBottom: 16 }]}>
-          AweZone is JavaZone's traditional party which takes place on Wednesday evening.
+          {t('awezone.traditional_party')}
         </Text>
         <Text style={[Assets.styles.text, { marginBottom: 16 }]}>
-          We will stay at Nova Spektrum the entire evening and the party offers a great chance to catch up with old
-          friends, meet new ones, and also experience a great lineup of entertainment!
+          {t('awezone.we_will_stay')}
         </Text>
         <Text style={[Assets.styles.text, { marginBottom: 16 }]}>
-          The bars open at <Text style={{ fontWeight: 'bold' }}>6:00 PM</Text> and we will be starting the party at{' '}
-          <Text style={{ fontWeight: 'bold' }}>7:20 PM</Text>.
+          {t('awezone.bars_open_time')}
         </Text>
 
-        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>Partner bands</Text>
+        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>{t('awezone.partner_bands')}</Text>
         <Text style={[Assets.styles.text, { marginBottom: 8 }]}>
-          Our concert room for the evening is Overflow, kicking it off with our partner bands in the following order:
+          {t('awezone.concert_room_info')}
         </Text>
-        <BulletListItem text="8:00 PM - Kanban" />
-        <BulletListItem text="8:30 PM - Endure" />
-        <BulletListItem text="9:00 PM - Carsten Anker Band" textStyle={{marginBottom: 30}}/>
+        <BulletListItem text={t('awezone.band_kanban')} />
+        <BulletListItem text={t('awezone.band_endure')} />
+        <BulletListItem text={t('awezone.band_carsten')} textStyle={{marginBottom: 30}}/>
 
         <SvgImage SVG={Assets.icons.CaesarDj} height={100} width={100} />
-        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>Expo DJ</Text>
+        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>{t('awezone.expo_dj')}</Text>
         <Text style={[Assets.styles.text, { marginBottom: 16 }]}>
-          DJ Sebastian Emes is playing in Expo from <Text style={{ fontWeight: 'bold' }}>7:20 PM</Text> – closing time.
+          DJ Sebastian Emes is playing in Expo from <Text style={{ fontWeight: 'bold' }}>{t('awezone.dj_time_bold')}</Text> – closing time.
           Feel free to ask for your favourite song.
         </Text>
 
         <SvgImage SVG={Assets.icons.Lyre} height={100} width={100} />
-        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>Headliner band</Text>
+        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>{t('awezone.headliner_band')}</Text>
         <Text style={[Assets.styles.text, { marginBottom: 16 }]}>
-          This year's headliner band is <Text style={{ fontWeight: 'bold' }}>Ylvis</Text>, known for “The Fox”, “The
-          Cabin” and many more. Join us for an epic show!
+          This year's headliner band is <Text style={{ fontWeight: 'bold' }}>{t('awezone.ylvis_bold')}</Text>, known for "The Fox", "The
+          Cabin" and many more. Join us for an epic show!
         </Text>
         <SvgImage SVG={Assets.icons.Caesar} height={100} width={100} />
-        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>Cæsars Palace</Text>
+        <Text style={[Assets.styles.sectionSubTitle, { marginTop: 24, marginBottom: 8 }]}>{t('awezone.caesars_palace')}</Text>
         <Text style={[Assets.styles.text, { marginBottom: 8 }]}>
-          Enjoy a small taste of Cæsars Palace as we open tables of Black Jack, Poker and Roulette for you to enjoy. In
-          order to play you must visit our partners during the day to collect Duke Dosh.
+          {t('awezone.casino_info')}
         </Text>
         <Text style={[Assets.styles.text, { marginBottom: 8 }]}>
-          If you are lucky enough to win, or have Duke Dosh to spare, you can donate your winnings to one or several of
-          our selected charities:
+          {t('awezone.donation_info')}
         </Text>
 
         <View style={{
@@ -110,7 +108,7 @@ const Awezone = () => {
                 marginTop: 2,
                 fontSize: 12
               }]}>
-                (Endometriosis Association)
+                {t('awezone.endometriosis_association')}
               </Text>
             </View>
           </Link>
@@ -143,7 +141,7 @@ const Awezone = () => {
                 marginTop: 2,
                 fontSize: 13
               }]}>
-                (Norwegian Cancer Society)
+                {t('awezone.norwegian_cancer_society')}
               </Text>
             </View>
           </Link>
@@ -176,19 +174,17 @@ const Awezone = () => {
                 marginTop: 2,
                 fontSize: 12
               }]}>
-                (Medecins Sans Frontieres)
+                {t('awezone.medecins_sans_frontieres')}
               </Text>
             </View>
           </Link>
         </View>
 
         <Text style={[Assets.styles.text, { marginBottom: 16 }]}>
-          You will be able to enjoy the drinks, stay in the chill-out areas, participate in activities, as well as
-          mingle with the conference organizers, speakers, other participants, and our partners!
+          {t('awezone.enjoy_activities')}
         </Text>
         <Text style={[Assets.styles.text, { marginBottom: 16 }]}>
-          Oh, and one more thing! We will be serving good food in the evening as well. Some drinks are on us, some will
-          be on our partners!
+          {t('awezone.food_info')}
         </Text>
       </SectionBox>
     </ScreenTemplate>

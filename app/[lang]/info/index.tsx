@@ -16,92 +16,83 @@ const JavaZoneInfo = () => {
   const imageWidth = Math.min(screenWidth * 0.9, 610);
 
   return (
-    <ScreenTemplate pageTitle="JavaZone 2025 - Everything You Need to Know" shouldScrollToTop={true}>
+    <ScreenTemplate pageTitle={t('info.jz2025_info')} shouldScrollToTop={true}>
       {/* Introduction */}
-      <SectionBox>
-        <Text style={[styles.introText, { fontFamily: 'PlayfairDisplay_800ExtraBold' }]}>
-          Less than a week left until #JavaZone 2025!
-        </Text>
+      <SectionBox sectionTitle={t('info.less_then_a_week')}>
         <Text style={[Assets.styles.preface, styles.introText]}>
-          We can't wait to see everyone again! Here's some useful info to make your visit to NOVA Spektrum smooth, safe,
-          and fun 🧵
+          {t('info.cant_wait_to_see')}
         </Text>
       </SectionBox>
 
       {/* Venue */}
-      <SectionBox sectionTitle="🏛️ JAVAZONE VENUE">
+      <SectionBox sectionTitle={t('info.javazone_venue')}>
         <Text style={Assets.styles.text}>
-          NOVA Spektrum: Messeveien 6, 2004 Lillestrøm{'\n'}
-          Just a short train ride (10–12 minutes) from Oslo Central Station and only 15 minutes from Oslo Airport
-          Gardermoen, it's easy to reach whether you're coming from downtown Oslo or abroad.
+          {t('info.nova_spektrum_venue_info')}
         </Text>
 
         <View style={styles.addressBox}>
-          <Text style={[Assets.styles.text, styles.addressText]}>NOVA Spektrum</Text>
-          <Text style={[Assets.styles.text, styles.addressText]}>Messeveien 6, 2004 Lillestrøm, Norway</Text>
+          <Text style={[Assets.styles.text, styles.addressText]}>{t('info.nova_spektrum_address_line1')}</Text>
+          <Text style={[Assets.styles.text, styles.addressText]}>{t('info.nova_spektrum_address_line2')}</Text>
         </View>
       </SectionBox>
 
       {/* Public Transportation */}
-      <SectionBox sectionTitle="PUBLIC TRANSPORTATION">
-        <Text style={Assets.styles.sectionSubTitle}>Train (Vy)</Text>
+      <SectionBox sectionTitle={t('info.public_transportation_title')}>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.train_vy')}</Text>
         <Text style={Assets.styles.text}>
-          11 min from Oslo S / 12 min from Oslo Airport. Take R-trains (RE11, R12, R14 etc.) for fastest travel. Use the
-          Ruter app to plan.
+          {t('info.train_vy_info')}
         </Text>
 
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Airport Express (Flytoget)</Text>
-        <Text style={Assets.styles.text}>12 min from Oslo Airport to Lillestrøm.</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.airport_express')}</Text>
+        <Text style={Assets.styles.text}>{t('info.airport_express_info')}</Text>
 
         <SvgImage SVG={Assets.UI.DividerDot} height={10} style={{ margin: 10 }} />
 
-        <Text style={Assets.styles.sectionSubTitle}>Bus</Text>
-        <Text style={Assets.styles.text}>Lillestrøm bus terminal is an 8-min walk to NOVA Spektrum.</Text>
+        <Text style={Assets.styles.sectionSubTitle}>{t('info.bus_title')}</Text>
+        <Text style={Assets.styles.text}>{t('info.bus_info')}</Text>
       </SectionBox>
 
       {/* Parking */}
-      <SectionBox sectionTitle="PARKING">
+      <SectionBox sectionTitle={t('info.parking_title')}>
         <Text style={Assets.styles.text}>
-          2,200 spaces in front of the venue (paid 24/7). Pay with Autopay, card or mobile.
+          {t('info.parking_info')}
         </Text>
 
         <View style={styles.pricingBox}>
-          <Text style={Assets.styles.sectionSubTitle}>Vehicles &lt; 3,500 kg</Text>
-          <Text style={Assets.styles.text}>NOK 72/hour, max NOK 420/24h</Text>
+          <Text style={Assets.styles.sectionSubTitle}>{t('info.vehicles_under_3500')}</Text>
+          <Text style={Assets.styles.text}>{t('info.vehicles_under_3500_price')}</Text>
         </View>
 
         <View style={styles.pricingBox}>
-          <Text style={Assets.styles.sectionSubTitle}>Vehicles &gt; 3,500 kg</Text>
-          <Text style={Assets.styles.text}>NOK 144/hour, max NOK 840/24h</Text>
+          <Text style={Assets.styles.sectionSubTitle}>{t('info.vehicles_over_3500')}</Text>
+          <Text style={Assets.styles.text}>{t('info.vehicles_over_3500_price')}</Text>
         </View>
 
-        <BulletListItem text="♿ Disabled parking: fields C & F (paid)" />
-        <BulletListItem text="🔌 10 EV charging stations in field A (paid)" />
+        <BulletListItem text={t('info.disabled_parking')} />
+        <BulletListItem text={t('info.ev_charging')} />
 
         <View style={styles.linkContainer}>
           <Link href="https://maps.app.goo.gl/PRsnr73LnHxS5qwH8" style={styles.linkText}>
-            📍View parking location on Google Maps
+            {t('info.view_parking_maps')}
           </Link>
         </View>
       </SectionBox>
 
-      <LinkButton href={`info/directions`} title={'More detailed directions & info'} />
+      <LinkButton href={`info/directions`} title={t('info.more_detailed_directions')} />
 
       {/* Workshop Venue */}
-      <SectionBox sectionTitle="🔨 WORKSHOP VENUE">
+      <SectionBox sectionTitle={t('info.workshop_venue')}>
         <Text style={Assets.styles.text}>
-          Workshops take place on Tuesday, 2 September (08:30–17:45) at Rebel Oslo, Universitetsgata 2. The venue is
-          centrally located in Oslo, just a few minutes' walk from Nationaltheatret station.
+          {t('info.workshop_venue_info')}
         </Text>
       </SectionBox>
 
       {/* Accessibility */}
-      <SectionBox sectionTitle="♿ ACCESSIBILITY">
+      <SectionBox sectionTitle={t('info.accessibility_title')}>
         <Text style={Assets.styles.text}>
-          NOVA Spektrum is wheelchair accessible. A limited number of wheelchairs are available – contact
-          javazone@macsimum.no in advance if you need assistance.
+          {t('info.accessibility_info')}
         </Text>
 
         <View style={styles.contactBox}>
@@ -112,32 +103,30 @@ const JavaZoneInfo = () => {
       </SectionBox>
 
       {/* Weather */}
-      <SectionBox sectionTitle="WEATHER">
+      <SectionBox sectionTitle={t('info.weather_title')}>
         <Text style={Assets.styles.text}>
-          Expect a bit of chill in Oslo – bring a sweater/hoodie, and maybe an umbrella.
+          {t('info.weather_info')}
         </Text>
       </SectionBox>
 
       {/* Currency */}
-      <SectionBox sectionTitle="CURRENCY">
+      <SectionBox sectionTitle={t('info.currency_title')}>
         <Text style={Assets.styles.text}>
-          Norwegian krone (NOK). Almost all places accept Visa/Mastercard. Cash is rarely needed.
+          {t('info.currency_info')}
         </Text>
       </SectionBox>
 
       {/* Conference */}
-      <SectionBox sectionTitle="CONFERENCE">
+      <SectionBox sectionTitle={t('info.conference_title')}>
         <Text style={Assets.styles.text}>
-          Program available here: JavaZone 2025. The reception opens at 8 am! (tea and coffee will be ready once you get
-          inside ☕)
+          {t('info.conference_info')}
         </Text>
       </SectionBox>
 
       {/* Tickets */}
-      <SectionBox sectionTitle="TICKETS">
+      <SectionBox sectionTitle={t('info.tickets_title')}>
         <Text style={Assets.styles.text}>
-          Scan your ticket to get an access badge. Once scanned, it's locked to you – but until then, tickets can be
-          transferred.
+          {t('info.tickets_info')}
         </Text>
         <View style={styles.imageContainer}>
           <Image
@@ -149,10 +138,9 @@ const JavaZoneInfo = () => {
       </SectionBox>
 
       {/* Food */}
-      <SectionBox sectionTitle="FOOD">
+      <SectionBox sectionTitle={t('info.food_title')}>
         <Text style={Assets.styles.text}>
-          We promise you will not walk around hungry. Our chefs will accommodate all food preferences and allergies.
-          There will be some sweet stuff, too - but do not tell anyone!
+          {t('info.food_info')}
         </Text>
         <View style={styles.imageContainer}>
           <Image
@@ -164,15 +152,14 @@ const JavaZoneInfo = () => {
       </SectionBox>
 
       {/* AweZone */}
-      <SectionBox sectionTitle="AWEZONE: CELEBRATING THE COMMUNITY">
+      <SectionBox sectionTitle={t('info.awezone_title')}>
         <Text style={Assets.styles.text}>
-          Join us Wednesday evening at NOVA Spektrum for JavaZone's traditional party – a night of music, fun, food, and
-          community.
+          {t('info.awezone_info')}
         </Text>
-        <BulletListItem text="Bars open: 18:00" />
-        <BulletListItem text="Party starts: 19:20" />
+        <BulletListItem text={t('info.bars_open')} />
+        <BulletListItem text={t('info.party_starts')} />
 
-        <LinkButton href={`awezone`} title={"More details about AweZone"}/>
+        <LinkButton href={`awezone`} title={t('info.more_awezone_details')}/>
         <View style={styles.imageContainer}>
           <Image
             source={require('@/assets/images/info/party.jpeg')}
@@ -183,19 +170,18 @@ const JavaZoneInfo = () => {
       </SectionBox>
 
       {/* LuckyZone */}
-      <SectionBox sectionTitle="LUCKYZONE: Cæsars Palace">
+      <SectionBox sectionTitle={t('info.luckyzone_title')}>
         <Text style={Assets.styles.text}>
-          Try your luck at Blackjack, Poker, and Roulette! Collect Duke Dosh from our partners during the day to play.
-          Winnings can be donated to:
+          {t('info.luckyzone_info')}
         </Text>
         <Link href={'https://endometriose.no/hjelp-oss-a-hjelpe/'} style={styles.linkText} target={"_blank"}>
-          <BulletListItem text="Endometrioseforeningen" />
+          <BulletListItem text={t('info.endometriose')} />
         </Link>
         <Link href={'https://legerutengrenser.no/stott-oss/vipps/'} style={styles.linkText} target={"_blank"}>
-          <BulletListItem text="Leger Uten Grenser" />
+          <BulletListItem text={t('info.leger_uten_grenser')} />
         </Link>
         <Link href={'https://kreftforeningen.no/stott-kreftforeningen/'} style={styles.linkText} target={"_blank"}>
-          <BulletListItem text="Kreftforeningen" />
+          <BulletListItem text={t('info.kreftforeningen')} />
         </Link>
         <View style={styles.imageContainer}>
           <Image
@@ -207,9 +193,9 @@ const JavaZoneInfo = () => {
       </SectionBox>
 
       {/* Speakers */}
-      <SectionBox sectionTitle="🗣️ SPEAKERS">
+      <SectionBox sectionTitle={t('info.speakers_title')}>
         <Text style={Assets.styles.text}>
-          Please show up in your room 10 minutes before your talk starts to make sure your equipment works.
+          {t('info.speakers_info')}
         </Text>
         <View style={styles.imageContainer}>
           <Image
@@ -221,30 +207,28 @@ const JavaZoneInfo = () => {
       </SectionBox>
 
       {/* Code of Conduct */}
-      <SectionBox sectionTitle="CODE OF CONDUCT">
+      <SectionBox sectionTitle={t('info.code_of_conduct_title')}>
         <Text style={Assets.styles.text}>
-          The goal of the JavaZone conference is to be inclusive of the largest number of participants with varied and
-          diverse backgrounds. If you experience any inappropriate behavior let us know.
+          {t('info.code_of_conduct_info')}
         </Text>
         <View style={styles.linkContainer}>
           <Link href="https://java.no/principles" style={styles.linkText}>
-            Full text: javaBin - Hjemmesiden til Javabrukerforeningen i Norge
+            {t('info.code_of_conduct_link')}
           </Link>
         </View>
       </SectionBox>
 
       {/* Social Media */}
-      <SectionBox sectionTitle="#️⃣ SOCIAL MEDIA">
+      <SectionBox sectionTitle={t('info.social_media_title')}>
         <Text style={Assets.styles.text}>
-          Follow along with #javazone / #javazone2025.{'\n'}
-          Our team will be active – reach out with comments & questions, and join the conversation!
+          {t('info.social_media_info')}
         </Text>
       </SectionBox>
 
       {/* More Info */}
-      <SectionBox sectionTitle="MORE INFO">
+      <SectionBox sectionTitle={t('info.more_info_title')}>
         <Text style={Assets.styles.text}>
-          Any questions? Contact javazone@java.no, send us a DM, or catch us at the venue.
+          {t('info.more_info_text')}
         </Text>
         <View style={styles.contactBox}>
           <Link href="mailto:javazone@java.no" style={styles.linkText}>
