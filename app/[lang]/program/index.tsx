@@ -33,6 +33,15 @@ const Program = () => {
   const isTablet = screenWidth >= 768 && screenWidth < 1000;
   const isDesktop = screenWidth >= 1000;
 
+  // Calculate available width accounting for vertical lines and desired spacing
+  const verticalLinesWidth = isMobile ? 20 : 100; // Width of each vertical line
+  const spacingFromLines = 5; // Desired spacing from vertical lines
+  const totalSpacer = (verticalLinesWidth + spacingFromLines) * 2; // Both sides
+  const availableWidth = screenWidth - totalSpacer;
+
+  // Calculate temple/content width (same logic as kids component)
+  const contentWidth = Math.min(availableWidth, 1200); // Max width constraint
+
   // Calculate available height for content (screen height minus menu height)
   const menuHeight = isMobile ? 280 : 60;
   const availableHeight = screenHeight - menuHeight;
@@ -125,7 +134,11 @@ const Program = () => {
     <ScreenTemplate pageTitle={t('pageTitles.program')} shouldScrollToTop={false}>
       <View style={styles.container}>
         {/* Temple Menu - Mobile-Optimized Temple Design - FIXED */}
-        <View style={[templeMenuStyles.menuContainer, isMobile && templeMenuStyles.mobileMenuContainer]}>
+        <View style={[
+          templeMenuStyles.menuContainer,
+          isMobile && templeMenuStyles.mobileMenuContainer,
+          { width: contentWidth, marginHorizontal: verticalLinesWidth + spacingFromLines }
+        ]}>
           {/* Pyramid - Scaled down for mobile, full size for desktop */}
           <View
             style={[
@@ -296,7 +309,11 @@ const Program = () => {
         </View>
 
         {/* Content Area - FIXED PILLARS WITH SCROLLABLE CONTENT */}
-        <View style={[styles.pillarContentContainer, isMobile && styles.mobilePillarContentContainer]}>
+        <View style={[
+          styles.pillarContentContainer,
+          isMobile && styles.mobilePillarContentContainer,
+          { width: contentWidth, marginHorizontal: verticalLinesWidth + spacingFromLines }
+        ]}>
           {/* Left Pillar - FIXED at left edge */}
           <View
             style={[
@@ -434,13 +451,7 @@ const pyramidMobileStyles = StyleSheet.create({
 
 const templeMenuStyles = StyleSheet.create({
   menuContainer: {
-    width: Dimensions.get('window').width < 768
-      ? 370 // Mobile: 185 + 185 = 370
-      : Dimensions.get('window').width > 1240
-        ? (Dimensions.get('window').width > 1365 ? 1200 : 1000) // Large: 600 + 600 = 1200 or 500 + 500 = 1000
-        : Dimensions.get('window').width > 1000
-          ? (Dimensions.get('window').width > 1200 ? 900 : 800) // Medium: 450 + 450 = 900 or 400 + 400 = 800
-          : (Dimensions.get('window').width > 950 ? 700 : 600), // Small: 350 + 350 = 700 or 300 + 300 = 600
+    // Remove fixed width calculations, will be set dynamically
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -448,7 +459,6 @@ const templeMenuStyles = StyleSheet.create({
   },
   mobileMenuContainer: {
     // Specific styles for mobile menu container
-    width: '104%',
     padding: 0,
     alignItems: 'flex-start',
   },
@@ -789,13 +799,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   pillarContentContainer: {
-    width: Dimensions.get('window').width < 768
-      ? 370 // Mobile: 185 + 185 = 370
-      : Dimensions.get('window').width > 1240
-        ? (Dimensions.get('window').width > 1365 ? 1200 : 1000) // Large: 600 + 600 = 1200 or 500 + 500 = 1000
-        : Dimensions.get('window').width > 1000
-          ? (Dimensions.get('window').width > 1200 ? 900 : 800) // Medium: 450 + 450 = 900 or 400 + 400 = 800
-          : (Dimensions.get('window').width > 950 ? 700 : 600), // Small: 350 + 350 = 700 or 300 + 300 = 600
+    // Remove fixed width calculations, will be set dynamically
     height: '100%',
     display: 'flex',
     alignItems: 'flex-start',
@@ -806,7 +810,6 @@ const styles = StyleSheet.create({
   mobilePillarContentContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    width: 370, // Mobile temple width: 185 + 185
     justifyContent: 'space-between',
   },
   pillar: {
