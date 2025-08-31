@@ -34,7 +34,7 @@ const Program = () => {
   const isDesktop = screenWidth >= 1000;
 
   // Calculate available height for content (screen height minus menu height)
-  const menuHeight = isMobile ? 280 : 320;
+  const menuHeight = isMobile ? 280 : 60;
   const availableHeight = screenHeight - menuHeight;
 
   const dateFilters = [
@@ -883,7 +883,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 10,
     paddingHorizontal: 10,
-    alignItems: 'center',
+    alignItems: 'stretch', // Changed from 'center' to 'stretch'
     justifyContent: 'flex-start',
   },
 });
