@@ -1,6 +1,6 @@
 import { ScreenTemplate } from '@/components';
 import { SectionBox } from '@/UI';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View, Modal } from 'react-native';
 import React, { useState } from 'react';
 import { Assets } from '@/Assets';
 
@@ -19,10 +19,22 @@ const images = [
 
 const FoodMenu = () => {
   const [filter, setFilter] = useState<'all' | 'breakfast' | 'restaurants' | 'snacks'>('all');
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const showBreakfast = () => filter === 'all' || filter === 'breakfast';
   const showRestaurants = () => filter === 'all' || filter === 'restaurants';
   const showSnacks = () => filter === 'all' || filter === 'snacks';
+
+  const openImageModal = (imageSource: any) => {
+    setSelectedImage(imageSource);
+    setModalVisible(true);
+  };
+
+  const closeImageModal = () => {
+    setModalVisible(false);
+    setSelectedImage(null);
+  };
 
   return (
     <ScreenTemplate pageTitle="JavaZone Food">
@@ -48,62 +60,86 @@ const FoodMenu = () => {
           </Pressable>
         </View>
         {showBreakfast() && (
-          <View>
-            <Text style={Assets.styles.sectionSubTitle}>Breakfast</Text>
-            <Text style={[Assets.styles.text,{alignSelf:'center'}]}>Served (feks) 12:00 - 16:00</Text>
+          <View style={{marginBottom: 20}}>
+            <Text style={[Assets.styles.sectionTitle, {fontSize: 22}]}>Breakfast</Text>
+            <Pressable
+              onPress={() => openImageModal(images[0])}
+            >
             <Image
               key={0}
               source={images[0]}
               style={{
                 width: '100%',
-                height: 800,
+                height: 500,
                 marginBottom: 10,
                 marginTop: 10,
                 maxWidth: 1000,
               }}
               resizeMode="contain"
             />
+            </Pressable>
           </View>
         )}
         {showRestaurants() && (
-          <View>
-            <Text style={Assets.styles.sectionSubTitle}>Restaurants</Text>
-            <Text style={[Assets.styles.text,{alignSelf:'center'}]}>Served (feks) 12:00 - 16:00</Text>
-            {images.slice(1, -1).map((src, index) => (
-              <Image
-                key={index + 1}
-                source={src}
-                style={{
-                  width: '100%',
-                  height: 800,
-                  marginBottom: 10,
-                  marginTop: 10,
-                  maxWidth: 1000,
-                }}
-                resizeMode="contain"
-              />
-            ))}
+          <View style={{marginBottom: 20}}>
+            <Text style={[Assets.styles.sectionTitle, {fontSize: 22}]}>Restaurants</Text>
+            <View style={foodMenuStyles.gridContainer}>
+              {images.slice(1, -1).map((src, index) => (
+                <Pressable
+                  key={index + 1}
+                  style={foodMenuStyles.gridItem}
+                  onPress={() => openImageModal(src)}
+                >
+                  <Image
+                    source={src}
+                    style={foodMenuStyles.gridImage}
+                    resizeMode="contain"
+                  />
+                </Pressable>
+              ))}
+            </View>
           </View>
         )}
         {showSnacks() && (
           <View>
-            <Text style={Assets.styles.sectionSubTitle}>Snacks</Text>
-            <Text style={[Assets.styles.text,{alignSelf:'center'}]}>Served (feks) 12:00 - 16:00</Text>
+            <Text style={[Assets.styles.sectionTitle, {fontSize: 22}]}>Snacks</Text>
+            <Pressable
+              onPress={() => openImageModal(images[images.length - 1])}
+            >
             <Image
               key={images.length - 1}
               source={images[images.length - 1]}
               style={{
                 width: '100%',
-                height: 800,
+                height: 500,
                 marginBottom: 10,
-                marginTop: 0,
+                marginTop: 10,
                 maxWidth: 1000,
               }}
               resizeMode="contain"
             />
+            </Pressable>
           </View>
         )}
       </SectionBox>
+
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        onRequestClose={closeImageModal}
+      >
+        <Pressable style={foodMenuStyles.modalOverlay} onPress={closeImageModal}>
+          <View style={foodMenuStyles.modalContainer}>
+            {selectedImage && (
+              <Image
+                source={selectedImage}
+                style={foodMenuStyles.modalImage}
+                resizeMode="contain"
+              />
+            )}
+          </View>
+        </Pressable>
+      </Modal>
     </ScreenTemplate>
   );
 };
@@ -152,6 +188,37 @@ const foodMenuStyles = StyleSheet.create({
     fontSize: 16,
     color: Assets.colors.jz2025ThemeColors.sheet,
     textAlign: 'center',
+  },
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  gridItem: {
+    width: '32%',
+    marginBottom: 10,
+  },
+  gridImage: {
+    width: '100%',
+    height: 200,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '90%',
+    height: '80%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 10,
+  },
+  modalImage: {
+    width: '100%',
+    height: '100%',
   },
 });
 

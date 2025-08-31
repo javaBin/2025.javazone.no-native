@@ -71,7 +71,7 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
           useNativeDriver: false,
         }),
         Animated.timing(paperHeightAnim, {
-          toValue: 328.5,
+          toValue: 358.5,
           duration: animationDuration,
           easing: Easing.linear,
           useNativeDriver: false,
@@ -135,6 +135,9 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
         <Link href={{ pathname: `${lang}/info` }} style={styles.drawerItem} onPress={onPressItem}>
           Info
         </Link>
+        <Link href={{ pathname: `${lang}/info/food` }} style={styles.drawerItem} onPress={onPressItem}>
+          Food
+        </Link>
         <Link href={{ pathname: `${lang}/aboutUs` }} style={styles.drawerItem} onPress={onPressItem}>
           About us
         </Link>
@@ -144,7 +147,7 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
       <Animated.View
         style={{
           transform: [{ translateY: rollPositionAnim }],
-          position: 'absolute', right: -1, top: 290
+          position: 'absolute', right: -1, top: 312
         }}
       >
         <PapyrusRollSVG height={40} width={260} />
