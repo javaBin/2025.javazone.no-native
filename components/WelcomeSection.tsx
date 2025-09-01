@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Assets } from '@/Assets';
-import { LinkButton } from '@/UI';
+import { LinkButton, SvgImage } from '@/UI';
 import { useGlobalSearchParams } from 'expo-router';
+import React from 'react';
 
 const WelcomeSection = () => {
   const { t } = useTranslation();
@@ -14,12 +15,17 @@ const WelcomeSection = () => {
       <Text style={styles.welcomeText}>{t('conference_date')}</Text>
       <Text style={[styles.ticketText, {marginTop: 20}]}>{t('javaZone.waiting_list')}</Text>
 
-      <View style={styles.eventCheckinContainer}>
-        <LinkButton href={`${lang}/program`} title={t("program")} targetBlank={false} />
-      </View>
-      <View style={styles.eventCheckinContainer}>
-        <Text style={[styles.ticketText, {marginTop: 20}]}>{t('General info')}</Text>
-        <LinkButton href={`${lang}/info`} title={t("Info")} targetBlank={false} />
+      <View style={styles.buttonsContainer}>
+        <View style={styles.buttonWrapper}>
+          <LinkButton href={`${lang}/program`} title={t("program")} targetBlank={false} />
+        </View>
+        <SvgImage SVG={Assets.UI.DividerDot} height={10} />
+        <View style={styles.buttonWrapper}>
+          <LinkButton href={`${lang}/info`} title={t("Info")} targetBlank={false} />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <LinkButton href={`${lang}/volunteers`} title={t("Volunteers")} targetBlank={false} />
+        </View>
       </View>
     </View>
   );
@@ -63,6 +69,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: Dimensions.get('window').width > 768 ? 24 : 20,
     color: Assets.colors.jz2025ThemeColors.darkBrown,
+  },
+  buttonsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: 30,
+    gap: 15,
+    width: '100%',
+  },
+  buttonWrapper: {
+    width: '80%',
+    maxWidth: 300,
   },
   eventCheckinContainer: {
     display: 'flex',
