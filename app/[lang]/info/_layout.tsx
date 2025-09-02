@@ -28,7 +28,6 @@ const InfoLayout = () => {
     <Stack initialRouteName="index" screenOptions={Platform.OS === 'web' ? webScreenOptions : nativeScreenOptions}>
       <Stack.Screen name="index"/>
       <Stack.Screen name="directions"/>
-      <Stack.Screen name="food"/>
     </Stack>
   )
 }

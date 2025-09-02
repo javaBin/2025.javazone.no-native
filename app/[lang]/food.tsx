@@ -1,7 +1,7 @@
 import { ScreenTemplate } from '@/components';
 import { SectionBox } from '@/UI';
 import { Image, Pressable, StyleSheet, Text, View, Modal } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Assets } from '@/Assets';
 
 const images = [
@@ -17,10 +17,35 @@ const images = [
   require('@/assets/images/info/late-night-snack.jpg'),
 ];
 
+const restaurantAnchors = [
+  'Webstep',      // menu-americas.jpg
+  'Bouvet',       // menu-galia.jpg
+  'System',       // menu-germania.jpg
+  'Kodemaker',    // menu-hispania.jpg
+  'Bekk',         // menu-roma.jpg
+  'Knowit',       // menu-super-bowl.jpg
+  'Capgemini',    // menu_thai.jpg
+];
+
 const FoodMenu = () => {
   const [filter, setFilter] = useState<'all' | 'breakfast' | 'restaurants' | 'snacks'>('all');
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    // Check if there's a hash in the URL on component mount
+    const hash = window.location.hash.substring(1); // Remove the # symbol
+    if (hash) {
+      const anchorIndex = restaurantAnchors.indexOf(hash);
+      if (anchorIndex !== -1) {
+        // Found the restaurant, open its modal
+        const restaurantImageIndex = anchorIndex + 1; // +1 because restaurants start at index 1 in images array
+        setSelectedImage(images[restaurantImageIndex]);
+        setModalVisible(true);
+        setFilter('restaurants'); // Show restaurants section
+      }
+    }
+  }, []);
 
   const showBreakfast = () => filter === 'all' || filter === 'breakfast';
   const showRestaurants = () => filter === 'all' || filter === 'restaurants';
@@ -85,17 +110,18 @@ const FoodMenu = () => {
             <Text style={[Assets.styles.sectionTitle, {fontSize: 22}]}>Restaurants</Text>
             <View style={foodMenuStyles.gridContainer}>
               {images.slice(1, -1).map((src, index) => (
-                <Pressable
-                  key={index + 1}
-                  style={foodMenuStyles.gridItem}
-                  onPress={() => openImageModal(src)}
-                >
-                  <Image
-                    source={src}
-                    style={foodMenuStyles.gridImage}
-                    resizeMode="contain"
-                  />
-                </Pressable>
+                <View key={index + 1} style={foodMenuStyles.gridItem}>
+                  <View nativeID={restaurantAnchors[index]} />
+                  <Pressable
+                    onPress={() => openImageModal(src)}
+                  >
+                    <Image
+                      source={src}
+                      style={foodMenuStyles.gridImage}
+                      resizeMode="contain"
+                    />
+                  </Pressable>
+                </View>
               ))}
             </View>
           </View>
