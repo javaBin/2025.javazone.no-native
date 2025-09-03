@@ -484,6 +484,12 @@
       "confirmation_note_end": " and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers living in proximity to Oslo are not eligible.",
       "reimbursement_process": "Reimbursements are processed and paid after the conference. We will reach out to speakers who applied for reimbursement and process the payments once payment details are provided."
     },
+    "program": {
+      "workshop": "Workshop",
+      "lightning_talk": "Lightning Talk",
+      "presentation": "Presentation",
+      "room_TBD": "Room TBD"
+    },
     "404": {
       "error_code": "Void 0",
       "error_title": "Well, this is embarrassing...",
