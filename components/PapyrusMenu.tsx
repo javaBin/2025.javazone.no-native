@@ -112,7 +112,7 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
 
   return (
     <Animated.View style={{ ...styles.drawer, height: paperHeightAnim }}>
-      <PapyrusSheetSVG height={335} width={250} style={{
+      <PapyrusSheetSVG height={339} width={250} style={{
         position: 'absolute', right: 5, top: -19,
         boxShadow: 'inset 0 0 2.5em rgba(108, 96, 92, 0.1), 0 0 0.3em rgba(108, 96, 92, 0.1)' }}/>
 
@@ -150,7 +150,7 @@ const PapyrusMenu = forwardRef(({ toggleMenu, languageLoaded, setToggleMenu }: P
           position: 'absolute', right: -1, top: 312
         }}
       >
-        <PapyrusRollSVG height={40} width={260} />
+        <PapyrusRollSVG height={50} width={260} />
       </Animated.View>
     </Animated.View>
   );

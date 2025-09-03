@@ -17,7 +17,7 @@ interface IProps extends SvgProps {}
  */
 const PapyrusSheetSVG = (props: IProps) => {
     return (
-        <Svg width="276" height="329" fill="none" viewBox="0 0 276 329" {...props}>
+        <Svg width="276" height="300" fill="none" viewBox="0 0 276 340" {...props}>
             <G clipPath="url(#sheet0_linear)">
                 <Path
                     fill="url(#sheet0_linear)"
