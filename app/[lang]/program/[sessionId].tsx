@@ -13,7 +13,7 @@ import {
 import { useGlobalSearchParams, useLocalSearchParams, useRouter } from 'expo-router';
 import { Assets } from '@/Assets';
 import { PageTitle, SectionBox, SvgImage } from '@/UI';
-import { ScreenTemplate } from '@/components';
+import { ScreenTemplate, VideoPlayer } from '@/components';
 import { fetchIndividualProgram } from '@/api/fetchProgram';
 import { Session } from '@/api/types/talksProgram';
 import { useFavoritesContext } from '@/contexts/FavoritesContext';
@@ -283,6 +283,16 @@ const SessionDetail = () => {
                   <Text style={{ fontWeight: 'bold' }}>Language: </Text>
                   {session.language === 'no' ? 'Norsk' : session.language === 'en' ? 'English' : session.language}
                 </Text>
+              </View>
+            )}
+
+            {/*Video*/}
+            {session.video && (
+              <View style={{ marginTop: 30, marginBottom: 20 }}>
+                <Text style={[Assets.styles.sectionSubTitle, { fontSize: 25, marginBottom: 20, textAlign: 'center' }]}>
+                  Session Video
+                </Text>
+                <VideoPlayer videoUrl={`https://player.vimeo.com/video/${session.video}`} />
               </View>
             )}
           </View>

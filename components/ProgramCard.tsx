@@ -43,7 +43,10 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
         experimentalBlurMethod={'dimezisBlurView'}
         style={[styles.innerCardContainer]}
       >
-        <Text style={styles.sessionInfo}>{formatSessionInfo(session, true, lang)}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+          <Text style={styles.sessionInfo}>{formatSessionInfo(session, true, lang)}</Text>
+          {session.video && <Text style={{ fontSize: 16 }}>🎬</Text>}
+        </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={styles.cardTitle}>{session.title}</Text>
           <Animated.View
