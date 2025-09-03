@@ -3,15 +3,8 @@ import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { Assets } from '@/Assets';
 
 const dateFilters = [
-  { id: 'tue', label: 'Tue, September 2' },
   { id: 'wed', label: 'Wed, September 3' },
   { id: 'thur', label: 'Thur, September 4' },
-  { id: 'live', label: 'Live' },
-];
-
-const languageFilters = [
-  { id: 'en', label: 'English' },
-  { id: 'no', label: 'Norwegian' },
 ];
 
 const formatFilters = [
@@ -81,11 +74,11 @@ export default function ProgramFilters({
         <View style={{ alignSelf: 'center', alignItems: 'center', flexShrink: 1 }}>
           <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Language</Text>
           <View style={styles.filterFlex}>
-            {languageFilters.map((lang) => (
+            {dateFilters.map((lang) => (
               <Pressable
                 key={lang.id}
-                onPress={() => setFilter('language', lang.id)}
-                style={[styles.filterButton, filters.language === lang.id && styles.filterButtonSelected]}
+                onPress={() => setFilter('date', lang.id)}
+                style={[styles.filterButton, filters.date === lang.id && styles.filterButtonSelected]}
               >
                 <Text style={styles.buttonText}>{lang.label}</Text>
               </Pressable>
@@ -158,5 +151,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Assets.colors.jz2025ThemeColors.sheet,
     textAlign: 'center',
-  }
+  },
 });
