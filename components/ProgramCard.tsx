@@ -45,7 +45,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({ session, isFavorite }: Progra
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
           <Text style={styles.sessionInfo}>{formatSessionInfo(session, true, lang)}</Text>
-          {session.video && <Text style={{ fontSize: 16 }}>🎬</Text>}
+          {session.video && <Text style={{ fontSize: 16, marginBottom: 5 }}>🎬</Text>}
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={styles.cardTitle}>{session.title}</Text>
