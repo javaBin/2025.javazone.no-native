@@ -8,8 +8,8 @@ import { useMediaQuery } from 'react-responsive';
 
 // Import all hero images
 const heroImages = {
-  Alexander: require('@/assets/images/jzHeroes/Alexander - Runhild Heggem, javaBin-6.jpg'),
-  'Alexander Amiri': require('@/assets/images/jzHeroes/Alexander Amiri - Runhild Heggem, javaBin-14.jpg'),
+  'Alexander S.': require('@/assets/images/jzHeroes/Alexander - Runhild Heggem, javaBin-6.jpg'),
+  'Alexander A.': require('@/assets/images/jzHeroes/Alexander Amiri - Runhild Heggem, javaBin-14.jpg'),
   Anders: require('@/assets/images/jzHeroes/Anders - Runhild Heggem, javaBin-8.jpg'),
   Beate: require('@/assets/images/jzHeroes/Beate - Runhild Heggem, javaBin-19.jpg'),
   Bjørn: require('@/assets/images/jzHeroes/Bjørn - Runhild Heggem, javaBin-9.jpg'),
@@ -22,8 +22,11 @@ const heroImages = {
   Erlend: require('@/assets/images/jzHeroes/Erlend - Runhild Heggem, javaBin-11.jpg'),
   Ewa: require('@/assets/images/jzHeroes/Ewa - Runhild Heggem, javaBin-5.jpg'),
   Felix: require('@/assets/images/jzHeroes/Felix - Runhild Heggem, javaBin-4.jpg'),
+  Henrik: require('@/assets/images/jzHeroes/Henrik - Runhild Heggem, javaBin-32.jpg'),
   Håkon: require('@/assets/images/jzHeroes/Håkon - Runhild Heggem, javaBin-3.jpg'),
+  'Jan Erik': require('@/assets/images/jzHeroes/Jan Erik - Runhild Heggem, javaBin-33.jpg'),
   'John Martin': require('@/assets/images/jzHeroes/John Martin - Runhild Heggem, javaBin-15.jpg'),
+  Jørn: require('@/assets/images/jzHeroes/Jørn - Runhild Heggem, javaBin-31.jpg'),
   Kjetil: require('@/assets/images/jzHeroes/Kjetil - Runhild Heggem, javaBin-10.jpg'),
   Kristian: require('@/assets/images/jzHeroes/Kristian - Runhild Heggem, javaBin-18.jpg'),
   Mai: require('@/assets/images/jzHeroes/Mai - Runhild Heggem, javaBin-25.jpg'),
@@ -60,9 +63,14 @@ const Heroes = () => {
     imageSource,
   }));
 
-  const renderHeaderItem = () => (
-      <Text style={[Assets.styles.text, { marginBottom: 20 }]}>{t('heroes.description')}</Text>
-    );
+  const renderHeaderItem = () => {
+    return (
+        <>
+          <Text style={Assets.styles.text}>{t('heroes.description')}</Text>
+          <Text style={[styles.creditsText, { marginBottom: 20 }]}>{t('heroes.photograpy_credits')}</Text>
+        </>
+    )
+  };
 
   const renderHeroItem = ({ item }: { item: typeof heroData[0] }) => (
     <View style={[styles.heroCard, { width: itemWidth }]}>
@@ -132,6 +140,14 @@ const styles = StyleSheet.create({
     color: Assets.colors.jz2025ThemeColors.darkRed,
     fontFamily: 'Cinzel_600SemiBold',
   },
+  creditsText: {
+    color: '#403532', // dark-brown
+    marginVertical: 10,
+    fontSize: Dimensions.get('window').width > 768 ? 18 : 16,
+    fontFamily: 'Cinzel_400Regular',
+    textAlign: 'left',
+    width: '100%',
+  }
 });
 
 export default Heroes;

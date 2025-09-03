@@ -103,7 +103,8 @@
     },
     "heroes": {
       "title": "JavaZone Heroes",
-      "description": "Meet the amazing volunteers who make JavaZone possible! These are some of the heroes behind the scenes working tirelessly to create an unforgettable conference experience."
+      "description": "Meet the amazing volunteers who make JavaZone possible! These are some of the heroes behind the scenes working tirelessly to create an unforgettable conference experience.",
+      "photograpy_credits": "Photos by Runhild Heggem / javaBin"
     },
     "partner": {
       "watch_title": "First partner meeting",

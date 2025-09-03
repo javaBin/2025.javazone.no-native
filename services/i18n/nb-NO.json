@@ -103,7 +103,8 @@
     },
     "heroes": {
       "title": "JavaZone Helter",
-      "description": "Møt de fantastiske frivillige som gjør JavaZone mulig! Her er noen av heltene bak kulissene som jobber utrettelig for å skape en uforglemmelig konferanseopplevelse."
+      "description": "Møt de fantastiske frivillige som gjør JavaZone mulig! Her er noen av heltene bak kulissene som jobber utrettelig for å skape en uforglemmelig konferanseopplevelse.",
+      "photograpy_credits": "Bilder av Runhild Heggem / javaBin"
     },
     "partner": {
       "watch_title": "Første partnermøte",
