@@ -72,7 +72,7 @@ export default function ProgramFilters({
       </View>
       <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
         <View style={{ alignSelf: 'center', alignItems: 'center', flexShrink: 1 }}>
-          <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Language</Text>
+          <Text style={[Assets.styles.listText, { textAlign: 'center', margin: 10 }]}>Date</Text>
           <View style={styles.filterFlex}>
             {dateFilters.map((lang) => (
               <Pressable
