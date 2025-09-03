@@ -67,7 +67,7 @@ const Heroes = () => {
     return (
         <>
           <Text style={Assets.styles.text}>{t('heroes.description')}</Text>
-          <Text style={[styles.creditsText, { marginBottom: 20 }]}>Photography by Runhild Heggem / javaBin</Text>
+          <Text style={[styles.creditsText, { marginBottom: 20 }]}>{t('heroes.photograpy_credits')}</Text>
         </>
     )
   };
