@@ -142,7 +142,7 @@ const JavaZoneInfo = () => {
         <Text style={Assets.styles.text}>
           {t('info.food_info')}
         </Text>
-        <LinkButton href={`info/food`} title={t('info.food_button')}/>
+        <LinkButton href={`food`} title={t('info.food_button')}/>
         <View style={styles.imageContainer}>
           <Image
             source={require('@/assets/images/info/food1.jpg')}
